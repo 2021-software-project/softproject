@@ -1,0 +1,10 @@
+django 사용 메뉴열
+1. 설치 : pip install django
+2. 실행 : python manage.py runserver
+
+
+[URL 처리 방식]
+- 기본적으로 setting.py의 INSTALLED_APPS 안에 프로젝트명이 기입되어 있어야 동작 (경로에러)
+
+config - urls.py 에서 url 처리
+pybo - 해당하는 .py 로 이동 후 메서드 실행
