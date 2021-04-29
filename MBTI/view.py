@@ -3,7 +3,6 @@ from django.shortcuts import render
 
 
 def login(request):
-    print(request)
     return render(request, "MBTI/login.html")
 
 def results(request, question_id):
