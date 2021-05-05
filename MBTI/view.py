@@ -9,8 +9,8 @@ def login(request):
     elif request.method == "POST":
         id = request.POST['id']
         pw = request.POST['password']
-        print("사용자 입력 ID :",request.POST['id'])
-        print("사용자 입력 Password :", request.POST['password'])
+        print("사용자 입력 ID :",id)
+        print("사용자 입력 Password :", pw)
     return render(request, "MBTI/login.html")
 
 def results(request, question_id):
