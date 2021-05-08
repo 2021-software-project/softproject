@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from app1.models import User
 @csrf_exempt
 def login(request):
@@ -48,7 +48,7 @@ def join(request):
         user.save()
         return render(request, "MBTI/login.html")
     else:
-        return render(request, "app1/join.html")
+        return render(request, "MBTI/user/join.html")
 
 def results(request, question_id):
     response = "You're looking at the results of question %s."
