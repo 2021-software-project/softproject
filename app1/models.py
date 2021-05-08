@@ -37,9 +37,13 @@ class User(models.Model):
     name = models.CharField(max_length=25)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     mbti = models.CharField(max_length=10,choices=MBTI_CHOICES)
-    area1 = models.CharField(max_length=50,blank=True, null=True)
-    area2 = models.CharField(max_length=50,blank=True, null=True)
-    area3 = models.CharField(max_length=50,blank=True, null=True)
+    area1 = models.CharField(max_length=100, blank=True, null=True)
+    area2 = models.CharField(max_length=100, blank=True, null=True)
+    area3 = models.CharField(max_length=100, blank=True, null=True)
+
+    # area1 = models.CharField(max_length=100,blank=True, null=True)
+    # area2 = models.CharField(max_length=100,blank=True, null=True)
+    # area3 = models.CharField(max_length=100,blank=True, null=True)
 
     def __str__(self):
         return self.id

@@ -21,4 +21,5 @@ from MBTI import view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', view.login),
+    path('join/', view.join),
 ]
