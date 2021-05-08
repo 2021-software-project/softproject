@@ -41,9 +41,5 @@ class User(models.Model):
     area2 = models.CharField(max_length=100, blank=True, null=True)
     area3 = models.CharField(max_length=100, blank=True, null=True)
 
-    # area1 = models.CharField(max_length=100,blank=True, null=True)
-    # area2 = models.CharField(max_length=100,blank=True, null=True)
-    # area3 = models.CharField(max_length=100,blank=True, null=True)
-
     def __str__(self):
         return self.id

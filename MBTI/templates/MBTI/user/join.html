@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
 </head>
+{% if messages %}
+	{% for message in messages %}
+        <script>
+            alert('{{ message.message }}');
+        </script>
+	{% endfor %}
+{% endif %}
 <body>
 <div id="content" class="colM">
     <h1>Add user</h1>
