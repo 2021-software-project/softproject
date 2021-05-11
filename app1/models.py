@@ -32,10 +32,11 @@ class User(models.Model):
         ('estj', 'ESTJ'), ('esfj', 'ESFJ'), ('enfj', 'ENFJ'), ('entj', 'ENTJ'),
     }
 
-    id = models.CharField(max_length=25,primary_key=True)
-    pw = models.CharField(max_length=25)
-    name = models.CharField(max_length=25)
-    gender = models.CharField(max_length=10, choices=GENDER_CHOICES,blank=True, null=True)
+    id = models.CharField(max_length=25,primary_key=True, null=False)
+    pw = models.CharField(max_length=25, null=False)
+    name = models.CharField(max_length=25, null=False)
+    gender = models.CharField(max_length=10, null=False)
+    #gender = models.CharField(max_length=10, choices=GENDER_CHOICES,blank=True, null=True)
     mbti = models.CharField(max_length=10,choices=MBTI_CHOICES,blank=True, null=True)
     area1 = models.CharField(max_length=100, blank=True, null=True)
     area2 = models.CharField(max_length=100, blank=True, null=True)

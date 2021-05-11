@@ -15,22 +15,20 @@
 <div id="content" class="colM">
     <h1>Add user</h1>
     <div id="content-main">
-        <form action="/join/" method="post" id="user_form" novalidate><input type="hidden" name="csrfmiddlewaretoken" value="vt91E6svne5nmQfx6mN5CtVetn4K4CCiwMyl3kZgjUhqmDhw2Bq0HyOCuUkZQBgR">
+        <form action="/join/" method="post" id="user_form" novalidate>
             <div>
                 <fieldset class="module aligned ">
-                    <div class="form-row field-id">
-                        <div>
-                            <label class="required" for="id_id">Id:</label>
-                            <input type="text" name="id" class="vTextField" maxlength="25" required id="id_id">
-                        </div>
-                    </div>
-
-                    <div class="form-row field-pw">
+                    Id: <input type="text" name="id" maxlength="25" required="true"> <p>
+                    PW: <input type="text" name="pw" maxlength="25" required="true"> <p>
+                    NAME : <input type="text" name="name" maxlength="25" required="true"> <p>
+                    GENDER : <input type = "radio" name="gender" value="Female" required="true"> Female
+                            <input type = "radio" name="gender" value="Male" required="true"> Male
+                       <!--
                         <div>
                             <label class="required" for="id_pw">Pw:</label>
                             <input type="text" name="pw" class="vTextField" maxlength="25" required id="id_pw">
                         </div>
-                    </div>
+                        </div>
 
                     <div class="form-row field-name">
                         <div>
@@ -41,65 +39,20 @@
 
                     <div class="form-row field-gender">
                         <div>
-                            <label class="required" for="id_gender">Gender:</label>
-                            <select name="gender" required id="id_gender">
-                                <option value="" selected>---------</option>
-                                <option value="Female">Female</option>
-                                <option value="male">Male</option>
-                            </select>
+                            <label class="required">Gender:</label>
+                            <input type="radio" name="gender" value="Female" required="true"/>
+                                <label class="required">Female</label>
+                            <input type="radio" name="gender" value="Male" required="true"/>
+                                <label class="required">Male</label>
 
                         </div>
-                    </div>
+                    </div>-->
 
-                    <div class="form-row field-mbti">
-                        <div>
-                            <label class="required" for="id_mbti">Mbti:</label>
-                            <select name="mbti" required id="id_mbti">
-                                <option value="" selected>---------</option>
-                                <option value="infj">INFJ</option>
-                                <option value="enfj">ENFJ</option>
-                                <option value="intp">INTP</option>
-                                <option value="esfj">ESFJ</option>
-                                <option value="enfp">ENFP</option>
-                                <option value="istp">ISTP</option>
-                                <option value="isfj">ISFJ</option>
-                                <option value="esfp">ESFP</option>
-                                <option value="entp">ENTP</option>
-                                <option value="estj">ESTJ</option>
-                                <option value="isfp">ISFP</option>
-                                <option value="estp">ESTP</option>
-                                <option value="infp">INFP</option>
-                                <option value="istj">ISTJ</option>
-                                <option value="entj">ENTJ</option>
-                                <option value="intj">INTJ</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="form-row field-area1">
-                        <div>
-                            <label for="id_area1">Area1:</label>
-                            <input type="text" name="area1" class="vTextField" maxlength="50" id="id_area1">
-                        </div>
-                    </div>
-
-                    <div class="form-row field-area2">
-                        <div>
-                            <label for="id_area2">Area2:</label>
-                            <input type="text" name="area2" class="vTextField" maxlength="50" id="id_area2">
-                        </div>
-                    </div>
-
-                    <div class="form-row field-area3">
-                        <div>
-                            <label for="id_area3">Area3:</label>
-                            <input type="text" name="area3" class="vTextField" maxlength="50" id="id_area3">
-                        </div>
-                    </div>
                 </fieldset>
 
                 <div class="submit-row">
-                    <input type="submit" value="회원가입" class="default" name="_join">
+                    <input type="submit" value="회원가입" name="_join">
                 </div>
             </div>
         </form>

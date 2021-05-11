@@ -24,10 +24,10 @@ def join(request):
         join_pw = request.POST['pw']
         name = request.POST['name']
         gender = request.POST['gender']
-        mbti = request.POST['mbti']
-        area1 = request.POST['area1']
-        area2 = request.POST['area2']
-        area3 = request.POST['area3']
+        #mbti = request.POST['mbti']
+        #area1 = request.POST['area1']
+        #area2 = request.POST['area2']
+        #area3 = request.POST['area3']
         print("사용자 입력 ID :",join_id)
         print("사용자 입력 Password :", join_pw)
         print("사용자 입력 name:",name)
@@ -40,10 +40,15 @@ def join(request):
             print("중복된 ID입니다")
             messages.info(request, '중복된 ID입니다')
             return render(request, "MBTI/user/join.html")
-        else :
-            User.objects.create(id=join_id, pw=join_pw, name=name, gender=gender,
-                                mbti=mbti, area1=area1, area2=area2, area3=area3)
-        return render(request, "MBTI/login.html")
+        elif not key :
+            print("아이디를 입력해주세요")
+            messages.info(request, '아이디를 입력해주세요')
+            return render(request, "MBTI/user/join.html")
+        else:
+            print("")
+            User.objects.create(id=join_id, pw=join_pw, name=name, gender=gender)
+                                #mbti=mbti, area1=area1, area2=area2, area3=area3)
+            return render(request, "MBTI/login.html")
     else:
         return render(request, "MBTI/user/join.html")
 
