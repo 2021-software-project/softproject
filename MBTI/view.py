@@ -22,6 +22,7 @@ def join(request):
     if request.method == "POST":
         join_id = request.POST['id']
         join_pw = request.POST['pw']
+        join_pw_check = request.POST['pw2']
         name = request.POST['name']
         gender = request.POST.get('gender')  #get() 해주니까 MultiValueDictKeyError 해결됨
         print("사용자 입력 ID :",join_id)
@@ -38,10 +39,14 @@ def join(request):
             messages.info(request, '중복된 ID입니다')
             return render(request, "MBTI/user/join.html")
         else:
-            print("회원가입 성공")
-            messages.info(request, '회원가입을 축하드립니다!')
-            User.objects.create(id=join_id, pw=join_pw, name=name, gender=gender)
-            return render(request, "MBTI/user/join_success.html")
+            if join_pw != join_pw_check:
+                messages.info(request, '비밀번호를 확인해주세요')
+                return render(request, "MBTI/user/join.html")
+            else:
+                print("회원가입 성공")
+                messages.info(request, '회원가입을 축하드립니다!')
+                User.objects.create(id=join_id, pw=join_pw, name=name, gender=gender)
+                return render(request, "MBTI/user/join_success.html")
     else:
         return render(request, "MBTI/user/join.html")
 
