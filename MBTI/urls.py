@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', view.login),
     path('join/', view.join),
+    path('join_success/',view.join_success),
 ]

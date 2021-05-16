@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
 </head>
-{% if messages %}
+{% if messages %}  <!-- 이 부분 덕분에 view의 messages.info() 가능 -->
 	{% for message in messages %}
         <script>
             alert('{{ message.message }}');
@@ -12,51 +12,23 @@
 	{% endfor %}
 {% endif %}
 <body>
-<div id="content" class="colM">
-    <h1>Add user</h1>
-    <div id="content-main">
-        <form action="/join/" method="post" id="user_form" novalidate>
-            <div>
-                <fieldset class="module aligned ">
-                    Id: <input type="text" name="id" maxlength="25" required> <p>
-                    PW: <input type="text" name="pw" maxlength="25" required> <p>
-                    NAME : <input type="text" name="name" maxlength="25" required> <p>
-                    GENDER : <input type = "radio" name="gender" value="Female" required> Female
-                            <input type = "radio" name="gender" value="Male" required> Male
-                       <!--
-                        <div>
-                            <label class="required" for="id_pw">Pw:</label>
-                            <input type="text" name="pw" class="vTextField" maxlength="25" required id="id_pw">
-                        </div>
-                        </div>
-
-                    <div class="form-row field-name">
-                        <div>
-                            <label class="required" for="id_name">Name:</label>
-                            <input type="text" name="name" class="vTextField" maxlength="25" required id="id_name">
-                        </div>
-                    </div>
-
-                    <div class="form-row field-gender">
-                        <div>
-                            <label class="required">Gender:</label>
-                            <input type="radio" name="gender" value="Female" required="true"/>
-                                <label class="required">Female</label>
-                            <input type="radio" name="gender" value="Male" required="true"/>
-                                <label class="required">Male</label>
-
-                        </div>
-                    </div>-->
-
-
-                </fieldset>
-
-                <div class="submit-row">
-                    <input type="submit" value="회원가입" name="_join">
-                </div>
+<h1>Add user</h1>
+<div id="content-main">
+    <form method="post" id="user_form" > <!-- action="../join_success/"-->
+        {% csrf_token %}
+        <div>
+            <fieldset class="module aligned ">
+                Id: <input type="text" name="id" maxlength="25" required> <p>
+                PW: <input type="password" name="pw" maxlength="25" required> <p>
+                NAME : <input type="text" name="name" maxlength="25" required> <p>
+                GENDER : <input type = "radio" name="gender" value="Female" required> Female
+                        <input type = "radio" name="gender" value="Male" required> Male
+            </fieldset><br>
+            <div class="submit-row">
+                <input type="submit" value="회원가입" name="_join">
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>

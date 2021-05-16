@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -15,7 +15,7 @@ def login(request):
         pw = request.POST['password']
         print("사용자 입력 ID :",id)
         print("사용자 입력 Password :", pw)
-    return render(request, "MBTI/login.html")
+    return render(request, "MBTI/user/login.html")
 
 @csrf_exempt
 def join(request):
@@ -24,10 +24,6 @@ def join(request):
         join_pw = request.POST['pw']
         name = request.POST['name']
         gender = request.POST.get('gender')  #get() 해주니까 MultiValueDictKeyError 해결됨
-        #mbti = request.POST['mbti']
-        #area1 = request.POST['area1']
-        #area2 = request.POST['area2']
-        #area3 = request.POST['area3']
         print("사용자 입력 ID :",join_id)
         print("사용자 입력 Password :", join_pw)
         print("사용자 입력 name:",name)
@@ -36,22 +32,21 @@ def join(request):
         key = User.objects.filter(id = join_id)
         print(key)
 
-        if key == None:
-            print("아이디를 입력해주세요")
-            messages.info(request, '아이디를 입력해주세요')
-            return render(request, "MBTI/user/join.html")
-        elif key :
+        if key :
             #회원 객체 생성
             print("중복된 ID입니다")
             messages.info(request, '중복된 ID입니다')
             return render(request, "MBTI/user/join.html")
         else:
-            print("")
+            print("회원가입 성공")
+            messages.info(request, '회원가입을 축하드립니다!')
             User.objects.create(id=join_id, pw=join_pw, name=name, gender=gender)
-                                #mbti=mbti, area1=area1, area2=area2, area3=area3)
-            return render(request, "MBTI/login.html")
+            return render(request, "MBTI/user/join_success.html")
     else:
         return render(request, "MBTI/user/join.html")
+
+def join_success(request):
+    return render(request, "MBTI/user/join_success.html")
 
 def results(request, question_id):
     response = "You're looking at the results of question %s."
