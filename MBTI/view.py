@@ -1,11 +1,11 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib import messages
 
 
-from app1.models import User
+from MBTI.modules.db.models import User
 @csrf_exempt
 def login(request):
     if request.method == "GET":
