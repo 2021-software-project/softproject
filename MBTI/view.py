@@ -14,6 +14,10 @@ def login(request):
         print("사용자 입력 Password :", pw)
     return render(request, "MBTI/login.html")
 
+def index(request):
+    if request.method == "GET":
+        return render(request, "MBTI/index.html")
+
 @csrf_exempt
 def join(request):
     if request.method == "POST":
@@ -49,6 +53,22 @@ def join(request):
         return render(request, "MBTI/login.html")
     else:
         return render(request, "MBTI/user/join.html")
+@csrf_exempt
+def join2(request):
+    if request.method == "GET":
+
+        print("개인정보 추가")
+        return render(request, "MBTI/user/join2.html")
+@csrf_exempt
+def main(request):
+    if request.method == "POST":
+        print("메인화면 접속")
+        id = request.POST['id']
+        data = {
+            'id': id,
+        }
+
+        return render(request, "MBTI/main.html", data)
 
 def results(request, question_id):
     response = "You're looking at the results of question %s."

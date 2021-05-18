@@ -7,10 +7,17 @@
         LOGIN
     </title>
     <body>
-        <form method="post" action="/login/" >
-            ID : <input type="text" name="id" autofocus/>
-            PW : <input type="password" name="password"/>
-            <input type="submit">로그인</input>
+     <div style="text-align:center">
+    <form method="post" action="/main/" >
+        <br><br><br><br>
+        <h1> LOGIN </h1>
+            ID : <input type="text" name="id" autofocus/><br>
+            PW : <input type="password" name="password"/><br><br>
+            <input type="submit" value = "로그인">&nbsp
+        <input type ="reset" value = "취소"> <br><br>
+        아이디가 없으신가요 ? <input type = "button" value = "회원가입" onclick="location.href='/join/' ">
+
         </form>
+     </div>
     </body>
 </html>
