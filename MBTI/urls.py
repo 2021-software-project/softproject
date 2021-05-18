@@ -23,4 +23,7 @@ urlpatterns = [
     path('login/', view.login),
     path('join/', view.join),
     path('join_success/',view.join_success),
+    path('index/', view.index),
+    path('join2/', view.join2),
+    path('main/', view.main),
 ]
