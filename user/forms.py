@@ -1,12 +1,13 @@
 from django import forms
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm
-from .models import CustomUser
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-class CustomUserCreationForm(UserCreationForm):
+class UserForm(UserCreationForm):
+
+    email = forms.EmailField(error_messages={
+        'required' : '이메일을 입력하세요'
+    }, label="이메일")
+
     class Meta:
-        model = CustomUser
-        fields = ('email', )
-class CustomUserChangeForm(UserChangeForm):
-    class Meta:
-        model = CustomUser
-        fields = UserChangeForm.Meta.fields
+        model = User
+        fields = ("username","email");

@@ -4,20 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-  <form action = "/login/" method ="get" >
-    <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-     <div style="text-align:center">
-      <h1> 웹 이름 </h1>
-     </div>
-     <div style="text-align:center">
-      <h3> 부 제목 </h3>
-      <input type = "submit"  value = "입장하기" >
-        </div>
-    </body>
-  </form>
+<body>
+
+메인페이지<p>
+{% if user.is_authenticated %}
+    {{ user.username }}님 반갑습니다.<p>
+    <a href="{% url 'user:logout' %}"><button>로그아웃</button></a>
+{% else %}
+    <a href="{% url 'user:login' %}"><button>로그인</button></a>
+{% endif %}
+</body>
 </html>
