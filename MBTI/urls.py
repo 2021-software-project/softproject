@@ -34,6 +34,5 @@ urlpatterns = [
     path('join2/', view.join2),
     path('main/', view.main),
     path('api/', include(router.urls)),
-    path('', view.index, )
 
 ]
