@@ -12,9 +12,17 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import db
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATICFILES_DIRS=(#추가해줌
+os.path.join(BASE_DIR,'frontend/build/static'),
+)
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,10 +47,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'MBTI',
+    'rest_framework',
+    'corsheaders',
+    'webpack_loader'
     #'app1'
 ]
 
 MIDDLEWARE = [
+        'corsheaders.middleware.CorsMiddleware',#b9
+    'django.middleware.common.CommonMiddleware',#추가
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,7 +70,7 @@ ROOT_URLCONF = 'MBTI.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['frontend/build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,3 +144,12 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_WHITELIST = [  # 추가
+    'http://127.0.0.1:3000',
+    'http://localhost:8000',
+    'http://localhost:3000',
+    'http://localhost:8080',
+]
+
+CORS_ALLOW_CREDENTIALS = True

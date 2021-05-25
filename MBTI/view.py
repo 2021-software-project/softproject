@@ -3,9 +3,19 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib import messages
+from MBTI.modules.db.models import User, Product
+
+# Create your views here.
+from rest_framework import viewsets
+from serializers import ProductSerializer
+#from .models import Product
+
+class ProductView(viewsets.ModelViewSet):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
 
 
-from MBTI.modules.db.models import User
+
 @csrf_exempt
 def login(request):
     if request.method == "GET":

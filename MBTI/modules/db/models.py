@@ -2,6 +2,13 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
+
+class Product(models.Model):
+    name = models.TextField()
+
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -35,7 +42,7 @@ class User(models.Model):
     id = models.CharField(max_length=25,primary_key=True, null=False)
     pw = models.CharField(max_length=25, null=False)
     name = models.CharField(max_length=25, null=False)
-    gender = models.CharField(max_length=10, null=False)
+    # gender = models.CharField(max_length=10, null=False)
     #gender = models.CharField(max_length=10, choices=GENDER_CHOICES,blank=True, null=True)
     mbti = models.CharField(max_length=10,choices=MBTI_CHOICES,blank=True, null=True)
     area1 = models.CharField(max_length=100, blank=True, null=True)
