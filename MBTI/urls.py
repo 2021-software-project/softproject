@@ -33,7 +33,8 @@ urlpatterns = [
     path('index/', view.index),
     path('join2/', view.join2),
     path('main/', view.main),
-    path('api/', include(router.urls)),
+    #path('api/', include(router.urls)),
+    path('api/user/', include('user.urls')),
     path('', view.index, )
 
 ]
