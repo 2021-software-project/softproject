@@ -3,16 +3,29 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib import messages
-from MBTI.modules.db.models import User, Product
+# from MBTI.modules.db.models import User
 
 # Create your views here.
 from rest_framework import viewsets
-from serializers import ProductSerializer
-#from .models import Product
+from MBTI.serializers import ProductSerializer, TextSerializer, TestSerializer
+
+from MBTI.modules.db.models import Product, Text, Test
+
+
+class TestView(viewsets.ModelViewSet):
+    serializer_class = TestSerializer
+    queryset = Test.objects.all()
+
 
 class ProductView(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+
+class TextView(viewsets.ModelViewSet):
+    serializer_class = TextSerializer
+    queryset = Text.objects.all()
+
 
 
 
@@ -27,9 +40,11 @@ def login(request):
         print("사용자 입력 Password :", pw)
     return render(request, "MBTI/user/login.html")
 
+
 def index(request):
     if request.method == "GET":
         return render(request, "MBTI/index.html")
+
 
 @csrf_exempt
 def join(request):

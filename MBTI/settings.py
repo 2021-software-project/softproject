@@ -13,14 +13,18 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import db
 import os
+import datetime
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'MBTI.settings')
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 
+# from django.core.wsgi import get_wsgi_application
+# application = get_wsgi_application()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATICFILES_DIRS=(#추가해줌
-os.path.join(BASE_DIR,'frontend/build/static'),
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+STATICFILES_DIRS = (#추가해줌
+    os.path.join(BASE_DIR,'frontend/build/static'),
 )
 
 
@@ -49,12 +53,24 @@ INSTALLED_APPS = [
     'MBTI',
     'rest_framework',
     'corsheaders',
-    'webpack_loader'
-    #'app1'
+    'webpack_loader',
+    'knox',
+    'user',
+
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
 ]
 
+AUTH_USER_MODEL = 'user.CustomUser'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 MIDDLEWARE = [
-        'corsheaders.middleware.CorsMiddleware',#b9
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',#추가
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -142,6 +158,53 @@ STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+AUTHENTICATION_BACKENDS = (
+	"django.contrib.auth.backends.ModelBackend",
+)
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_USERNAME_REQUIRED = False
+
+ACCOUNT_SESSION_REMEMBER = True
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+ACCOUNT_UNIQUE_EMAIL = True
+
+# DRF
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated', # 인증된 사용자만 접근 가능
+        'rest_framework.permissions.IsAdminUser', # 관리자만 접근 가능
+        'rest_framework.permissions.AllowAny', # 누구나 접근 가능
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        # 자동으로 json으로 바꿔줌
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+## JWT
+# 추가적인 JWT_AUTH 설젇
+JWT_AUTH = {
+    'JWT_SECRET_KEY': SECRET_KEY,
+    'JWT_ALGORITHM': 'HS256', # 암호화 알고리즘
+    'JWT_ALLOW_REFRESH': True, # refresh 사용 여부
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7), # 유효기간 설정
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28), # JWT 토큰 갱신 유효기간
+}
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
