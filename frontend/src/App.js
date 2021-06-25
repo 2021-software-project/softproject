@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Suspense} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
+import './App.css';
+import NavBar from './components/NavBar/NavBar';   // 추가
+import LoginPage from './components/UserPage/LoginPage';   // 추가
+import SignupPage from './components/UserPage/SignupPage';   // 추가
+import Home from "./components/home";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Suspense fallback={(<div>...</div>)}>
+        <NavBar />
+          <div className="App">
+            <Switch>
+              <Route exact path="/login/" component={LoginPage}></Route>   // 추가
+              <Route exact path="/signup/" component={SignupPage}></Route>   // 추가
+              <Route exact path="/" component={Home}></Route>   // 추가
+            </Switch>
+          </div>
+      </Suspense>
+    </Router>
+    );
 }
-
-export default App;
+//import React, {Suspense} from 'react';
+//import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+//
+//import './App.css';
+//import NavBar from './components/NavBar/NavBar';   // 추가
+//import LoginPage from './components/UserPage/LoginPage';   // 추가
+//import SignupPage from './components/UserPage/SignupPage';   // 추가
+//import Home from "./components/home";
+//
+//function App() {
+//  return (
+//    <div className="App">
+//      <header className="App-header">
+//         <Switch>
+//              <Route exact path="/login/" component={LoginPage}></Route>   // 추가
+//              <Route exact path="/signup/" component={SignupPage}></Route>   // 추가
+//              <Route exact path="/" component={Home}></Route>   // 추가
+//         </Switch>
+//
+//      </header>
+//    </div>
+//  );
+//}
+//
+//export default App;

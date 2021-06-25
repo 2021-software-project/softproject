@@ -1,3 +1,7 @@
+from rest_framework import serializers
+from .models import CustomUser
+
+
 from django.contrib.auth.models import update_last_login
 from rest_framework import serializers   #import serializer말고 이걸로 해주기!
 from django.contrib.auth import get_user_model, authenticate
