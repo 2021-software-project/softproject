@@ -22,22 +22,20 @@ from rest_framework import routers
 from MBTI import view
 
 router = routers.DefaultRouter()
-router.register('product', view.ProductView, 'product')
-router.register('text', view.TextView, 'text')
-router.register('test', view.TestView, 'test')
+
 
 urlpatterns = [
     url(r'^$',TemplateView.as_view(template_name='index.html'),name='index'),
     # path('api/', include(router.urls)),
     path('user/', include('user.urls')),
     path('admin/', admin.site.urls),
-    path('login/', view.login),
-    path('join/', view.join),
-    path('join_success/',view.join_success),
-    path('index/', view.index),
-    path('join2/', view.join2),
-    path('main/', view.main),
+    # path('login/', view.login),
+    # path('join/', view.join),
+    # path('join_success/',view.join_success),
+    # path('index/', view.index),
+    # path('join2/', view.join2),
+    # path('main/', view.main),
 
-    path('', view.index, ),
+    # path('', view.index, ),
 
 ]
