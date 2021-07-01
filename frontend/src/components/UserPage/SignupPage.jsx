@@ -1,5 +1,4 @@
 //```python
-import React, { Component } from "react";
 import React, { useState } from 'react';
 import Axios from 'axios';
 import { Input } from 'antd';
@@ -132,4 +131,3 @@ const SignupPage = () => {
 }
 
 export default SignupPage;
-//```

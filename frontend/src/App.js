@@ -2,10 +2,10 @@ import React, {Suspense} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import './App.css';
-import NavBar from './components/NavBar/NavBar';   // 추가
-import LoginPage from './components/UserPage/LoginPage';   // 추가
-import SignupPage from './components/UserPage/SignupPage';   // 추가
-import Home from "./components/home";
+import NavBar from './components/NavBar/NavBar.jsx';   // 추가
+import LoginPage from './components/UserPage/LoginPage.jsx';   // 추가
+import SignupPage from './components/UserPage/SignupPage.jsx';   // 추가
+import Home from "./components/home.jsx";
 function App() {
   return (
     <Router>
@@ -46,4 +46,4 @@ function App() {
 //  );
 //}
 //
-//export default App;
+export default App;
