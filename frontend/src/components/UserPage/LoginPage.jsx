@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
 import Axios from 'axios';
 import { Input } from 'antd';
 import styled from 'styled-components';
@@ -80,11 +79,8 @@ const LoginPage = () => {
             required
             onChange={e => setPassword(e.target.value)}
           />
-          <br/>
           <Input type='submit' size="large" value='로그인' />
         </form>
-      <br/>
-      <Link to='/signup/'>회원가입</Link>
     </LoginDiv>
   )
 }

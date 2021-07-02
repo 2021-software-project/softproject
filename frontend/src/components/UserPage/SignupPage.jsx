@@ -1,11 +1,10 @@
-//```python
 import React, { useState } from 'react';
 import Axios from 'axios';
 import { Input } from 'antd';
 import styled from 'styled-components';
 
 const SignupDiv = styled.div`
-    padding: 3rem;
+  padding: 3rem;
     form {
     width: 320px;
     display: inline-block;
