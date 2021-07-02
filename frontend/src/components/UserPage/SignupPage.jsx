@@ -61,7 +61,7 @@ const SignupPage = () => {
       return false
     }
 
-    Axios.post('/user/auth/register/', user)
+    Axios.post('http://localhost:8000/user/auth/register/', user)
         .then(res => {
           if (res.data.key) {
             localStorage.setItem('token', res.data.key)
