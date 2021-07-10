@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu } from 'antd';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
+import { Menu } from 'antd';
+import styled from 'styled-components';
 
 const MenuList = styled.div`
   display: flex;
@@ -40,6 +40,9 @@ function NavBar() {
         <div>
             <MenuList>
                 <Menu>
+                    <Link to="/">
+                        메인 페이지로
+                    </Link>
                     { auth ?
                         <Menu.Item key="logout" onClick={handleLogout}>
                             로그아웃

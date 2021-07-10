@@ -64,11 +64,23 @@ const SignupPage = () => {
     Axios.post('/user/auth/register/', user)
         .then(res => {
           if (res.data.key) {
-            localStorage.clear()
             localStorage.setItem('token', res.data.key)
-            // 사용하려면 App.js에서 /로 라우팅해야 한다
-            window.location.replace('/')
-          } else {
+            let token = localStorage.getItem('token')
+            Axios.post('/user/auth/logout/', token)
+                .then(res => {
+                  localStorage.clear()
+                  // 사용하려면 App.js에서 /로 라우팅해야 한다
+                  alert('회원가입을 축하합니다! 로그인 화면으로 이동')
+                  window.location.replace('/login/')
+                });
+          }
+          // if (res.data.key) {
+          //   localStorage.clear()
+          //   localStorage.setItem('token', res.data.key)
+          //   // 사용하려면 App.js에서 /로 라우팅해야 한다
+          //   window.location.replace('/')
+          // }
+            else {
             setUsername('')
             setEmail('')
             setPassword1('')
@@ -79,6 +91,7 @@ const SignupPage = () => {
         })
         .catch(err => {
           console.clear()
+          console.log(err)
           alert('아이디 혹은 비밀번호가 일치하지 않습니다')
         })
   }
@@ -110,7 +123,7 @@ const SignupPage = () => {
             value={password1}
             onChange={onChangePwd1}
             minLength='8'
-            pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$'
+            pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&^])[a-z\d$@$!%*#?&^]{8,16}$'
             required
           />
           <br/>
@@ -120,9 +133,10 @@ const SignupPage = () => {
             value={password2}
             onChange={onChangePwd2}
             minLength='8'
-            pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$'
+            pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&^])[a-z\d$@$!%*#?&^]{8,16}$'
             required
           />
+          <br/>
           <Input type='submit' size="large" value='가입하기' />
         </form>
       </SignupDiv>

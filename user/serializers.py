@@ -26,7 +26,8 @@ from .models import CustomUser
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('email','last_login','date_joined','is_staff')
+        # 'username' 추가
+        fields = ('email','username','last_login','date_joined','is_staff')
 
 # JWT_PAYLOAD_HANDLER = api_settings.JWT_PAYLOAD_HANDLER
 # JWT_ENCODE_HANDLER = api_settings.JWT_ENCODE_HANDLER
