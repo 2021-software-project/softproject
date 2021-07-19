@@ -19,6 +19,8 @@ function NavBar() {
 
     const [auth, setAuth] = useState('')
 
+    const user = auth.user;
+
     useEffect(() => {
         if (localStorage.getItem('token') !== null) {
             setAuth(true);
