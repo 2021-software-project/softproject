@@ -43,27 +43,25 @@ function NavBar() {
             <MenuList>
                 <Menu>
                     <Link to="/">
-                        메인 페이지로
+                        메인 페이지
                     </Link>
                     { auth ?
-                        <Menu.Item key="logout" onClick={handleLogout}>
+                        <a onClick={handleLogout}>
                             로그아웃
-                        </Menu.Item>
+                        </a>
                         :
-                        <Menu.Item key="signin">
                             <Link to="/login">
                                 로그인
                             </Link>
-                        </Menu.Item>
                     }
                     { auth ?
-                        <></>
+                        <Link to="/mypage">
+                             마이페이지
+                        </Link>
                         :
-                        <Menu.Item key="signup">
-                            <Link to="/signup">
-                                회원가입
-                            </Link>
-                        </Menu.Item>
+                        <Link to="/signup">
+                            회원가입
+                        </Link>
                     }
                 </Menu>
             </MenuList>
