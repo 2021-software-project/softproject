@@ -1,11 +1,16 @@
-from django.db.migrations import serializer
 from django.shortcuts import render
-from requests import Response
-from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
 
-class getByToken():
-    def get(self, request, format=None):
-        print(request.user)
-        print(request.auth)
+# Create your views here.
+
+#from rest_framework.decorators import api_view, permission_classes
+#from rest_framework.permissions import AllowAny
+
+#from user.serializers import UserCreateSerializer
+
+#@api_view(['POST'])
+#@permission_classes([AllowAny]) # 인증 필요없다
+#def signup(request):
+ #   serializer = UserCreateSerializer(data=request.data)
+  #  if serializer.is_valid(raise_exception=True):
+   #     serializer.save() # DB 저장
+    #    return Response(serializer.data, status=201)
