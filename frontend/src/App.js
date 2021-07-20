@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
-import './App.css';
+import './App.css'; // 바꿔봄
 import NavBar from './components/NavBar/NavBar';//추가
 import LoginPage from './components/UserPage/LoginPage';//추가
 import SignupPage from './components/UserPage/SignupPage';//추가
