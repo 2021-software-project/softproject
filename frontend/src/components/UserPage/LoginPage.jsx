@@ -34,7 +34,7 @@ const LoginPage = () => {
 
     const user = {
       email: email,
-      password: password
+      password: password,
     }
     Axios.post('/user/auth/login/', user)
       .then(res => {

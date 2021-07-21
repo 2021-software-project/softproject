@@ -1,27 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
-function MbtiRecommend(){
-
-    const [auth,setAuth] = useState()
-     useEffect(() => {
-        if (localStorage.getItem('token') !== null) {
-            setAuth(true);
-        }
-    }, [])
+function MbtiRecommend(props){
 
     return(
         <div>
-            mbti based recommand page<br/>
-            { auth ?
-                <Link to="/main">
-                    see more...
-                </Link>
-                :
-                <Link to="/signup">
-                    see more...
-                </Link>
-            }
+            <h1>mbti based recommand page</h1>
+            <h2>MBTI : {props.mbti}</h2>
+            <Link to="/signup">
+                더 추천받기 !
+            </Link>
         </div>
     )
 }

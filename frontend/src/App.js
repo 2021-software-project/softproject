@@ -6,7 +6,7 @@ import NavBar from './components/NavBar/NavBar';	// 추가
 import LoginPage from './components/UserPage/LoginPage';	// 추가
 import SignupPage from './components/UserPage/SignupPage';	// 추가
 import Home from "./components/HomePage/home";
-import InfoSelect from "./components/HomePage/InfoSelect";
+import InfoSelect from "./components/HomePage/input_mbti";
 import MbtiRecommend from "./components/HomePage/MbtiRecommend";
 import Main from './components/Main';
 
@@ -17,12 +17,13 @@ function App() {
         <NavBar />
           <div className="App">
             <Switch>
-              <Route exact path="/login/" component={LoginPage}></Route>	// 추가
-              <Route exact path="/signup/" component={SignupPage}></Route>	// 추가
+              <Route exact path="/login" component={LoginPage}></Route>	// 추가
+              <Route exact path="/signup" component={SignupPage}></Route>	// 추가
               <Route exact path="/" component={Home}></Route>	// 추가
-              <Route exact path="/info" component={InfoSelect}></Route>	// 추가
+              <Route exact path="/input_mbti" component={InfoSelect}></Route>	// 추가
               <Route exact path="/mbti" component={MbtiRecommend}></Route>	// 추가
               <Route exact path="/main" component={Main}></Route>	// 추가
+              <Route exact path="/mypage" component={Main}></Route>
             </Switch>
           </div>
       </Suspense>

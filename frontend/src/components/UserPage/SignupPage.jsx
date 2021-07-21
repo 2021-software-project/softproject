@@ -63,23 +63,23 @@ const SignupPage = () => {
 
     Axios.post('http://localhost:8000/user/auth/register/', user)
         .then(res => {
-          if (res.data.key) {
-            localStorage.setItem('token', res.data.key)
-            let token = localStorage.getItem('token')
-            Axios.post('/user/auth/logout/', token)
-                .then(res => {
-                  localStorage.clear()
-                  // 사용하려면 App.js에서 /로 라우팅해야 한다
-                  alert('회원가입을 축하합니다! 로그인 화면으로 이동')
-                  window.location.replace('/login/')
-                });
-          }
           // if (res.data.key) {
-          //   localStorage.clear()
           //   localStorage.setItem('token', res.data.key)
-          //   // 사용하려면 App.js에서 /로 라우팅해야 한다
-          //   window.location.replace('/')
+          //   let token = localStorage.getItem('token')
+          //   Axios.post('/user/auth/logout/', token)
+          //       .then(res => {
+          //         localStorage.clear()
+          //         // 사용하려면 App.js에서 /로 라우팅해야 한다
+          //         alert('회원가입을 축하합니다! 로그인 화면으로 이동')
+          //         window.location.replace('/login/')
+          //       });
           // }
+          if (res.data.key) {
+            localStorage.clear()
+            localStorage.setItem('token', res.data.key)
+            // 사용하려면 App.js에서 /로 라우팅해야 한다
+            window.location.replace('/')
+          }
             else {
             setUsername('')
             setEmail('')
