@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
-import {Link} from'react-router-dom'
 import MbtiRecommend from "./MbtiRecommend";
+
 
 function InfoSelect() {
 
@@ -12,6 +12,8 @@ function InfoSelect() {
             four: []
         });
 
+    const [mbti,setMbti] = useState('');
+
     const {one,two,tree,four} = input;
 
     const onMbtiChange=(e)=>{
@@ -20,19 +22,20 @@ function InfoSelect() {
             ...input,
             [name]:value
         });
+
     }
 
     const [rcm,setRcm] = useState('');
-    const [mbti,setMbti] = useState('');
-    const {userMbti} = mbti;
 
     const onRcm=()=>{
-        setRcm(true)
+        setRcm(
+            true
+        )
         console.log(rcm);
 
         setMbti(
             one+two+tree+four
-        )
+        );
     }
 
     //componentDidMount
@@ -63,12 +66,7 @@ function InfoSelect() {
             <input type="radio" className="mbtiSelect" name="four" onChange={onMbtiChange} value="P"/>
                 <span>P</span><br/>
 
-
             <input type="button" onClick={onRcm} value="추천받기"/>
-            <div>
-                {one}{two}{tree}{four} <br/>
-            </div>
-
             {rcm?  <MbtiRecommend mbti={mbti}/> : <></>}
 
         </div>
