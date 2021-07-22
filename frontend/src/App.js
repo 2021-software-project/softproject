@@ -2,13 +2,15 @@ import React, {Suspense} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import './App.css';
-import NavBar from './components/NavBar/NavBar';	// 추가
-import LoginPage from './components/UserPage/LoginPage';	// 추가
-import SignupPage from './components/UserPage/SignupPage';	// 추가
+import NavBar from './components/NavBar/NavBar';
+import LoginPage from './components/UserPage/LoginPage';
+import SignupPage from './components/UserPage/SignupPage';
 import Home from "./components/HomePage/home";
 import InfoSelect from "./components/HomePage/input_mbti";
 import MbtiRecommend from "./components/HomePage/MbtiRecommend";
 import Main from './components/Main';
+import Mbtircm from "./components/Recommend/Mbti_rcm"; //추가
+import Mbtiresult from "./components/Recommend/Mbti_result"; //추가
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
               <Route exact path="/mbti" component={MbtiRecommend}></Route>	// 추가
               <Route exact path="/main" component={Main}></Route>	// 추가
               <Route exact path="/mypage" component={Main}></Route>
+              <Route exact path="/mbti_rcm" component={Mbtircm}></Route>
+              <Route exact path="/mbti_result" component={Mbtiresult}></Route>
             </Switch>
           </div>
       </Suspense>
