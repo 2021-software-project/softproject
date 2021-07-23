@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { Menu } from 'antd';
 import styled from 'styled-components';
 
-const MenuList = styled.div`
+const NavList = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -40,9 +40,9 @@ function NavBar() {
 
     return(
         <div>
-            <MenuList>
+            <NavList>
                 <Menu>
-                    <Link to="/">
+                    <Link to="/main">
                         메인 페이지
                     </Link>
                     { auth ?
@@ -64,7 +64,7 @@ function NavBar() {
                         </Link>
                     }
                 </Menu>
-            </MenuList>
+            </NavList>
         </div>
     )
 }

@@ -57,11 +57,13 @@ const SignupPage = () => {
 
     // 유효성 검사
     if (password1 !== password2) {
-      alert('비밀번호와 비밀번호 확인이 일치하지 않습니다')
+      alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
       return false
     }
-
-    Axios.post('http://localhost:8000/user/auth/register/', user)
+    if(!this.state.checked){
+      alert('개인정보 수집에 동의에 체크 해주십시오.')
+    }
+    Axios.post('/user/auth/register/', user)
         .then(res => {
           // if (res.data.key) {
           //   localStorage.setItem('token', res.data.key)
@@ -137,6 +139,7 @@ const SignupPage = () => {
             required
           />
           <br/>
+          <input type="checkbox" />개인정보 수집 동의<br/>
           <Input type='submit' size="large" value='가입하기' />
         </form>
       </SignupDiv>
