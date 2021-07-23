@@ -56,7 +56,7 @@ function NavBar() {
                     }
                     { auth ?
                         <Link to="/mypage">
-                             마이페이지
+                            마이페이지
                         </Link>
                         :
                         <Link to="/signup">
