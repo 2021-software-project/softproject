@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import {useLocation} from "react-router-dom"
 
-function Mbtircm() {
+function Mbtiresult() {
     const data = useLocation();
     console.log(data);
     return(
@@ -12,4 +12,4 @@ function Mbtircm() {
         </div>
     )
 }
-export default Mbtircm;
+export default Mbtiresult;

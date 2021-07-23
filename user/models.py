@@ -3,6 +3,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
+
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -84,3 +85,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def get_username(self):
         return self.username
+
+    # @property
+    # def is_staff(self):
+    #     "Is the user a member of staff?"
+    #     # Simplest possible answer: All superusers are staff
+    #     return self.is_superuser
