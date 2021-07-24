@@ -1,0 +1,20 @@
+.areaSelect{
+    width:840px;
+    justify-content: center;
+}
+
+ul{
+    list-style: none;
+}
+li{
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    width: 15%;
+    font-size: 13px;
+    text-align: left;
+}
+a{
+    text-decoration: none;
+    color: rgba(41, 144, 236, 0.93);
+}

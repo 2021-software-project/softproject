@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import "./MbtiArea.css";
 
 function MbtiArea(props) {
     const SeoulArea = [
@@ -39,7 +40,7 @@ function MbtiArea(props) {
         "보령시","부여군","서산시","서천군","아산시","예산군",
         "천안시 동남구","천안시 서북구","청양군","태안군","홍성군",
     ];
-    const Chungbuk = [
+    const ChungbukArea = [
         "충북전체","괴산군","단양군","보은군","영동군","옥천군",
         "음성군","제천시","증평군","진천군","청주시 상당구","청주시 서원구",
         "청주시 청원구","청주시 흥덕구","충주시",
@@ -94,22 +95,182 @@ function MbtiArea(props) {
 
     if (props.area_si == "부산") {
         return (
-            <div>
+            <div className="areaSelect">
+                <ul>
                 {BusanArea.map((areagu, index) =>
-                    ((index+1) % 6 === 0 & index !=0) ?
-                        (<a className="AreaSelect" href="javascript:void(0);"> {areagu}{<br/>}</a>  ) :
-                    (<a className="AreaSelect" href="javascript:void(0);"> {areagu}</a>))}
+                    (<li><input type="checkbox" className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"/> {areagu}</li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "경기"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {KyungkiArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "인천" ){
+         return (
+            <div className="areaSelect">
+                <ul>
+                {IncheonArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "강원"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {KangwonArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "대전"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {DaejeonArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "세종"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {SejongArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "충남"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {ChungnamArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "충북"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {ChungbukArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "울산"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {UlsanArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "경남"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {KyungnamArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "경북"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {KyungbukArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "대구"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {DaeguArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "광주"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {GwangjuArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "전남"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {JeonnamArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "전북"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {JeonbukArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "제주"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {JejuArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
+            </div>)
+    }
+    else if(props.area_si == "전국"){
+        return (
+            <div className="areaSelect">
+                <ul>
+                {JeonkukArea.map((areagu, index) =>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
             </div>)
     }
     else{
         return (
-            <div>
-                <table>
+            <div className="areaSelect">
+                <ul>
                 {SeoulArea.map((areagu, index) =>
-                    ((index+1) % 6 === 0) ?
-                        <tr><a className="AreaSelect" href="javascript:void(0);"> {areagu}</a></tr>  :
-                    (<td><a className="AreaSelect" href="javascript:void(0);"> {areagu}</a></td>))}
-                </table>
+                    (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu} href="javascript:void(0);"> {areagu}</a></li>   ))
+                }
+                </ul>
             </div>)
     };
 

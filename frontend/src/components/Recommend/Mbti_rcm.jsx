@@ -1,8 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
-import MbtiRecommend from "../HomePage/MbtiRecommend";
 import MbtiArea from "./MbtiArea";
-
+import "./MbtiArea.css";
 
 class Mbtircm extends React.Component{
 
@@ -31,7 +30,6 @@ class Mbtircm extends React.Component{
     }
 
 
-
     render() {
         const MBTIMeta = [
         "INFP","INFJ","INTP","INTJ","ENTER",
@@ -45,7 +43,6 @@ class Mbtircm extends React.Component{
         "충남","충북","부산","울산","경남","경북",
         "대구","광주","전남","전북","제주","전국",
         ];
-
 
 
         return (
@@ -78,10 +75,6 @@ class Mbtircm extends React.Component{
                         <tr colspan={MBTIAREA.length}><MbtiArea area_si={this.state.area_si}/></tr>
 
 
-
-
-
-
                 </div>
                 {/*<input type="button" onClick={onRcm} value="추천받기"/>*/}
 
@@ -89,6 +82,7 @@ class Mbtircm extends React.Component{
                     pathname: "/mbti_result",
                     state: {
                         mbti:this.state.mbti,
+                        area_si:this.state.area_si,
 
                     }
                 }}>
