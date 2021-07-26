@@ -11,6 +11,8 @@ import MbtiRecommend from "./components/HomePage/MbtiRecommend";
 import Main from './components/Main';
 import Mbtircm from "./components/Recommend/Mbti_rcm"; //추가
 import Mbtiresult from "./components/Recommend/Mbti_result"; //추가
+import Personal_rcm from "./components/Recommend/Personal_rcm";
+import Personal_result from "./components/Recommend/Personal_result";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
               <Route exact path="/mypage" component={Main}></Route>
               <Route exact path="/mbti_rcm" component={Mbtircm}></Route>
               <Route exact path="/mbti_result" component={Mbtiresult}></Route>
+              <Route exact path="/personal_rcm" component={Personal_rcm}></Route>
+              <Route exact path="/personal_result" component={Personal_result}></Route>
             </Switch>
           </div>
       </Suspense>
