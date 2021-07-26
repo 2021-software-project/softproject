@@ -10,10 +10,6 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
-<<<<<<< HEAD
         fields = UserChangeForm.Meta.fields
 
-
-=======
         fields = UserChangeForm.Meta.fields
->>>>>>> origin/minji
