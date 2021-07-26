@@ -26,11 +26,6 @@ class Albarating extends Component {
         <form onSubmit={this.formSubmit}>
           <div>
             <h1>아르바이트 평가</h1>
-
-
-
-
-
             <br></br>
           </div>
     <div className="radio">
