@@ -65,6 +65,7 @@ function NavBar() {
                             </Link>
                         </Menu.Item>
                     }
+
                 </Menu>
             </MenuList>
         </div>

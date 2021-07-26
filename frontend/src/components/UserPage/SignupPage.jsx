@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Input } from 'antd';
 import styled from 'styled-components';
@@ -28,6 +28,12 @@ const SignupPage = () => {
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
   const [errors, setErrors] = useState(false)
+  const [chk,setChk] = useState(false)
+
+  useEffect(()=>{
+    console.log(chk)
+  })
+
 
   const onChangeUsername = (e)=>{
     setUsername(e.target.value)
@@ -44,7 +50,12 @@ const SignupPage = () => {
   const onChangePwd2 = (e) => {
     setPassword2(e.target.value)
   }
-
+  const onChecked = (e) =>{
+    if(e.target.checked) {
+      setChk(true)
+      console.log(chk)
+    }
+  }
   const onSubmit = (e) => {
     e.preventDefault()
 
@@ -57,28 +68,20 @@ const SignupPage = () => {
 
     // 유효성 검사
     if (password1 !== password2) {
-      alert('비밀번호와 비밀번호 확인이 일치하지 않습니다')
+      alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
+      return false
+    }
+    // 개인정보수집 check 확인
+    if(!chk){
+      alert('개인정보 수집에 동의는 필수사항입니다.')
       return false
     }
 
     Axios.post('/user/auth/register/', user)
         .then(res => {
-          // if (res.data.key) {
-          //   localStorage.setItem('token', res.data.key)
-          //   let token = localStorage.getItem('token')
-          //   Axios.post('/user/auth/logout/', token)
-          //       .then(res => {
-          //         localStorage.clear()
-          //         // 사용하려면 App.js에서 /로 라우팅해야 한다
-          //         alert('회원가입을 축하합니다! 로그인 화면으로 이동')
-          //         window.location.replace('/login/')
-          //       });
-          // }
           if (res.data.key) {
-            localStorage.clear()
-            localStorage.setItem('token', res.data.key)
-            // 사용하려면 App.js에서 /로 라우팅해야 한다
-            window.location.replace('/')
+            alert("회원가입을 축하드립니다 !")
+            window.location.replace('/login')
           }
             else {
             setUsername('')
@@ -137,6 +140,7 @@ const SignupPage = () => {
             required
           />
           <br/>
+          <input type="checkbox" onClick={onChecked} />개인정보 수집 동의<br/>
           <Input type='submit' size="large" value='가입하기' />
         </form>
       </SignupDiv>
