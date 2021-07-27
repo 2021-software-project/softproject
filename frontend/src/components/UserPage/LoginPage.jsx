@@ -34,13 +34,14 @@ const LoginPage = () => {
 
     const user = {
       email: email,
-      password: password,
+      password: password
     }
     Axios.post('http://127.0.0.1:8000/user/auth/login/', user)
       .then(res => {
         if (res.data.key) {
           localStorage.clear()
-          localStorage.setItem('token', res.data.key)
+          localStorage.setItem('token',res.data.key)
+
           // 사용하려면 App.js에서 /로 라우팅해야 한다
           window.location.replace('/')
         } else {
@@ -48,6 +49,7 @@ const LoginPage = () => {
           setPassword('')
           localStorage.clear()
           setErrors(true)
+          console.log(res)
         }
       })
       .catch(err => {

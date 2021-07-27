@@ -2,9 +2,9 @@ import React, {Suspense} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import './App.css';
-import NavBar from './components/NavBar/NavBar';
-import LoginPage from './components/UserPage/LoginPage';
-import SignupPage from './components/UserPage/SignupPage';
+import NavBar from './components/NavBar/NavBar';	// 추가
+import LoginPage from './components/UserPage/LoginPage';	// 추가
+import SignupPage from './components/UserPage/SignupPage';	// 추가
 import Home from "./components/HomePage/home";
 import InfoSelect from "./components/HomePage/input_mbti";
 import MbtiRecommend from "./components/HomePage/MbtiRecommend";
@@ -40,7 +40,7 @@ function App() {
               <Route exact path="/input_mbti" component={InfoSelect}></Route>	// 추가
               <Route exact path="/mbti" component={MbtiRecommend}></Route>	// 추가
               <Route exact path="/main" component={Main}></Route>	// 추가
-              <Route exact path="/mypage" component={Main}></Route>
+              <Route exact path="/mypage" component={MyPage}></Route>
               <Route exact path="/mbti_rcm" component={Mbtircm}></Route>
               <Route exact path="/mbti_result" component={Mbtiresult}></Route>
               <Route exact path="/personal_rcm" component={Personal_rcm}></Route>

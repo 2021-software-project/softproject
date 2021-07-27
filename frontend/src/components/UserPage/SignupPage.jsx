@@ -77,7 +77,7 @@ const SignupPage = () => {
       return false
     }
 
-    Axios.post('/user/auth/register/', user)
+    Axios.post('/user/auth/signup/', user)
         .then(res => {
           if (res.data.key) {
             alert("회원가입을 축하드립니다 !")
