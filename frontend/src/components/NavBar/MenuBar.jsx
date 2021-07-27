@@ -7,7 +7,7 @@ function MenuBar(){
     const menus = [
         {name : "MBTI별 추천", path:"/Mbti_rcm"},
         {name : "개인별 추천", path:"/Personal_rcm"},
-        {name : "알바후기", path:"/Mbti_rcm"},
+        {name : "알바평가", path:"/Alba_rating"},
     ];
     return(
         <div className="menubar">
