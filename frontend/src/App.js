@@ -9,9 +9,11 @@ import Home from "./components/HomePage/home";
 import InfoSelect from "./components/HomePage/input_mbti";
 import MbtiRecommend from "./components/HomePage/MbtiRecommend";
 import Main from './components/Main';
-import Mypage from "./components/mypage";
-import Mbti_rcm from "./components/Mbti_rcm";
-import Personal_rcm from "./components/Personal_rcm";
+import MyPage from "./components/mypage";
+import Mbtircm from "./components/Recommend/Mbti_rcm";
+import Mbtiresult from "./components/Recommend/Mbti_result";
+
+import Personal_rcm from "./components/Recommend/Personal_rcm";
 
 function App() {
   return (
@@ -26,8 +28,9 @@ function App() {
               <Route exact path="/input_mbti" component={InfoSelect}></Route>	// 추가
               <Route exact path="/mbti" component={MbtiRecommend}></Route>	// 추가
               <Route exact path="/main" component={Main}></Route>	// 추가
-              <Route exact path="/mypage" component={Mypage}></Route>
-              <Route exact path="/Mbti_rcm" component={Mbti_rcm}></Route>
+              <Route exact path="/mypage" component={MyPage}></Route>
+              <Route exact path="/mbti_rcm" component={Mbtircm}></Route>
+              <Route exact path="/mbti_result" component={Mbtiresult}></Route>
               <Route exact path="/Personal_rcm" component={Personal_rcm}></Route>
             </Switch>
           </div>

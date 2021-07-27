@@ -1,17 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
+import MbtiJobs from "./MbtiJobs";
 
-function MbtiRecommend(props){
 
-    return(
-        <div>
-            <h1>mbti based recommand page</h1>
-            <h2>MBTI : {props.mbti}</h2>
-            <Link to="/signup">
-                더 추천받기 !
-            </Link>
-        </div>
-    )
+
+class MbtiRecommend extends React.Component{
+    state = {
+        mymbti : this.props.mbti,
+        jobs :[]
+    }
+    render() {
+        return (
+            <div>
+                <h1>mbti based recommand page</h1>
+                <h2>MBTI : {this.state.mymbti}</h2>
+                <MbtiJobs/>
+                <Link to="/signup">
+                    더 추천받기 !
+                </Link>
+            </div>
+        )
+    }
+
 }
 
 export default MbtiRecommend;

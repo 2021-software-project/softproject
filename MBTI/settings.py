@@ -33,13 +33,11 @@ STATICFILES_DIRS = (#추가해줌
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-4cp^)szc^(^^wcl6(q$4i-0vfoo)^%)uo8qm3l4rrf79h2z6&p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -50,19 +48,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'MBTI',
-    'rest_framework',
-    'corsheaders',
     'webpack_loader',
-    'knox',
+    'corsheaders',
+    # app
+    'MBTI',
     'user',
-
+    # drf
+    'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
+    'rest_framework_jwt',
     'rest_auth.registration',
+    'rest_auth',
+    # rest_auth + allauth
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
+
 ]
 
 AUTH_USER_MODEL = 'user.CustomUser'
@@ -102,18 +104,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'MBTI.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'mbti',
-#         'USER': 'root',
-#         'PASSWORD': '2729', # 비번 지울거
-#         'HOST': 'localhost',
-#         'PORT': '3306'
-#     }
-# }
 DATABASES = db.DATABASES
 SECRET_KEY = db.SECRTET_KEY
 
@@ -163,6 +153,11 @@ AUTHENTICATION_BACKENDS = (
 	"django.contrib.auth.backends.ModelBackend",
 )
 
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'user.serializers.UserSerializer',
+}
+
+#django sites app setting
 SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
@@ -174,7 +169,6 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 ACCOUNT_UNIQUE_EMAIL = True
-
 
 # DRF
 REST_FRAMEWORK = {
@@ -189,23 +183,23 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        # 'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework.authentication.BasicAuthentication',
     ),
 }
 
-## JWT
-# 추가적인 JWT_AUTH 설젇
 JWT_AUTH = {
+    # add
     'JWT_SECRET_KEY': SECRET_KEY,
     'JWT_ALGORITHM': 'HS256', # 암호화 알고리즘
+    'JWT_VERIFY_EXPIRATION' : True, #토큰검증
     'JWT_ALLOW_REFRESH': True, # refresh 사용 여부
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7), # 유효기간 설정
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=28), # JWT 토큰 갱신 유효기간
-}
 
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

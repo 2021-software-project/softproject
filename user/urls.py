@@ -1,9 +1,8 @@
 from django.urls import include, path
-from . import views
+
 
 urlpatterns = [
     path('auth/', include('rest_auth.urls')),
-    path('auth/register/', include('rest_auth.registration.urls')),
-    # path('signup/', views.signup),#추가해줌
-    # path('login/', views.login),#추가해줌
+    path('auth/signup/', include('rest_auth.registration.urls')),
+
 ]

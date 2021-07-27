@@ -3,6 +3,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
+
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -43,7 +44,21 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         help_text = 'EMAIL ID',
     )
     username = models.CharField(
+        verbose_name=_('Username'),
         max_length=30,
+        unique=False,
+    )
+    first_name = models.CharField(
+        verbose_name=_('first name'),
+        default="",
+        max_length=30,
+        unique=False,
+    )
+    last_name = models.CharField(
+        verbose_name=_('last name'),
+        default="",
+        max_length=30,
+        unique=False,
     )
     is_staff = models.BooleanField(
         _('staff status'),
@@ -58,7 +73,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             'Unselect this instead of deleting accounts.'
         ),
     )
-    date_joined = models.DateTimeField(_('date joined'), default = timezone.now())
+    date_joined = models.DateTimeField(_('date joined'), default=timezone.now())
 
     objects = UserManager()
 
@@ -66,6 +81,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     # 일반적으로 사용자의 이름이지만 email 주소 또는 다른 고유 식별자로 지정 가능
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
     # class Meta : Inner class 로 사용하여 상위 클래스에게 meta data를 제공하는 것.
     class Meta:
@@ -81,6 +97,3 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.email
-
-    def get_username(self):
-        return self.username
