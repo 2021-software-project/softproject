@@ -63,6 +63,7 @@ function NavBar() {
                             회원가입
                         </Link>
                     }
+
                 </Menu>
             </NavList>
         </div>
