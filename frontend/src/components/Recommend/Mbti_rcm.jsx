@@ -60,7 +60,7 @@ function Mbtircm(){
             <h1>MBTI로 아르바이트 추천받기</h1>
             <div align="center">   {/*mbti 선택*/}
                 <h3>[MBTI 선택]</h3>
-                <h4>선택한 MBTI : {ch_mbti} </h4>
+                <h4>선택한 MBTI : <span style={{color:"blueviolet"}}>{ch_mbti}</span> </h4>
                 <table>
                     <thead>
                     {MBTIMeta.map(i =>
@@ -74,7 +74,7 @@ function Mbtircm(){
             </div>
 
             <h3>[지역 선택]</h3>
-            <h4>선택한 지역 : {ch_areasi} {ch_areagu} </h4>
+            <h4>선택한 지역 : <span style={{color:"blueviolet"}}>{ch_areasi} {ch_areagu} </span></h4>
             <div className="area" align="center">  {/*지역 선택*/}
                 <table>
                     <tr>
