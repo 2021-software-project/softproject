@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import Axios from "axios";
-import {Link} from "react-router-dom";
 
 function UserName(){
      const [user, setUser] = useState('')

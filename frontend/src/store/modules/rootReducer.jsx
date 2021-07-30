@@ -2,10 +2,11 @@
 //여러개로 나뉘어진 리듀서들을 서브리듀서 라고, 하나로 합쳐진 리듀서를 루트리듀서 라고 부름
 import { combineReducers } from 'redux';
 import area_modules from './area_modules';
-
+import job_modules from './job_modules';
 
 const rootReducer = combineReducers({
   area_modules,
+  job_modules,
   // 다른 리듀서를 만들게되면 여기에 넣어줌..
 })
 export default rootReducer

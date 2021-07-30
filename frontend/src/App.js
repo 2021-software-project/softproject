@@ -1,5 +1,6 @@
 import React, {Suspense} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import PrivateRoute from "./components/PrivateRoute";
 
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
@@ -22,8 +23,10 @@ import MyInfo from './components/MyPage/MyInfo_edit';
 import PasswordUpdate from './components/MyPage/PasswordUpdate';
 import Rating from './components/MyPage/Rating_list';
 import Albarating from './components/UserPage/Alba_rating';
+import Albaratingresult from './components/UserPage/Alba_rating_result';
 
-function App() {
+
+function App(props) {
   return (
     <Router>
       <Suspense fallback={(<div>...</div>)}>
@@ -35,17 +38,19 @@ function App() {
               <Route exact path="/" component={Home}></Route>	// 추가
               <Route exact path="/input_mbti" component={InfoSelect}></Route>	// 추가
               <Route exact path="/mbti" component={MbtiRecommend}></Route>	// 추가
-              <Route exact path="/main" component={Main}></Route>	// 추가
-              <Route exact path="/mypage" component={MyPage}></Route>
-              <Route exact path="/mbti_rcm" component={Mbtircm}></Route>
-              <Route exact path="/mbti_result" component={Mbtiresult}></Route>
-              <Route exact path="/personal_rcm" component={Personal_rcm}></Route>
-              <Route exact path="/personal_result" component={Personal_result}></Route>
-              <Route exact path="/GoodBad_list" component={GoodBad}></Route>
-              <Route exact path="/MyInfo_edit" component={MyInfo}></Route>
-              <Route exact path="/UserName" component={UserName}></Route>
-              <Route exact path="/PasswordUpdate" component={PasswordUpdate}></Route>
-              <Route exact path="/Alba_rating" component={Albarating}></Route>
+              <PrivateRoute exact path="/main" component={Main}></PrivateRoute>	// 추가
+              <PrivateRoute exact path="/mypage" component={MyPage}></PrivateRoute>
+              <PrivateRoute exact path="/mbti_rcm" component={Mbtircm}></PrivateRoute>
+              <PrivateRoute exact path="/mbti_result" component={Mbtiresult}></PrivateRoute>
+              <PrivateRoute exact path="/personal_rcm" component={Personal_rcm}></PrivateRoute>
+              <PrivateRoute exact path="/personal_result" component={Personal_result}></PrivateRoute>
+              <PrivateRoute exact path="/GoodBad_list" component={GoodBad}></PrivateRoute>
+              <PrivateRoute exact path="/MyInfo_edit" component={MyInfo}></PrivateRoute>
+              <PrivateRoute exact path="/UserName" component={UserName}></PrivateRoute>
+              <PrivateRoute exact path="/PasswordUpdate" component={PasswordUpdate}></PrivateRoute>
+              <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
+              <PrivateRoute exact path="/Alba_rating_result" component={Albaratingresult}></PrivateRoute>
+
 
 
             </Switch>

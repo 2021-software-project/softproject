@@ -40,7 +40,10 @@ function Personal_rcm(){
                     <tr colSpan={AREA.length}><MbtiArea area_si={ch_areasi}/></tr>
 
             </div>
-            <Link to={{pathname: "/personal_result"}}>
+            <Link to={{pathname: "/personal_result",
+                state:{
+                check:"1",}
+            }}>
                     <button> 추천받기</button>
             </Link>
     </div>
