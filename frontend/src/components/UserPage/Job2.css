@@ -6,10 +6,10 @@
 
 }
 
-ul{
+.jobSelect ul{
     list-style: none;
 }
-li{
+.jobSelect li{
     float: left;
     margin-left: 10px;
     margin-right: 10px;

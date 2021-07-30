@@ -5,10 +5,10 @@
 
 }
 
-ul{
+.areaSelect ul{
     list-style: none;
 }
-li{
+.areaSelect li{
     float: left;
     margin-left: 10px;
     margin-bottom: 5px;
