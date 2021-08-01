@@ -23,12 +23,12 @@ from MBTI import view
 
 router = routers.DefaultRouter()
 
-
 urlpatterns = [
     url(r'^$',TemplateView.as_view(template_name='index.html'),name='index'),
     # path('api/', include(router.urls)),
     path('user/', include('user.urls')),
     path('admin/', admin.site.urls),
+
     # path('login/', view.login),
     # path('join/', view.join),
     # path('join_success/',view.join_success),

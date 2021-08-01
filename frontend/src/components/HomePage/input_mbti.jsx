@@ -14,7 +14,14 @@ function InfoSelect() {
 
     const [mbti,setMbti] = useState('');
 
-    const {one,two,tree,four} = input;
+    const {one,two,three,four} = input;
+
+    useEffect(()=>{
+        setMbti(
+            one+two+three+four
+        )
+        setRcm(false)
+    },[one,two,three,four])
 
     const onMbtiChange=(e)=>{
         const {value, name} = e.target;
@@ -25,25 +32,13 @@ function InfoSelect() {
 
     }
 
-    const [rcm,setRcm] = useState('');
+    const [rcm,setRcm] = useState(false);
 
     const onRcm=()=>{
         setRcm(
             true
         )
-        console.log(rcm);
-
-        setMbti(
-            one+two+tree+four
-        );
     }
-
-    //componentDidMount
-    useEffect(() => {
-        setRcm(false)
-        console.log(rcm)
-    },[])
-
 
     return(
         <div>
@@ -52,7 +47,7 @@ function InfoSelect() {
                 <span>I</span>
             <input type="radio" className="mbtiSelect" name="two" onChange={onMbtiChange} value="N"/>
                 <span>N</span>
-            <input type="radio" className="mbtiSelect" name="tree" onChange={onMbtiChange} value="F"/>
+            <input type="radio" className="mbtiSelect" name="three" onChange={onMbtiChange} value="F"/>
                 <span>F</span>
             <input type="radio" className="mbtiSelect" name="four" onChange={onMbtiChange} value="J"/>
                 <span>J</span><br/>
@@ -61,7 +56,7 @@ function InfoSelect() {
                 <span>E</span>
             <input type="radio" className="mbtiSelect" name="two" onChange={onMbtiChange} value="S"/>
                 <span>S</span>
-            <input type="radio" className="mbtiSelect" name="tree" onChange={onMbtiChange} value="T"/>
+            <input type="radio" className="mbtiSelect" name="three" onChange={onMbtiChange} value="T"/>
                 <span>T</span>
             <input type="radio" className="mbtiSelect" name="four" onChange={onMbtiChange} value="P"/>
                 <span>P</span><br/>

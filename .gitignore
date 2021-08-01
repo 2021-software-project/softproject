@@ -1,2 +1,8 @@
 .idea
+.idea/misc.xml
+.idea/mysite.iml
 db.py
+node_modules
+/MBTI/Lib/site-packages/
+/MBTI/Lib/
+/MBTI/migrations/

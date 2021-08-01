@@ -30,9 +30,10 @@ const SignupPage = () => {
   const [errors, setErrors] = useState(false)
   const [chk,setChk] = useState(false)
 
+  // 지우기
   useEffect(()=>{
     console.log(chk)
-  })
+  },[])
 
 
   const onChangeUsername = (e)=>{
@@ -65,12 +66,8 @@ const SignupPage = () => {
       password1: password1,
       password2: password2
     }
+    console.log(user);
 
-    // 유효성 검사
-    if (password1 !== password2) {
-      alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
-      return false
-    }
     // 개인정보수집 check 확인
     if(!chk){
       alert('개인정보 수집에 동의는 필수사항입니다.')
@@ -83,7 +80,7 @@ const SignupPage = () => {
             alert("회원가입을 축하드립니다 !")
             window.location.replace('/login')
           }
-            else {
+          else {
             setUsername('')
             setEmail('')
             setPassword1('')
@@ -94,8 +91,19 @@ const SignupPage = () => {
         })
         .catch(err => {
           console.clear()
-          console.log(err)
-          alert('아이디 혹은 비밀번호가 일치하지 않습니다')
+          if(err.response.data.email){
+            alert("이미 사용중인 email 입니다.")
+            document.getElementById("email").focus()
+          }
+          else if(err.response.data.username) {
+            alert("이미 사용중인 닉네임 입니다")
+            document.getElementById("username").focus()
+          }
+          else if(err.response.data.non_field_errors){
+            alert("비밀번호가 일치하지 않습니다.")
+            setPassword2('')
+            document.getElementById("password2").focus()
+          }
         })
   }
   return(
@@ -104,10 +112,10 @@ const SignupPage = () => {
         <br/>
         {errors === true && <h2>Cannot signup with provided credentials</h2>}
         <form onSubmit={onSubmit}>
-          <label htmlFor='username'>이름</label>
+          <label htmlFor='username'>닉네임</label>
           <Input
             type='username'
-            value={username}
+            value={username} id="username"
             onChange={onChangeUsername}
             required
           />
@@ -115,7 +123,7 @@ const SignupPage = () => {
           <label htmlFor='email'>이메일 주소</label>
           <Input
             type='email'
-            value={email}
+            value={email} id='email'
             onChange={onChangeEmail}
             required
           />
@@ -123,7 +131,7 @@ const SignupPage = () => {
           <label htmlFor='password1'>비밀번호(소문자, 숫자, 특수문자 포함 8~16자):</label>
           <Input
             type='password'
-            value={password1}
+            value={password1} id='password1'
             onChange={onChangePwd1}
             minLength='8'
             pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&^])[a-z\d$@$!%*#?&^]{8,16}$'
@@ -133,7 +141,7 @@ const SignupPage = () => {
           <label htmlFor='password1'>비밀번호 확인(소문자, 숫자, 특수문자 포함 8~16자):</label>
           <Input
             type='password'
-            value={password2}
+            value={password2} id='password2'
             onChange={onChangePwd2}
             minLength='8'
             pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&^])[a-z\d$@$!%*#?&^]{8,16}$'
