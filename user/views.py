@@ -7,6 +7,7 @@ from rest_framework import status
 from django.shortcuts import render, HttpResponse
 from rest_framework import generics
 from rest_framework import mixins
+from rest_framework.authentication import TokenAuthentication
 # from MBTI.modules.db.models import User
 
 # Create your views here.
@@ -18,12 +19,19 @@ class UserRatingVIEW(generics.GenericAPIView, mixins.ListModelMixin,
                   mixins.CreateModelMixin):
     queryset = UserRating.objects.all()
     serializer_class = UserRatingSerializer
+   # authentication_classes = (TokenAuthentication,)
 
     def get(self, request):  #내가 가지고 있는 article들을 보여줌
         return self.list(request)
 
     def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
-        return self.create(request)
+        #data = JSONParser().parse(request)
+        serializer = UserRatingSerializer(data=request.data)  # JSON -> Serialize
+        if serializer.is_valid():  # 타당성 검토 후 저장
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+        #return self.create(request)
 
 
 
