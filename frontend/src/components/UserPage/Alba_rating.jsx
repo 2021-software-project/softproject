@@ -27,7 +27,7 @@ function Alba_rating(){
     ];
 
     const SCORE = [
-        "0점", "1점", "2점" ,"3점", "4점" ,"5점",
+        0,1,2,3,4,5,
     ]
 
     return (
@@ -56,7 +56,7 @@ function Alba_rating(){
                     <thead>
                     {SCORE.map(i =>
                         (<td><input type="radio" className="scoreSelect" name={"score_"} value={i}
-                                onChange={()=>onChangeScore(i)}/> {i}</td>))
+                                onChange={()=>onChangeScore(i)}/> {i}점</td>))
                     }
                     </thead>
                 </table>

@@ -174,8 +174,8 @@ ACCOUNT_UNIQUE_EMAIL = True
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated', # 인증된 사용자만 접근 가능
-        'rest_framework.permissions.IsAdminUser', # 관리자만 접근 가능
-        'rest_framework.permissions.AllowAny', # 누구나 접근 가능
+        #'rest_framework.permissions.IsAdminUser', # 관리자만 접근 가능
+        #'rest_framework.permissions.AllowAny', # 누구나 접근 가능
     ),
     'DEFAULT_RENDERER_CLASSES': (
         # 자동으로 json으로 바꿔줌
@@ -208,6 +208,10 @@ CORS_ORIGIN_WHITELIST = [  # 추가
     'http://localhost:8000',
     'http://localhost:3000',
     'http://localhost:8080',
+    'http://127.0.0.1:8000',
 ]
+#
+# CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = True

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function Rating(){
 
-    const [email, setEmail] = useState('')
+    const [useremail, setEmail] = useState('')
     useEffect(() => {
         let token = localStorage.getItem('token')
 
@@ -18,19 +18,35 @@ function Rating(){
                     res.data.email
                 )
                 console.log(res.data)
-                console.log("email : " + email)
+                console.log("email : " + useremail)
             });
         }
     }, [])
 
+
+
+    let token = localStorage.getItem('token')
+    let ratinglist
     //userRating 데이터베이스에 접근
-    axios.get('http://localhost:8000/user/userrating/',
-        {params : {email : email}})
-      .then((Response)=>{console.log(Response.data)})
+    axios.get('/user/userrating/',
+        {params : {email : useremail}},
+        {
+            headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    'Authorization': 'token ' + token,
+                }
+        })
+      .then((Response)=>{
+          ratinglist = Response.data
+          console.log(Response.data)})
       .catch((Error)=>{console.log(Error)})
 
     return(
-       <h2>Rating List</h2>
+        <div>
+            <h2>Rating List</h2>
+            {ratinglist}
+        </div>
     )
 }
 
