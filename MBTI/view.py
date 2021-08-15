@@ -9,9 +9,6 @@ from django.contrib import messages
 from rest_framework import viewsets
 
 
-
-#
-#
 # @csrf_exempt
 # def login(request):
 #     if request.method == "GET":

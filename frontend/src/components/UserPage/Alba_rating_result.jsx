@@ -52,13 +52,14 @@ function Albaratingresult(){
         }
         console.log(rating1);
 
+        token = localStorage.getItem('token')
 
-        Axios.post("http://localhost:8000/user/userrating/", {rating1},
+        Axios.post("/user/userrating/", rating1,
             {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json;charset=UTF-8',
-                    'Authorization': 'token ' + {token},
+                    'Authorization': 'token ' + token,
                 }
             })
             .then(response=>{
@@ -68,6 +69,8 @@ function Albaratingresult(){
 
             })
             .catch(function (err){
+
+                console.log("token : ",token)
               //console.clear()
               console.log(err)
         })

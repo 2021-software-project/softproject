@@ -4,3 +4,4 @@ node_modules
 /MBTI/Lib/site-packages/
 /MBTI/Lib/
 /MBTI/migrations/
+__pycache__/
