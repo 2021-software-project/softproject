@@ -104,4 +104,4 @@ class UserRating(models.Model):
     jobfamily = models.CharField(max_length=400)
     job = models.CharField(max_length=400)
     score = models.IntegerField()
-####
+

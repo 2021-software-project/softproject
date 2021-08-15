@@ -2,9 +2,21 @@ import React, {useEffect, useState} from 'react';
 import Mypage from "../mypage";
 import axios from 'axios';
 
+function RatingOne({id, jobfamily, job, score}){
+  return(
+      <tr>
+            <td>{jobfamily}</td>
+            <td>{job}</td>
+            <td>{score}점</td>
+      </tr>
+  )
+}
+
+
 function Rating(){
 
-    const [useremail, setEmail] = useState('')
+    const [email, setEmail] = useState('')
+    const [ratinglist, setRatinglist] = useState('')
     useEffect(() => {
         let token = localStorage.getItem('token')
 
@@ -18,36 +30,49 @@ function Rating(){
                     res.data.email
                 )
                 console.log(res.data)
-                console.log("email : " + useremail)
             });
         }
     }, [])
 
-
-
-    let token = localStorage.getItem('token')
-    let ratinglist
     //userRating 데이터베이스에 접근
-    axios.get('/user/userrating/',
-        {params : {email : useremail}},
-        {
-            headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json;charset=UTF-8',
-                    'Authorization': 'token ' + token,
-                }
+    if (email != '' && ratinglist == '') {
+        axios.get('/user/userrating/', {
+            params: {search: email},
+            //headers: {'Autorization': 'token' + token}
         })
-      .then((Response)=>{
-          ratinglist = Response.data
-          console.log(Response.data)})
-      .catch((Error)=>{console.log(Error)})
+            .then((Response) => {
+                setRatinglist(
+                    Response.data
+                )
+                console.log(Response.data)
+            })
+            .catch((Error) => {
+                console.log(Error)
+            })
+    }
+
+
 
     return(
         <div>
             <h2>Rating List</h2>
-            {ratinglist}
+            {email}<p/>
+
+            <div>
+                <table align="center" border="1">
+                    <thead>
+                         <th>직종</th> <th>업종</th> <th>점수</th>
+                    </thead>
+                    <tbody>
+                        {ratinglist && ratinglist.map(ratingone => (
+                            <RatingOne id={ratingone.id} jobfamily={ratingone.jobfamily} job={ratingone.job} score={ratingone.score}/>
+                        )) }
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
+
 }
 
 export default Rating
