@@ -50,6 +50,7 @@ function App(props) {
               <PrivateRoute exact path="/PasswordUpdate" component={PasswordUpdate}></PrivateRoute>
               <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
               <PrivateRoute exact path="/Alba_rating_result" component={Albaratingresult}></PrivateRoute>
+              <PrivateRoute exact path="/Rating_list" component={Rating}></PrivateRoute>
 
 
 
