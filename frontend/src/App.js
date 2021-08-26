@@ -4,6 +4,7 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
+import Footer from './components/NavBar/Footer';
 import LoginPage from './components/UserPage/LoginPage';
 import SignupPage from './components/UserPage/SignupPage';
 import LoginSignupform from './components/UserPage/Login_Signup_form'
@@ -55,6 +56,7 @@ function App(props) {
 
             </Switch>
           </div>
+        <Footer/>
       </Suspense>
     </Router>
     );
