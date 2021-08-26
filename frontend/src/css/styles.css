@@ -3325,6 +3325,7 @@ textarea.form-control-lg {
 .btn-check:focus + .btn-outline-success, .btn-outline-success:focus {
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
 }
+<<<<<<< HEAD
 .btn-check:checked + .btn-outline-success, .btn-check:active + .btn-outline-success, .btn-outline-success:active, .btn-outline-success.active, .btn-outline-success.dropdown-toggle.show {
   color: #fff;
   background-color: #198754;
@@ -11496,3 +11497,6 @@ html {
 .copyright {
   background-color: #1a252f;
 }
+
+.btn-check:checked + .btn-outlin
+

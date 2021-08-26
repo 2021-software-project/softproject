@@ -6,7 +6,9 @@
 //
 // Scripts
 //
+
 //import bootstrap from 'bootstrap';
+
 import * as bootstrap from 'bootstrap'
 
 
@@ -56,3 +58,4 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+

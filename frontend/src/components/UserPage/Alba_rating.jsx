@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import Job2 from "./Job2";
-import "./Job2.css";
+import "../../css/Job2.css";
 
 
 import {useDispatch, useSelector} from "react-redux";

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import MenuBarItem from "./MenuBarItem";
-import "./Bar.css"
+import "../../css/Bar.css"
 import "../../css/style2.css";
 
 

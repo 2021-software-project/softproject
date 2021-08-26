@@ -1,6 +1,6 @@
 import React from 'react'
 import MbtiArea from "./MbtiArea";
-import "./MbtiArea.css";
+import "../../css/MbtiArea.css";
 import {useDispatch, useSelector} from "react-redux";
 import {changeArea} from "../../store/modules/area_modules";
 import {Link} from "react-router-dom";

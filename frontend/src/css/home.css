@@ -1,0 +1,68 @@
+/*
+!important - 상위 모든 속성을 무시하고 현재 속성 강제 적용
+스타일 적용 우선 순위
+인라인스타링 -> 내부 스타일->외부스타일->브라우저 기본값
+두가지가 똑같은 등급일 때, 가장 마지막으로 적용한 것을 가장 우선으로 적용
+=>스타일 우선순위 이해하고 !important는 이용 자제
+
+inherit - color가 상속으로 처리됨
+
+*/
+
+.btn-hd{
+    color: #fff;
+    background-color: #ffcf00!important;
+    border-color: #fff0!important;
+    margin-top: 178px;
+    padding: 7px 37px;
+    border-radius: 0rem;
+    position: relative;
+}
+
+
+header.bg-primary.text-white.text-center.home{
+    padding: 300px 0 80px;
+    margin: 0 0 12px;
+    background-color : khaki!important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #ffcf00!important;
+    border-color: #ffffff!important;
+    margin: 0px 6px;
+    padding: 7px 27px;
+    border-radius: 0rem;
+}
+/* 모바일에 적용될 스타일을 먼저 작성. */
+@media screen and (min-width: 769px) {
+   /* 데스크탑에서 사용될 스타일을 여기에 작성. */
+}
+
+.btn-primary:hover {
+  color: #ffcf00;
+  background-color: #ffffff!important;
+  border-color: #ffcf00!important;
+}
+
+a.link {
+    color: inherit;
+}
+
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x) * -.5);
+  margin-left: calc(var(--bs-gutter-x) * -.5);
+}
+.row > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+  margin-top: var(--bs-gutter-y);
+}
