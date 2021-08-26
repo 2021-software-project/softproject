@@ -1,5 +1,5 @@
 import React from 'react';
-import Mypage from "../mypage";
+import Mypage from "./MyPage";
 
 function GoodBad(){
     return(

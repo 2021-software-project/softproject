@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Mypage from "../mypage";
+import Mypage from "./MyPage";
 import axios from 'axios';
 
 function RatingOne({id, jobfamily, job, score}){

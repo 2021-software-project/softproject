@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import db
+
 import os
 import datetime
 # os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'MBTI.settings')
@@ -187,7 +188,7 @@ REST_FRAMEWORK = {
         # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.BasicAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
@@ -213,7 +214,6 @@ CORS_ORIGIN_WHITELIST = [  # 추가
     'http://127.0.0.1:8000',
 ]
 #
-# CORS_ALLOW_CREDENTIALS = True
+#CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ALLOW_CREDENTIALS = True

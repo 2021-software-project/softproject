@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Axios from "axios";
-import GoodBad from './MyPage/GoodBad_list';
+import GoodBad from './GoodBad_list';
 import {Link} from "react-router-dom";
-import UserName from "./MyPage/UserName";
+import UserName from "./UserName";
 
 function MyPage() {
 

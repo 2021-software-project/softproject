@@ -6,6 +6,7 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import LoginPage from './components/UserPage/LoginPage';
 import SignupPage from './components/UserPage/SignupPage';
+import LoginSignupform from './components/UserPage/Login_Signup_form'
 import Home from "./components/HomePage/home";
 import InfoSelect from "./components/HomePage/input_mbti";
 import MbtiRecommend from "./components/HomePage/MbtiRecommend";
@@ -16,7 +17,7 @@ import Personal_rcm from "./components/Recommend/Personal_rcm";
 import Personal_result from "./components/Recommend/Personal_result";
 
 import home from './components/HomePage/home';
-import MyPage from './components/mypage';
+import MyPage from './components/MyPage/MyPage';
 import GoodBad from './components/MyPage/GoodBad_list';
 import UserName from './components/MyPage/UserName';
 import MyInfo from './components/MyPage/MyInfo_edit';
@@ -33,7 +34,7 @@ function App(props) {
         <NavBar />
           <div className="App">
             <Switch>
-              <Route exact path="/login" component={LoginPage}></Route>	// 추가
+              <Route exact path="/login" component={LoginSignupform}></Route>	// 추가
               <Route exact path="/signup" component={SignupPage}></Route>	// 추가
               <Route exact path="/" component={Home}></Route>	// 추가
               <Route exact path="/input_mbti" component={InfoSelect}></Route>	// 추가
@@ -51,8 +52,6 @@ function App(props) {
               <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
               <PrivateRoute exact path="/Alba_rating_result" component={Albaratingresult}></PrivateRoute>
               <PrivateRoute exact path="/Rating_list" component={Rating}></PrivateRoute>
-
-
 
             </Switch>
           </div>

@@ -3,25 +3,7 @@ import {Link} from 'react-router-dom'
 import Axios from 'axios';
 import { Input } from 'antd';
 import styled from 'styled-components';
-
-const LoginDiv = styled.div`
-  padding: 3rem;
-    form {
-    width: 320px;
-    display: inline-block;
-    label {
-      margin-bottom: 1rem;
-    }
-    input {
-      margin-bottom: 1.5rem;
-      &[type=submit] {
-        background: black;
-        color: white;
-        margin-top: 1rem;
-      }
-    }
-  }
-`;
+import "../../css/login_signup.css"
 
 const LoginPage = () => {
 
@@ -61,34 +43,59 @@ const LoginPage = () => {
       })
   }
 
-  return (
-    <LoginDiv>
-      <h1>로그인</h1>
-      <br />
-      {errors === true && <h2>Cannot log in with provided credentials</h2>}
-        <form onSubmit={onSubmit}>
-          <label>이메일 주소:</label>
-          <Input
-            type='email'
-            value={email}
-            required
-            onChange={e => setEmail(e.target.value)}
-          />
-          <br/>
-          <label>비밀번호:</label>
-          <Input
-            type='password'
-            value={password}
-            required
-            onChange={e => setPassword(e.target.value)}
-          />
-          <br/>
-          <Input type='submit' size="large" value='로그인' />
-        </form>
-      <br/>
-      <Link to='/signup/'>회원가입</Link>
-    </LoginDiv>
+
+  return(
+      <div className="section text-center">
+        <h4 className="mb-4 pb-3">Log In</h4>
+        {errors === true && <h2>Cannot log in with provided credentials</h2>}
+          <form onSubmit={onSubmit}>
+              <div className="form-group">
+                <input type="email" name="logemail" value={email} onChange={e => setEmail(e.target.value)} required
+                 className="form-style" placeholder="Your Email" id="logemail" autoComplete="off"/>
+
+                  <i className="input-icon uil uil-at"></i>
+              </div>
+              <div className="form-group mt-2">
+                <input type="password" name="logpass" value={password} onChange={e => setPassword(e.target.value)} required
+                 className="form-style" placeholder="Your Password" id="logpass" autoComplete="off"/>
+                  <i className="input-icon uil uil-lock-alt"></i>
+              </div>
+              <Input type='submit' className="btn mt-4" value='login' />
+              {/*<a href="#" className="btn mt-4">submit</a>*/}
+          </form>
+        <p className="mb-0 mt-4 text-center"><a href="#0" className="link">Forgot your password?</a></p>
+      </div>
+
   )
+
+  // return (
+  //   <LoginDiv>
+  //     <h1>로그인</h1>
+  //     <br />
+  //     {errors === true && <h2>Cannot log in with provided credentials</h2>}
+  //       <form onSubmit={onSubmit}>
+  //         <label>이메일 주소:</label>
+  //         <Input
+  //           type='email'
+  //           value={email}
+  //           required
+  //           onChange={e => setEmail(e.target.value)}
+  //         />
+  //         <br/>
+  //         <label>비밀번호:</label>
+  //         <Input
+  //           type='password'
+  //           value={password}
+  //           required
+  //           onChange={e => setPassword(e.target.value)}
+  //         />
+  //         <br/>
+  //         <Input type='submit' size="large" value='로그인' />
+  //       </form>
+  //     <br/>
+  //     <Link to='/signup/'>회원가입</Link>
+  //   </LoginDiv>
+  // )
 }
 
 export default LoginPage;

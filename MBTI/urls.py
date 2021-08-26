@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from rest_framework import routers
-from MBTI import view
+#from MBTI import view
 
 router = routers.DefaultRouter()
 

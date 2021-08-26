@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//import Routes from './Routes';
 import { createStore } from 'redux';  //리덕스를 위해 추가함
 import { Provider } from 'react-redux';
 import rootReducer from './store/modules/rootReducer';
+//import 'bootstrap/dist/css/bootstrap.css' //부트스트랩 적용
 
 const store = createStore(rootReducer);
 console.log(store.getState());
