@@ -1,0 +1,42 @@
+.tb-mbti {
+    text-align: center;
+    margin: 40px auto 34px auto;
+}
+/* 수정 중 - mbti 라디오 버튼 */
+.mbtiSelect{
+    opacity: 0;
+}
+label{
+    font-size: 2rem;
+    padding: 5px 10px 5px 0px;
+    border: 1px solid #ccc;
+    width: 65px;
+    height: 65px;
+}
+.sc-mbti{
+    padding:10px
+}
+input[type=radio]:checked + span{
+    color:#0d6efd;
+}
+/**/
+
+
+header.bg-primary.text-white.text-center{
+    padding: 150px 0 150px;
+    margin: 0 0 12px;
+    background-color : khaki!important;
+}
+.btn-rcm{
+    color: #fff;
+    background-color: #ffcf00!important;
+    border-color: #ffffff!important;
+    margin: 0px 6px;
+    padding: 7px 27px;
+    border-radius: 0rem;
+}
+.btn-rcm:hover{
+    color: #ffcf00;
+    background-color: #fff!important;
+    border-color: #ffcf00!important;
+}

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from'react-router-dom';
-
+import "./home.css"
+import pic1 from "../../img/pic01.jpg";
+import pic2 from "../../img/pic02.jpg";
+import picYellow from"../../img/pic_yellow.jpg"
 
 class Home extends Component {
 
@@ -8,21 +11,40 @@ class Home extends Component {
         user : localStorage.getItem('user')
     }
 
-
-
     render(){
         return(
             <div>
-                <span>{this.state.user}</span>
-                <h1>This is Home Component</h1>
+                <header className="bg-primary text-white text-center home">
+                    <div className="container d-flex align-items-center flex-column">
+                        <h1 className="masthead-heading text-uppercase mb-0">HOME PAGE</h1>
+                        <Link className="link" to="/input_mbti">
+                            <button className="btn btn-hd btn-xl" id="submitButton" type="submit">체험하기</button>
+                        </Link>
+                    </div>
+                </header>
+                <section>
+                    <Link className="link" to="/input_mbti">
+                        <button className="btn btn-primary btn-xl" id="submitButton" type="submit">체험하기</button>
+                    </Link>
+                    <Link className="link" to="/main">
+                        <button className="btn btn-primary btn-xl" id="submitButton" type="submit">입장하기</button>
+                    </Link>
+                </section>
 
-                <Link to="/input_mbti">
-                    체험하기 >>
-                </Link>
 
-                <Link to="/login">
-                    입장하기  >>
-                </Link>
+
+
+                {/*<div className="row justify-content-center">*/}
+                {/*    /!*Portfolio Item 1*!/*/}
+                {/*    <div className="col-md-6 col-lg-4 mb-5">*/}
+                {/*            <img className="img-fluid" src={picYellow} alt="..."/>*/}
+                {/*    </div>*/}
+                {/*    /!*Portfolio Item 2*!/*/}
+                {/*    <div className="col-md-6 col-lg-4 mb-5">*/}
+                {/*            <img className="img-fluid" src={picYellow} alt="..."/>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+
             </div>
         )
     }
