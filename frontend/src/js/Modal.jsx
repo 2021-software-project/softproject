@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ModalDiv = styled.div`
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+KR&family=Poppins:400,500,600,700,800,900&display=swap');
     .modal {
+   
     display: none;
     position: fixed;
     top: 0;
@@ -13,6 +15,11 @@ const ModalDiv = styled.div`
     //height:100%;
     //background-color: rgba(0, 0, 0, 0.6);
     }
+    
+   .modal h5{
+        font-family: 'Poppins', 'IBM Plex Sans KR', serif;
+        font-size:17px;
+   }
    
     .modal button {
         outline: none;
@@ -68,6 +75,7 @@ const ModalDiv = styled.div`
         background-color: #6c757d;
         border-radius: 5px;
         font-size: 13px;
+        font-family: 'Poppins', 'IBM Plex Sans KR', serif;
     }
     .modal.openModal {
         display: flex;
@@ -103,6 +111,7 @@ const Modal = ( props ) => {
     return (
         // 모달이 열릴때 openModal 클래스가 생성된다.
         <ModalDiv>
+
         <div className={ open ? 'openModal modal' : 'modal' }>
             { open ? (
                 <section>

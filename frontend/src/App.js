@@ -25,7 +25,6 @@ import MyInfo from './components/MyPage/MyInfo_edit';
 import PasswordUpdate from './components/MyPage/PasswordUpdate';
 import Rating from './components/MyPage/Rating_list';
 import Albarating from './components/UserPage/Alba_rating';
-import Albaratingresult from './components/UserPage/Alba_rating_result';
 
 
 function App(props) {
@@ -51,7 +50,6 @@ function App(props) {
               <PrivateRoute exact path="/UserName" component={UserName}></PrivateRoute>
               <PrivateRoute exact path="/PasswordUpdate" component={PasswordUpdate}></PrivateRoute>
               <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
-              <PrivateRoute exact path="/Alba_rating_result" component={Albaratingresult}></PrivateRoute>
               <PrivateRoute exact path="/Rating_list" component={Rating}></PrivateRoute>
 
             </Switch>
