@@ -5,6 +5,7 @@ import { Menu } from 'antd';
 import styled from 'styled-components';
 import "../../css/styles.css";
 import "../../js/scripts";
+import MenuBar from "./MenuBar";
 
 const NavList = styled.div`
   display: flex;
@@ -43,12 +44,12 @@ function NavBar() {
 
     }
     return(
+        <div>
         <div id="page-top">
-
             <nav className="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
                 <div className="container">
                     <a className="navbar-brand" href="/">Start Bootstrap</a>
-                    <button className="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+                    <button className="navbar-toggler text-uppercase font-weight-bold bg-primary text-black-50"
                             type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
@@ -63,23 +64,22 @@ function NavBar() {
                                                                      onClick={handleLogout} href="#logout">로그아웃</a></li>
                                 :
                                 <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                                                                     href="/login">로그인</a></li>
+                                                                     href="/login">로그인 / 회원가입</a></li>
                             }
 
                             { auth ?
                                 <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
                                                                      href="/mypage">마이페이지</a></li>
-                                :
-                                <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                                                                     href="/signup">회원가입</a></li>
+                                : " "
                             }
                         </ul>
                     </div>
                 </div>
             </nav>
-
         </div>
 
+            { auth ? <MenuBar /> : "" }
+</div>
     )
 
 }
