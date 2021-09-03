@@ -5,7 +5,7 @@ import React from "react";
 function Footer(){
 
     return(
-        <footer className="footer text-center">
+        <div className="text-center" id="footer">
                 <div className="container">
                     <div className="row">
 
@@ -32,7 +32,7 @@ function Footer(){
                         </div>
                     </div>
                 </div>
-            </footer>
+        </div>
     )
 }
 
