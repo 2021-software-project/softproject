@@ -4,6 +4,7 @@ import Axios from 'axios';
 import { Input } from 'antd';
 import styled from 'styled-components';
 import "../../css/login_signup.css"
+import LoginSignupform from "./Login_Signup_form";
 
 const LoginPage = () => {
 
@@ -45,25 +46,27 @@ const LoginPage = () => {
 
 
   return(
-      <div className="section text-center">
-        <h4 className="mb-4 pb-3">Log In</h4>
-        {errors === true && <h2>Cannot log in with provided credentials</h2>}
-          <form onSubmit={onSubmit}>
-              <div className="form-group">
-                <input type="email" name="logemail" value={email} onChange={e => setEmail(e.target.value)} required
-                 className="form-style" placeholder="Your Email" id="logemail" autoComplete="off"/>
+      <div className="LoginSignupform">
+          <div className="section text-center">
+            <h4 className="mb-4 pb-3">Log In</h4>
+            {errors === true && <h2>Cannot log in with provided credentials</h2>}
+              <form onSubmit={onSubmit}>
+                  <div className="form-group">
+                    <input type="email" name="logemail" value={email} onChange={e => setEmail(e.target.value)} required
+                     className="form-style" placeholder="Your Email" id="logemail" autoComplete="off"/>
 
-                  <i className="input-icon uil uil-at"></i>
-              </div>
-              <div className="form-group mt-2">
-                <input type="password" name="logpass" value={password} onChange={e => setPassword(e.target.value)} required
-                 className="form-style" placeholder="Your Password" id="logpass" autoComplete="off"/>
-                  <i className="input-icon uil uil-lock-alt"></i>
-              </div>
-              <Input type='submit' className="btn mt-4" value='login' />
-              {/*<a href="#" className="btn mt-4">submit</a>*/}
-          </form>
-        <p className="mb-0 mt-4 text-center"><a href="#0" className="link">Forgot your password?</a></p>
+                      <i className="input-icon uil uil-at"></i>
+                  </div>
+                  <div className="form-group mt-2">
+                    <input type="password" name="logpass" value={password} onChange={e => setPassword(e.target.value)} required
+                     className="form-style" placeholder="Your Password" id="logpass" autoComplete="off"/>
+                      <i className="input-icon uil uil-lock-alt"></i>
+                  </div>
+                  <Input type='submit' className="btn mt-4" value='login' />
+                  {/*<a href="#" className="btn mt-4">submit</a>*/}
+              </form>
+            <p className="mb-0 mt-4 text-center"><a href="#0" className="link">Forgot your password?</a></p>
+          </div>
       </div>
 
   )

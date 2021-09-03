@@ -38,7 +38,6 @@ function Rating(){
     if (email != '' && ratinglist == '') {
         axios.get('/user/userrating/', {
             params: {search: email},
-            //headers: {'Autorization': 'token' + token}
         })
             .then((Response) => {
                 setRatinglist(

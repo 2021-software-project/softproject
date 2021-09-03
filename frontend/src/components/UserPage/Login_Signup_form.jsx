@@ -8,7 +8,7 @@ import '../../css/login_signup.css'
 function LoginSignupform(){
 
     return(
-        <div>
+        <div className="LoginSignupform">
             <head>
                 <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'/>
                 <link rel="stylesheet" href="../../css/login_signup.css"/>

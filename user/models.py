@@ -100,8 +100,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 class UserRating(models.Model):
     email = models.CharField(max_length=64)
-    username = models.CharField(max_length=40)
-    jobfamily = models.CharField(max_length=400)
-    job = models.CharField(max_length=400)
+    jobfamily = models.CharField(max_length=5)
+    job = models.CharField(max_length=5)
     score = models.IntegerField()
 
