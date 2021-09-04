@@ -5,8 +5,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/NavBar/Footer';
-import LoginPage from './components/UserPage/LoginPage';
-import SignupPage from './components/UserPage/SignupPage';
 import LoginSignupform from './components/UserPage/Login_Signup_form'
 import Home from "./components/HomePage/home";
 import InfoSelect from "./components/HomePage/input_mbti";
@@ -34,12 +32,11 @@ function App(props) {
         <NavBar />
           <div className="App">
             <Switch>
-              <Route exact path="/login" component={LoginSignupform}></Route>	// 추가
-              <Route exact path="/signup" component={SignupPage}></Route>	// 추가
-              <Route exact path="/" component={Home}></Route>	// 추가
-              <Route exact path="/input_mbti" component={InfoSelect}></Route>	// 추가
-              <Route exact path="/mbti" component={MbtiRecommend}></Route>	// 추가
-              <PrivateRoute exact path="/main" component={Main}></PrivateRoute>	// 추가
+              <Route exact path="/login" component={LoginSignupform}></Route>
+              <Route exact path="/" component={Home}></Route>
+              <Route exact path="/input_mbti" component={InfoSelect}></Route>
+              <Route exact path="/mbti" component={MbtiRecommend}></Route>
+              <PrivateRoute exact path="/main" component={Main}></PrivateRoute>
               <PrivateRoute exact path="/mypage" component={MyPage}></PrivateRoute>
               <PrivateRoute exact path="/mbti_rcm" component={Mbtircm}></PrivateRoute>
               <PrivateRoute exact path="/mbti_result" component={Mbtiresult}></PrivateRoute>

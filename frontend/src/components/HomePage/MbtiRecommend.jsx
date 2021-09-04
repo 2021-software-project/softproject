@@ -120,7 +120,7 @@ class MbtiRecommend extends React.Component{
                         (<li>{job}</li>))
                     }
                 </ul>
-                <Link to="/signup">
+                <Link to="/login">
                     <input className="btn btn-rcm" type="button" value="더 추천받기!"/>
                 </Link>
             </JobList>

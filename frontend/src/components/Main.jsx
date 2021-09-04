@@ -50,7 +50,7 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                <MenuBar/>
+
                 <header className="bg-primary text-white text-center">
                     <div className="container d-flex align-items-center flex-column">
                         <h1 className="masthead-heading text-uppercase mb-0">MAIN PAGE</h1>
