@@ -23,7 +23,6 @@ function Mbtiresult(props) {
     else {
         return (
             <div>
-
                 <h1>MBTI로 아르바이트 추천받기</h1>
                 <h2>당신이 선택한 MBTI : {ch_mbti}</h2>
                 <h2>당신이 선택한 지역 '시' : {ch_areasi}</h2>
