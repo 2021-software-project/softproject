@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './store/modules/rootReducer';
 //import 'bootstrap/dist/css/bootstrap.css' //부트스트랩 적용
 
+
 const store = createStore(rootReducer);
 console.log(store.getState());
 

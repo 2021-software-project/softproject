@@ -38,7 +38,8 @@ STATICFILES_DIRS = (#추가해줌
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# 0908 변경
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -213,7 +214,11 @@ CORS_ORIGIN_WHITELIST = [  # 추가
     'http://localhost:8080',
     'http://127.0.0.1:8000',
 ]
-#
-#CORS_ALLOW_CREDENTIALS = True
 
+# 0908 CORS, CSRF 설정.
+CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_EXPOSE_HEADERS = (
+    'Access-Control-Allow-Origin:*'
+)
+CSRF_COOKIE_NAME = "XCSRF-TOKEN"

@@ -33,7 +33,6 @@ class Home extends Component {
                         <button className="btn btn-primary btn-xl" id="submitButton" type="submit">입장하기</button>
                     </Link>
                 </section>
-
             </div>
         )
     }

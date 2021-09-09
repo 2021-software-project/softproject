@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class JobPosting(models.Model):
     city = models.CharField(max_length=80)
     county = models.CharField(max_length=80)

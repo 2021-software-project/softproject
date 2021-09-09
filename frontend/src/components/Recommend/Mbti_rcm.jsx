@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import Axios from "axios";
 import MbtiArea from "./MbtiArea";
 import "../../css/MbtiArea.css";
 import {useDispatch, useSelector} from "react-redux";
 import {changeArea, changeMbti} from "../../store/modules/area_modules";
+import axios from "axios";
 
 function Mbtircm(){
 
@@ -38,6 +40,20 @@ function Mbtircm(){
     "대구","광주","전남","전북","제주","전국",
     ];
 
+    // const onMbtiSubmit = () =>{
+    //     const mbti = ch_mbti
+    //     let token = localStorage.getItem('token')
+    //
+    //     if (localStorage.getItem('token') !== null) {
+    //         axios.get('http://localhost:8000/mbtircm/',{
+    //             params:{ mbti:mbti },
+    //         }).then(res=>{
+    //             console.log(res.data)
+    //         }).catch(err=>{
+    //             console.log(err)
+    //         })
+    //     }
+    // }
 
     return (
         <div className="mbti_rcm">
@@ -75,13 +91,10 @@ function Mbtircm(){
             </div>
             {/*<input type="button" onClick={onRcm} value="추천받기"/>*/}
 
-
-
             <Link to={{
                 pathname: "/mbti_result",
                 state:{
                 check:"1",}
-
             }}>
                 <button> 추천받기</button>
             </Link>

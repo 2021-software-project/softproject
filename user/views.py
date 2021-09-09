@@ -36,7 +36,7 @@ class UserRatingVIEW(generics.ListAPIView):
         return qs
 
     def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
-        serializer = UserRatingSerializer(data = request.data)  # JSON -> Serialize
+        serializer = UserRatingSerializer(data=request.data)  # JSON -> Serialize
 
         largejobcode = large_job_code[request.data['jobfamily']]
         request.data['jobfamily'] = largejobcode
