@@ -3,7 +3,19 @@ import {Link, useLocation} from "react-router-dom"
 import {useSelector} from "react-redux";
 import { Redirect, Route } from 'react-router-dom';
 import axios from "axios";
-import MbtiPostings from "./Mbti_postings";
+import Postings from "./postings";
+import styled from "styled-components";
+
+const InfoDiv = styled.div`
+  .info{
+    color: #ffc107;
+    font-size: 30px;
+    margin-top: 1rem;
+    span{
+        margin : 0 10px;
+    }
+  }
+`;
 
 function Mbtiresult(props) {
     const data = useLocation();
@@ -27,7 +39,7 @@ function Mbtiresult(props) {
         }
 
         if (jobList =='') {
-            axios.get('http://localhost:8000/mbtircm/', {
+            axios.get('/mbtircm/', {
                 params: {mbti: ch_mbti},
             }).then((res) => {
                 console.log(res.data.job_list)
@@ -42,20 +54,31 @@ function Mbtiresult(props) {
 
     const onClickJob=(e)=>{
         setCode(e.target.value)
+        console.log("code"+code)
     }
 
     return (
         <div>
-            <p>MBTI로 아르바이트 추천받기</p>
-            <p>당신이 선택한 MBTI : {ch_mbti}</p>
-            <p>당신이 선택한 지역 '시' : {ch_areasi}</p>
-            <p>당신이 선택한 지역 '구' : {ch_areagu}</p>
+            <InfoDiv>
+                <p className="info">
+                    <span># {ch_mbti}</span>
+                    <span># {ch_areasi}</span>
+                    <span># {ch_areagu}</span>
+                </p>
+            </InfoDiv>
+            <div className="div-btn">
             {
-
                 Object.entries(jobList).map(([id,value])=>
-                    (<button onClick={onClickJob} value={value}>{id}</button>))
+                    // (<div><button className="btn-job" onClick={onClickJob} value={value}>{id}</button></div>))
+                    (
+                        <div className="button-4">
+                            <div className="eff-4"></div>
+                            <button onClick={onClickJob} value={value}> {id} </button>
+                        </div>
+                    ))
             }
-            {code?<MbtiPostings code={code}></MbtiPostings>:''}
+            </div>
+            {code?<Postings code={code}></Postings>:''}
         </div>
     );
 }

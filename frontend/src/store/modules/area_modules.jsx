@@ -21,9 +21,9 @@ export function changeMbti(ch_mbti){
 
 //초기상태 정의
 const initialState = {
-    ch_areasi : '지역을 선택해주세요',
+    ch_areasi : '',
     ch_areagu : '',
-    ch_mbti : 'MBTI를 선택해주세요'
+    ch_mbti : ''
 };
 
 //리듀서 작성

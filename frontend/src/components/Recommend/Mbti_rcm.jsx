@@ -40,20 +40,9 @@ function Mbtircm(){
     "대구","광주","전남","전북","제주","전국",
     ];
 
-    // const onMbtiSubmit = () =>{
-    //     const mbti = ch_mbti
-    //     let token = localStorage.getItem('token')
-    //
-    //     if (localStorage.getItem('token') !== null) {
-    //         axios.get('http://localhost:8000/mbtircm/',{
-    //             params:{ mbti:mbti },
-    //         }).then(res=>{
-    //             console.log(res.data)
-    //         }).catch(err=>{
-    //             console.log(err)
-    //         })
-    //     }
-    // }
+    const onRcmClick = () =>{
+        console.log()
+    }
 
     return (
         <div className="mbti_rcm">
@@ -96,7 +85,7 @@ function Mbtircm(){
                 state:{
                 check:"1",}
             }}>
-                <button> 추천받기</button>
+                <button onClick={onRcmClick}> 추천받기</button>
             </Link>
 
         </div>

@@ -22,15 +22,28 @@ from .models import JobPosting
 
 
 @method_decorator(csrf_exempt,name='dispatch')
-class mbtiRcmResult(View):
-
+class mbtiRcm(View):
     def get(self, request):
         get_mbti = request.GET.get('mbti')
+        print(get_mbti)
         job_list = randomRCM()
         # JSON 형식으로 response
         return  JsonResponse({
             'job_list' : job_list,
         }) # 한글 등의 유니코드는 16진수로 표현될 경우 : 두번째 파라미터로 json_dumps_params = {'ensure_ascii': False} 추가
+
+
+@method_decorator(csrf_exempt,name='dispatch')
+class persRcm(View):
+    def get(self, request):
+        get_user = request.GET.get('username')
+        job_list = randomRCM()
+        print(get_user)
+        # JSON 형식으로 response
+        return  JsonResponse({
+            'job_list' : job_list,
+        }) # 한글 등의 유니코드는 16진수로 표현될 경우 : 두번째 파라미터로 json_dumps_params = {'ensure_ascii': False} 추가
+
 
 @csrf_exempt
 def postings(request):

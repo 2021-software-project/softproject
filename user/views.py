@@ -8,6 +8,8 @@ from django.shortcuts import render, HttpResponse
 from rest_framework import generics
 from rest_framework import mixins
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 # from MBTI.modules.db.models import User
 
 from rest_framework import viewsets
@@ -22,9 +24,11 @@ class UserRatingVIEW(generics.ListAPIView):
     queryset = UserRating.objects.all()
     serializer_class = UserRatingSerializer
 
+
     def get_queryset(self):
         qs = super().get_queryset()
-        search = self.request.query_params.get('search',"")
+        search = self.request.query_params.get('search')
+        print(search)
         if search:
             qs = qs.filter(email=search)
             for rating in qs:
