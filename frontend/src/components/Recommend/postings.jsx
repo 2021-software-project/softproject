@@ -3,7 +3,8 @@ import { Redirect, Route } from 'react-router-dom';
 import axios from "axios";
 import {useSelector} from "react-redux";
 import './card.css'
-
+import JobPostingModal from '../../js/JobPostingModal'
+import "../../css/Mbti_result.css";
 
 
 function Postings(props){
@@ -13,6 +14,70 @@ function Postings(props){
     const {ch_areagu} = useSelector(state => state.area_modules);
 
     const[postings, setPostings] = useState([])
+
+    //hj-email,token
+    const [email, setEmail] = useState('')
+    const token = localStorage.getItem('token')
+    useEffect(() => {   //추가
+        if (localStorage.getItem('token') !== null) {
+            axios({
+                method: 'get',
+                url: '/user/auth/user/',
+                headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'}
+            }).then(res => {
+                setEmail(
+                    res.data.email
+                )
+                console.log(res.data)
+                console.log("email : " + email)
+            });
+        }
+    }, [])
+    //hj - Modal
+    const [ modalOpen, setModalOpen ] = useState(false);
+    const [ showingurl, setshowingurl] = useState("");
+
+    const [postingLike, setPostingLike] = useState(0);
+
+    const [start_time, setStartTime] = useState(0);
+    let stay_time;
+
+    const [ postid, setpostid ] = useState('');
+    const [ subCode, setsubCode] = useState('');
+
+    const openModal = (e) => {
+        setModalOpen(true);
+        setStartTime(new Date());
+        console.log("open: "+ start_time);
+    }
+    const closeModal = () => {
+        stay_time = (new Date()-start_time)/1000;
+        setModalOpen(false);
+        setshowingurl("");
+
+         const whatPostingLike = {
+            email: email,
+            post_id : postid,
+            jobcode : subCode,
+            like: postingLike,
+            stay_time: stay_time,
+         }
+        console.log(whatPostingLike);
+
+        //  axios.post("/user/userpostinglike/", whatPostingLike,
+        //     {
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json;charset=UTF-8',
+        //             'Authorization': 'token ' + token,
+        //         }
+        //     })
+        //     .catch(function (err){
+        //       console.log(err)
+        // })
+
+       setPostingLike(0);
+    }
 
     useEffect(()=>{
         //post 전송을 위해 form data 생성
@@ -44,7 +109,7 @@ function Postings(props){
                             {/*    </div >*/}
                             {/*</div>*/}
                             {/* <!--  카드 바디 -->*/}
-                          <a href={posting.fields.url}>
+                          <a onClick={ ()=> (openModal) (setshowingurl(posting.fields.url.replace("www", "m")), setpostid(posting.pk) ,(setsubCode(posting.fields.sub_code))) }>
                             <div className="card-body">
                             {/*// <!--  카드 바디 헤더 -->*/}
                             <div className="card-body-header">
@@ -70,6 +135,13 @@ function Postings(props){
                 ))
                 :<p>최근 공고가 없습니다.</p>
             }
+            <JobPostingModal open={ modalOpen } close={ closeModal } setPostingLike = {setPostingLike} postingLike={postingLike}>
+                <iframeCon>
+                    <div className="iframe-container">
+                        <iframe  src={showingurl}>대체내용</iframe>
+                    </div>
+                </iframeCon>
+            </JobPostingModal>
         </div>
     )
 
