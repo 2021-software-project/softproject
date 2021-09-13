@@ -64,17 +64,17 @@ function Postings(props){
          }
         console.log(whatPostingLike);
 
-        //  axios.post("/user/userpostinglike/", whatPostingLike,
-        //     {
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Content-Type': 'application/json;charset=UTF-8',
-        //             'Authorization': 'token ' + token,
-        //         }
-        //     })
-        //     .catch(function (err){
-        //       console.log(err)
-        // })
+         axios.post("/user/userpostinglike/", whatPostingLike,
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    'Authorization': 'token ' + token,
+                }
+            })
+            .catch(function (err){
+              console.log(err)
+        })
 
        setPostingLike(0);
     }

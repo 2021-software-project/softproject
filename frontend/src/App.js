@@ -36,18 +36,18 @@ function App(props) {
               <Route exact path="/" component={Home}></Route>
               <Route exact path="/input_mbti" component={InfoSelect}></Route>
               <Route exact path="/mbti" component={MbtiRecommend}></Route>
-              <Route exact path="/main" component={Main}></Route>
-              <Route exact path="/mypage" component={MyPage}></Route>
-              <Route exact path="/mbti_rcm" component={Mbtircm}></Route>
-              <Route exact path="/mbti_result" component={Mbtiresult}></Route>
-              <Route exact path="/personal_rcm" component={Personal_rcm}></Route>
-              <Route exact path="/personal_result" component={Personal_result}></Route>
-              <Route exact path="/GoodBad_list" component={GoodBad}></Route>
-              <Route exact path="/MyInfo_edit" component={MyInfo}></Route>
-              <Route exact path="/UserName" component={UserName}></Route>
-              <Route exact path="/PasswordUpdate" component={PasswordUpdate}></Route>
-              <Route exact path="/Alba_rating" component={Albarating}></Route>
-              <Route exact path="/Rating_list" component={Rating}></Route>
+              <PrivateRoute exact path="/main" component={Main}></PrivateRoute>
+              <PrivateRoute exact path="/mypage" component={MyPage}></PrivateRoute>
+              <PrivateRoute exact path="/mbti_rcm" component={Mbtircm}></PrivateRoute>
+              <PrivateRoute exact path="/mbti_result" component={Mbtiresult}></PrivateRoute>
+              <PrivateRoute exact path="/personal_rcm" component={Personal_rcm}></PrivateRoute>
+              <PrivateRoute exact path="/personal_result" component={Personal_result}></PrivateRoute>
+              <PrivateRoute exact path="/GoodBad_list" component={GoodBad}></PrivateRoute>
+              <PrivateRoute exact path="/MyInfo_edit" component={MyInfo}></PrivateRoute>
+              <PrivateRoute exact path="/UserName" component={UserName}></PrivateRoute>
+              <PrivateRoute exact path="/PasswordUpdate" component={PasswordUpdate}></PrivateRoute>
+              <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
+              <PrivateRoute exact path="/Rating_list" component={Rating}></PrivateRoute>
 
             </Switch>
           </div>
