@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import { Redirect, Route } from 'react-router-dom';
 import JobPostingModal from "../../js/JobPostingModal";
 import "../../css/Mbti_result.css"
-import Axios from "axios";
+import axios from "axios";
 
 function Mbtiresult(props) {
     const data = useLocation();
@@ -17,10 +17,8 @@ function Mbtiresult(props) {
     const [email, setEmail] = useState('')
     const token = localStorage.getItem('token')
     useEffect(() => {   //추가
-
-
         if (localStorage.getItem('token') !== null) {
-            Axios({
+            axios({
                 method: 'get',
                 url: '/user/auth/user/',
                 headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'}
@@ -61,7 +59,7 @@ function Mbtiresult(props) {
          }
         console.log(whatPostingLike);
 
-         Axios.post("/user/userpostinglike/", whatPostingLike,
+         axios.post("/user/userpostinglike/", whatPostingLike,
             {
                 headers: {
                     'Accept': 'application/json',
@@ -106,7 +104,7 @@ function Mbtiresult(props) {
                 <table align="center">
                   {store.map((sto, index) => (
                     <tr key={index}>
-                        <a onClick={ ()=> (openModal) (setshowingurl(urls[index].replace("www", "m"))) } ><h3>{sto}</h3> </a>
+                        <a onClick={ ()=> (openModal, setshowingurl(urls[index].replace("www", "m"))) } ><h3>{sto}</h3> </a>
                     </tr>
                   ))}
                 </table>
