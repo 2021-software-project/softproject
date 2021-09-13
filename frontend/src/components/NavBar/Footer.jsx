@@ -18,18 +18,18 @@ function Footer(){
                             </p>
                         </div>
 
-                        <div className="col-lg-4 mb-5 mb-lg-0">
-                            <h4 className="text-uppercase mb-4">Around the Web</h4>
+                        {/*<div className="col-lg-4 mb-5 mb-lg-0">*/}
+                        {/*    <h4 className="text-uppercase mb-4">Around the Web</h4>*/}
 
-                        </div>
+                        {/*</div>*/}
 
-                        <div className="col-lg-4">
-                            <h4 className="text-uppercase mb-4">About Freelancer</h4>
-                            <p className="lead mb-0">
-                                Freelance is a free to use, MIT licensed Bootstrap theme created by
+                        {/*<div className="col-lg-4">*/}
+                        {/*    <h4 className="text-uppercase mb-4">About Freelancer</h4>*/}
+                        {/*    <p className="lead mb-0">*/}
+                        {/*        Freelance is a free to use, MIT licensed Bootstrap theme created by*/}
 
-                            </p>
-                        </div>
+                        {/*    </p>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
         </div>
