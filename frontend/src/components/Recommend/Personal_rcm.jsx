@@ -1,6 +1,7 @@
 import React from 'react'
 import MbtiArea from "./MbtiArea";
 import "../../css/MbtiArea.css";
+import "../../css/Mbti.css";
 import {useDispatch, useSelector} from "react-redux";
 import {changeArea} from "../../store/modules/area_modules";
 import {Link} from "react-router-dom";
@@ -21,14 +22,15 @@ function Personal_rcm(){
         ];
 
     return(
-    <div className="personal_rcm">
+   <div id="per_son-container">
         <div>
             <h1>자신에게 맞는 아르바이트 추천받기</h1>
         </div>
 
-        <h3>[지역 선택]</h3>
-        <h4><span style={{color:"blueviolet"}}>{ch_areasi} {ch_areagu}</span> </h4>
+        <h3>[지역 선택]</h3><p></p>
+        <h4>선택한 지역 : <span style={{color:"blueviolet"}}>{ch_areasi} {ch_areagu}</span> </h4>
             <div className="area" align="center">  {/*지역 선택*/}
+                <p></p>
                 <table>
                     <tr>
                     {AREA.map(area =>
@@ -40,11 +42,12 @@ function Personal_rcm(){
                     <tr colSpan={AREA.length}><MbtiArea area_si={ch_areasi}/></tr>
 
             </div>
+       <p></p>
             <Link to={{pathname: "/personal_result",
                 state:{
                 check:"1",}
             }}>
-                    <button> 추천받기</button>
+                    <button className="btn btn-primary btn-xl"> 추천받기</button>
             </Link>
     </div>
     )
