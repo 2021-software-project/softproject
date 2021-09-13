@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import MbtiArea from "./MbtiArea";
 import "../../css/MbtiArea.css";
+import "../../css/Mbti.css";
 import {useDispatch, useSelector} from "react-redux";
 import {changeArea, changeMbti} from "../../store/modules/area_modules";
 
@@ -40,7 +41,8 @@ function Mbtircm(){
 
 
     return (
-        <div className="mbti_rcm">
+        <div id="mb_ti-container">
+
             <h1>MBTI로 아르바이트 추천받기</h1>
 
             <div align="center">   {/*mbti 선택*/}
@@ -57,7 +59,7 @@ function Mbtircm(){
                     </thead>
                 </table>
             </div>
-
+            <p></p><p></p>
             <h3>[지역 선택]</h3>
             <h4>선택한 지역 : <span style={{color:"blueviolet"}}>{ch_areasi} {ch_areagu} </span></h4>
             <div className="area" align="center">  {/*지역 선택*/}
@@ -75,7 +77,7 @@ function Mbtircm(){
             </div>
             {/*<input type="button" onClick={onRcm} value="추천받기"/>*/}
 
-
+            <p></p>
 
             <Link to={{
                 pathname: "/mbti_result",
@@ -83,10 +85,11 @@ function Mbtircm(){
                 check:"1",}
 
             }}>
-                <button> 추천받기</button>
+                <button className="btn btn-primary btn-xl"> 추천받기</button>
             </Link>
 
-        </div>
+
+    </div>
     );
 
 }
