@@ -470,9 +470,9 @@ output {
   display: inline-block;
 }
 
-iframe {
+/*iframe {
   border: 0;
-}
+}*/
 
 summary {
   display: list-item;
@@ -5470,7 +5470,7 @@ textarea.form-control-lg {
   word-wrap: break-word;
 }
 
-.modal {
+/*.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -5748,10 +5748,10 @@ textarea.form-control-lg {
   .modal-fullscreen-xxl-down .modal-body {
     overflow-y: auto;
   }
-  .modal-fullscreen-xxl-down .modal-footer {
+.modal-fullscreen-xxl-down .modal-footer {
     border-radius: 0;
   }
-}
+}*/
 .tooltip {
   position: absolute;
   z-index: 1080;

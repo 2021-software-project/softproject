@@ -1,5 +1,5 @@
-from .models import UserRating
-from .serializers import UserRatingSerializer
+from .models import UserRating, UserPostingLike
+from .serializers import UserRatingSerializer, UserPostingLikeSerializer
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
@@ -52,5 +52,18 @@ class UserRatingVIEW(generics.ListAPIView):
         return Response(serializer.errors, status=400)
 
 
+class UserPostingLikeVIEW(generics.ListAPIView):
+    queryset = UserPostingLike.objects.all()
+    serializer_class = UserPostingLikeSerializer
 
+    def get(self, request):
+        return self.list(request)
+
+    def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
+        serializer = UserPostingLikeSerializer(data = request.data)  # JSON -> Serialize
+
+        if serializer.is_valid():  # 타당성 검토 후 저장
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
 
