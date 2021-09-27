@@ -4,6 +4,7 @@ import Job2 from "./Job2";
 import "../../css/Job2.css";
 import "../../css/Mbti.css";
 
+
 import {useDispatch, useSelector} from "react-redux";
 import {changeJob} from "../../store/modules/job_modules";
 import {changeScore} from "../../store/modules/job_modules";
@@ -91,11 +92,12 @@ function Alba_rating(){
 
     return (
         <div id ="rating-container">
+
             <h1>내가 해봤던 알바 평가하기</h1>
             <h3>[직종선택]</h3>
             <h4>선택한 직종 : &nbsp; {ch_jobfamily} => {ch_job} </h4>
             <div className="job" align="center">  {/*지역 선택*/}
-                <table>
+                <table width ="70%" >
 
                     {JOBFAMILY.map(jobfamily =>
                         jobfamily === "ENTER" ?
@@ -108,7 +110,8 @@ function Alba_rating(){
                     <tr colSpan={JOBFAMILY.length}><Job2 job_value={ch_jobfamily} /></tr>
             </div>
 
-            <p></p><p></p>
+
+            <div id="mid_box">
             <h3>[점수선택]</h3>
             <h4>내가 매긴 점수 : &nbsp;{ch_score} </h4>
             <div align="center">
@@ -121,7 +124,7 @@ function Alba_rating(){
                     </thead>
                 </table>
             </div>
-            <p></p><p></p>
+                </div>
 
 
             <form onSubmit={ratingSubmit}>

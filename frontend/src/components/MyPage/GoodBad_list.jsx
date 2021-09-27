@@ -1,9 +1,16 @@
 import React from 'react';
 import Mypage from "./MyPage";
 
+import "../../css/mypage.css";
+
 function GoodBad(){
     return(
-       <h2>GoodBad List</h2>
+        <div className = "my_container">
+            <div className="mid_box2">
+         <h1>GoodBad List</h1>
+                </div>
+        </div>
+
     )
 }
 

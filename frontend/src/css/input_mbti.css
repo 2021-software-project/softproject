@@ -4,8 +4,22 @@
 }
 /* 수정 중 - mbti 라디오 버튼 */
 .mbtiSelect{
+
     opacity: 0;
+
 }
+
+.mbti_Select{
+
+    margin :1rem;
+    font-size: 1em;
+    width: 1.25em; /* 너비 설정 */
+    height: 1.25em; /* 높이 설정 */
+    vertical-align: middle;
+    opacity: 100;
+
+}
+
 label{
     font-size: 2rem;
     padding: 5px 10px 5px 0px;
