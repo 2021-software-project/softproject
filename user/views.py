@@ -21,9 +21,8 @@ from rest_framework.filters import SearchFilter
 from .job_code import job_code, large_job_code
 
 class UserRatingVIEW(generics.ListAPIView):
-    queryset = UserRating.objects.all()
+    queryset = UserRating.objects.exclude(job='0')
     serializer_class = UserRatingSerializer
-
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -36,7 +35,6 @@ class UserRatingVIEW(generics.ListAPIView):
                 subcode = rating.job
                 rating.jobfamily = dict(map(reversed,large_job_code.items()))[largejobcode]
                 rating.job = dict(map(reversed,job_code[largejobcode].items()))[subcode]
-
         return qs
 
     def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
@@ -44,7 +42,8 @@ class UserRatingVIEW(generics.ListAPIView):
 
         largejobcode = large_job_code[request.data['jobfamily']]
         request.data['jobfamily'] = largejobcode
-        request.data['job'] = job_code[largejobcode][request.data['job']]
+        if(request.data['job']!='0'):
+            request.data['job'] = job_code[largejobcode][request.data['job']]
 
         if serializer.is_valid():  # 타당성 검토 후 저장
             serializer.save()
