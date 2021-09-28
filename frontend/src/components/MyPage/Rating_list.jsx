@@ -1,14 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import Mypage from "./MyPage";
 import axios from 'axios';
+import "../../css/mypage.css";
+
+
+
+
 
 function RatingOne({id, jobfamily, job, score}){
   return(
-      <tr>
+
+      <tr >
             <td>{jobfamily}</td>
             <td>{job}</td>
             <td>{score}점</td>
       </tr>
+
   )
 }
 
@@ -53,22 +60,22 @@ function Rating(){
 
 
     return(
-        <div>
+        <div  className ="my_container" id="con_mar">
             <h2>Rating List</h2>
             {email}<p/>
 
-            <div>
-                <table align="center" border="1">
-                    <thead>
-                         <th>직종</th> <th>업종</th> <th>점수</th>
-                    </thead>
+
+                <table align="center" border="1" width = "50%">
+
+                    <th>직종</th> <th>업종</th> <th>점수</th>
+
                     <tbody>
                         {ratinglist && ratinglist.map(ratingone => (
                             <RatingOne id={ratingone.id} jobfamily={ratingone.jobfamily} job={ratingone.job} score={ratingone.score}/>
                         )) }
                     </tbody>
                 </table>
-            </div>
+
         </div>
     )
 

@@ -4,6 +4,9 @@ import Axios from 'axios';
 import {Link} from "react-router-dom";
 import picYellow from "../img/pic_yellow.jpg";
 import styled from "styled-components";
+import "../css/home.css";
+import "../css/mypage.css";
+
 
 const Img=styled.div`
 .sc-img {
@@ -49,42 +52,40 @@ class Main extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className =" home_container ">
 
-                <header className="bg-primary text-white text-center">
-                    <div className="container d-flex align-items-center flex-column">
+                <header>
+                    <div className ="home_container-2">
+
                         <h1 className="masthead-heading text-uppercase mb-0">MAIN PAGE</h1>
                     </div>
                 </header>
 
                 <div>
-                    {/*<Link className="link" to="/Mbti_rcm">*/}
-                    {/*    <button className="btn btn-primary btn-xl" id="submitButton" type="submit">MBTI별 추천</button>*/}
-                    {/*</Link>*/}
-                    {/*<Link className="link" to="/Personal_rcm">*/}
-                    {/*    <button className="btn btn-primary btn-xl" id="submitButton" type="submit">개인별 추천</button>*/}
-                    {/*</Link>*/}
-                    {/*<input type="button" value="MBTI별 추천" onClick={this.onClick1}/>*/}
-                    {/*<input type="button" value="개인별 추천" onClick={this.onClick2}/>*/}
+
                 </div>
-                <Img>
-                <div className="sc-img">
+
+                <div id="home_container-2">
+                    <div id = "container_home_button">
                     {/*Item 1*/}
-                    <div className="dv-rcm">
-                        <img className="" src={picYellow} alt="..."/>
+
+                        <div id="box-left" >
                             <Link className="link" to="/Mbti_rcm">
                                 <button className="btn btn-primary btn-xl" id="submitButton" type="submit">MBTI별 추천</button>
                             </Link>
-                    </div>
+                        </div>
+
                     {/*Item 2*/}
-                    <div className="dv-rcm">
-                        <img className="" src={picYellow} alt="..."/>
+                        <div id ="box-right"  >
                         <Link className="link" to="/Personal_rcm">
                             <button className="btn btn-primary btn-xl" id="submitButton" type="submit">개인별 추천</button>
                         </Link>
+                            </div>
+
+
                     </div>
-                </div>
-                </Img>
+                    </div>
+
             </div>
         )
     }

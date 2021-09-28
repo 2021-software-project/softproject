@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import MbtiArea from "./MbtiArea";
 import "../../css/MbtiArea.css";
 import "../../css/Mbti.css";
+import "../../css/input_mbti.css";
+
 import {useDispatch, useSelector} from "react-redux";
 import {changeArea, changeMbti} from "../../store/modules/area_modules";
 import axios from "axios";
@@ -52,17 +54,19 @@ function Mbtircm(){
             <div align="center">   {/*mbti 선택*/}
                 <h3>[MBTI 선택]</h3>
                 <h4>선택한 MBTI : <span style={{color:"blueviolet"}}>{ch_mbti}</span> </h4>
-                <table>
-                    <thead>
-                    {MBTIMeta.map(i =>
+
+                <table width ="50%" border= "2px" solid>
+                     <thead>
+                     {MBTIMeta.map(i =>
                         i === "ENTER" ?
-                            (<tr><input type="hidden" className="mbtiSelect" name={"mbtichk"} value={i}/></tr>)
-                            : (<td><input type="radio" className="mbtiSelect" name={"mbtichk"} value={i}
-                                onChange={()=>onChangeMbti(i)}/> {i}</td>))
+                            (<tr className = "tr">
+                            <input type="hidden" className="mbti_Select" name={"mbtichk"} value={i}/></tr>)
+                            : (<td><input type="radio" className="mbti_Select" name={"mbtichk"} value={i}
+                                          onChange={()=>onChangeMbti(i)}/> {i} </td>))
                     }
                     </thead>
                 </table>
-            </div>
+                </div>
             <p></p><p></p>
             <h3>[지역 선택]</h3>
             <h4>선택한 지역 : <span style={{color:"blueviolet"}}>{ch_areasi} {ch_areagu} </span></h4>

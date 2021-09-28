@@ -36,9 +36,16 @@
     padding-bottom: 0.5rem;
 }
 
+.mid_box2{
+    width : 100%;
+
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
 #menu_box{
     width : 100%;
-    border-color: #0f0f0f;
+
     padding-top :3rem;
     padding-bottom : 2rem;
 
@@ -60,4 +67,18 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+}
+
+#con_mar {
+   padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#tr{
+    border-top : 1px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0 10px;
 }
