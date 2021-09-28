@@ -110,3 +110,6 @@ class UserPostingLike(models.Model):
     jobcode = models.CharField(max_length=5)
     like = models.IntegerField(default=0) #좋아요:1, 싫어요:-1, 봤지만 안눌렀어요:0
     stay_time = models.FloatField(default=0.0) #초 단위
+
+
+

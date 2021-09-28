@@ -24,9 +24,10 @@ const LoginPage = () => {
         if (res.data.key) {
           localStorage.clear()
           localStorage.setItem('token',res.data.key)
+          localStorage.setItem('email',email);
 
           // 사용하려면 App.js에서 /로 라우팅해야 한다
-          window.location.replace('/')
+          window.location.replace('/main')
         } else {
           setEmail('')
           setPassword('')

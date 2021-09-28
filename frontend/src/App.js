@@ -23,6 +23,7 @@ import MyInfo from './components/MyPage/MyInfo_edit';
 import PasswordUpdate from './components/MyPage/PasswordUpdate';
 import Rating from './components/MyPage/Rating_list';
 import Albarating from './components/UserPage/Alba_rating';
+import FirstUserLike from "./components/UserPage/FirstUserLike";
 
 
 function App(props) {
@@ -36,6 +37,7 @@ function App(props) {
               <Route exact path="/" component={Home}></Route>
               <Route exact path="/input_mbti" component={InfoSelect}></Route>
               <Route exact path="/mbti" component={MbtiRecommend}></Route>
+              <PrivateRoute exact path="/firstulike" component={FirstUserLike}></PrivateRoute>
               <PrivateRoute exact path="/main" component={Main}></PrivateRoute>
               <PrivateRoute exact path="/mypage" component={MyPage}></PrivateRoute>
               <PrivateRoute exact path="/mbti_rcm" component={Mbtircm}></PrivateRoute>
