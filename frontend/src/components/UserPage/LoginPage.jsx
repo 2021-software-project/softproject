@@ -71,34 +71,6 @@ const LoginPage = () => {
 
   )
 
-  // return (
-  //   <LoginDiv>
-  //     <h1>로그인</h1>
-  //     <br />
-  //     {errors === true && <h2>Cannot log in with provided credentials</h2>}
-  //       <form onSubmit={onSubmit}>
-  //         <label>이메일 주소:</label>
-  //         <Input
-  //           type='email'
-  //           value={email}
-  //           required
-  //           onChange={e => setEmail(e.target.value)}
-  //         />
-  //         <br/>
-  //         <label>비밀번호:</label>
-  //         <Input
-  //           type='password'
-  //           value={password}
-  //           required
-  //           onChange={e => setPassword(e.target.value)}
-  //         />
-  //         <br/>
-  //         <Input type='submit' size="large" value='로그인' />
-  //       </form>
-  //     <br/>
-  //     <Link to='/signup/'>회원가입</Link>
-  //   </LoginDiv>
-  // )
 }
 
 export default LoginPage;

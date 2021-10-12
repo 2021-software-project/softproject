@@ -1,6 +1,7 @@
 .tb-mbti {
     text-align: center;
-    margin: 40px auto 34px auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 /* 수정 중 - mbti 라디오 버튼 */
 .mbtiSelect{

@@ -50,15 +50,11 @@ function InfoSelect() {
 
     return(
         <div>
-            <header className="bg-primary text-black text-center" >
-                    <div className="container d-flex align-items-center flex-column">
-                        <h1 className="masthead-heading text-uppercase mb-0">MBTI별 알바 추천</h1>
-                    </div>
-            </header>
 
-            <div id="m_container">
+
+
             <section className="sc-mbti" ref={resultRef}>
-                <div id="home_container-2">
+
                 <form onSubmit={changeRcm} target="iframe1">
                 <table className="tb-mbti">
                     <tr>
@@ -84,14 +80,14 @@ function InfoSelect() {
                 </table>
                 <input className="btn btn-primary btn-xl" type="submit" value="추천받기"/>
                 </form>
-                </div>
+
                 {/*페이지 이동 없애기 -> form 의 target을 iframe으로 설정, iframe은 안 보이게 설정*/}
                 <div >
                     <iframe name="iframe1" style={{display: 'none'}}></iframe>
                 </div>
                 {rcm ?<MbtiRecommend mbti={mbti}/> : <></>}
             </section>
-            </div>
+
         </div>
     )
 }
