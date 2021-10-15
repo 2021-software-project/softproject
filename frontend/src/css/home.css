@@ -91,7 +91,7 @@ a.link {
   display: flex;
 }
 #box-left {
-    background-image: url("../img/mbti.jpg");
+    /*background-image: url("../img/mbti.jpg");*/
      background-repeat : no-repeat;
     background-size : cover;
 
@@ -102,7 +102,7 @@ text-align: center;
 }
 
 #box-right {
-     background-image: url("../img/person.jpg");
+    /* background-image: url("../img/person.jpg");*/
      background-repeat : no-repeat;
     background-size : cover;
 

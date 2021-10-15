@@ -6,6 +6,7 @@ import picYellow from "../img/pic_yellow.jpg";
 import styled from "styled-components";
 import "../css/home.css";
 import "../css/mypage.css";
+import "../css/base.css";
 
 
 const Img=styled.div`
@@ -71,14 +72,14 @@ class Main extends React.Component {
 
                         <div id="box-left" >
                             <Link className="link" to="/Mbti_rcm">
-                                <button className="btn btn-primary btn-xl" id="submitButton" type="submit">MBTI별 추천</button>
+                                <button className="button primary" id="submitButton" type="submit">MBTI별 추천</button>
                             </Link>
                         </div>
 
                     {/*Item 2*/}
                         <div id ="box-right"  >
                         <Link className="link" to="/Personal_rcm">
-                            <button className="btn btn-primary btn-xl" id="submitButton" type="submit">개인별 추천</button>
+                            <button className="button primary" id="submitButton" type="submit">개인별 추천</button>
                         </Link>
                             </div>
 

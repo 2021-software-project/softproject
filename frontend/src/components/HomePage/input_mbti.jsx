@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef, useCallback} from 'react';
 import MbtiRecommend from "./MbtiRecommend";
 import "../../css/input_mbti.css"
 import "../../css/home.css"
+import "../../css/base.css";
 
 function InfoSelect() {
 
@@ -78,7 +79,7 @@ function InfoSelect() {
                             <span>P</span></label></td>
                     </tr>
                 </table>
-                <input className="btn btn-primary btn-xl" type="submit" value="추천받기"/>
+                <input className="button primary" type="submit" value="추천받기"/>
                 </form>
 
                 {/*페이지 이동 없애기 -> form 의 target을 iframe으로 설정, iframe은 안 보이게 설정*/}
