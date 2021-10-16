@@ -10,11 +10,11 @@ function Footer(){
                     <div className="row">
 
                         <div className="col-lg-4 mb-5 mb-lg-0">
-                            <h4 className="text-uppercase mb-4">본사 위치</h4>
+                            <br/><h4 className="text-uppercase mb-4">본사 위치</h4>
                             <p className="lead mb-0">
                                 부산광역시 사하구 낙동대로 .... 동아대학교
-                                <br/>
-                                S06 627 연구실
+                                <br/><br/>
+                                {/*S06 627 연구실*/}
                             </p>
                         </div>
 
