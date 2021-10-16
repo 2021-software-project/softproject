@@ -3,6 +3,28 @@
 /* Please ❤ this if you like it! */
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+KR&family=Poppins:400,500,600,700,800,900&display=swap');
 
+/* Password Reset Modal */
+.Password-Reset-modal{
+  text-align: center;
+}
+.Password-Reset-modal > input {
+    margin: 10px;
+}
+.Password-Reset-modal > input[type="text"] {
+    width: 70%;
+    text-align: center;
+}
+.Password-Reset-modal > p{
+  margin-top:10px!important;
+}
+.modal > section{
+  height: 120%!important;
+}
+.modal section > header{
+  padding : 16px 16px 16px 16px!important;
+}
+
+/* -------------------- */
 .LoginSignupform body{
     font-family: 'Poppins', 'IBM Plex Sans KR', serif;
 	font-weight: 300;

@@ -172,7 +172,6 @@ const SignupPage = () => {
                         </Modal>
 
                    </React.Fragment>
-                  {/*<input className="checkbox2" type="checkbox" onClick={onChecked}/> 개인정보 수집 동의<br/>*/}
                   <Input type='submit' className="btn mt-4" value='SignUp' />
               </form>
           </div>

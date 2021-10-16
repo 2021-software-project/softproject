@@ -12,16 +12,43 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import db
-
-import os
+import os, json
 import datetime
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'MBTI.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MBTI.settings')
+from django.core.exceptions import ImproperlyConfigured
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# secret 설정
+secret_file = os.path.join(BASE_DIR, 'secrets.json')
+
+with open(secret_file) as f:
+    secrets = json.loads(f.read())
+
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+
+
+SECRET_KEY = get_secret("SECRET_KEY")
+
+# Django SMTP 설정
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+MAILER_EMAIL_BACKEND = EMAIL_BACKEND
+EMAIL_HOST = 'smtp.gmail.com'                               # 메일 호스트 서버
+EMAIL_PORT = 587                                            # gmail 과 통신하는 포트
+EMAIL_HOST_USER = get_secret("EMAIL_HOST_USER")             # 사용할 host 이메일
+EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")     # host 이메일 pwd
+EMAIL_USE_TLS = True                                        # TLS 보안 설정
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # from django.core.wsgi import get_wsgi_application
 # application = get_wsgi_application()
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 STATICFILES_DIRS = (#추가해줌
@@ -108,7 +135,7 @@ WSGI_APPLICATION = 'MBTI.wsgi.application'
 
 
 DATABASES = db.DATABASES
-SECRET_KEY = db.SECRTET_KEY
+# SECRET_KEY = db.SECRTET_KEY
 
 
 # Password validation
@@ -172,6 +199,9 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 ACCOUNT_UNIQUE_EMAIL = True
+# 1014 추가
+# 이메일 인증 설정 -> None : 이메일 인증을 하지 않아도 로그인 가능
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # DRF
 REST_FRAMEWORK = {
@@ -189,7 +219,7 @@ REST_FRAMEWORK = {
         # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        #'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
@@ -222,3 +252,4 @@ CORS_EXPOSE_HEADERS = (
     'Access-Control-Allow-Origin:*'
 )
 CSRF_COOKIE_NAME = "XCSRF-TOKEN"
+
