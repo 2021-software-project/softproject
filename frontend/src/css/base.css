@@ -3401,7 +3401,9 @@ input, select, textarea {
 					}
 
 		#menu .close {
-			background-image: url("../img/close.svg");
+			/*background-image: url("../img/close.svg");*/
+			background-image: url("../img/pic01.jpg");
+
 			background-position: 4.85em 1em;
 			background-repeat: no-repeat;
 			border: 0;
@@ -3518,7 +3520,9 @@ input, select, textarea {
 						}
 
 							#header nav > ul > li > a.menuToggle:after {
-								background-image: url("../img/bars.svg");
+								/*background-image: url("../img/bars.svg");*/
+								background-image: url("../img/pic01.jpg");
+
 								background-position: right center;
 								background-repeat: no-repeat;
 								content: '';
@@ -3669,7 +3673,9 @@ input, select, textarea {
 		}
 
 			#banner .more:after {
-				background-image: url("../img/arrow.svg");
+				/*background-image: url("../img/arrow.svg");*/
+				background-image: url("../img/pic01.jpg");
+
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: contain;
