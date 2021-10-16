@@ -25,6 +25,7 @@ import Rating from './components/MyPage/Rating_list';
 import Albarating from './components/UserPage/Alba_rating';
 import FirstUserLike from "./components/UserPage/FirstUserLike";
 
+import PasswordReset from './components/UserPage/PasswordReset';
 
 function App(props) {
   return (
@@ -50,6 +51,7 @@ function App(props) {
               <PrivateRoute exact path="/PasswordUpdate" component={PasswordUpdate}></PrivateRoute>
               <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
               <PrivateRoute exact path="/Rating_list" component={Rating}></PrivateRoute>
+              <Route exact path="/user/password-reset/:uid/:token" component={PasswordReset}></Route>
 
             </Switch>
           </div>

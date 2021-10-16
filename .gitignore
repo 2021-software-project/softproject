@@ -15,7 +15,7 @@ user/__pycache__/
 MBTI/modules/
 /MBTI/migrations/
 user/migrations/
-
+secrets.json
 mbtienv/
 
 #.idea

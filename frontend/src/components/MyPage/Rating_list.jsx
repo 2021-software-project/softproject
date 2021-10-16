@@ -49,14 +49,17 @@ function Rating(){
 
     const [email, setEmail] = useState('')
     const [ratinglist, setRatinglist] = useState('')
-    let token = localStorage.getItem('token')
     useEffect(() => {
-
+        let token = localStorage.getItem('token')
+        console.log(token)
         if (localStorage.getItem('token') !== null) {
             axios({
-                method: 'get',
                 url: '/user/auth/user/',
-                headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'}
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Token ${token}`
+                }
             }).then(res => {
                 setEmail(
                     res.data.email
@@ -68,13 +71,17 @@ function Rating(){
 
     //userRating 데이터베이스에 접근
     if (email != '' && ratinglist == '') {
-        axios.get(`/user/userrating/?search=${email}`, {
-            // params: {search: email},
+        let token = localStorage.getItem('token')
+        // axios.get('/user/userrating/', {
+        //     params: {search: email},
+        // })
+        axios.get(`/user/userrating/?search=${email}`,
+            {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Token ${token}`
+                    Authorization: `Token ${token}`
                 }
-        })
+            })
             .then((Response) => {
                 setRatinglist(
                     Response.data
