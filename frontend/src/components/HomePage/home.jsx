@@ -3,9 +3,13 @@ import {Link} from'react-router-dom';
 
 import "../../css/home.css"
 import "../../css/mypage.css"
+import "../../css/base.css"
+import "../../css/font.css"
+import "../../css/input_mbti.css"
 import pic1 from '../../img/pic01.jpg'
 import pic2 from "../../img/pic02.jpg";
 import picYellow from"../../img/pic_yellow.jpg"
+import InfoSelect from "./input_mbti";
 
 
 class Home extends Component {
@@ -19,23 +23,37 @@ class Home extends Component {
 
             <div>
                 <header className="home_container" >
-                    <div id="home_container-2">
-                        <div className="container d-flex align-items-center flex-column" >
-                            <h1 className="masthead-heading text-uppercase mb-0">HOME PAGE</h1>
-                        </div>
-                    </div>
 
-                    <div className= "container">
-                        <div id="home_container-3">
-                        <Link className="link" to="/input_mbti">
-                            <button className="btn btn-primary btn-xl" id="submitButton" type="submit">체험하기</button>
-                        </Link>
+					<section id="banner">
+						<div id="home_container-2">
+						<div class="inner">
+							<h2>Spectral</h2>
+							<p>Another fine responsive<br />
+							site template freebie<br />
+							crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>
 
-                        <Link className="link" to="/main">
-                        <button className="btn btn-primary btn-xl" id="submitButton" type="submit">입장하기</button>
-                        </Link>
-                        </div>
-                    </div>
+
+							<ul class="actions special">
+								<li><a href="/main" class="button primary">Activate</a></li>
+							</ul>
+						</div>
+						</div>
+						<a href="#one" class="more scrolly">Learn More</a>
+					</section>
+
+					<section id="one" className="wrapper style1 special">
+						<div className="inner">
+
+							<h1> 본인의 MBTI를 선택하십시오.</h1>
+							<p></p>
+							<p></p>
+
+						<InfoSelect />
+
+						</div>
+					</section>
+
+
 
                 </header>
 

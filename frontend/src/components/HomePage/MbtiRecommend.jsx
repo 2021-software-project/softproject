@@ -12,7 +12,7 @@ import pic5 from "../../img/pic05.jpg";
 const Title = styled.div`
   h2{
     margin-top: 30px;
-    background-color: khaki;
+    
     color: #fff;
     padding: 30px;
   }
@@ -121,7 +121,7 @@ class MbtiRecommend extends React.Component{
                     }
                 </ul>
                 <Link to="/login">
-                    <input className="btn btn-rcm" type="button" value="더 추천받기!"/>
+                    <input class="button primary" type="button" value="더 추천받기!"/>
                 </Link>
             </JobList>
             <br/>

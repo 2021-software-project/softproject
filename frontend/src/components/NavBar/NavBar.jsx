@@ -58,18 +58,18 @@ function NavBar() {
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                                                                     href="/main">메인 페이지</a></li>
+                                                                     href="/main">Main Page</a></li>
                             { auth ?
                                 <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                                                                     onClick={handleLogout} href="#logout">로그아웃</a></li>
+                                                                     onClick={handleLogout} href="#logout">Logout</a></li>
                                 :
                                 <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                                                                     href="/login">로그인 / 회원가입</a></li>
+                                                                     href="/login">Login / Sign up</a></li>
                             }
 
                             { auth ?
                                 <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                                                                     href="/mypage">마이페이지</a></li>
+                                                                     href="/mypage">MyPage</a></li>
                                 : " "
                             }
                         </ul>
