@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import { Menu } from 'antd';
 import styled from 'styled-components';
+import "../../css/navBar_footer.css";
 import "../../css/styles.css";
 import "../../js/scripts";
 import MenuBar from "./MenuBar";
+import MenuOutlined from  '@ant-design/icons';
 
 const NavList = styled.div`
   display: flex;
@@ -61,7 +63,9 @@ function NavBar() {
                             type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
+                        <MenuOutlined />
                         <i className="fas fa-bars"></i>
+
                     </button>
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ms-auto">

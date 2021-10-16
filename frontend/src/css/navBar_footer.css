@@ -1,0 +1,195 @@
+#page-top{
+    letter-spacing: 0.075em;
+    line-height: 5%;
+    color:white;
+    box-sizing: border-box;
+}
+
+#page-top #mainNav{
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    font-weight: 700;
+}
+#page-top #mainNav .navbar-nav li.nav-item a.nav-link {
+    color: #fff;
+}
+#page-top #mainNav .navbar-nav li.nav-item a.nav-link:hover { /*메뉴 마우스오버 색상*/
+    color: #aa6c84;
+    transition: .3s ease-in-out;
+}
+#page-top .nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+
+    /* text-decoration: none; */
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+#page-top #mainNav .navbar-nav {
+    line-height: 150%;
+    margin-top: 1rem;
+    display: flex;
+
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+@media (min-width: 780px) {
+    #page-top .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+    }
+    #page-top .navbar-nav li{
+        margin-right: 8%;
+        white-space: nowrap;
+    }
+    #page-top .navbar-brand {
+        font-size: 1.55rem;
+    }
+}
+@media (max-width: 780px) {
+    #page-top .navbar-expand-lg .navbar-nav {
+        flex-direction: column;
+
+    }
+    #page-top .navbar-brand {
+        font-size: 120%;
+    }
+}
+
+/*#page-top .navbar-nav li a:hover {*/
+/*    color:blue;*/
+/*    transition: .5s ease-in-out;*/
+/*}*/
+
+#page-top .navbar-brand {
+    color: white;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    /*font-size: 120%;*/
+    /*font-size: 1.55rem;*/
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#page-top .bg-secondary {
+    --bs-bg-opacity: 1;
+    background-color: #f69494;
+}
+#page-top .text-uppercase{
+    text-transform: uppercase !important;
+}
+#page-top .navbar{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+#page-top .navbar > .container {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+#page-top .container{
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    #page-top .container {
+        /*max-width: 540px;*/
+    }
+}
+
+#page-top #mainNav .navbar-toggler {
+    font-size: 60%;
+    padding: 0.3rem;
+}
+#page-top button{
+    cursor:pointer;
+}
+#page-top .bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: ivory;
+}
+#page-top .text-black-50 {  /*버튼 글자색*/
+    --bs-text-opacity: 1;
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+#page-top .navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    /*background-color: transparent;*/
+    border: 0.125rem solid transparent;
+    border-radius: 0.3rem;
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+#page-top .collapse:not(.show) {
+    display: none;
+}
+#page-top .navbar-collapse {
+    flex-basis: 100%;
+    /*flex-grow: 1;*/
+    align-items: center;
+}
+#page-top .px-0 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+@media (min-width: 780px) {
+    #page-top #mainNav {
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+        transition: padding-top 0.3s, padding-bottom 0.3s;
+    }
+    #page-top .navbar-expand-lg {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    #page-top .navbar-expand-lg .navbar-toggler {
+        display: none;
+    }
+    #page-top .navbar-expand-lg .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+        margin-top:-13px;
+        margin-right: 5%;
+    }
+    #page-top .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+    }
+}
+
+
+
+
+/* 메뉴 펼쳐질 때 서서히 */
+#page-top .collapsing {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  #page-top .collapsing {
+    transition: none;
+  }
+}
+#page-top .collapsing.collapse-horizontal {
+  width: 0;
+  height: auto;
+  transition: width 0.35s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  #page-top .collapsing.collapse-horizontal {
+    transition: none;
+  }
+}
