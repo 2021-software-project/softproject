@@ -3,7 +3,14 @@
 /* Please ❤ this if you like it! */
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+KR&family=Poppins:400,500,600,700,800,900&display=swap');
 
+.LoginSignupform {
+  box-sizing: border-box;
+}
+
 .LoginSignupform body{
+      background-image: linear-gradient(
+    45deg, rgba(114, 97, 147, 0.5) 20%, rgba(227, 123, 124, 0.49) 60%, rgba(255, 228, 180, 0.5));
+
     font-family: 'Poppins', 'IBM Plex Sans KR', serif;
 	font-weight: 300;
 	font-size: 15px;
@@ -301,3 +308,4 @@
 	width: auto;
 	display: block;
 }
+

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
+import Select from "react-select";
 import Axios from 'axios';
 import { Input } from 'antd';
 import styled from 'styled-components';
@@ -26,6 +27,7 @@ const SignupDiv = styled.div`
 const SignupPage = () => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
+  //const [mbti, setMbti] = useState('')
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
   const [errors, setErrors] = useState(false)
@@ -45,6 +47,7 @@ const SignupPage = () => {
     setEmail(e.target.value)
   }
 
+
   const onChangePwd1 = (e) => {
     setPassword1(e.target.value)
   }
@@ -58,6 +61,16 @@ const SignupPage = () => {
       console.log(chk)
     }
   }
+
+  const MbtiList = ["ENTP", "ENTJ", "ENFP", "ENFJ", "ESTP", "ESTJ", "ESFP", "ESFJ",
+      "INTP", "INTJ", "INFP", "INFJ", "ISTP", "ISTJ", "ISFP", "ISFJ"];
+
+
+  const [selMbti, setMbtiSelected] = useState("");
+
+  const onChangeMbti = (e) => {
+    setMbtiSelected(e.target.value);
+  };
 
     const [ modalOpen, setModalOpen ] = useState(false);
 
@@ -88,12 +101,22 @@ const SignupPage = () => {
     Axios.post('http://localhost:8000/user/auth/signup/', user)
         .then(res => {
           if (res.data.key) {
-            alert("회원가입을 축하드립니다 !")
-            window.location.replace('/login')
+              Axios.post('http://localhost:8000/user/usermbti/',
+                  {email:email, mbti:selMbti},
+                  { headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        'Authorization': 'token ' + res.data.key,
+                    }}).then(success=>{
+                  console.log(selMbti)
+                  alert("회원가입을 축하드립니다 !")
+                  window.location.replace('/login')
+              })
           }
           else {
             setUsername('')
             setEmail('')
+            setMbtiSelected('')
             setPassword1('')
             setPassword2('')
             localStorage.clear()
@@ -125,25 +148,40 @@ const SignupPage = () => {
             <h4 className="mb-4 pb-3">Sign Up</h4>
             {errors === true && <h2>Cannot signup with provided credentials</h2>}
               <form onSubmit={onSubmit}>
-                  <div className="form-group">
-                    <input type="username" name="username" className="form-style" placeholder="Your UserName(NickName)"
+
+
+
+                  <div className="form-group mt-2">
+                  <select className="form-style" onChange={onChangeMbti} value={selMbti}>
+                      <option value="none" hidden>MBTI</option>
+                      {MbtiList.map((item) => (
+                        <option style={{height: 10}} value={item} key={item}>
+                          {item}
+                        </option>
+                      ))}
+                  </select>
+                      <i className="input-icon uil uil-heart"></i>
+                  </div>
+
+                  <div className="form-group mt-2">
+                    <input type="username" name="username" className="form-style" placeholder="UserName(NickName)"
                            value={username} id="username" onChange={onChangeUsername} required autoComplete="off"/>
                       <i className="input-icon uil uil-user"></i>
                   </div>
                   <div className="form-group mt-2">
-                    <input type="email" name="email" className="form-style" placeholder="Your Email" id="email"
+                    <input type="email" name="email" className="form-style" placeholder="Email" id="email"
                            value={email} onChange={onChangeEmail} required autoComplete="off"/>
                       <i className="input-icon uil uil-at"></i>
                   </div>
 
                   <div className="form-group mt-2">
-                    <input type="password" name="password1" className="form-style" placeholder="Your Password(소문자, 숫자, 특수문자 포함 8~16자)" id="password1"
+                    <input type="password" name="password1" className="form-style" placeholder="Password(소문자, 숫자, 특수문자 포함 8~16자)" id="password1"
                            value={password1} onChange={onChangePwd1} required autoComplete="off"
                            minLength='8' pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&^])[a-z\d$@$!%*#?&^]{8,16}$' />
                       <i className="input-icon uil uil-lock-alt"></i>
                   </div>
                   <div className="form-group mt-2">
-                    <input type="password" name="password2" className="form-style" placeholder="Your Password Check(소문자, 숫자, 특수문자 포함 8~16자)" id="password2"
+                    <input type="password" name="password2" className="form-style" placeholder="Password Check(소문자, 숫자, 특수문자 포함 8~16자)" id="password2"
                            value={password2} onChange={onChangePwd2} required autoComplete="off"
                            minLength='8' pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&^])[a-z\d$@$!%*#?&^]{8,16}$' />
                       <i className="input-icon uil uil-lock-alt"></i>

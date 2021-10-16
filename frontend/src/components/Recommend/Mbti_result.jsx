@@ -79,6 +79,7 @@ function Mbtiresult(props) {
             }
             </div>
             {code?<Postings code={code}></Postings>:''}
+            <br/><br/>
         </div>
     );
 }

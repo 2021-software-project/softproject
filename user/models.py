@@ -98,6 +98,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.email
 
+class UserMbti(models.Model):
+    email = models.CharField(max_length=64)
+    mbti = models.CharField(max_length=6)
+
 class UserRating(models.Model):
     email = models.CharField(max_length=64)
     jobfamily = models.CharField(max_length=5)
