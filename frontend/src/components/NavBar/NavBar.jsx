@@ -2,23 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import { Menu } from 'antd';
-import styled from 'styled-components';
 import "../../css/navBar_footer.css";
-import "../../css/styles.css";
-import "../../js/scripts";
-import MenuBar from "./MenuBar";
 import MenuOutlined from  '@ant-design/icons';
+import "../../js/scripts.js"
 
-const NavList = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  .ant-menu {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-  }
-`;
+
+function MenuBar(){
+    return(
+        <div id="menubar">
+            {/*<div className="container">*/}
+                    {/*<button className="navbar-toggler text-uppercase font-weight-bold bg-primary text-black-50"*/}
+                    {/*        type="button" data-bs-toggle="collapse" data-bs-target="#menuitem"*/}
+                    {/*        aria-controls="menuitem" aria-expanded="false" aria-label="Toggle navigation">*/}
+                    {/*    =*/}
+                    {/*</button>*/}
+                    <div className="collapse navbar-collapse " id="menuitem">
+                        <ul className="menubarUL">
+                            <li className="menuLI"><a className="menuLI-A"
+                                                                     href="/Mbti_rcm">MBTI별 추천</a></li>
+                            <li className="menuLI "><a className="menuLI-A"
+                                                                     href="/Personal_rcm">개인별 추천</a></li>
+                            <li className="menuLI"><a className="menuLI-A"
+                                                                     href="/Alba_rating">알바평가</a></li>
+                        </ul>
+                    </div>
+            {/*</div>*/}
+        </div>
+    )
+}
+
 
 function NavBar() {
 
@@ -89,7 +101,6 @@ function NavBar() {
                 </div>
             </nav>
         </div>
-
             { auth ? <MenuBar /> : "" }
 </div>
     )

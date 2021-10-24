@@ -25,8 +25,16 @@
 }
 
 /* -------------------- */
-.LoginSignupform {
-  box-sizing: border-box;
+.LoginSignupform:before, .LoginSignupform:after{
+  box-sizing: border-box !important;
+}
+
+.LoginSignupform .py-5{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.LoginSignupform .pb-3{
+  padding: 1rem;
 }
 
 .LoginSignupform body{
@@ -41,6 +49,9 @@
      background-image: linear-gradient(
     45deg, rgba(114, 97, 147, 0.5) 20%, rgba(227, 123, 124, 0.5) 60%);
 	overflow-x: hidden;
+}
+.LoginSignupform .container{
+
 }
 .LoginSignupform a {
 	cursor: pointer;
@@ -122,6 +133,8 @@
 
 
 .LoginSignupform .card-3d-wrap {
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
   width: 500px;
   max-width: 100%;
@@ -174,6 +187,7 @@
   transform: rotateY(180deg);
 }
 .LoginSignupform .center-wrap{
+  box-sizing: border-box;
   position: absolute;
   width: 100%;
   padding: 0 35px;
@@ -184,19 +198,23 @@
   display: block;
 }
 
-
 .LoginSignupform .form-group{
   position: relative;
   display: block;
     margin: 0;
+  margin-top: 0.5rem !important;
     padding: 0;
 }
-.LoginSignupform .form-style {
+
+.LoginSignupform input.form-style {
+
+}
+.LoginSignupform input.form-style, .LoginSignupform select.form-style {
   font-family: 'Poppins', 'IBM Plex Sans KR', serif;
-  padding: 13px 20px;
+  /*padding: 13px 20px;*/
   padding-left: 55px;
   height: 48px;
-  width: 100%;
+  width:86.5%;
   font-weight: 500;
   border-radius: 4px;
   font-size: 14px;
@@ -302,6 +320,8 @@
   background-color:   #705f90; /*Login*/
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .LoginSignupform .btn:active,
 .LoginSignupform .btn:focus{

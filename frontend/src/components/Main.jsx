@@ -1,5 +1,4 @@
 import React from 'react';
-import MenuBar from "./NavBar/MenuBar";
 import Axios from 'axios';
 import {Link} from "react-router-dom";
 import picYellow from "../img/pic_yellow.jpg";

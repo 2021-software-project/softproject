@@ -54,8 +54,9 @@ function App(props) {
               <Route exact path="/user/password-reset/:uid/:token" component={PasswordReset}></Route>
 
             </Switch>
+            <Footer/>
           </div>
-        <Footer/>
+
       </Suspense>
     </Router>
     );
