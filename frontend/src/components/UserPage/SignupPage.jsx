@@ -82,64 +82,69 @@ const SignupPage = () => {
     }
 
   const onSubmit = (e) => {
-    e.preventDefault()
+      e.preventDefault()
 
-    const user = {
-      username : username,
-      email: email,
-      password1: password1,
-      password2: password2
-    }
-    console.log(user);
+      const user = {
+          username: username,
+          email: email,
+          password1: password1,
+          password2: password2,
+          sns:'' // 없어도 user db 에 들어감
+      }
+      console.log(user);
 
-    //개인정보수집 check 확인
-    if(!chk){
-      alert('개인정보 수집에 동의는 필수사항입니다.')
-      return false
-    }
+      //개인정보수집 check 확인
+      if (!chk) {
+          alert('개인정보 수집에 동의는 필수사항입니다.')
+          return false
+      }
 
-    Axios.post('http://localhost:8000/user/auth/signup/', user)
-        .then(res => {
-          if (res.data.key) {
-              Axios.post('http://localhost:8000/user/usermbti/',
-                  {email:email, mbti:selMbti},
-                  { headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json;charset=UTF-8',
-                        'Authorization': 'token ' + res.data.key,
-                    }}).then(success=>{
-                  console.log(selMbti)
-                  alert("회원가입을 축하드립니다 !")
-                  window.location.replace('/login')
-              })
-          }
-          else {
-            setUsername('')
-            setEmail('')
-            setMbtiSelected('')
-            setPassword1('')
-            setPassword2('')
-            localStorage.clear()
-            setErrors(true)
-          }
-        })
-        .catch(err => {
-            console.log(err)
-          //console.clear()
-          if(err.response.data.email){
-            alert("이미 사용중인 email 입니다.")
-            document.getElementById("email").focus()
-          }
-          else if(err.response.data.username) {
-            alert("이미 사용중인 닉네임 입니다")
-            document.getElementById("username").focus()
-          }
-          else if(err.response.data.non_field_errors){
-            alert("비밀번호가 일치하지 않습니다.")
-            setPassword2('')
-            document.getElementById("password2").focus()
-          }
-        })
+      Axios.post('http://localhost:8000/user/auth/signup/', user)
+          .then(res => {
+              if (res.data.key) {
+                  Axios.post('http://localhost:8000/user/usermbti/',
+                      {email: email, mbti: selMbti},
+                      {
+                          headers: {
+                              'Accept': 'application/json',
+                              'Content-Type': 'application/json;charset=UTF-8',
+                              'Authorization': 'token ' + res.data.key,
+                          }
+                      }).then(success => {
+                      console.log(selMbti)
+                      alert("회원가입을 축하드립니다 !")
+                      window.location.replace('/login')
+                  })
+              } else {
+                  setUsername('')
+                  setEmail('')
+                  setMbtiSelected('')
+                  setPassword1('')
+                  setPassword2('')
+                  localStorage.clear()
+                  setErrors(true)
+              }
+          })
+          .catch(err => {
+              console.log(err.response.data)
+              const errType = Object.keys(err.response.data)[0]
+              let errMsg = err.response.data[errType]
+              // console.log(errType, errMsg)
+              if (errType === "email") {
+                  setEmail('')
+                  errMsg = "이미 사용중인 이메일입니다."
+                  document.getElementById(errType).focus();
+              }
+              else if(errType==="username"){
+                  setUsername('')
+                  document.getElementById(errType).focus();
+              }
+              else if (errType == "password") {
+                  setPassword2('')
+                  document.getElementById("password2").focus()
+              }
+              alert(errMsg)
+          })
   }
 
   return(

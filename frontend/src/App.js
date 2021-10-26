@@ -7,7 +7,7 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/NavBar/Footer';
 import LoginSignupform from './components/UserPage/Login_Signup_form'
 import Home from "./components/HomePage/home";
-import InfoSelect from "./components/HomePage/input_mbti";
+import HomeMbti from "./components/HomePage/HomeMbti";
 import MbtiRecommend from "./components/HomePage/MbtiRecommend";
 import Main from './components/Main';
 import Mbtircm from "./components/Recommend/Mbti_rcm"; //추가
@@ -36,8 +36,8 @@ function App(props) {
             <Switch>
               <Route exact path="/login" component={LoginSignupform}></Route>
               <Route exact path="/" component={Home}></Route>
-              <Route exact path="/input_mbti" component={InfoSelect}></Route>
-              <Route exact path="/mbti" component={MbtiRecommend}></Route>
+              {/*<Route exact path="/home_mbti" component={HomeMbti}></Route>*/}
+              {/*<Route exact path="/mbti" component={MbtiRecommend}></Route>*/}
               <PrivateRoute exact path="/firstulike" component={FirstUserLike}></PrivateRoute>
               <PrivateRoute exact path="/main" component={Main}></PrivateRoute>
               <PrivateRoute exact path="/mypage" component={MyPage}></PrivateRoute>
@@ -47,12 +47,11 @@ function App(props) {
               <PrivateRoute exact path="/personal_result" component={Personal_result}></PrivateRoute>
               <PrivateRoute exact path="/GoodBad_list" component={GoodBad}></PrivateRoute>
               <PrivateRoute exact path="/MyInfo_edit" component={MyInfo}></PrivateRoute>
-              <PrivateRoute exact path="/UserName" component={UserName}></PrivateRoute>
-              <PrivateRoute exact path="/PasswordUpdate" component={PasswordUpdate}></PrivateRoute>
+              {/*<PrivateRoute exact path="/UserName" component={UserName}></PrivateRoute>*/}
+              {/*<PrivateRoute exact path="/PasswordUpdate" component={PasswordUpdate}></PrivateRoute>*/}
               <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
               <PrivateRoute exact path="/Rating_list" component={Rating}></PrivateRoute>
               <Route exact path="/user/password-reset/:uid/:token" component={PasswordReset}></Route>
-
             </Switch>
           </div>
 

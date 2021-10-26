@@ -1,9 +1,27 @@
-.firstJobSelect{
 
-
+.FirstUserLike .header{
+    color : #000;
+    font-size: 1.15em;
+    line-height: 1.75em;
+    letter-spacing: 0.225em;
+    margin: 0 0 1em 0;
+    text-transform: uppercase;
+}
+@media screen and (max-width: 736px) {
+    .FirstUserLike h3 {
+        font-size: 1em;
+        line-height: 1.65em;
+    }
+}
+.FirstUserLike .header-info{
+    color : #000;
+    font-size: 0.7em;
+    line-height: 1.5em;
+    letter-spacing: 0.225em;
+    margin: 0 0 1em 0;
 }
 
-.firstjob-grid-thead {
+.FirstUserLike .firstjob-grid-thead {
   display: grid;
   grid-template-columns: 40% 40%;
   grid-column-gap: 10px;
@@ -12,10 +30,13 @@
   align-items: center;
   font-weight:bold;
 
+  letter-spacing: 0.075em;
+  line-height: 2.65em;
+  color: #fff;
 }
 
 @media (min-width: 700px) { {/*폭이 700px 이상일 때만 적용. 미만일 땐 위에꺼 적용*/}
-    .firstjob-grid-thead{
+    .FirstUserLike .firstjob-grid-thead{
       display: grid;
       grid-template-columns: 23% 23% 23%;
       grid-column-gap: 10px;
@@ -26,25 +47,43 @@
       font-weight:bold;
     }
 }
-.firstjob-cell{
-  font-family: 'Poppins', 'IBM Plex Sans KR', serif;
-  border-radius: 7px;
-  height: 90px;
-  background: rgba(65, 198, 252, 0.49);
-  text-align: center;
-  padding : 20px 20px;
-  cursor:pointer;
+
+.FirstUserLike .firstjob-cell {
+    font-family: 'Poppins', 'IBM Plex Sans KR', serif;
+    border-radius: 7px;
+    height: 60px;
+    background: rgba(65, 198, 252, 0.49);
+    text-align: center;
+    padding: 12px 0 0 0;
+    cursor: pointer;
 }
-.firstjob-cell:hover{
+@media (min-width: 700px) { {/*폭이 700px 이상일 때만 적용. 미만일 땐 위에꺼 적용*/}
+    .FirstUserLike .firstjob-cell {
+        font-family: 'Poppins', 'IBM Plex Sans KR', serif;
+        border-radius: 7px;
+        height: 60px;
+        background: rgba(65, 198, 252, 0.49);
+        text-align: center;
+        padding: 20px 20px;
+        cursor: pointer;
+    }
+}
+
+.FirstUserLike .jobSelected{
+    color : #000;
+
+}
+
+.FirstUserLike .firstjob-cell:hover{
   background-color: #0d6efd;
   color:white;
   transition: background-color .5s ease-in-out;
 }
-.firstjob-cell.clicked{
+.FirstUserLike .firstjob-cell.clicked{
   background-color: #00ff7b;
 }
 
-.jobSelectBtn {
+.FirstUserLike .jobSelectBtn {
     color: #ffffff;
     background-color: #1d253b!important;
     border-color: #1d253b !important;
@@ -54,9 +93,14 @@
     font-size: 1.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    cursor: pointer;
+    border: 0;
+    height: 3.125em;
+    letter-spacing: 0.225em;
 }
 
-.jobSelectBtn:hover {
+.FirstUserLike .jobSelectBtn:hover {
   color:#1d253b;
   background-color: #c4e7ff !important;
   border-color:#1d253b!important;

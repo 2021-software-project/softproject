@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom'
 import Job2 from "./Job2";
 import "../../css/Job2.css";
-import "../../css/Mbti.css";
+// import "../../css/Mbti.css";
 
 
 import {useDispatch, useSelector} from "react-redux";

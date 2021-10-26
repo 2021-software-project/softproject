@@ -1,10 +1,11 @@
 import React from 'react'
-import MbtiArea from "./MbtiArea";
-import "../../css/MbtiArea.css";
-import "../../css/Mbti.css";
 import {useDispatch, useSelector} from "react-redux";
 import {changeArea} from "../../store/modules/area_modules";
 import {Link} from "react-router-dom";
+
+import MbtiArea from "./MbtiArea";
+import "../../css/Rcm.css";
+
 
 function Personal_rcm(){
 
@@ -31,11 +32,11 @@ function Personal_rcm(){
         <h4>선택한 지역 : <span style={{color:"blueviolet"}}>{ch_areasi} {ch_areagu}</span> </h4>
             <div className="area" align="center">  {/*지역 선택*/}
                 <p></p>
-                <table>
+                <table id="tb-per">
                     <tr>
                     {AREA.map(area =>
-                        (<td><input type="radio" className="AreaSelect" name={"areasi"} value={area}
-                            onChange={()=>onChangeArea(area,'')}/> {area} </td> ))
+                        (<td id="td-per"><label><input type="radio" className="AreaSelect" name={"areasi"} value={area}
+                                           onChange={()=>onChangeArea(area,'')}/> {area} </label></td> ))
                     }
                     </tr>
                 </table>
@@ -47,7 +48,7 @@ function Personal_rcm(){
                 state:{
                 check:"1",}
             }}>
-                    <button className="btn btn-primary btn-xl"> 추천받기</button>
+                    <button className="button primary"> 추천받기</button>
             </Link>
     </div>
     )

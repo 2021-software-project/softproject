@@ -2,9 +2,8 @@ import React, {useEffect,useState} from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import axios from "axios";
 import {useSelector} from "react-redux";
-import './card.css'
 import JobPostingModal from '../../js/JobPostingModal'
-import "../../css/Mbti_result.css";
+import "../../css/postings.css";
 
 
 function Postings(props){

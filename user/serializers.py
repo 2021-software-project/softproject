@@ -7,11 +7,52 @@ from django.utils.encoding import smart_str, force_str, smart_bytes, DjangoUnico
 from django.utils.http import  urlsafe_base64_decode, urlsafe_base64_encode
 from rest_framework.exceptions import AuthenticationFailed
 
+from .models import CustomUser, UserRating, UserPostingLike
+
 class UserSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = CustomUser
-        # 'username' 추가
-        fields = ('email','username','first_name', 'last_name','last_login','date_joined','is_staff')
+        fields = ('email','username','first_name', 'last_name','last_login','date_joined','is_staff','sns')
+
+
+class CustomRegisterSerializer(serializers.ModelSerializer):
+    password1 = serializers.CharField(required=True, write_only=True)
+    password2 = serializers.CharField(required=True, write_only=True)
+
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'email', 'password1', 'password2', 'sns']
+        extra_kwargs = {
+            'password': {
+                'write_only': True
+            }
+        }
+
+    # def get_cleaned_data(self):
+    #     data = super(CustomRegisterSerializer, self).get_cleaned_data()
+    #     return data
+
+    def save(self,request, *args, **kwargs):
+        user = CustomUser(
+            username = self.validated_data.get('username',' '),
+            email= self.validated_data.get('email', ' '),
+            sns = self.validated_data.get('sns',' '),
+        )
+        password1 = self.validated_data.get('password1', ' ')
+        password2 = self.validated_data.get('password2', ' ')
+
+        if CustomUser.objects.filter(email=user.email).exists():
+            raise serializers.ValidationError({'email':'이미 사용중인 이메일입니다.'})
+        elif CustomUser.objects.filter(username=user.username).exists():
+            raise serializers.ValidationError({'username': '이미 사용중인 닉네임입니다.'})
+        elif password1 != password2:
+            raise serializers.ValidationError({'password': '비밀번호가 일치하지 않습니다.'})
+
+        user.set_password(password1)
+        user.save()
+        return user
+
 
 class ResetPasswordEmailRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(min_length=2)
@@ -21,6 +62,7 @@ class ResetPasswordEmailRequestSerializer(serializers.Serializer):
 
     def validate(self, attrs):
         return super().validate(attrs)
+
 
 class SetNewPasswordSerializer(serializers.Serializer):
     password = serializers.CharField(min_length=6,max_length=68,write_only=True)
@@ -50,6 +92,8 @@ class SetNewPasswordSerializer(serializers.Serializer):
         except Exception as e:
             raise AuthenticationFailed('The reset link is invalid',401)
         return super().validate(attrs)
+
+
 
 class UserMbtiSerializer(serializers.ModelSerializer):
     class Meta:

@@ -75,20 +75,22 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     )
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
+    sns = models.CharField(max_length=50, blank=True)
+
     objects = UserManager()
 
     # 고유식별자로 사용되는 사용자 모델의 필드 이름을 설명하는 문자열.
     # 일반적으로 사용자의 이름이지만 email 주소 또는 다른 고유 식별자로 지정 가능
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['sns']
 
     # class Meta : Inner class 로 사용하여 상위 클래스에게 meta data를 제공하는 것.
     class Meta:
         # 사용자가 읽기 쉬운 객체의 이름으로 관리자 화면에서 표시되는 이름 지정
         verbose_name = _('user')
         # verbose_name과 동일하나 복수 명칭 지정
-        verbose_name_plural = _('user')
+        verbose_name_plural = _('users')
 
     # __str__ : 해당 클래스로 만들어진 인스턴스를 자체 출력할 때, 문자열로 설명하기 위한 메소드
     # 인스턴스에 이름을 부여하여 알아보기 편하게 하기 위함
