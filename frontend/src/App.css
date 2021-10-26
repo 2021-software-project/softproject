@@ -1,6 +1,15 @@
 .App {
   text-align: center;
-  height: 100vh;
+  /*height: 100%;*/
+
+}
+
+html, body{
+  height: 100%;
+}
+#root{
+  position: relative;
+  min-height: 100%;
 }
 
 

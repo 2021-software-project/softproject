@@ -25,7 +25,7 @@
 }
 
 /* -------------------- */
-.LoginSignupform:before, .LoginSignupform:after{
+.LoginSignupform *{
   box-sizing: border-box !important;
 }
 
@@ -136,8 +136,8 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  width: 500px;
-  max-width: 100%;
+  width: 90%;
+  max-width: 550px;
   height: 500px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -214,7 +214,7 @@
   /*padding: 13px 20px;*/
   padding-left: 55px;
   height: 48px;
-  width:86.5%;
+  width:100%;
   font-weight: 500;
   border-radius: 4px;
   font-size: 14px;
@@ -227,6 +227,7 @@
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
   box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+  letter-spacing: -0.5px;
 }
 .LoginSignupform .form-style:focus,
 .LoginSignupform .form-style:active {
