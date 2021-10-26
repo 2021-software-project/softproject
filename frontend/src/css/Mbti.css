@@ -3,6 +3,14 @@
     height: 750px;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    border: 0;
+    color: #000;
+}
+
+#mb_ti-container h1, h3, h4{
+    color: #000;
+    letter-spacing: 0.225em;
+    margin: 0 0 0 0;
 }
 
 #per_son-container{
@@ -10,6 +18,16 @@
     height: 450px;
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+
+#per_son-container h1, h3, h4{
+    color: #000;
+    letter-spacing: 0.225em;
+    margin: 0 0 0 0;
+}
+
+#td-per input{
+    color : #000;
 }
 
 #rating-container{

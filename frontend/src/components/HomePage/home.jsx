@@ -9,7 +9,7 @@ import "../../css/input_mbti.css"
 import pic1 from '../../img/pic01.jpg'
 import pic2 from "../../img/pic02.jpg";
 import picYellow from"../../img/pic_yellow.jpg"
-import InfoSelect from "./input_mbti";
+import HomeMbti from "./HomeMbti";
 
 
 class Home extends Component {
@@ -32,7 +32,6 @@ class Home extends Component {
 							site template freebie<br />
 							crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>
 
-
 							<ul class="actions special">
 								<li><a href="/main" class="button primary">Activate</a></li>
 							</ul>
@@ -41,26 +40,16 @@ class Home extends Component {
 						<a href="#one" class="more scrolly">Learn More</a>
 					</section>
 
-					<section id="one" className="wrapper style1 special">
+					<section id="one" className="wrapper style1 special"> b
 						<div className="inner">
 
 							<h1> 본인의 MBTI를 선택하십시오.</h1>
 							<p></p>
 							<p></p>
-
-						<InfoSelect />
-
+						<HomeMbti />
 						</div>
 					</section>
-
-
-
                 </header>
-
-
-
-
-
             </div>
         )
     }

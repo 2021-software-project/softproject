@@ -17,10 +17,10 @@
 .Password-Reset-modal > p{
   margin-top:10px!important;
 }
-.modal > section{
+.Password-Reset-modal .modal > section{
   height: 120%!important;
 }
-.modal section > header{
+.Password-Reset-modal .modal section > header{
   padding : 16px 16px 16px 16px!important;
 }
 

@@ -92,7 +92,7 @@ class SetNewPasswordAPIView(generics.GenericAPIView):
 
 class UserRatingVIEW(generics.ListAPIView): #알바평가 db에 넣고 가져오기(Create, Read)
     queryset = UserRating.objects.exclude(job='0')
-    print("queryset", queryset)
+    # print("queryset", queryset)
     serializer_class = UserRatingSerializer
 
     #queryset = UserRating.objects.all()

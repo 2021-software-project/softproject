@@ -14,3 +14,4 @@ class CustomUserAdmin(UserAdmin):
     list_display = ['email']
 
 admin.site.register(UserRating)
+admin.site.register(CustomUser)

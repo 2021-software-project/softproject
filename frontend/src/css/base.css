@@ -102,7 +102,7 @@ input, select, textarea {
 		}
 
 	body, input, select, textarea {
-		color: #fff;
+		/*color: #fff;*/
 		font-family: "Open Sans", Helvetica, sans-serif;
 		font-size: 15pt;
 		font-weight: 400;
@@ -1818,13 +1818,13 @@ input, select, textarea {
 		margin: 0 0 2em 0;
 	}
 
-	label {
-		color: #fff;
-		display: block;
-		font-size: 0.9em;
-		font-weight: 600;
-		margin: 0 0 1em 0;
-	}
+	/*label {*/
+	/*	color: #fff;*/
+	/*	display: block;*/
+	/*	font-size: 0.9em;*/
+	/*	font-weight: 600;*/
+	/*	margin: 0 0 1em 0;*/
+	/*}*/
 
 	input[type="text"],
 	input[type="password"],
@@ -2336,10 +2336,10 @@ input, select, textarea {
 		overflow-x: auto;
 	}
 
-	table {
-		margin: 0 0 2em 0;
-		width: 100%;
-	}
+	/*table {*/
+	/*	margin: 0 0 2em 0;*/
+	/*	width: 100%;*/
+	/*}*/
 
 		table tbody tr {
 			border: solid 1px #fff;
@@ -2352,7 +2352,7 @@ input, select, textarea {
 			}
 
 		table td {
-			padding: 0.75em 0.75em;
+			/*padding: 0.75em 0.75em;*/
 		}
 
 		table th {

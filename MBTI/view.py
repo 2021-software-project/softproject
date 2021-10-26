@@ -19,6 +19,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
 from .models import JobPosting
+from django.core.mail.message import EmailMessage
 
 
 @method_decorator(csrf_exempt,name='dispatch')
@@ -47,7 +48,6 @@ class persRcm(View):
 
 @csrf_exempt
 def postings(request):
-
     if request.method == 'POST':
         code = request.POST.get('code')
         si = request.POST.get('si')

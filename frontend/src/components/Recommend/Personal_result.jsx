@@ -1,21 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
-import axios from "axios";
-import styled from "styled-components";
-import Postings from "./postings";
 import Axios from "axios";
-
-const InfoDiv = styled.div`
-  .info{
-    color: #ffc107;
-    font-size: 30px;
-    margin-top: 1rem;
-    span{
-        margin : 0 10px;
-    }
-  }
-`;
+import Postings from "./postings";
+import "../../css/RcmResult.css"
 
 function Personal_result(props) {
 
@@ -57,7 +45,7 @@ function Personal_result(props) {
 
     useEffect(()=>{
         if (jobList == '') {
-            axios.get('/persrcm/', {
+            Axios.get('/persrcm/', {
                 params: {username: user},
             }).then((res) => {
                 console.log(res.data.job_list)
@@ -76,13 +64,11 @@ function Personal_result(props) {
     }
 
     return (
-        <div>
-            <InfoDiv>
-                <p className="info">
-                    <span># {ch_areasi}</span>
-                    <span># {ch_areagu}</span>
-                </p>
-            </InfoDiv>
+        <div className="rcm-result">
+            <p className="info">
+                <span># {ch_areasi}</span>
+                <span># {ch_areagu}</span>
+            </p>
             <div className="div-btn">
             {
                 Object.entries(jobList).map(([id,value])=>
