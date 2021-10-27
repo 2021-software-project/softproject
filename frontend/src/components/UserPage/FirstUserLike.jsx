@@ -1,5 +1,4 @@
 import React, {useEffect,useState} from 'react';
-import 'react-toastify/dist/ReactToastify.css';
 import UserName from "../MyPage/UserName";
 import "../../css/FirstUserLike.css"
 import Axios from "axios";

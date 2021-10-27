@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Axios from 'axios';
 
 import "../../css/mypage.css";
-import "../../css/styles.css";
 
 function PasswordUpdate() {
   const [oldpwd, setOldpwd] = useState("");

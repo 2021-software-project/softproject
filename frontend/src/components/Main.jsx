@@ -5,7 +5,6 @@ import picYellow from "../img/pic_yellow.jpg";
 import styled from "styled-components";
 import "../css/home.css";
 import "../css/mypage.css";
-import "../css/base.css";
 import "../css/Main.css"
 
 // const Img=styled.div`

@@ -18,6 +18,7 @@ html, body{
 }
 .main{
   flex:1;
+  background-color: rgba(254, 242, 241, 0.87);
 }
 
 

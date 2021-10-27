@@ -2,7 +2,6 @@ import React, {useState, useEffect, useRef, useCallback} from 'react';
 import MbtiRecommend from "./MbtiRecommend";
 import "../../css/input_mbti.css"
 import "../../css/home.css"
-import "../../css/base.css";
 
 function HomeMbti() {
 

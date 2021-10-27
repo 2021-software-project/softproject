@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import Select from "react-select";
 import Axios from 'axios';
 import { Input } from 'antd';
 import styled from 'styled-components';
