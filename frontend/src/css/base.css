@@ -29,9 +29,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
-body {
+/*body {
 	line-height: 1;
-}
+}*/
 
 ol, ul {
 	list-style: none;
@@ -49,10 +49,6 @@ blockquote, q {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-
-body {
-	-webkit-text-size-adjust: none;
 }
 
 mark {
@@ -86,10 +82,6 @@ input, select, textarea {
 		box-sizing: inherit;
 	}
 
-	body {
-		/*background: #2e3842;*/
-	}
-
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 			-moz-animation: none !important;
 			-webkit-animation: none !important;
@@ -102,7 +94,7 @@ input, select, textarea {
 		}
 
 	body, input, select, textarea {
-		color: #fff;
+		color: #000000;
 		font-family: "Open Sans", Helvetica, sans-serif;
 		font-size: 15pt;
 		font-weight: 400;
@@ -120,7 +112,7 @@ input, select, textarea {
 
 		@media screen and (max-width: 1280px) {
 
-			body, input, select, textarea {
+			input, select, textarea {
 				font-size: 12pt;
 			}
 
@@ -163,7 +155,7 @@ input, select, textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #fff;
+		color: #000000;
 		font-weight: 800;
 		letter-spacing: 0.225em;
 		line-height: 1em;

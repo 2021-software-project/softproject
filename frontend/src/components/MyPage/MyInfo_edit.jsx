@@ -5,7 +5,7 @@ import UserName from "./UserName";
 class MyInfo extends React.Component{
     render() {
         return (
-            <div className="my_container">
+            <div id ="my_container2" >
                  <div id="password_con-1">
                  <h2>내정보 수정</h2>
                 <UserName /> 회원님,

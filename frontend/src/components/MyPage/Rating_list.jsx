@@ -60,7 +60,8 @@ function Rating(){
 
 
     return(
-        <div  className ="my_container" id="con_mar">
+        <div id ="my_container3" >
+              <div id="con_mar">
             <h2>Rating List</h2>
             {email}<p/>
 
@@ -75,6 +76,8 @@ function Rating(){
                         )) }
                     </tbody>
                 </table>
+
+                  </div>
 
         </div>
     )
