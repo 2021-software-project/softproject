@@ -5,7 +5,7 @@ import "../../css/mypage.css";
 
 function GoodBad(){
     return(
-        <div className = "my_container">
+        <div id = "my_container3">
             <div className="mid_box2">
          <h1>GoodBad List</h1>
                 </div>
