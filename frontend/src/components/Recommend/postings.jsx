@@ -3,7 +3,9 @@ import { Redirect, Route } from 'react-router-dom';
 import axios from "axios";
 import {useSelector} from "react-redux";
 import JobPostingModal from '../../js/JobPostingModal'
+import PostingListLike from "../../js/PostingListLike";
 import "../../css/postings.css";
+
 
 
 function Postings(props){
@@ -36,8 +38,6 @@ function Postings(props){
     const [ modalOpen, setModalOpen ] = useState(false);
     const [ showingurl, setshowingurl] = useState("");
 
-    const [postingLike, setPostingLike] = useState(0);
-
     const [start_time, setStartTime] = useState(0);
     let stay_time;
 
@@ -54,16 +54,15 @@ function Postings(props){
         setModalOpen(false);
         setshowingurl("");
 
-         const whatPostingLike = {
+         const whatPostingClick = {
             email: email,
             post_id : postid,
             jobcode : subCode,
-            like: postingLike,
             stay_time: stay_time,
          }
-        console.log(whatPostingLike);
+        console.log(whatPostingClick);
 
-         axios.post("/user/userpostinglike/", whatPostingLike,
+         axios.post("/user/userpostingclick/", whatPostingClick,
             {
                 headers: {
                     'Accept': 'application/json',
@@ -74,8 +73,6 @@ function Postings(props){
             .catch(function (err){
               console.log(err)
         })
-
-       setPostingLike(0);
     }
 
     useEffect(()=>{
@@ -101,25 +98,26 @@ function Postings(props){
                 postings.map((posting)=>(
                     <div className="card">
                         {/* <!-- 카드 헤더 -->*/}
-                            {/*<div class="card-header" >*/}
-                            {/*    <div class = "card-header-is_closed" >*/}
-                            {/*        <div class = "card-header-text" > 모집중 </div >*/}
-                            {/*        <div class = "card-header-number" > 2 / 5 </div >*/}
-                            {/*    </div >*/}
-                            {/*</div>*/}
                             {/* <!--  카드 바디 -->*/}
-                          <a onClick={ ()=> (openModal) (setshowingurl(posting.fields.url.replace("www", "m")), setpostid(posting.pk) ,(setsubCode(posting.fields.sub_code))) }>
+
                             <div className="card-body">
                             {/*// <!--  카드 바디 헤더 -->*/}
+                                <PostingListLike
+                                        email={localStorage.getItem('email')}
+                                        post_id={posting.pk}
+                                        jobcode = {posting.fields.sub_code}
+                                    />
+
+                            <a onClick={ ()=> (openModal) (setshowingurl(posting.fields.url.replace("www", "m")), setpostid(posting.pk) ,(setsubCode(posting.fields.sub_code))) }>
                             <div className="card-body-header">
-                                <h1>{posting.fields.company}</h1>
+                                <span className="headerTitle"><h1>{posting.fields.company}</h1>
+
+
+                                </span>
                                 <p className = "card-body-nickname">
                                     {posting.fields.subtitle}
                                 </p>
                             </div>
-                            {/*<p className="card-body-description">*/}
-                            {/*    hover시 보이나 ?*/}
-                            {/*</p>*/}
                             {/*// <!--  카드 바디 본문 -->*/}
                             {/*// <!--  카드 바디 푸터 -->*/}
                             <div className="card-body-footer">
@@ -128,13 +126,14 @@ function Postings(props){
                                 <span className="pay_data"> <span className="pay-type">{posting.fields.pay_type}</span>{posting.fields.pay} </span>
                                 </p>
                             </div>
+                            </a>
                             </div>
-                          </a>
+
                     </div>
                 ))
                 :<p>최근 공고가 없습니다.</p>
             }
-            <JobPostingModal open={ modalOpen } close={ closeModal } setPostingLike = {setPostingLike} postingLike={postingLike}>
+            <JobPostingModal open={ modalOpen } close={ closeModal } post_id={postid} jobcode={subCode}>
                 <iframeCon>
                     <div className="iframe-container">
                         <iframe  src={showingurl}>대체내용</iframe>

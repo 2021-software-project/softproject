@@ -1,13 +1,11 @@
 from rest_framework import serializers
 
-from .models import CustomUser, UserMbti, UserRating, UserPostingLike
-
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import smart_str, force_str, smart_bytes, DjangoUnicodeDecodeError
 from django.utils.http import  urlsafe_base64_decode, urlsafe_base64_encode
 from rest_framework.exceptions import AuthenticationFailed
 
-from .models import CustomUser, UserRating, UserPostingLike
+from .models import CustomUser, UserRating, UserMbti, UserPostingClick, UserPostingLike
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -104,6 +102,11 @@ class UserRatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserRating
         fields = '__all__'  #모델에서 설정한 모든 필드를 여기서도 설정해줌
+
+class UserPostingClickSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserPostingClick
+        fields = '__all__'
 
 class UserPostingLikeSerializer(serializers.ModelSerializer):
     class Meta:

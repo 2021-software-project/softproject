@@ -1,11 +1,10 @@
-from .models import UserRating, UserPostingLike, UserMbti
-from .serializers import UserRatingSerializer, UserPostingLikeSerializer, UserMbtiSerializer
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import APIView, api_view
 from rest_framework.exceptions import AuthenticationFailed
 
-from .models import UserRating, UserPostingLike
-from .serializers import UserRatingSerializer, UserPostingLikeSerializer, ResetPasswordEmailRequestSerializer,SetNewPasswordSerializer
+from .models import UserRating, UserPostingClick, UserMbti, UserPostingLike
+from .serializers import UserRatingSerializer, UserMbtiSerializer, UserPostingClickSerializer,UserPostingLikeSerializer, \
+    ResetPasswordEmailRequestSerializer,SetNewPasswordSerializer
 from rest_framework.response import Response
 from rest_framework import generics, status
 from .models import CustomUser
@@ -16,6 +15,7 @@ from django.utils.http import  urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from .utils import Util
+
 
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -100,7 +100,6 @@ class UserRatingVIEW(generics.ListAPIView): #알바평가 db에 넣고 가져오
     def get_queryset(self):
         qs = super().get_queryset()
         search = self.request.query_params.get('search')
-        print(search)
         if search:
             qs = qs.filter(email=search)
             for rating in qs:
@@ -154,20 +153,73 @@ class ratingDetails(APIView):  #알바평가 Update, Delete
 
 
 
-class UserPostingLikeVIEW(generics.ListAPIView):
-    queryset = UserPostingLike.objects.all()
-    serializer_class = UserPostingLikeSerializer
+class UserPostingClickVIEW(generics.ListAPIView): #사용자가 클릭한 공고 및 머무른 시간
+    queryset = UserPostingClick.objects.all()
+    serializer_class = UserPostingClickSerializer
 
     def get(self, request):
         return self.list(request)
 
     def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
-        serializer = UserPostingLikeSerializer(data = request.data)  # JSON -> Serialize
+        serializer = UserPostingClickSerializer(data = request.data)  # JSON -> Serialize
 
         if serializer.is_valid():  # 타당성 검토 후 저장
             serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+
+
+class UserPostingLikeVIEW(generics.ListAPIView): #공고 좋/싫 Create, Read
+    queryset = UserPostingLike.objects.all()
+    serializer_class = UserPostingLikeSerializer
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        search = self.request.query_params.get('search')
+        if search:
+            qs = qs.filter(email=search)
+        return qs
+
+    def post(self, request):  # CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
+        serializer = UserPostingLikeSerializer(data=request.data)  # JSON -> Serialize
+
+        if serializer.is_valid():  # 타당성 검토 후 저장
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+
+
+class UserPostingLikeDetails(APIView):  #공고 좋/싫 Update, Delete
+    def get_object(self, email, post_id):
+        try:  # 고유키(email+공고id로 구분함)를 넣어서 객체를 얻어옴
+            return UserPostingLike.objects.get(email=email, post_id=post_id)
+        except UserPostingLike.DoesNotExist:  # 얻어올 객체가 없으면 404에러
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def get(self, request, email, post_id):
+        if UserPostingLike.objects.filter(email=email, post_id=post_id).exists(): #데이터가 있으면
+            userpostinglike = self.get_object(email, post_id)
+            serializer = UserPostingLikeSerializer(userpostinglike)
+            return Response(serializer.data)
+        else:
+            return Response(0)
+
+    def put(self, request, email, post_id):
+        userpostinglike = self.get_object(email, post_id)
+        serializer = UserPostingLikeSerializer(userpostinglike, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, email, post_id):
+        userpostinglike = self.get_object(email, post_id)
+        userpostinglike.delete()
+        return Response(status=201)
+        #return Response(status=status.HTTP_204_NO_CONTENT)  # 내용이 없다
+
+
+
 
 class UserMbtiVIEW(generics.ListAPIView):
     queryset = UserMbti.objects.all()

@@ -1,21 +1,3 @@
-/*article, aside, details, figcaption, figure,*/
-/*    footer, header, hgroup,*/
-/*	menu, nav, section {*/
-/*	display: block;*/
-
-/*}*/
-
-/*blockquote, q {*/
-/*    quotes: none;*/
-/*}*/
-/*blockquote:before, blockquote:after, q:before, q:after {*/
-/*    content: '';*/
-/*    content: none;*/
-/*}*/
-/*table {*/
-/*    border-collapse: collapse;*/
-/*    border-spacing: 0;*/
-/*}*/
 /*css 초기화*/
 .postings{
     margin-top :10px;
@@ -24,6 +6,7 @@
 .postings .card {
     width: 95%;
     border: 0.125rem solid rgba(44, 62, 80, 0.71);
+    border-radius: 8px;
     display: inline-block;
     /*margin-top: 5px;*/
     margin-bottom: 5px;
@@ -44,6 +27,7 @@
 .postings .card-body {
     flex: 1 1 auto;
     padding: 1rem 1rem;
+    z-index:1;
 }
 
 .postings .card-header {
@@ -88,7 +72,8 @@
     cursor: pointer
 }
 .postings .card a:hover{
-    color : #ffcf00;
+    /*color : #ffcf00;*/
+    color: #e27b7c;
 }
 
 .postings .card-body-header{
@@ -98,35 +83,7 @@
 .postings .card-body-nickname{
     font-size: calc(0.7rem + 0.3vw);
 }
-/*
-.card-body-description  {
-    opacity: 0;
-    color: #757B82;
-    line-height: 25px;
-    -webkit-transition: .2s ease-in-out;
-    -moz-transition: .2s ease-in-out;
-    -ms-transition: .2s ease-in-out;
-    -o-transition: .2s ease-in-out;
-    transition : .2s ease-in-out;
-    overflow: hidden;
-    height: 180px;
-    margin: 5px 20px;
-}
-.card:hover .card-body-description {
-    opacity: 1;
-    -webkit-transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -ms-transition: .5s ease-in-out;
-    -o-transition: .5s ease-in-out;
-    transition : .5s ease-in-out;
-    overflow: scroll;
-}
 
-.card-body-hashtag {
-    color: rgba(0, 0, 0, 0.71);
-    font-style: italic;
-}
-*/
 .postings .card-body-footer {
     margin-top: 15px;
     margin-bottom: 6px;
@@ -148,69 +105,24 @@
     margin: 0 8px;
 	color: #000;
 }
-/* 버튼 */
-/*.btn-job{*/
-/*    position:relative;*/
-/*    width:100%;*/
-/*}*/
 
-/*.div-btn{*/
-/*    margin-bottom: 300px;*/
-/*}*/
-/*@media (min-width:768px) {*/
-/*    .div-btn{*/
-/*        margin-bottom: 10px;*/
-/*    }*/
-/*}*/
-/*.button-4{*/
-/*  width:70%;*/
-/*  height:50px;*/
-/*  border-bottom:2px solid #ffc107;*/
-/*  float:left;*/
-/*  text-align:center;*/
-/*  cursor:pointer;*/
-/*  position:relative;*/
-/*  box-sizing:border-box;*/
-/*  overflow:hidden;*/
-/*  margin-left:15%;*/
-/*}*/
-/*.button-4 button {*/
-/*    !*font-family: arial;*!*/
-/*    font-size: 17px;*/
-/*    font-weight: bold;*/
-/*    color: #ffc107;*/
-/*    text-decoration: none;*/
-/*    line-height: 50px;*/
-/*    transition: all .5s ease;*/
-/*    z-index: 2;*/
-/*    position: relative;*/
-/*    background: unset;*/
-/*    border: unset;*/
-/*    width:100%*/
-/*}*/
-/*@media (min-width:768px) {*/
-/*    .button-4 {*/
-/*        width: 550px;*/
-/*        height: 50px;*/
-/*        margin-right: auto;*/
-/*        margin-left: auto;*/
-/*        float: none;*/
-/*    }*/
-/*}*/
-
-
-/*.eff-4 {*/
-/*    width: 100%;*/
-/*    height: 50px;*/
-/*    right: 100%;*/
-/*    background: #ffc107;*/
-/*    position: absolute;*/
-/*    transition: all .5s ease;*/
-/*    z-index: 1;*/
-/*}*/
-/*.button-4:hover .eff-4 {*/
-/*    right: 0;*/
-/*}*/
-/*.button-4:hover button {*/
-/*    color: #fff;*/
-/*}*/
+.postings .headerTitle h1{
+    display: inline;
+}
+.postings .likeIcon{
+    display: inline;
+    float: right;
+    font-size: 18px;
+    cursor: pointer;
+    /*margin-right: 7px;*/
+    /*margin-top: 7px;*/
+}
+.postings .likeIcon:hover{
+    transform: scale(1.2);
+    transition: ease-in-out .2s;
+    color: #f87179 !important;
+}
+.postinglistlike{
+    display: inline;
+    z-index: 10;
+}

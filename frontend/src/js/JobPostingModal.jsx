@@ -1,21 +1,159 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Tooltip} from "antd";
 import {LikeOutlined, LikeFilled, DislikeOutlined, DislikeFilled} from '@ant-design/icons';
 import "../css/Mbti_result.css"
+import axios from "axios";
 
 
 const JobPostingModal = ( props ) => {
     // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-    const { open, close,setPostingLike, postingLike } = props;
+    const { open, close, post_id, jobcode } = props;
+
+    const [postingLike, setPostingLike] = useState(0);
+
+    let token = localStorage.getItem('token');
+    let email = localStorage.getItem('email');
+
+    useEffect(() => {
+        if(open) {
+            axios.get(`http://localhost:8000/user/userpostinglike/${email}/${post_id}`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Token ${token}`
+                    }
+                })
+                .then((response) => {
+                    console.log(response);
+                    if (response.data.like === 1) {
+                        setPostingLike(1);
+                    } else if (response.data.like === -1) {
+                        setPostingLike(-1);
+                    } else if(response.data === 0){
+                        setPostingLike(0);
+                    }
+                })
+                .catch((Error) => {
+                    setPostingLike(0);
+                })
+        }
+    })
 
     const likeClick=()=>{
-        if(postingLike === 1) {setPostingLike(0);}
-        else {setPostingLike(1);}
+        if(postingLike === 1) {
+            axios.delete(`http://localhost:8000/user/userpostinglike/${email}/${post_id}`,
+                { headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        Authorization: `Token ${token}`
+                    }})
+              .then(function (response) {
+                  setPostingLike(0);
+              })
+              .catch(function (error) {
+                // handle error
+                console.log(error);
+              })
+        }
+        else if(postingLike === 0){
+            axios.post("user/userpostinglike/", {
+                email:localStorage.getItem("email"),
+                post_id:post_id,
+                jobcode:jobcode,
+                like:1
+                },
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    Authorization: `Token ${token}`
+                }
+                }).then(response=>{
+                    setPostingLike(1);
+                })
+                .catch(function (err){
+                  console.log(err)
+            })
+        }
+        else if(postingLike === -1){
+            axios.put(`http://localhost:8000/user/userpostinglike/${email}/${post_id}`, {
+                    email:email,
+                    post_id:post_id,
+                    jobcode:jobcode,
+                    like:1
+                },
+                { headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        Authorization: `Token ${token}`
+                    }})
+              .then(function (response) {
+                  setPostingLike(1);
+              })
+              .catch(function (error) {
+                // handle error
+                console.log(error);
+              })
+        }
     }
     const dislikeClick=()=>{
-        if(postingLike === -1) {setPostingLike(0);}
-        else {setPostingLike(-1);}
+        if(postingLike === -1) {
+            axios.delete(`http://localhost:8000/user/userpostinglike/${email}/${post_id}`,
+                { headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        Authorization: `Token ${token}`
+                    }})
+              .then(function (response) {
+                  setPostingLike(0);
+              })
+              .catch(function (error) {
+                // handle error
+                console.log(error);
+              })
+        }
+        else if(postingLike === 0){
+            axios.post("user/userpostinglike/", {
+                email:localStorage.getItem("email"),
+                post_id:post_id,
+                jobcode:jobcode,
+                like:-1
+                },
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    Authorization: `Token ${token}`
+                }
+                }).then(response=>{
+                    setPostingLike(-1);
+                })
+                .catch(function (err){
+                  console.log(err)
+            })
+        }
+        else if(postingLike===1){
+            axios.put(`http://localhost:8000/user/userpostinglike/${email}/${post_id}`, {
+                    email:email,
+                    post_id:post_id,
+                    jobcode:jobcode,
+                    like:-1
+                },
+                { headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        Authorization: `Token ${token}`
+                    }})
+              .then(function (response) {
+                  console.log(response);
+                  setPostingLike(-1);
+              })
+              .catch(function (error) {
+                // handle error
+                console.log(error);
+              })
+        }
     }
 
     return (

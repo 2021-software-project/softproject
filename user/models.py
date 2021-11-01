@@ -3,6 +3,11 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
+# from ..MBTI.models import models
+
+#from softproject.MBTI.models import JobPosting
+
+
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -110,12 +115,16 @@ class UserRating(models.Model):
     job = models.CharField(max_length=5)
     score = models.IntegerField()
 
-class UserPostingLike(models.Model):
+class UserPostingClick(models.Model):
     email = models.CharField(max_length=64)
     post_id = models.IntegerField()
     jobcode = models.CharField(max_length=5)
-    like = models.IntegerField(default=0) #좋아요:1, 싫어요:-1, 봤지만 안눌렀어요:0
     stay_time = models.FloatField(default=0.0) #초 단위
+    click_time = models.DateTimeField(default=timezone.now)
 
-
-
+class UserPostingLike(models.Model):
+    email = models.CharField(max_length=64)
+    post_id = models.ForeignKey("MBTI.JobPosting", on_delete=models.CASCADE, db_column="post_id")
+    jobcode = models.CharField(max_length=5)
+    like = models.IntegerField(default=0) #좋아요:1, 싫어요:-1
+    like_time = models.DateTimeField(default=timezone.now)
