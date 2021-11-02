@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Tooltip} from "antd";
 import {LikeOutlined, LikeFilled, DislikeOutlined, DislikeFilled} from '@ant-design/icons';
-import "../css/Mbti_result.css"
+import "../css/JobPostingModal.css"
 
 
 const JobPostingModal = ( props ) => {

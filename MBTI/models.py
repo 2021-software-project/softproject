@@ -7,6 +7,6 @@ class JobPosting(models.Model):
     subtitle = models.CharField(max_length=200)
     url = models.CharField(max_length=100)
     pay_type = models.CharField(max_length=80)
-    pay = models.IntegerField()
+    pay = models.CharField(max_length=30)
     sub_code = models.CharField(max_length=10)
     enrol_date = models.DateTimeField()
