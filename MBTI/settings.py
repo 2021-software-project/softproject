@@ -17,6 +17,7 @@ import datetime
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MBTI.settings')
 from django.core.exceptions import ImproperlyConfigured
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # secret 설정
@@ -69,7 +70,6 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -94,8 +94,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_filters',  ##추가
-
-
 ]
 
 AUTH_USER_MODEL = 'user.CustomUser'

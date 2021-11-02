@@ -1,6 +1,8 @@
+from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import APIView, api_view
 from rest_framework.exceptions import AuthenticationFailed
+
 
 from .models import UserRating, UserPostingClick, UserMbti, UserPostingLike
 from .serializers import UserRatingSerializer, UserMbtiSerializer, UserPostingClickSerializer,UserPostingLikeSerializer, \
@@ -21,6 +23,8 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 from .job_code import job_code, large_job_code
+#from ..MBTI.models import JobPosting
+
 
 class RequestPasswordResetEmail(generics.GenericAPIView):
     serializer_class = ResetPasswordEmailRequestSerializer
@@ -217,6 +221,31 @@ class UserPostingLikeDetails(APIView):  #공고 좋/싫 Update, Delete
         userpostinglike.delete()
         return Response(status=201)
         #return Response(status=status.HTTP_204_NO_CONTENT)  # 내용이 없다
+
+
+class UserPostingLikeWithPosting(APIView):
+    model = UserPostingLike
+    def get(self, request, email):
+        userpostinglike = UserPostingLike.objects.select_related().filter(email=email)
+        serializer = UserPostingLikeSerializer(userpostinglike, many=True)
+
+        num=-1
+        for like in userpostinglike:
+            num+=1
+            JobPosting = {
+                'id': like.post_id.id,
+                'city':like.post_id.city,
+                'county':like.post_id.county,
+                'company':like.post_id.company,
+                'subtitle': like.post_id.subtitle,
+                'url':like.post_id.url,
+                'pay_type':like.post_id.pay_type,
+                'pay': like.post_id.pay,
+                'sub_code': like.post_id.sub_code,
+                'enrol_date': like.post_id.enrol_date,
+            }
+            serializer.data[num]['post_id'] = JobPosting
+        return Response(serializer.data)
 
 
 

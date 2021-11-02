@@ -6,6 +6,8 @@ from django.utils.http import  urlsafe_base64_decode, urlsafe_base64_encode
 from rest_framework.exceptions import AuthenticationFailed
 
 from .models import CustomUser, UserRating, UserMbti, UserPostingClick, UserPostingLike
+#from ..MBTI.models import JobPosting
+
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -108,7 +110,8 @@ class UserPostingClickSerializer(serializers.ModelSerializer):
         model = UserPostingClick
         fields = '__all__'
 
+
 class UserPostingLikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPostingLike
-        fields = '__all__'
+        fields = ('email', 'post_id', 'jobcode', 'like', 'like_time')

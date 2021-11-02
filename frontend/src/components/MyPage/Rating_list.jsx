@@ -32,7 +32,6 @@ function RatingOne({id, jobfamily, job, score}){
 
 
   return(
-
       <tr >
             <td>{jobfamily}</td>
             <td>{job}</td>

@@ -80,7 +80,6 @@ function PostingListLike(props) {
             : <HeartOutlined className="likeIcon" style={{color: "black"}}/>  }
 
             </span>
-            {props.post_id}
         </div>
     )
 }

@@ -146,7 +146,6 @@ const JobPostingModal = ( props ) => {
                         Authorization: `Token ${token}`
                     }})
               .then(function (response) {
-                  console.log(response);
                   setPostingLike(-1);
               })
               .catch(function (error) {
