@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import MbtiArea from "./MbtiArea";
 import "../../css/Rcm.css";
+import "../../css/input_mbti.css"
 
 import {useDispatch, useSelector} from "react-redux";
 import {changeArea, changeMbti} from "../../store/modules/area_modules";

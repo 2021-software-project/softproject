@@ -1,6 +1,5 @@
 .mb_ti-container{
     width: 100%;
-    height: 150vh;
     padding-top: 2rem;
     padding-bottom: 2rem;
     border: 0;
@@ -10,7 +9,6 @@
 
 .per_son-container{
     width: 100%;
-    height: 90vh;
     padding-top: 2rem;
     padding-bottom: 2rem;
       border: 0;
@@ -20,7 +18,6 @@
 
 .rating-container{
     width: 100%;
-    height: 120vh;
     padding-top: 2rem;
     padding-bottom: 2rem;
     border: 0;
