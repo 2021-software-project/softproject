@@ -22,25 +22,29 @@ class Home extends Component {
             <div>
                 <header className="home_container" >
 
-					<section id="banner">
+					<section className="banner">
 						<div id="home_container-2">
-						<div class="inner">
-							<h2>Spectral</h2>
-							<p>Another fine responsive<br />
-							site template freebie<br />
-							crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>
+						<div id="inner">
+							<h1>Spectral</h1>
+							<p>당신의 성격에 맞춰<br />
+							알바를 추천해주는<br />
+							그런 앱 본 적 있나요?<br />
+								<a href="http://html5up.net">HTML5 UP</a>.</p>
 
-							<ul class="actions special">
-								<li><a href="/main" class="button primary">Activate</a></li>
-							</ul>
+								<div id="inner">
+								<a href="/main" className="button_primary">입장하기</a>
+								</div>
+
 						</div>
 						</div>
-						<a href="#one" class="more scrolly">Learn More</a>
+						<a href="#one" class="more scrolly">체험하기</a>
 					</section>
 
-					<section id="one" className="wrapper style1 special"> b
-						<div className="inner">
+					<section id="one" className="wrapper style1 special">
+						<div id="inner">
 
+							<p></p>
+							<p></p>
 							<h1> 본인의 MBTI를 선택하십시오.</h1>
 							<p></p>
 							<p></p>

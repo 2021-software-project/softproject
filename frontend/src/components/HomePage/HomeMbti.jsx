@@ -50,13 +50,10 @@ function HomeMbti() {
 
     return(
         <div>
-
-
-
             <section className="sc-mbti" ref={resultRef}>
 
                 <form onSubmit={changeRcm} target="iframe1">
-                <table className="tb-mbti">
+                <table className="tb-mbti" align="center">
                     <tr>
                         <td><label><input type="radio" className="mbtiSelect" name="one" onChange={onMbtiChange} value="I" required/>
                             <span>I</span></label></td>
@@ -78,7 +75,8 @@ function HomeMbti() {
                             <span>P</span></label></td>
                     </tr>
                 </table>
-                <input className="button primary" type="submit" value="추천받기"/>
+                    <p></p>
+                <input className="button_primary" type="submit" value="추천받기"/>
                 </form>
 
                 {/*페이지 이동 없애기 -> form 의 target을 iframe으로 설정, iframe은 안 보이게 설정*/}

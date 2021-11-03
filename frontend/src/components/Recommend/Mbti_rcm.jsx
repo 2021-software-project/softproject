@@ -45,42 +45,49 @@ function Mbtircm(){
     }
 
     return (
-        <div id="mb_ti-container">
+        <div className ="mb_ti-container">
+
             <h1>MBTI로 아르바이트 추천받기</h1>
+            <div className = "con">
             <div align="center">   {/*mbti 선택*/}
-                <h3>[MBTI 선택]</h3>
-                <h4>선택한 MBTI : <span style={{color:"blueviolet"}}>{ch_mbti}</span> </h4>
+                <h2>[MBTI 선택]</h2>
+                <h3>선택한 MBTI : <span style={{color:"blueviolet"}}>{ch_mbti}</span> </h3>
                 <table id="tb-mbti" width ="50%" border= "2px" solid>
                      <thead>
                      {MBTIMeta.map(i =>
                         i === "ENTER" ?
                             (<tr className = "tr-mbti">
-                            <input type="hidden" className="mbti_Select" name={"mbtichk"} value={i}/></tr>)
-                            : (<td className = "td-mbti"><label><input type="radio" className="mbti_Select" name={"mbtichk"} value={i}
+                            <input type="hidden" className="mbti_Select " name={"mbtichk"} value={i}/></tr>)
+                            : (<td className = "td-mbti select"><label><input type="radio" className="mbti_Select" name={"mbtichk"} value={i}
                                           onChange={()=>onChangeMbti(i)}/> {i} </label></td>))
                     }
                     </thead>
                 </table>
             </div>
-            <p></p><p></p>
-            <h3>[지역 선택]</h3>
-            <h4>선택한 지역 : <span style={{color:"blueviolet"}}>{ch_areasi} {ch_areagu} </span></h4>
+            </div>
+
+            <div className="con">
+            <h2>[지역 선택]</h2>
+            <h3>선택한 지역 : <span style={{color:"blueviolet"}}>{ch_areasi} {ch_areagu} </span></h3>
             <div className="area" align="center">  {/*지역 선택*/}
-                <table>
+                <table id="tb-mbti" width ="90%" border= "2px" solid>
                     <tr>
                     {MBTIAREA.map(area =>
-                        (<td><label><input type="radio" className="AreaSelect" name={"areasi"} value={area}
+                        (<td className ="td-mbti select" border= "1px" solid= "black"><label><input type="radio" className="AreaSelect" name={"areasi"} value={area}
                             onChange={()=>onChangeArea(area,'')}/> {area} </label></td> ))
                     }
                     </tr>
-                </table>
-                    <tr colSpan={MBTIAREA.length}><MbtiArea area_si={ch_areasi}/></tr>
+
+                    <tr>
+                        <td colspan='18' colSpan={MBTIAREA.length}><MbtiArea area_si={ch_areasi}/></td>
+                    </tr>
+
+                    </table>
 
 
 
                 {/*<input type="button" onClick={onRcm} value="추천받기"/>*/}
-
-                <p></p>
+                </div>
                 </div>
                 <Link to={{
                     pathname: "/mbti_result",
@@ -88,7 +95,7 @@ function Mbtircm(){
                     check:"1",}
 
                 }}>
-                    <button className="button primary"  onClick={onRcmClick}> 추천받기</button>
+                    <button className="button_primary"  onClick={onRcmClick}> 추천받기</button>
                 </Link>
     </div>
     );

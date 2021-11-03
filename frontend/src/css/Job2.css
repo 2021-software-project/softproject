@@ -14,13 +14,14 @@
 
     margin-bottom: 5px;
     width: 21%;
-    font-size: 13px;
+    font-size: 17px;
     text-align: left;
+    color : #cf7780;
 }
-a{
+/*a{
     text-decoration: none;
     color: rgba(41, 144, 236, 0.93);
-}
+}*/
 
 .Jobselect{
     margin :1rem;
@@ -34,4 +35,28 @@ a{
 #mid_box {
     padding-top :3rem;
     padding-bottom: 3rem;
+}
+
+
+
+.rating-container .button_primary{
+    background-color: #cf7780;
+    color : #ffffff ;
+
+    border-radius: 3px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    height: 3.125em;
+    letter-spacing: 0.225em;
+    line-height: 3.125em;
+    max-width: 30em;
+    padding: 0 2.75em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

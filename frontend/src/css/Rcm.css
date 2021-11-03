@@ -1,24 +1,48 @@
-#mb_ti-container{
+.mb_ti-container{
     width: 100%;
-    height: 750px;
+    height: 150vh;
     padding-top: 2rem;
     padding-bottom: 2rem;
     border: 0;
     color: #000;
 }
 
+
+.per_son-container{
+    width: 100%;
+    height: 90vh;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+      border: 0;
+    color: #000;
+}
+
+
+.rating-container{
+    width: 100%;
+    height: 120vh;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border: 0;
+    color: #000;
+}
+
+.con{
+    padding-bottom: 3em;
+    padding-top: 1em;
+}
 #mb_ti-container h1, h3, h4{
     color: #000;
     letter-spacing: 0.225em;
     margin: 0 0 0 0;
 }
 
-#per_son-container{
-    width: 100%;
-    height: 450px;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+.con2{
+    padding-bottom: 3em;
+    padding-top: 2.5em;
 }
+
+
 
 #per_son-container h1, h3, h4{
     color: #000;
@@ -61,10 +85,20 @@
 }
 
 .td-mbti label{
-    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 15px;
     width: 100%;
     color : #000;
     display: block;
+}
+
+.select:hover{
+  background-color:#f69494d9  ;
+  transition: background-color .5s ease-in-out;
+}
+
+.select2:hover{
+    color : #bd25bd;
 }
 
 /* 지역 선택 버튼 */
@@ -72,28 +106,77 @@
 .areaSelect{
     width:840px;
     justify-content: center;
+
     /*padding-bottom: 100px;*/
 
 }
 
 .areaSelect ul{
     list-style: none;
+
 }
 .areaSelect li{
     float: left;
-    margin-left: 10px;
+    margin-left: 5px;
     margin-bottom: 5px;
     width: 15%;
-    font-size: 13px;
-    text-align: left;
+    font-size: 17px;
+    text-align: center;
+    color : #f69494d9 ;
 }
-#mb_ti-container a{
+.mb_ti-container a{
     text-decoration: none;
-    color: rgba(41, 144, 236, 0.93);
+    color: #f69494d9 ;
 }
 
 #per_son-container a{
     text-decoration: none;
-    color: rgba(41, 144, 236, 0.93);
+    color: #f69494d9 ;
     border : none;
 }
+
+
+.mb_ti-container .button_primary{
+    background-color: #cf7780;
+    color : #ffffff ;
+
+    border-radius: 3px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    height: 3.125em;
+    letter-spacing: 0.225em;
+    line-height: 3.125em;
+    max-width: 30em;
+    padding: 0 2.75em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.per_son-container .button_primary{
+    background-color: #cf7780;
+    color : #ffffff ;
+
+    border-radius: 3px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    height: 3.125em;
+    letter-spacing: 0.225em;
+    line-height: 3.125em;
+    max-width: 30em;
+    padding: 0 2.75em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
