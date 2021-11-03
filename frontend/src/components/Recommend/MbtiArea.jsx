@@ -1,5 +1,4 @@
 import React from 'react';
-import "../../css/MbtiArea.css";
 import { useSelector, useDispatch } from 'react-redux';
 import {changeArea} from "../../store/modules/area_modules";
 

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Tooltip} from "antd";
 import {LikeOutlined, LikeFilled, DislikeOutlined, DislikeFilled} from '@ant-design/icons';
+import "../css/JobPostingModal.css"
 import "../css/Mbti_result.css"
 import axios from "axios";
 

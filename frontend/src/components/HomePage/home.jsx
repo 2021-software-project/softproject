@@ -3,7 +3,6 @@ import {Link} from'react-router-dom';
 
 import "../../css/home.css"
 import "../../css/mypage.css"
-import "../../css/input_mbti.css"
 import pic1 from '../../img/pic01.jpg'
 import pic2 from "../../img/pic02.jpg";
 import picYellow from"../../img/pic_yellow.jpg"

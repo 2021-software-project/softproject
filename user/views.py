@@ -40,11 +40,12 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
             token = PasswordResetTokenGenerator().make_token(user)
             current_site = get_current_site(
                 request=request).domain
-            # example.com 으로 나옴
             print(current_site)
-            relativeLink = reverse('password-reset-confirm', kwargs={'uidb64':uidb64,'token':token})
+            relativeLink = reverse('password-reset-confirm',
+                                   kwargs={'uidb64':uidb64,'token':token})
             absurl = 'http://127.0.0.1:3000'+relativeLink
-            email_body = "<h3>안녕하세요. " +user.username+'님,</h3> <p> 아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p> ' + absurl
+            email_body = "<h3>안녕하세요. " +user.username+'님,' \
+                        '</h3> <p> 아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p><br/> ' + absurl
             data = {'email_body':email_body,'to_email':user.email,
                     'email_subject':'[MBTI]비밀번호 재설정을 위한 링크입니다.'}
 
