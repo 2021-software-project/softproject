@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom'
 import Job2 from "./Job2";
+
 import "../../css/Job2.css";
-// import "../../css/Mbti.css";
+import "../../css/Rcm.css";
 
 
 import {useDispatch, useSelector} from "react-redux";
@@ -91,18 +92,19 @@ function Alba_rating(){
   }
 
     return (
-        <div id ="rating-container">
+        <div className ="rating-container">
 
             <h1>내가 해봤던 알바 평가하기</h1>
-            <h3>[직종선택]</h3>
-            <h4>선택한 직종 : &nbsp; {ch_jobfamily} => {ch_job} </h4>
-            <div className="job" align="center">  {/*지역 선택*/}
-                <table width ="70%" >
+            <h2>[직종선택]</h2>
+            <h3>선택한 직종 : &nbsp; {ch_jobfamily} => {ch_job} </h3>
+            <div className="con2" align="center">  {/*지역 선택*/}
+                <table id = "tb-mbti" width ="70%" >
 
                     {JOBFAMILY.map(jobfamily =>
                         jobfamily === "ENTER" ?
-                            (<tr><input type="hidden" className="Jobselect" name={"job"} value={jobfamily}/></tr>)
-                        :(<td><input type="radio" className="Jobselect" name={"job"} value={jobfamily}
+                            (<tr className = "tr-mbti">
+                                <input type="hidden" className="Jobselect" name={"job"} value={jobfamily}/></tr>)
+                        :(<td className = "td-mbti select"><input type="radio" className="Jobselect" name={"job"} value={jobfamily}
                                 onChange={()=>onChangeJob(jobfamily,'')}/> {jobfamily} </td> ))
                     }
 
@@ -128,7 +130,7 @@ function Alba_rating(){
 
 
             <form onSubmit={ratingSubmit}>
-                <Input className="btn btn-primary btn-xl" type='submit' size="large" value='평가하기' />
+                <Input className="button_primary" type='submit' size="large" value='평가하기' />
             </form>
 
         </div>

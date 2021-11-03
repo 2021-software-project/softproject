@@ -1,0 +1,80 @@
+#tb-mbti {
+    text-align: center;
+    margin : 15px 0;
+}
+/* 수정 중 - mbti 라디오 버튼 */
+.mbtiSelect{
+
+    opacity: 0;
+
+}
+
+.mbti_Select{
+    margin :1rem;
+    font-size: 1em;
+    width: 1.25em; /* 너비 설정 */
+    height: 1.25em; /* 높이 설정 */
+    vertical-align: middle;
+    opacity: 100;
+}
+
+/*#tb-mbti td{
+    font-size: 1.5rem;
+    text-align: center;
+    color : #000;
+    margin: 0.5em 0 0.5em 0;
+    border: 0;
+}*/
+
+/*.td-mbti label{
+    padding: 10px;
+    width: 100%;
+    color : #000;
+    display: block;
+}*/
+/*-----------*/
+.sc-mbti{
+    padding:1rem;
+}
+
+.td-mbti input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+    float: left;
+    margin-right: -2em;
+    opacity: 0;
+    width: 1em;
+    z-index: -1;
+}
+
+input[type=radio]:checked + span{
+    color: #ffffff;
+}
+
+header.bg-primary.text-black.text-center{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    background-color : #bad6f1 !important;
+}
+.btn-rcm{
+    color: #fff;
+    background-color: #ffcf00!important;
+    border-color: #ffffff!important;
+    margin: 0px 6px;
+    padding: 7px 27px;
+    border-radius: 0rem;
+    clear:both
+}
+.btn-rcm:hover{
+    color: #ffcf00;
+    background-color: #fff!important;
+    border-color: #ffcf00!important;
+}
+
+#m_container{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+/*-----------*/

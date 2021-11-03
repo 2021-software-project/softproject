@@ -1,5 +1,6 @@
 import React from 'react';
 import "../../css/Job2.css";
+import "../../css/Rcm.css"
 import { useSelector, useDispatch } from 'react-redux';
 import {changeJob} from "../../store/modules/job_modules";
 
