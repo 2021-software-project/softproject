@@ -90,7 +90,7 @@ function Mbtircm(){
                 }}>
                     <button className="button primary"  onClick={onRcmClick}> 추천받기</button>
                 </Link>
-            </div>
+
     </div>
     );
 
