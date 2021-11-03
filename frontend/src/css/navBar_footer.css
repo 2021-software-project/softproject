@@ -13,6 +13,7 @@
     font-weight: 700;
 }
 #page-top #mainNav .navbar-nav li.nav-item a.nav-link {
+    text-decoration:none;
     color: #fff;
 }
 #page-top #mainNav .navbar-nav li.nav-item a.nav-link:hover { /*메뉴 마우스오버 색상*/
@@ -227,6 +228,7 @@
 .menuLI-A{
     color: #4b4949;
     font-weight: 540;
+    text-decoration:none;
 }
 .menuLI-A:hover{
     color: #aa6c84;
