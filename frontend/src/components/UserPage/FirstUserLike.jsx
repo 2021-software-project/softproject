@@ -2,21 +2,33 @@ import React, {useEffect,useState} from 'react';
 import UserName from "../MyPage/UserName";
 import "../../css/FirstUserLike.css"
 import Axios from "axios";
+// import albaIcon from "../../img/albaIcon"
 
 function FirstUserLike(){
+    const jobFamilyList = [
+        "외식ㆍ음료","유통ㆍ판매","외식ㆍ음료","서비스","외식ㆍ음료","교육ㆍ강사","외식ㆍ음료",
+        "생산ㆍ건설ㆍ운송","생산ㆍ건설ㆍ운송","교육ㆍ강사","생산ㆍ건설ㆍ운송","사무직","유통ㆍ판매",
+        "생산ㆍ건설ㆍ운송","문화ㆍ여가ㆍ생활","문화ㆍ여가ㆍ생활","외식ㆍ음료","외식ㆍ음료","외식ㆍ음료","서비스"
+    ]
     const jobList = [
-        "외식ㆍ음료","유통ㆍ판매","문화ㆍ여가ㆍ생활","서비스","사무직","고객상담ㆍ리서치ㆍ영업",
-        "생산ㆍ건설ㆍ운송","ITㆍ컴퓨터","교육ㆍ강사","디자인","미디어","운전ㆍ배달","병원ㆍ간호ㆍ연구"];
+        "일반음식점","편의점","커피전문점","서빙","베이커리ㆍ도넛ㆍ떡","입시ㆍ보습학원","패스트푸드점",
+        "상하차ㆍ소화물 분류","공사ㆍ건설현장","방문ㆍ학습지","제조ㆍ가공ㆍ조립","사무보조","유통점ㆍ마트",
+        "입출고ㆍ창고관리","키즈카페","호텔ㆍ리조트ㆍ숙박","호프ㆍ일반주점","치킨ㆍ피자전문점","레스토랑","보안ㆍ경비ㆍ경호"
+    ];
 
-    const [firstJobs, setfirstJobs] = useState([]);
+    const [firstJobs, setfirstJobs] = useState([]); //선택된 직종
+    const [colorArr, setColor] = useState(Array(jobList.length).fill(false));
 
     const onClickFirstJob=(e)=>{
-        const selectedJob = e.i;
+        const selectedJob = e.index;
         console.log(selectedJob);
 
         if(firstJobs.includes(selectedJob))
         {
             setfirstJobs(firstJobs.filter(firstJobs => firstJobs!==selectedJob))
+            setColor(
+                colorArr.map((col,index)=>
+                index === e.index? false:col))
         }
         else {
             if(firstJobs.length >= 3)
@@ -25,7 +37,9 @@ function FirstUserLike(){
             }
             else {
                 setfirstJobs([...firstJobs, selectedJob]);
-                console.log(firstJobs);
+                setColor(
+                    colorArr.map((col,index)=>
+                    index === e.index? true:col))
             }
         }
     }
@@ -44,8 +58,8 @@ function FirstUserLike(){
             {
                 const firstRating = {
                     email: email,
-                    jobfamily : firstJobs[job],
-                    job : "0",
+                    jobfamily : jobFamilyList[job],
+                    job : jobList[job],
                     score : 4
                 }
                 console.log(firstRating);
@@ -68,14 +82,18 @@ function FirstUserLike(){
             <div className="firstJobSelect">
                 <h3 className="header"><UserName/>님, 하고싶으신 아르바이트 업종 3개 선택하세요</h3>
                 <h6 className="header-info">회원님이 좋아하실만한 아르바이트를 더 정확하게 추천할 수 있습니다. 아래의 업종을 클릭해주세요</h6>
-                <button className="jobSelectBtn" onClick={onJobSelectBtnClick}>선택 완료</button>
+                <button className="jobSelectBtn" onClick={onJobSelectBtnClick}>선택완료</button>
             </div><br/>
 
-            <div className="jobSelected">{firstJobs.map(j => (<div>{j}</div>))}</div>
+            {/*<div className="jobSelected">{firstJobs.map(j => (<div>{j}</div>))}</div>*/}
 
             <div className="firstjob-grid-thead">
-            {jobList.map(i =>
-                (<div key={i} onClick={()=>{onClickFirstJob({i})}} className="firstjob-cell" >{i}</div>))}
+            {jobList.map((i,index) =>
+                (<div id={i} key={i} onClick={()=>{onClickFirstJob({i, index})}}
+                      className="firstjob-cell" >
+                    <div className={`firstjobImgDiv${colorArr[index] ? ' clicked' : ''}`} ><img className="firstjobImg" src={require(`../../img/albaIcon/${i}.png`).default}/></div>
+                    <div>{i}</div>
+                </div>))}
             </div>
 
             <br/>

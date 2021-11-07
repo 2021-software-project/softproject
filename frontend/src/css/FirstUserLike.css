@@ -1,9 +1,13 @@
+.FirstUserLike{
+    margin-bottom: 25%;
+    margin-top: 5%;
+}
 
 .FirstUserLike .header{
     color : #000;
     font-size: 1.15em;
     line-height: 1.75em;
-    letter-spacing: 0.225em;
+    letter-spacing: -1.5px;
     margin: 0 0 1em 0;
     text-transform: uppercase;
 }
@@ -15,56 +19,126 @@
 }
 .FirstUserLike .header-info{
     color : #000;
-    font-size: 0.7em;
+    font-size: 15px;
     line-height: 1.5em;
-    letter-spacing: 0.225em;
+    letter-spacing: -1px;
+    font-weight: 400;
     margin: 0 0 1em 0;
 }
 
-.FirstUserLike .firstjob-grid-thead {
-  display: grid;
-  grid-template-columns: 40% 40%;
-  grid-column-gap: 10px;
-  grid-row-gap:10px;
-  justify-content: center;
-  align-items: center;
-  font-weight:bold;
+.FirstUserLike .firstjob-grid-thead { /*580px 이하의 화면일 때*/
+    display: grid;
+    grid-template-columns: 67px 67px 67px 67px;
+    grid-template-rows: 100px;
+    grid-column-gap: 12px;
+    grid-row-gap: 20px;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12.5px;
+    letter-spacing: -0.9px;
+    color: rgba(29, 29, 29, 0.77);
+}
 
-  letter-spacing: 0.075em;
-  line-height: 2.65em;
-  color: #fff;
+.FirstUserLike .firstjob-cell .firstjobImgDiv {
+    border: 2px solid rgba(227, 123, 124, 0.68);
+    padding-top: 10px;
+    border-radius: 70%;
+    height: 58px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+
+}
+
+.FirstUserLike .firstjobImg {
+    width: 47px;
+    height: 47px;
+    vertical-align: middle;
+}
+
+@media (min-width: 500px) {
+    .FirstUserLike .firstjob-grid-thead {
+        display: grid;
+        grid-template-columns: 100px 100px 100px 100px;
+        grid-template-rows: 140px;
+        grid-column-gap: 3%;
+        grid-row-gap: 20px;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 13.5px;
+        letter-spacing: -0.9px;
+        color: rgba(29, 29, 29, 0.77);
+        white-space : nowrap;
+    }
+
+    .FirstUserLike .firstjob-cell .firstjobImgDiv {
+        border: 2px solid rgba(227, 123, 124, 0.68);
+        padding-top: 10px;
+        border-radius: 70%;
+        height: 85px;
+        vertical-align: middle;
+        margin-bottom: 5px;
+    }
+
+    .FirstUserLike .firstjobImg {
+        width: 70px;
+        height: 70px;
+        vertical-align: middle;
+    }
 }
 
 @media (min-width: 700px) { {/*폭이 700px 이상일 때만 적용. 미만일 땐 위에꺼 적용*/}
     .FirstUserLike .firstjob-grid-thead{
       display: grid;
-      grid-template-columns: 23% 23% 23%;
-      grid-column-gap: 10px;
-      grid-row-gap:10px;
+      grid-template-columns: 130px 130px 130px 130px 130px;
+      grid-column-gap: 2.5%;
+      grid-row-gap: 6%;
       justify-content: center;
       align-items: center;
-      font-size:20px;
-      font-weight:bold;
+      font-size:14.5px;
+      letter-spacing: -0.9px;
+      font-weight:600;
+      white-space : nowrap;
+    }
+    .FirstUserLike .firstjob-cell .firstjobImgDiv{
+        border:2px solid rgba(227, 123, 124, 0.68);
+        padding-top: 20px;
+        padding-bottom: 2px;
+        border-radius: 70%;
+        height: 100px;
+        margin-bottom: 5px;
+    }
+
+    .FirstUserLike .firstjobImg {
+        width: 75px;
+        height: 75px;
     }
 }
 
 .FirstUserLike .firstjob-cell {
-    font-family: 'Poppins', 'IBM Plex Sans KR', serif;
+    /*font-family: 'Poppins', 'IBM Plex Sans KR', serif;*/
+    /*display:grid;*/
     border-radius: 7px;
-    height: 60px;
-    background: rgba(65, 198, 252, 0.49);
+    height:auto;
+
     text-align: center;
-    padding: 12px 0 0 0;
+    /*padding: 12px 0 0 0;*/
     cursor: pointer;
 }
+.FirstUserLike .clicked{
+  background: linear-gradient(44deg, rgba(114, 97, 147, 0.42) 15%, rgba(227, 123, 124, 0.77) 75%, rgba(255, 228, 180, 0.46));
+  border:2px solid transparent;
+}
+
+
+
 @media (min-width: 700px) { {/*폭이 700px 이상일 때만 적용. 미만일 땐 위에꺼 적용*/}
     .FirstUserLike .firstjob-cell {
-        font-family: 'Poppins', 'IBM Plex Sans KR', serif;
+        /*font-family: 'Poppins', 'IBM Plex Sans KR', serif;*/
         border-radius: 7px;
-        height: 60px;
-        background: rgba(65, 198, 252, 0.49);
+        height: auto;
+
         text-align: center;
-        padding: 20px 20px;
+        /*padding: 20px 20px;*/
         cursor: pointer;
     }
 }
@@ -74,34 +148,35 @@
 
 }
 
-.FirstUserLike .firstjob-cell:hover{
-  background-color: #0d6efd;
-  color:white;
-  transition: background-color .5s ease-in-out;
+.FirstUserLike .firstjob-cell .firstjobImgDiv:hover{
+  background: linear-gradient(44deg, rgba(114, 97, 147, 0.42) 15%, rgba(227, 123, 124, 0.77) 75%, rgba(255, 228, 180, 0.46));
+  transition: background .5s ease-in-out;
+
 }
-.FirstUserLike .firstjob-cell.clicked{
-  background-color: #00ff7b;
-}
+
 
 .FirstUserLike .jobSelectBtn {
     color: #ffffff;
-    background-color: #1d253b!important;
-    border-color: #1d253b !important;
+    background-color: rgba(227, 123, 124, 0.68);
     margin: 0px 6px;
-    padding: 7px 27px;
+    padding: 6px 23px;
     border-radius: 0rem;
-    font-size: 1.25rem;
+    font-size: 18px;
+
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
+    border-radius: 7px;
     cursor: pointer;
     border: 0;
     height: 3.125em;
     letter-spacing: 0.225em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    letter-spacing: -0.6px;
 }
 
 .FirstUserLike .jobSelectBtn:hover {
   color:#1d253b;
-  background-color: #c4e7ff !important;
-  border-color:#1d253b!important;
+  background-color: rgba(189, 89, 91, 0.68);
 }
+

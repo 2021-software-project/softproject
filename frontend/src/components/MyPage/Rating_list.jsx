@@ -46,34 +46,12 @@ function RatingOne({id, jobfamily, job, score}){
 
 function Rating(){
 
-    const [email, setEmail] = useState('')
     const [ratinglist, setRatinglist] = useState('')
+    let token = localStorage.getItem('token')
+    let email = localStorage.getItem('email')
     useEffect(() => {
-        let token = localStorage.getItem('token')
         console.log(token)
-        if (localStorage.getItem('token') !== null) {
-            axios({
-                url: '/user/auth/user/',
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Token ${token}`
-                }
-            }).then(res => {
-                setEmail(
-                    res.data.email
-                )
-                console.log(res.data)
-            });
-        }
-    }, [])
 
-    //userRating 데이터베이스에 접근
-    if (email != '' && ratinglist == '') {
-        let token = localStorage.getItem('token')
-        // axios.get('/user/userrating/', {
-        //     params: {search: email},
-        // })
         axios.get(`/user/userrating/?search=${email}`,
             {
                 headers: {
@@ -90,7 +68,8 @@ function Rating(){
             .catch((Error) => {
                 console.log(Error)
             })
-    }
+
+    }, [])
 
 
 
@@ -98,13 +77,9 @@ function Rating(){
         <div id ="my_container3" >
               <div id="con_mar">
             <h2>Rating List</h2>
-            {email}<p/>
-
-
                 <table align="center" border="1" width = "50%">
 
                     <th>직종</th> <th>업종</th> <th>점수</th>
-
                     <tbody>
                         {ratinglist && ratinglist.map(ratingone => (
                             <RatingOne id={ratingone.id} jobfamily={ratingone.jobfamily} job={ratingone.job} score={ratingone.score}/>

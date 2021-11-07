@@ -41,9 +41,9 @@ function HomeMbti() {
 
     const resultRef = useRef();
 
-    useEffect(()=>{
-        resultRef.current.scrollIntoView({behavior: 'smooth', block: 'end'})
-    },[rcm])
+    // useEffect(()=>{
+    //     resultRef.current.scrollIntoView({behavior: 'smooth', block: 'end'})
+    // },[rcm])
 
 
 
