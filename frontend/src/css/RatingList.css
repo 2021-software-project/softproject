@@ -1,0 +1,29 @@
+#ratingList{
+    margin-top: 5%;
+    margin-bottom: 15%;
+}
+
+#ratingList .jobSelectBtn {
+    color: #ffffff;
+    background-color: rgba(227, 123, 124, 0.68);
+    margin: 0px 6px;
+    padding: 4px 21px;
+    border-radius: 0rem;
+    font-size: 16px;
+
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 0;
+    height: 3.125em;
+    letter-spacing: -1px;
+    margin-top: 3%;
+
+    letter-spacing: -0.6px;
+}
+
+#ratingList .jobSelectBtn:hover {
+  color:#1d253b;
+  background-color: rgba(189, 89, 91, 0.68);
+}

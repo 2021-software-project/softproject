@@ -3,7 +3,7 @@ from . import views
 from django.contrib import admin
 
 from .views import UserRatingVIEW, UserPostingClickVIEW, PasswordTokenCheckAPI, RequestPasswordResetEmail, SetNewPasswordAPIView, \
-    UserMbtiVIEW, ratingDetails, UserPostingLikeVIEW, UserPostingLikeDetails, UserPostingLikeWithPosting
+    ratingDetails, UserPostingLikeVIEW, UserPostingLikeDetails, UserPostingLikeWithPosting
 from django.contrib.auth import views as auth_views
 from django.views.decorators.csrf import csrf_exempt
 
@@ -25,7 +25,6 @@ urlpatterns = [
 
 
     # path('admin/', admin.site.urls),
-    path('usermbti/', UserMbtiVIEW.as_view()),
     path('userrating/', UserRatingVIEW.as_view()),
     path('userrating/<int:ratingId>', ratingDetails.as_view()),
     path('userpostingclick/', UserPostingClickVIEW.as_view()),

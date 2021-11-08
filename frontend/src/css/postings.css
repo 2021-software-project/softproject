@@ -2,6 +2,8 @@
 .postings{
     margin-top :10px;
     margin-bottom: 10px;
+    margin-right: 1.5%;
+    margin-left: 1.5%;
 }
 .postings .card {
     width: 95%;
@@ -20,7 +22,7 @@
 @media (min-width:768px) {
     .postings .card {
         width: 600px;
-        margin : 0 10%;
+        margin : 0 1%;
     }
 }
 

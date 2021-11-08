@@ -4,8 +4,8 @@ from rest_framework.decorators import APIView, api_view
 from rest_framework.exceptions import AuthenticationFailed
 
 
-from .models import UserRating, UserPostingClick, UserMbti, UserPostingLike
-from .serializers import UserRatingSerializer, UserMbtiSerializer, UserPostingClickSerializer,UserPostingLikeSerializer, \
+from .models import UserRating, UserPostingClick, UserPostingLike
+from .serializers import UserRatingSerializer, UserPostingClickSerializer,UserPostingLikeSerializer, \
     ResetPasswordEmailRequestSerializer,SetNewPasswordSerializer
 from rest_framework.response import Response
 from rest_framework import generics, status
@@ -250,19 +250,4 @@ class UserPostingLikeWithPosting(APIView):
 
 
 
-
-class UserMbtiVIEW(generics.ListAPIView):
-    queryset = UserMbti.objects.all()
-    serializer_class = UserMbtiSerializer
-
-    def get(self, request):
-        return self.list(request)
-
-    def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
-        serializer = UserMbtiSerializer(data = request.data)  # JSON -> Serialize
-
-        if serializer.is_valid():  # 타당성 검토 후 저장
-            serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
 

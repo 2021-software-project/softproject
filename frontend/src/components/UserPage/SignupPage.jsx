@@ -34,7 +34,7 @@ const SignupPage = () => {
 
   // 지우기
   useEffect(()=>{
-    console.log(chk)
+
   },[])
 
 
@@ -69,6 +69,7 @@ const SignupPage = () => {
 
   const onChangeMbti = (e) => {
     setMbtiSelected(e.target.value);
+    console.log(selMbti);
   };
 
     const [ modalOpen, setModalOpen ] = useState(false);
@@ -88,6 +89,7 @@ const SignupPage = () => {
           email: email,
           password1: password1,
           password2: password2,
+          mbti:selMbti,
           sns:'' // 없어도 user db 에 들어감
       }
       console.log(user);
@@ -101,19 +103,9 @@ const SignupPage = () => {
       Axios.post('http://localhost:8000/user/auth/signup/', user)
           .then(res => {
               if (res.data.key) {
-                  Axios.post('http://localhost:8000/user/usermbti/',
-                      {email: email, mbti: selMbti},
-                      {
-                          headers: {
-                              'Accept': 'application/json',
-                              'Content-Type': 'application/json;charset=UTF-8',
-                              'Authorization': 'token ' + res.data.key,
-                          }
-                      }).then(success => {
-                      console.log(selMbti)
-                      alert("회원가입을 축하드립니다 !")
-                      window.location.replace('/login')
-                  })
+                  alert("회원가입을 축하드립니다 !");
+                  window.location.replace('/login');
+
               } else {
                   setUsername('')
                   setEmail('')
@@ -146,25 +138,30 @@ const SignupPage = () => {
           })
   }
 
+  const newTabMbti=()=>{
+        window.open("https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC");
+    }
+
   return(
       <div className="LoginSignupform">
           <div className="section text-center">
-            <h4 className="mb-4 pb-3">Sign Up</h4>
+            <h4 className="mb-4 pb-3">SIGN UP</h4>
             {errors === true && <h2>Cannot signup with provided credentials</h2>}
               <form onSubmit={onSubmit}>
 
-
-
-                  <div className="form-group mt-2">
-                  <select className="form-style" onChange={onChangeMbti} value={selMbti}>
-                      <option value="none" hidden>MBTI</option>
+                  <div className="form-group mt-2 selectMbtiDiv">
+                  <select required="true" className="form-style selectMbti" onChange={onChangeMbti} value={selMbti}>
+                      <option label="select MBTI" value=""></option>
                       {MbtiList.map((item) => (
                         <option style={{height: 10}} value={item} key={item}>
                           {item}
                         </option>
                       ))}
                   </select>
+                      <button onClick={newTabMbti} className="goMBTI">MBTI검사</button>
                       <i className="input-icon uil uil-heart"></i>
+
+
                   </div>
 
                   <div className="form-group mt-2">
@@ -193,7 +190,7 @@ const SignupPage = () => {
 
                    <React.Fragment>
                         <a onClick={ openModal }>개인정보 수집 동의  </a>
-                       <input className="checkbox2" type="checkbox" onClick={onChecked}/>
+                       <input required className="checkbox2" type="checkbox" onClick={onChecked}/>
                         <Modal open={ modalOpen } close={ closeModal } header="개인정보 수집 동의">
                             <h5>1. 수집하는 개인정보 항목 및 이용 목적 </h5>
                             1) 회원가입 시 <br/>
@@ -220,55 +217,6 @@ const SignupPage = () => {
       </div>
   )
 
-
-
-  // return(
-  //     <SignupDiv>
-  //       <h1>회원가입</h1>
-  //       <br/>
-  //       {errors === true && <h2>Cannot signup with provided credentials</h2>}
-  //       <form onSubmit={onSubmit}>
-  //         <label htmlFor='username'>닉네임</label>
-  //         <Input
-  //           type='username'
-  //           value={username} id="username"
-  //           onChange={onChangeUsername}
-  //           required
-  //         />
-  //         <br/>
-  //         <label htmlFor='email'>이메일 주소</label>
-  //         <Input
-  //           type='email'
-  //           value={email} id='email'
-  //           onChange={onChangeEmail}
-  //           required
-  //         />
-  //         <br/>
-  //         <label htmlFor='password1'>비밀번호(소문자, 숫자, 특수문자 포함 8~16자):</label>
-  //         <Input
-  //           type='password'
-  //           value={password1} id='password1'
-  //           onChange={onChangePwd1}
-  //           minLength='8'
-  //           pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&^])[a-z\d$@$!%*#?&^]{8,16}$'
-  //           required
-  //         />
-  //         <br/>
-  //         <label htmlFor='password1'>비밀번호 확인(소문자, 숫자, 특수문자 포함 8~16자):</label>
-  //         <Input
-  //           type='password'
-  //           value={password2} id='password2'
-  //           onChange={onChangePwd2}
-  //           minLength='8'
-  //           pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&^])[a-z\d$@$!%*#?&^]{8,16}$'
-  //           required
-  //         />
-  //         <br/>
-  //         <input type="checkbox" onClick={onChecked} />개인정보 수집 동의<br/>
-  //         <Input type='submit' size="large" value='가입하기' />
-  //       </form>
-  //     </SignupDiv>
-  // )
 }
 
 export default SignupPage;

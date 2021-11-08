@@ -70,7 +70,7 @@ function NavBar() {
         <div id="page-top">
             <nav className="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
                 <div className="container">
-                    <a className="navbar-brand" href="/">Start Bootstrap</a>
+                    <a className="navbar-brand" href="/">Albagram</a>
                     <button className="navbar-toggler text-uppercase font-weight-bold bg-primary text-black-50"
                             type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,18 +82,18 @@ function NavBar() {
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                                                                     href="/main">Main Page</a></li>
+                                                                     href="/main">MAIN PAGE</a></li>
                             { auth ?
                                 <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                                                                     onClick={handleLogout} href="#logout">Logout</a></li>
+                                                                     onClick={handleLogout} href="#logout">LOGOUT</a></li>
                                 :
                                 <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                                                                     href="/login">Login / Sign up</a></li>
+                                                                     href="/login">LOGIN / SIGN UP</a></li>
                             }
 
                             { auth ?
                                 <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                                                                     href="/mypage">MyPage</a></li>
+                                                                     href="/mypage">MYPAGE</a></li>
                                 : " "
                             }
                         </ul>

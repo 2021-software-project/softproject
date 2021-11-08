@@ -1,5 +1,5 @@
 .rcm-result{
-    margin-bottom: 10%;
+    margin-bottom: 20%;
 }
 
 .rcm-result .info {
@@ -52,6 +52,10 @@
     border: unset;
     width:100%;
     box-shadow:none;
+}
+.rcm-result .clicked{
+    background-color: #f69494d9 !important;
+    color: white !important;
 }
 @media (min-width:768px) {
     .rcm-result .button-4 {

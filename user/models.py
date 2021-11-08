@@ -81,6 +81,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
     sns = models.CharField(max_length=50, blank=True)
+    mbti = models.CharField(max_length=6, default="")
 
     objects = UserManager()
 
@@ -88,7 +89,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     # 일반적으로 사용자의 이름이지만 email 주소 또는 다른 고유 식별자로 지정 가능
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['sns']
+    REQUIRED_FIELDS = ['sns', 'mbti']
 
     # class Meta : Inner class 로 사용하여 상위 클래스에게 meta data를 제공하는 것.
     class Meta:
@@ -105,9 +106,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.email
 
-class UserMbti(models.Model):
-    email = models.CharField(max_length=64)
-    mbti = models.CharField(max_length=6)
 
 class UserRating(models.Model):
     email = models.CharField(max_length=64)

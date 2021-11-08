@@ -81,7 +81,7 @@ const LoginPage = () => {
   return(
       <div className="LoginSignupform">
           <div className="section text-center">
-            <h4 className="mb-4 pb-3">Log In</h4>
+            <h4 className="mb-4 pb-3">LOG IN</h4>
             {errors === true && <h2>Cannot log in with provided credentials</h2>}
               <form onSubmit={onSubmit}>
                   <div className="form-group">

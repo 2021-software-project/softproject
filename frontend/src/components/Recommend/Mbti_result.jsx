@@ -15,6 +15,7 @@ function Mbtiresult(props) {
     console.log(props.location.state);
 
     const [jobList, setJobList] = useState([])
+    const [selJob, setSelJob] = useState(Array(6).fill(false));
     const [code,setCode] = useState('')
 
     useEffect(() => {
@@ -42,9 +43,16 @@ function Mbtiresult(props) {
     }, [])
 
     const onClickJob=(e)=>{
-        setCode(e.target.value)
+        setCode(e.value)
         console.log("code"+code)
+
+        setSelJob(
+            selJob.map((j, index)=>
+            index === e.index? true:false)
+        )
+        console.log(selJob);
     }
+
 
     return (
         <div className="rcm-result">
@@ -56,12 +64,12 @@ function Mbtiresult(props) {
 
             <div className="div-btn">
             {
-                Object.entries(jobList).map(([id,value])=>
+                Object.entries(jobList).map(([id,value], index)=>
                     // (<div><button className="btn-job" onClick={onClickJob} value={value}>{id}</button></div>))
                     (
                         <div className="button-4">
                             <div className="eff-4"></div>
-                            <button onClick={onClickJob} value={value}> {id} </button>
+                            <button className={`button-4-child${selJob[index] ? ' clicked' : ''}`} onClick={()=>onClickJob({value,index})} value={value}> {id} </button>
                         </div>
                     ))
             }

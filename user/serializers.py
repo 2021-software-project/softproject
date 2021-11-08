@@ -5,7 +5,7 @@ from django.utils.encoding import smart_str, force_str, smart_bytes, DjangoUnico
 from django.utils.http import  urlsafe_base64_decode, urlsafe_base64_encode
 from rest_framework.exceptions import AuthenticationFailed
 
-from .models import CustomUser, UserRating, UserMbti, UserPostingClick, UserPostingLike
+from .models import CustomUser, UserRating, UserPostingClick, UserPostingLike
 #from ..MBTI.models import JobPosting
 
 
@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ('email','username','first_name', 'last_name','last_login','date_joined','is_staff','sns')
+        fields = ('email','username','first_name', 'last_name','last_login','date_joined','is_staff','sns', 'mbti')
 
 
 class CustomRegisterSerializer(serializers.ModelSerializer):
@@ -22,7 +22,7 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'password1', 'password2', 'sns']
+        fields = ['username', 'email', 'password1', 'password2', 'sns','mbti']
         extra_kwargs = {
             'password': {
                 'write_only': True
@@ -38,6 +38,7 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
             username = self.validated_data.get('username',' '),
             email= self.validated_data.get('email', ' '),
             sns = self.validated_data.get('sns',' '),
+            mbti=self.validated_data.get('mbti', ' '),
         )
         password1 = self.validated_data.get('password1', ' ')
         password2 = self.validated_data.get('password2', ' ')
@@ -69,13 +70,6 @@ class SetNewPasswordSerializer(serializers.Serializer):
     class Meta:
         fields=['password','token','uidb64']
 
-
-
-
-class UserMbtiSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserMbti
-        fields = '__all__'
 
 class UserRatingSerializer(serializers.ModelSerializer):
     class Meta:

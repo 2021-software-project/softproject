@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Mypage from "./MyPage";
 import axios from 'axios';
-import "../../css/mypage.css";
+import "../../css/RatingList.css";
 
 
 function RatingOne({id, jobfamily, job, score}){
@@ -36,7 +36,6 @@ function RatingOne({id, jobfamily, job, score}){
             <td>{jobfamily}</td>
             <td>{job}</td>
             <td>{score}점 </td>
-            <td>수정 </td>
             <td onClick={()=>ratingDelete({id})} style={{cursor:"pointer"}} id={id}>삭제 </td>
       </tr>
 
@@ -71,11 +70,14 @@ function Rating(){
 
     }, [])
 
+    const onJobSelectBtnClick = () =>{
+        window.location.replace('/Alba_rating');
+    }
 
 
     return(
-        <div id ="my_container3" >
-              <div id="con_mar">
+        <div id ="ratingList" >
+          <div id="con_mar">
             <h2>Rating List</h2>
                 <table align="center" border="1" width = "50%">
 
@@ -86,8 +88,9 @@ function Rating(){
                         )) }
                     </tbody>
                 </table>
-
-                  </div>
+            
+              <button className="jobSelectBtn" onClick={onJobSelectBtnClick}>알바평가하러 가기</button>
+          </div>
 
         </div>
     )

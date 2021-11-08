@@ -12,6 +12,7 @@ function Personal_result(props) {
     const {ch_areagu} = useSelector(state=>state.area_modules);
 
     const [jobList, setJobList] = useState([])
+    const [selJob, setSelJob] = useState(Array(6).fill(false));
     const [code,setCode] = useState('')
     const [user, setUser] = useState('')
 
@@ -59,8 +60,12 @@ function Personal_result(props) {
     },[user])
 
     const onClickJob=(e)=>{
-        setCode(e.target.value)
+        setCode(e.value)
         console.log("code"+code)
+        setSelJob(
+            selJob.map((j, index)=>
+            index === e.index? true:false)
+        )
     }
 
     return (
@@ -71,12 +76,12 @@ function Personal_result(props) {
             </p>
             <div className="div-btn">
             {
-                Object.entries(jobList).map(([id,value])=>
+                Object.entries(jobList).map(([id,value], index)=>
                     // (<div><button className="btn-job" onClick={onClickJob} value={value}>{id}</button></div>))
                     (
                         <div className="button-4">
                             <div className="eff-4"></div>
-                            <button onClick={onClickJob} value={value}> {id} </button>
+                            <button className={`button-4-child${selJob[index] ? ' clicked' : ''}`} onClick={()=>onClickJob({value, index})} value={value}> {id} </button>
                         </div>
                     ))
             }
