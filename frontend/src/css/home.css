@@ -87,6 +87,11 @@ a.link {
     padding-bottom: 2rem;
 }
 
+#inner2{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
 .home_container .button_primary{
     background-color: #ffffff;
     color :  #cf7780;
@@ -109,7 +114,7 @@ a.link {
     text-overflow: ellipsis;
 }
 
-.home_container .banner {
+.home_container #banner {
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -123,7 +128,7 @@ a.link {
 		-ms-justify-content: center;
 		justify-content: center;
 		cursor: default;
-		min-height: 35em;
+		min-height: 40em;
 		overflow: hidden;
 		position: relative;
 		text-align: center;
@@ -153,3 +158,55 @@ a.link {
 /*    flex: 1;*/
 /*    text-align: center;*/
 /*}*/
+
+.home_container font{
+    font-size: xxx-large;
+    font-weight: 900;
+    line-height: 1.75em;
+    color : #ffffff;
+}
+#banner font{
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease;
+    -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+    -ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    display: inline-block;
+    opacity: 1;
+    padding: 0.35em 1em;
+    position: relative;
+    z-index: 1;
+}
+
+#banner font:before, #banner font:after {
+    -moz-transition: width 0.85s ease;
+    -webkit-transition: width 0.85s ease;
+    -ms-transition: width 0.85s ease;
+    transition: width 0.85s ease;
+    -moz-transition-delay: 0.25s;
+    -webkit-transition-delay: 0.25s;
+    -ms-transition-delay: 0.25s;
+    transition-delay: 0.25s;
+    background: #fff;
+    content: '';
+    display: block;
+    height: 2px;
+    position: absolute;
+    width: 100%;
+}
+
+#banner font:before{
+    top:0;
+    left :0;
+}
+#banner font:after {
+    bottom: 0;
+    right: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}

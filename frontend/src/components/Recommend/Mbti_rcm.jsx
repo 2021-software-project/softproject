@@ -53,6 +53,7 @@ function Mbtircm(){
             <div align="center">   {/*mbti 선택*/}
                 <h2>[MBTI 선택]</h2>
                 <h3>선택한 MBTI : <span style={{color:"blueviolet"}}>{ch_mbti}</span> </h3>
+                <div id="inner">
                 <table id="tb-mbti" width ="50%" border= "2px" solid>
                      <thead>
                      {MBTIMeta.map(i =>
@@ -60,22 +61,23 @@ function Mbtircm(){
                             (<tr className = "tr-mbti">
                             <input type="hidden" className="mbti_Select " name={"mbtichk"} value={i}/></tr>)
                             : (<td className = "td-mbti select"><label><input type="radio" className="mbti_Select" name={"mbtichk"} value={i}
-                                          onChange={()=>onChangeMbti(i)}/> {i} </label></td>))
+                                                                              onChange={()=>onChangeMbti(i)}/> <span>{i}</span> </label></td>))
                     }
                     </thead>
                 </table>
+                </div>
             </div>
             </div>
 
             <div className="con">
             <h2>[지역 선택]</h2>
             <h3>선택한 지역 : <span style={{color:"blueviolet"}}>{ch_areasi} {ch_areagu} </span></h3>
-            <div className="area" align="center">  {/*지역 선택*/}
+            <div className="area" id = "inner" align="center">  {/*지역 선택*/}
                 <table id="tb-mbti" width ="90%" border= "2px" solid>
                     <tr>
                     {MBTIAREA.map(area =>
                         (<td className ="td-mbti select" border= "1px" solid= "black"><label><input type="radio" className="AreaSelect" name={"areasi"} value={area}
-                            onChange={()=>onChangeArea(area,'')}/> {area} </label></td> ))
+                                                                                                    onChange={()=>onChangeArea(area,'')}/> <span>{area}</span> </label></td> ))
                     }
                     </tr>
 

@@ -1,7 +1,7 @@
-#tb-mbti {
+/*#tb-mbti {
     text-align: center;
     margin : 15px 0;
-}
+}*/
 /* 수정 중 - mbti 라디오 버튼 */
 .mbtiSelect{
 
@@ -33,9 +33,9 @@
     display: block;
 }*/
 /*-----------*/
-.sc-mbti{
+/*.sc-mbti{
     padding:1rem;
-}
+}*/
 
 .td-mbti input[type="radio"] {
     -webkit-appearance: none;

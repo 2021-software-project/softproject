@@ -21,10 +21,12 @@ class Home extends Component {
             <div>
                 <header className="home_container" >
 
-					<section className="banner">
+					<section id="banner">
 						<div id="home_container-2">
 						<div id="inner">
-							<h1>Spectral</h1>
+							<font>
+								A L B A G R A M
+							</font>
 							<p>당신의 성격에 맞춰<br />
 							알바를 추천해주는<br />
 							그런 앱 본 적 있나요?<br />
@@ -36,11 +38,13 @@ class Home extends Component {
 
 						</div>
 						</div>
+						<div id= "inner">
 						<a href="#one" class="more scrolly">체험하기</a>
+							</div>
 					</section>
 
 					<section id="one" className="wrapper style1 special">
-						<div id="inner">
+						<div id="inner2">
 
 							<p></p>
 							<p></p>
