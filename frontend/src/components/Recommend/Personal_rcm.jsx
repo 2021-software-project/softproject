@@ -36,7 +36,7 @@ function Personal_rcm(){
                             <tr>
                             {AREA.map(area =>
                                 (<td className ="td-mbti select" border= "1px" solid= "black"><label><input type="radio" className="AreaSelect" name={"areasi"} value={area}
-                                                   onChange={()=>onChangeArea(area,'')}/> {area} </label></td> ))
+                                                                                                            onChange={()=>onChangeArea(area,'')}/> <span>{area}</span> </label></td> ))
                             }
                             </tr>
                         </table>

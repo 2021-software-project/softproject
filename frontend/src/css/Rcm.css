@@ -55,11 +55,10 @@
 
 #tb-mbti {
     text-align: center;
-    margin : 15px 0;
+    /*margin : 15px 0;*/
 }
 /* 수정 중 - mbti 라디오 버튼 */
 .mbtiSelect{
-
     opacity: 0;
 
 }
@@ -81,6 +80,15 @@
     border: 0;
 }
 
+
+#User-mbti td{
+    font-size: 1.5rem;
+    text-align: center;
+    color : #000;
+    margin: 0.5em 0 0.5em 0;
+    border: 0;
+}
+
 .td-mbti label{
     padding-top: 20px;
     padding-bottom: 15px;
@@ -88,6 +96,17 @@
     color : #000;
     display: block;
 }
+
+.user-mbti label{
+    padding-top: 20px;
+    padding-bottom: 15px;
+    width: 100%;
+    color : #000;
+    display: block;
+     font-weight: 900;
+    font-size: xxx-large;
+}
+
 
 .select:hover{
   background-color:#f69494d9  ;
@@ -97,6 +116,18 @@
 .select2:hover{
     color : #bd25bd;
 }
+
+.select3:hover{
+    color : rgba(255, 255, 255, 0.85);
+}
+
+.mb_ti-container input[type=radio]:checked + span{
+   font-size: x-large;
+    font-weight: 600;
+    color :#000000;
+
+}
+
 
 /* 지역 선택 버튼 */
 
@@ -177,3 +208,8 @@
     text-overflow: ellipsis;
 }
 
+.per_son-container input[type=radio]:checked + span {
+    font-size: x-large;
+    font-weight: 600;
+    color: #000000;
+}

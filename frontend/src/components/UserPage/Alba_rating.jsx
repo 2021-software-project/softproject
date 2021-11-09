@@ -41,6 +41,7 @@ function Alba_rating(){
     }, [])
 
     const onChangeJob = (ch_jobfamily, ch_job) => dispatch(changeJob(ch_jobfamily, ch_job));
+
     const onChangeScore = (ch_score) => dispatch(changeScore(ch_score));
 
     const JOBFAMILY = [

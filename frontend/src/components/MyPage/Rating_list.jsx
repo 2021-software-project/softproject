@@ -97,7 +97,10 @@ function Rating(){
     return(
         <div id ="my_container3" >
               <div id="con_mar">
-            <h2>Rating List</h2>
+
+
+            <h1>Rating List</h1>
+
             {email}<p/>
 
 
@@ -107,7 +110,7 @@ function Rating(){
 
                     <tbody>
                         {ratinglist && ratinglist.map(ratingone => (
-                            <RatingOne id={ratingone.id} jobfamily={ratingone.jobfamily} job={ratingone.job} score={ratingone.score}/>
+                            <RatingOne id={ratingone.id} jobfamily = {ratingone.jobfamily} job={ratingone.job} score={ratingone.score}/>
                         )) }
                     </tbody>
                 </table>

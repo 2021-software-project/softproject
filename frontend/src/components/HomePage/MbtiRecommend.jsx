@@ -8,7 +8,6 @@ import pic3 from "../../img/pic03.jpg";
 import pic4 from "../../img/pic04.jpg";
 import pic5 from "../../img/pic05.jpg";
 
-
 const Title = styled.div`
   h2{
     margin-top: 30px;
@@ -17,6 +16,7 @@ const Title = styled.div`
     padding: 30px;
   }
 `;
+
 const JobList = styled.div`
     li{
         list-style: none;
@@ -111,9 +111,9 @@ class MbtiRecommend extends React.Component{
     render() {
         return (
         <div>
-            <Title>
+
                 <h2>{this.state.mbti.toLocaleString().toUpperCase()} 맞춤 알바</h2>
-            </Title>
+
             <JobList>
                 <ul>
                     {this.state.myJobs.map((job,index)=>
@@ -121,7 +121,7 @@ class MbtiRecommend extends React.Component{
                     }
                 </ul>
                 <Link to="/login">
-                    <input class="button primary" type="button" value="더 추천받기!"/>
+                    <input class="button_primary" type="button" value="더 추천받기!"/>
                 </Link>
             </JobList>
             <br/>
