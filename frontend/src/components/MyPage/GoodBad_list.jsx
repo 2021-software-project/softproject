@@ -40,53 +40,67 @@ function GoodBad(){
             console.log(Error)
         })
     }, []);
-
+    const goRecommendMbti=()=>{
+        window.location.replace('/Mbti_rcm');
+    }
+    const goRecommendPersonal=()=>{
+        window.location.replace('/Personal_rcm');
+    }
+    console.log(totalList);
 
 
     return(
         <div id = "goodBadList">
+            {totalList.length!=0?
+            <div>
+             <h2>좋아요</h2>
+                {totalList.map((i)=>(
+                    i.like === 1?
+                    <div className="goodcard" id={i.post_id.id}>
+                        <GoodBadPostings
+                            id={i.post_id.id}
+                            city={i.post_id.city}
+                            company={i.post_id.company}
+                            county={i.post_id.county}
+                            pay={i.post_id.pay}
+                            pay_type={i.post_id.pay_type}
+                            sub_code={i.post_id.sub_code}
+                            subtitle={i.post_id.subtitle}
+                            url={i.post_id.url}
+                        />
+                    </div>
+                        : <div></div>
+                ))
+                }
 
-         <h2>좋아요</h2>
-            {totalList.map((i)=>(
-                i.like === 1?
-                <div className="goodcard" id={i.post_id.id}>
-                    <GoodBadPostings
-                        id={i.post_id.id}
-                        city={i.post_id.city}
-                        company={i.post_id.company}
-                        county={i.post_id.county}
-                        pay={i.post_id.pay}
-                        pay_type={i.post_id.pay_type}
-                        sub_code={i.post_id.sub_code}
-                        subtitle={i.post_id.subtitle}
-                        url={i.post_id.url}
-                    />
+                <br/>
+            <h2>싫어요</h2>
+                {totalList.map((i)=>(
+                    i.like === -1?
+                    <div className="badcard" id={i.post_id.id}>
+                        <GoodBadPostings
+                            id={i.post_id.id}
+                            city={i.post_id.city}
+                            company={i.post_id.company}
+                            county={i.post_id.county}
+                            pay={i.post_id.pay}
+                            pay_type={i.post_id.pay_type}
+                            sub_code={i.post_id.sub_code}
+                            subtitle={i.post_id.subtitle}
+                            url={i.post_id.url}
+                        />
+                    </div>
+                        :<div></div>
+                ))
+                }
+            </div>
+            :
+                <div>
+                    <h2>추천받으시겠습니까 ?</h2>
+                    <button className="goRecommend" onClick={goRecommendMbti}>mbti 추천받기</button>
+                    <button className="goRecommend" onClick={goRecommendPersonal}>개인별 추천받기</button>
                 </div>
-                    : <div></div>
-            ))
             }
-
-            <br/>
-        <h2>싫어요</h2>
-            {totalList.map((i)=>(
-                i.like === -1?
-                <div className="badcard" id={i.post_id.id}>
-                    <GoodBadPostings
-                        id={i.post_id.id}
-                        city={i.post_id.city}
-                        company={i.post_id.company}
-                        county={i.post_id.county}
-                        pay={i.post_id.pay}
-                        pay_type={i.post_id.pay_type}
-                        sub_code={i.post_id.sub_code}
-                        subtitle={i.post_id.subtitle}
-                        url={i.post_id.url}
-                    />
-                </div>
-                    :<div></div>
-            ))
-            }
-
 
 
         </div>

@@ -49,8 +49,6 @@ function Rating(){
     let token = localStorage.getItem('token')
     let email = localStorage.getItem('email')
     useEffect(() => {
-        console.log(token)
-
         axios.get(`/user/userrating/?search=${email}`,
             {
                 headers: {
@@ -78,7 +76,7 @@ function Rating(){
         <div id ="ratingList" >
           <div id="con_mar">
             <h2>Rating List</h2>
-              {ratinglist ?
+              {ratinglist.length!=0 ?
                   <div className="ratingListTable">
                       <table>
                           <tr>

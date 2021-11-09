@@ -165,3 +165,28 @@
     color: rgb(189, 89, 91);
     font-weight: bold;
 }
+
+#goodBadList .goRecommend{
+    color: #ffffff;
+    background-color: rgba(227, 123, 124, 0.68);
+    margin: 0px 6px;
+    padding: 1px 21px;
+    border-radius: 0rem;
+    font-size: 16px;
+
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 0;
+    height: 3.125em;
+    letter-spacing: -1px;
+    margin-top: 3%;
+    font-family: 'GowunDodum-Regular';
+    font-weight: bold;
+    letter-spacing: -0.3px;
+}
+#goodBadList .goRecommend:hover {
+  color:#1d253b;
+  background-color: rgba(189, 89, 91, 0.68);
+}
