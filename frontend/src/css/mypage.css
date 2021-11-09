@@ -66,7 +66,7 @@
 #menu_box{
     width : 100%;
 
-    padding-top :3rem;
+    padding-top :2rem;
     padding-bottom : 2rem;
 
 
@@ -104,4 +104,62 @@
 #goodBadList{
     padding-top: 5%;
     padding-bottom: 10%;
+}
+
+
+/*마이페이지*/
+#mypage{
+    margin-top: 3%;
+    margin-bottom: 15%;
+}
+#mypage .userInfo{
+    margin-top: 1%;
+    display: inline-table;
+    width: 60%;
+    border-top: black 2px double;
+    border-bottom: black 2px double;
+    height: 140px;
+}
+#mypage .userInfo .username{
+    width: 45%;
+    font-size: 30px;
+    font-weight: 500;
+}
+#mypage .userInfo .useremail{
+    padding-left: 12%;
+    text-align: left;
+}
+#mypage .userInfo .mbti{
+    padding-left: 12%;
+    text-align: left;
+}
+
+
+#mypage .mypageTable{
+    display: inline-table;
+    width: 70%;
+}
+#mypage .mypageTableRow{
+    /*display: table-row;*/
+    height: 40px;
+}
+#mypage .mypageTableCell{
+    display: table-cell;
+    font-size: 17px;
+    font-weight: 500;
+    width: 20%;
+}
+#mypage .mypageTable span{
+    cursor: pointer;
+}
+#mypage .mypageTable span:hover{
+    color: rgb(189, 89, 91);
+    transition: 0.3s ease-in-out;
+}
+#mypage #mypageDetail{
+    margin-top: -1%;
+    border-top: black 1px dot-dot-dash;
+}
+#mypage .clicked{
+    color: rgb(189, 89, 91);
 }
