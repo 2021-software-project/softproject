@@ -4,7 +4,7 @@ import axios from 'axios';
 import "../../css/RatingList.css";
 
 
-function RatingOne({id, jobfamily, job, score}){
+function RatingOne({index, id, jobfamily, job, score}){
 
     const ratingDelete=(e)=>{
         console.log(e.id);
@@ -17,7 +17,7 @@ function RatingOne({id, jobfamily, job, score}){
                     'Authorization': 'token ' + localStorage.getItem('token'),
                 }})
           .then(function (response) {
-            window.location.replace("/Rating_list");
+            window.location.replace("/mypage");
             console.log(response);
           })
           .catch(function (error) {
@@ -32,11 +32,11 @@ function RatingOne({id, jobfamily, job, score}){
 
 
   return(
-      <tr >
+      <tr className={`ratingListRow${index%2?' odd':''}`}>
             <td>{jobfamily}</td>
             <td>{job}</td>
             <td>{score}점 </td>
-            <td onClick={()=>ratingDelete({id})} style={{cursor:"pointer"}} id={id}>삭제 </td>
+            <td className="deleteRow" onClick={()=>ratingDelete({id})} id={id}>삭제 </td>
       </tr>
 
   )
@@ -79,17 +79,26 @@ function Rating(){
         <div id ="ratingList" >
           <div id="con_mar">
             <h2>Rating List</h2>
-                <table align="center" border="1" width = "50%">
+              {ratinglist ?
+                  <div className="ratingListTable">
+                      <table>
+                          <tr>
+                              <th>직종</th>
+                              <th>업종</th>
+                              <th>점수</th>
+                              <th>비고</th>
+                          </tr>
+                          <tbody>
+                          {ratinglist && ratinglist.map((ratingone, index) => (
+                              <RatingOne index={index} id={ratingone.id} jobfamily={ratingone.jobfamily}
+                                         job={ratingone.job} score={ratingone.score}/>
+                          ))}
+                          </tbody>
+                      </table>
+              </div> :''}
+                  <button className="jobSelectBtn" onClick={onJobSelectBtnClick}>알바평가하러 가기</button>
 
-                    <th>직종</th> <th>업종</th> <th>점수</th>
-                    <tbody>
-                        {ratinglist && ratinglist.map(ratingone => (
-                            <RatingOne id={ratingone.id} jobfamily={ratingone.jobfamily} job={ratingone.job} score={ratingone.score}/>
-                        )) }
-                    </tbody>
-                </table>
-            
-              <button className="jobSelectBtn" onClick={onJobSelectBtnClick}>알바평가하러 가기</button>
+
           </div>
 
         </div>

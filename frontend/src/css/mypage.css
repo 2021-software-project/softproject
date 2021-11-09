@@ -163,4 +163,5 @@
 }
 #mypage .clicked{
     color: rgb(189, 89, 91);
+    font-weight: bold;
 }

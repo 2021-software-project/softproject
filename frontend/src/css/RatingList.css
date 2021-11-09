@@ -3,11 +3,43 @@
     margin-bottom: 15%;
 }
 
+#ratingList table{
+    text-align: center;
+    border: transparent 1px solid;
+    border-radius: 8px;
+    display: inline-table;
+    width: 80%;
+}
+@media (max-width: 500px) {
+    #ratingList table{
+        width:97%;
+        font-size: 14px;
+
+    }
+
+}
+#ratingList table th{
+    font-weight: bold;
+    background-color: rgba(227, 123, 124, 0.85);
+    color: white;
+    height: 37px;
+}
+#ratingList td{
+    height: 32px;
+    /*text-align: left;
+    padding-left: 2%;*/
+}
+#ratingList .odd{
+    background: rgba(253, 155, 156, 0.35);
+}
+
+
+
 #ratingList .jobSelectBtn {
     color: #ffffff;
     background-color: rgba(227, 123, 124, 0.68);
     margin: 0px 6px;
-    padding: 4px 21px;
+    padding: 1px 21px;
     border-radius: 0rem;
     font-size: 16px;
 
@@ -26,4 +58,11 @@
 #ratingList .jobSelectBtn:hover {
   color:#1d253b;
   background-color: rgba(189, 89, 91, 0.68);
+}
+#ratingList .deleteRow{
+    cursor: pointer;
+}
+#ratingList .deleteRow:hover{
+    color: rgb(151, 70, 71);
+    font-weight: bold;
 }

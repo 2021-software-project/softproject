@@ -30,7 +30,7 @@ class Home extends Component {
 							<p>당신의 성격에 맞춰<br />
 							알바를 추천해주는<br />
 							그런 앱 본 적 있나요?<br />
-								<a href="http://html5up.net">HTML5 UP</a>.</p>
+								{/*<a href="http://html5up.net">HTML5 UP</a>.*/}</p>
 
 								<div id="inner">
 								<a href="/main" className="button_primary">입장하기</a>

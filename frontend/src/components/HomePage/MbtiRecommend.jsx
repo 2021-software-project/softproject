@@ -1,6 +1,5 @@
 import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
-// import MbtiJobs from "./MbtiJobs";
 import styled from "styled-components";
 import pic1 from "../../img/pic01.jpg";
 import pic2 from "../../img/pic02.jpg";
@@ -111,9 +110,7 @@ class MbtiRecommend extends React.Component{
     render() {
         return (
         <div>
-
                 <h2>{this.state.mbti.toLocaleString().toUpperCase()} 맞춤 알바</h2>
-
             <JobList>
                 <ul>
                     {this.state.myJobs.map((job,index)=>

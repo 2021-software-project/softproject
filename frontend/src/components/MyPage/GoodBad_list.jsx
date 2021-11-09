@@ -46,7 +46,7 @@ function GoodBad(){
     return(
         <div id = "goodBadList">
 
-         <h1>좋아요</h1>
+         <h2>좋아요</h2>
             {totalList.map((i)=>(
                 i.like === 1?
                 <div className="goodcard" id={i.post_id.id}>
@@ -67,7 +67,7 @@ function GoodBad(){
             }
 
             <br/>
-        <h1>싫어요</h1>
+        <h2>싫어요</h2>
             {totalList.map((i)=>(
                 i.like === -1?
                 <div className="badcard" id={i.post_id.id}>
