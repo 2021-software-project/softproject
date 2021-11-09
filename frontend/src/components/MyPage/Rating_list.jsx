@@ -74,7 +74,6 @@ function Rating(){
         window.location.replace('/Alba_rating');
     }
 
-
     return(
         <div id ="ratingList" >
           <div id="con_mar">
