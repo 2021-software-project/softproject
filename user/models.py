@@ -106,7 +106,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 class UserMbti(models.Model):
-    email = models.CharField(max_length=64)
+    email = models.CharField(max_length=64, primary_key=True)
+    # id = models.ForeignKey("CustomUser", related_name="customUser", on_delete=models.CASCADE, db_column="email")
     mbti = models.CharField(max_length=6)
 
 class UserRating(models.Model):

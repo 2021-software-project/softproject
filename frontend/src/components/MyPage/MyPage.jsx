@@ -5,8 +5,45 @@ import {Link} from "react-router-dom";
 import UserName from "./UserName";
 import "../../css/mypage.css";
 
-
 function MyPage() {
+
+    const [usermbti, setUsermbti] = useState('')
+    const [changembti, setChangembti] = useState('ESTP')
+
+    useEffect(()=>{
+        let email = localStorage.getItem('email')
+        if (email !== null){
+            Axios.get(`/user/usermbti/get/${email}`)
+                .then(res=>{
+                    const data = res.data[0]
+                    setUsermbti(data.fields.mbti)
+                })
+        }
+    },[])
+
+
+    const onChangeMbti=()=>{
+        let mbti = changembti
+        console.log(mbti)
+        let email = localStorage.getItem('email')
+        let token = localStorage.getItem('token')
+        if (token !== null){
+            Axios.post('http://localhost:8000/user/usermbti/change/',
+                {email: email, mbti: mbti},
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        'Authorization': 'token ' + token,
+                    }
+                }).then(res=>{
+                    alert(res.data.message)
+                    setUsermbti(mbti)
+                }).catch(err=>{
+                    console.log(err)
+            })
+        }
+    }
 
     return (
         <div id = "my_container">
@@ -15,8 +52,8 @@ function MyPage() {
                  </div>
             <div id="menu_box">
             <fieldset>
-                <p></p>
-
+                <p>{usermbti}</p>
+                <button onClick={onChangeMbti}>확인</button>
                 <ul className="my-page_menu margin">
                             <li className="nav-item"><a className="submenu "
                                                                      href="/MyInfo_edit">● 회원정보수정</a></li>
