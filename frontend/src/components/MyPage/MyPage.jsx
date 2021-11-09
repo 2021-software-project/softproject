@@ -72,17 +72,17 @@ function MyPage() {
              </div>
 
             <table className="userInfo">
-                <tr >
+                <tr height="50">
                     <td className="username" rowSpan={2}><div><UserName/>님</div></td>
                     <td className="useremail">{localStorage.getItem("email")}</td>
                 </tr>
-                <tr>
-                    <td className="mbti"><p>{usermbti}</p></td>
+                <tr height="50">
+                    <td className="mbti"><p>MBTI</p></td>
                 </tr>
             </table>
 
-                <p>{usermbti}</p>
-                <button onClick={onChangeMbti}>확인</button>
+            {/*<p>{usermbti}</p>
+                <button onClick={onChangeMbti}>확인</button>*/}
             <div id="menu_box">
                 <table class="mypageTable">
                     <tr class="mypageTableRow">
