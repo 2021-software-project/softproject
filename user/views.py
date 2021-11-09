@@ -1,3 +1,4 @@
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import APIView, api_view
@@ -11,6 +12,7 @@ from rest_framework.response import Response
 from rest_framework import generics, status
 from .models import CustomUser
 
+from django.core import serializers
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import smart_str, force_str, smart_bytes, DjangoUnicodeDecodeError
 from django.utils.http import  urlsafe_base64_decode, urlsafe_base64_encode
@@ -251,3 +253,34 @@ class UserPostingLikeWithPosting(APIView):
 
 
 
+#class UserMbtiVIEW(generics.ListAPIView):
+#    queryset = UserMbti.objects.all()
+#    serializer_class = UserMbtiSerializer
+#
+#    def get(self, request, email):
+#        qs = UserMbti.objects.filter(email=email)
+#        user_mbti = serializers.serialize('json', qs)
+#        print(user_mbti)
+#        return HttpResponse(user_mbti, content_type="text/json-comment-filtered")
+#
+#
+#    def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
+#        serializer = UserMbtiSerializer(data = request.data)  # JSON -> Serialize
+#
+#        if serializer.is_valid():  # 타당성 검토 후 저장
+#            serializer.save()
+#            return Response(serializer.data, status=201)
+#        return Response(serializer.errors, status=400)
+#
+#
+#class UserChangeMbtiVIEW(generics.ListAPIView):
+#    queryset = UserMbti.objects.all()
+#    serializer_class = UserMbtiSerializer
+#
+#    def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
+#        email = request.data["email"]
+#        mbti = request.data["mbti"]
+#        user_mbti = UserMbti.objects.get(email=email)
+#        user_mbti.mbti = mbti
+#        user_mbti.save()
+#        return Response({'success':True, 'message':'MBTI가 변경되었습니다.'},status=status.HTTP_200_OK)

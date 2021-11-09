@@ -27,6 +27,44 @@ function MyPage() {
         )
         //window.location.replace('/Rating_list');
     }
+    const [usermbti, setUsermbti] = useState('')
+    const [changembti, setChangembti] = useState('ESTP')
+
+    useEffect(()=>{
+        let email = localStorage.getItem('email')
+        if (email !== null){
+            Axios.get(`/user/usermbti/get/${email}`)
+                .then(res=>{
+                    const data = res.data[0]
+                    setUsermbti(data.fields.mbti)
+                })
+        }
+    },[])
+
+
+    const onChangeMbti=()=>{
+        let mbti = changembti
+        console.log(mbti)
+        let email = localStorage.getItem('email')
+        let token = localStorage.getItem('token')
+        if (token !== null){
+            Axios.post('http://localhost:8000/user/usermbti/change/',
+                {email: email, mbti: mbti},
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        'Authorization': 'token ' + token,
+                    }
+                }).then(res=>{
+                    alert(res.data.message)
+                    setUsermbti(mbti)
+                }).catch(err=>{
+                    console.log(err)
+            })
+        }
+    }
+
     return (
         <div id = "mypage">
             <div className ="mid_box">
@@ -39,11 +77,12 @@ function MyPage() {
                     <td className="useremail">{localStorage.getItem("email")}</td>
                 </tr>
                 <tr>
-                    <td className="mbti">mbti</td>
+                    <td className="mbti"><p>{usermbti}</p></td>
                 </tr>
             </table>
 
-
+                <p>{usermbti}</p>
+                <button onClick={onChangeMbti}>확인</button>
             <div id="menu_box">
                 <table class="mypageTable">
                     <tr class="mypageTableRow">
