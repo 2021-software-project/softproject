@@ -120,9 +120,20 @@ class UserPostingClick(models.Model):
     stay_time = models.FloatField(default=0.0) #초 단위
     click_time = models.DateTimeField(default=timezone.now)
 
+class JobPosting(models.Model):
+    city = models.CharField(max_length=80)
+    county = models.CharField(max_length=80)
+    company = models.CharField(max_length=80)
+    subtitle = models.CharField(max_length=200)
+    url = models.CharField(max_length=100)
+    pay_type = models.CharField(max_length=80)
+    pay = models.CharField(max_length=30)
+    sub_code = models.CharField(max_length=10)
+    enrol_date = models.DateTimeField()
+
 class UserPostingLike(models.Model):
     email = models.CharField(max_length=64)
-    post_id = models.ForeignKey("MBTI.JobPosting", on_delete=models.CASCADE, db_column='post_id')
+    post_id = models.ForeignKey(JobPosting, on_delete=models.CASCADE, db_column='post_id')
     jobcode = models.CharField(max_length=5)
     like = models.IntegerField(default=0) #좋아요:1, 싫어요:-1
     like_time = models.DateTimeField(default=timezone.now)
@@ -148,3 +159,4 @@ class UserPostingLike(models.Model):
     #         }
 
     #   }
+

@@ -21,7 +21,7 @@ function Personal_result(props) {
         if (props.location.state === undefined) {
             return (
                 <Redirect to={{
-                    pathname: '/mbti_rcm',
+                    pathname: '/user/mbti_rcm',
                     state: {from: props.location}
                 }}/>
             )
@@ -46,7 +46,7 @@ function Personal_result(props) {
 
     useEffect(()=>{
         if (jobList == '') {
-            Axios.get('/persrcm/', {
+            Axios.get('/user/persrcm/', {
                 params: {username: user},
             }).then((res) => {
                 console.log(res.data.job_list)

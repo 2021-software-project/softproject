@@ -22,14 +22,14 @@ function Mbtiresult(props) {
         if (props.location.state === undefined) {
             return (
                 <Redirect to={{
-                    pathname: '/mbti_rcm',
+                    pathname: '/user/mbti_rcm',
                     state: {from: props.location}
                 }}/>
             )
         }
 
         if (jobList =='') {
-            axios.get('http://127.0.0.1:8000/mbtircm/', {
+            axios.get('http://127.0.0.1:8000/user/mbtircm/', {
                 params: {mbti: ch_mbti},
             }).then((res) => {
                 console.log(res.data.job_list)

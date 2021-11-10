@@ -1,5 +1,6 @@
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
+from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import APIView, api_view
 from rest_framework.exceptions import AuthenticationFailed
@@ -284,3 +285,52 @@ class UserPostingLikeWithPosting(APIView):
 #        user_mbti.mbti = mbti
 #        user_mbti.save()
 #        return Response({'success':True, 'message':'MBTI가 변경되었습니다.'},status=status.HTTP_200_OK)
+
+
+
+
+
+from .modules.mbtiRcm import randomRCM
+
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+from .models import JobPosting
+
+
+@method_decorator(csrf_exempt,name='dispatch')
+class mbtiRcm(View):
+    def get(self, request):
+        get_mbti = request.GET.get('mbti')
+        print(get_mbti)
+
+        job_list = randomRCM() ####여기에 추천 모듈 넣기
+        # JSON 형식으로 response
+        return  JsonResponse({
+            'job_list' : job_list,
+        }) # 한글 등의 유니코드는 16진수로 표현될 경우 : 두번째 파라미터로 json_dumps_params = {'ensure_ascii': False} 추가
+
+
+@method_decorator(csrf_exempt,name='dispatch')
+class persRcm(View):
+    def get(self, request):
+        get_user = request.GET.get('username')
+        job_list = randomRCM()  ####여기에 추천 모듈 넣기
+        print(get_user)
+        # JSON 형식으로 response
+        return  JsonResponse({
+            'job_list' : job_list,
+        }) # 한글 등의 유니코드는 16진수로 표현될 경우 : 두번째 파라미터로 json_dumps_params = {'ensure_ascii': False} 추가
+
+
+@csrf_exempt
+def postings(request):
+    if request.method == 'POST':
+        code = request.POST.get('code')
+        si = request.POST.get('si')
+        gu = request.POST.get('gu')
+
+        qs = JobPosting.objects.filter(sub_code=code,city=si,county=gu)
+        post_list = serializers.serialize('json', qs)
+        print(post_list)
+        return HttpResponse(post_list, content_type="text/json-comment-filtered")

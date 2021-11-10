@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from rest_framework import routers
-from .view import mbtiRcm, persRcm ,postings
+#from .view import mbtiRcm, persRcm ,postings
 
 router = routers.DefaultRouter()
 
@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^$',TemplateView.as_view(template_name='index.html'),name='index'),
     path('user/', include('user.urls')),
     path('admin/', admin.site.urls),
-    path('mbtircm/', mbtiRcm.as_view(), name='mbtircm'),
-    path('persrcm/', persRcm.as_view(), name='persrcm'),
-    path('postings/', postings, name='postings'),
+    #path('mbtircm/', mbtiRcm.as_view(), name='mbtircm'),
+    #path('persrcm/', persRcm.as_view(), name='persrcm'),
+    #path('postings/', postings, name='postings'),
 ]

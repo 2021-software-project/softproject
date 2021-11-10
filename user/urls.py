@@ -2,8 +2,10 @@ from django.urls import include, path
 from . import views
 from django.contrib import admin
 
-from .views import UserRatingVIEW, UserPostingClickVIEW, PasswordTokenCheckAPI, RequestPasswordResetEmail, SetNewPasswordAPIView, \
-    ratingDetails, UserPostingLikeVIEW, UserPostingLikeDetails, UserPostingLikeWithPosting
+from .views import UserRatingVIEW, UserPostingClickVIEW, PasswordTokenCheckAPI, RequestPasswordResetEmail, \
+    SetNewPasswordAPIView, \
+    ratingDetails, UserPostingLikeVIEW, UserPostingLikeDetails, UserPostingLikeWithPosting, mbtiRcm, persRcm, postings
+
 from django.contrib.auth import views as auth_views
 from django.views.decorators.csrf import csrf_exempt
 
@@ -34,4 +36,8 @@ urlpatterns = [
     path('userpostinglike/', UserPostingLikeVIEW.as_view()),
     path('userpostinglike/<str:email>/<int:post_id>', UserPostingLikeDetails.as_view()),
     path('userpostinglike/withposting/<str:email>',UserPostingLikeWithPosting.as_view()),
+
+    path('mbtircm/', mbtiRcm.as_view(), name='mbtircm'),
+    path('persrcm/', persRcm.as_view(), name='persrcm'),
+    path('postings/', postings, name='postings'),
 ]

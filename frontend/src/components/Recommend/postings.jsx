@@ -82,7 +82,7 @@ function Postings(props){
         data.append("si",ch_areasi)
         data.append("gu",ch_areagu)
 
-        axios.post('/postings/', data)
+        axios.post('/user/postings/', data)
         .then(function (res) {
             setPostings(res.data)
         })
