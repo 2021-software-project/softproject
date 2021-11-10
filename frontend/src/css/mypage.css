@@ -1,17 +1,18 @@
 #my_container {
 
     width : 100%;
-    height: 520px;
     padding-top: 3rem;
     padding-bottom: 5rem;
     /*background-color : #ffffff;*/
 
 }
 
-#my_container2 {
+.my_container2 {
     width : 100%;
     padding-top: 3rem;
     padding-bottom: 5rem;
+
+    margin :auto;
 
 }
 
@@ -42,12 +43,18 @@
     padding-bottom: 1rem;
 }
 
-#password_con-2{
+.password_con-2{
 
     padding-bottom: 1rem;
     margin: auto;
 }
 
+.password_con-2 table{
+    text-align: center;
+    font-size: x-large;
+    margin-right: auto;
+    margin-left: auto;
+}
 
 .mid_box{
     width : 100%;
@@ -189,4 +196,56 @@
 #goodBadList .goRecommend:hover {
   color:#1d253b;
   background-color: rgba(189, 89, 91, 0.68);
+}
+
+.password_con-2 .button_primary{
+    color: #ffffff;
+    background-color :  #cf7780;
+
+    border-radius: 3px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    height: 3.125em;
+    letter-spacing: 0.225em;
+    line-height: 3.125em;
+    max-width: 30em;
+    padding: 0 2.75em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.password_con-2 .button_box{
+    padding-top: 5rem;
+}
+
+.my_container2 .point_box {
+    margin-left: auto;
+    margin-right:auto;
+    width: 50%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+            44deg, rgba(114, 97, 147, 0.64) 20%, rgba(227, 123, 124, 0.66) 60%, rgba(241, 214, 166, 0.68));
+    border-radius: 13px;
+}
+
+.my_container2 .inner_box {
+
+    background-color: rgba(255, 236, 236, 0.55);
+
+    margin-right: 3%;
+    margin-left: 3%;
+    margin-top: 3%;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 300%;
+
+    border-radius: 13px;
+    top: 0;
 }

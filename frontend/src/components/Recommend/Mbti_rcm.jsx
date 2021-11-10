@@ -80,12 +80,13 @@ function Mbtircm(){
                                                                                                     onChange={()=>onChangeArea(area,'')}/> <span>{area}</span> </label></td> ))
                     }
                     </tr>
+                     </table>
 
                     <tr>
                         <td colspan='18' colSpan={MBTIAREA.length}><MbtiArea area_si={ch_areasi}/></td>
                     </tr>
 
-                    </table>
+
 
 
 

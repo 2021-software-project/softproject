@@ -55,24 +55,39 @@ function PasswordUpdate() {
           })
     }
   return (
-      <div id= "password_con-2">
-          <div id="password_con-1" >
-    <form onSubmit={onSubmit}>
-        ● 현재 비밀번호 : &nbsp;
-        <input type="password" id="oldpwd" value={oldpwd} onChange={handleOldpwd} /> <br/>
-        <p></p>
-        ● 새 비밀번호 :&nbsp;
-        <input type="password" id="newpwd1" value={newpwd1} onChange={handleNewpwd1}/> <br/>
-        <p></p>
-        ● 새 비밀번호 확인 :&nbsp;
-        <input type="password" id="newpwd2" value={newpwd2} onChange={handleNewpwd2} /> <br/>
-        &nbsp;
-        <p></p>
+      <div className = "password_con-2">
+          <div  id="password_con-1 ">
+              <form onSubmit={onSubmit}>
+                   <div className ="password_con-2">
+                        <table  width ="30%">
 
-      <button className="btn btn-primary btn-xl" type="submit" >변경하기</button>
-    </form>
-      </div>
+                                <p></p>
+                            현재 비밀번호 : &nbsp;
+                            <input type="password" id="oldpwd" value={oldpwd} onChange={handleOldpwd} /> <br/>
+                            <p></p>
+                            새 비밀번호 :&nbsp;
+                            <input type="password" id="newpwd1" value={newpwd1} onChange={handleNewpwd1}/> <br/>
+                            <p></p>
+                            새 비밀번호 확인 :&nbsp;
+                            <input type="password" id="newpwd2" value={newpwd2} onChange={handleNewpwd2} /> <br/>
+                            &nbsp;
+                            <p></p>
+
+
+                        </table>
+                   </div>
+
+                  <div clsssName="button_box">
+                    <button className="button_primary" type="submit" >변경하기</button>
+                  </div>
+
+
+        </form>
           </div>
+
+      </div>
+
+
 
   );
 }
