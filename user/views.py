@@ -107,6 +107,7 @@ class UserRatingVIEW(generics.ListAPIView): #알바평가 db에 넣고 가져오
 
     def get_queryset(self):
         qs = super().get_queryset()
+
         search = self.request.query_params.get('search')
         if search:
             qs = qs.filter(email=search)
@@ -119,12 +120,13 @@ class UserRatingVIEW(generics.ListAPIView): #알바평가 db에 넣고 가져오
         return qs
 
     def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
-        serializer = UserRatingSerializer(data=request.data)  # JSON -> Serialize
-
+        copyData = request.data.copy() #queryDict는 불변. 변경하려면 복제해서 사용해야함
         largejobcode = large_job_code[request.data['jobfamily']]
-        request.data['jobfamily'] = largejobcode
-        if(request.data['job']!='0'):
-            request.data['job'] = job_code[largejobcode][request.data['job']]
+        smalljobcode = job_code[largejobcode][request.data['job']]
+        copyData['jobfamily'] = largejobcode
+        copyData['job'] = smalljobcode
+
+        serializer = UserRatingSerializer(data=copyData)  # JSON -> Serialize
 
         if serializer.is_valid():  # 타당성 검토 후 저장
             serializer.save()
