@@ -1,8 +1,8 @@
 /*NavBar*/
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Lobster&family=Mochiy+Pop+One&display=swap');
 @font-face {
-    font-family: 'GowunDodum-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -240,7 +240,7 @@
     font-weight: 300;
     text-decoration:none;
     font-size: 17px;
-    font-family: 'GowunDodum-Regular';
+    font-family: 'IM_Hyemin-Bold';
 }
 .menuLI-A:hover{
     color: #aa6c84;
