@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import MbtiArea from "./MbtiArea";
 import "../../css/Rcm.css";
 import "../../css/input_mbti.css"
+import "../../css/korea-map-font-v1.css"
 
 import {useDispatch, useSelector} from "react-redux";
 import {changeArea, changeMbti} from "../../store/modules/area_modules";
@@ -47,7 +48,6 @@ function Mbtircm(){
 
     return (
         <div className ="mb_ti-container">
-
             <h1>MBTI로 아르바이트 추천받기</h1>
             <div className = "con">
             <div align="center">   {/*mbti 선택*/}

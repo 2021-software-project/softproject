@@ -3,7 +3,7 @@ from . import views
 from django.contrib import admin
 
 from .views import UserRatingVIEW, UserPostingClickVIEW, PasswordTokenCheckAPI, RequestPasswordResetEmail, \
-    SetNewPasswordAPIView, \
+    SetNewPasswordAPIView, UserMbtiVIEW,\
     ratingDetails, UserPostingLikeVIEW, UserPostingLikeDetails, UserPostingLikeWithPosting, mbtiRcm, persRcm, postings
 
 from django.contrib.auth import views as auth_views
@@ -28,7 +28,7 @@ urlpatterns = [
 
     # path('admin/', admin.site.urls),
     #path('usermbti/', UserMbtiVIEW.as_view()),
-    #path('usermbti/get/<str:email>', UserMbtiVIEW.as_view()),
+    path('usermbti/get/<str:email>', UserMbtiVIEW.as_view()),
     #path('usermbti/change/', UserChangeMbtiVIEW.as_view()),
     path('userrating/', UserRatingVIEW.as_view()),
     path('userrating/<int:ratingId>', ratingDetails.as_view()),

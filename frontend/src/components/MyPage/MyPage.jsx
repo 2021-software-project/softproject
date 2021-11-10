@@ -30,13 +30,20 @@ function MyPage() {
     const [usermbti, setUsermbti] = useState('')
     const [changembti, setChangembti] = useState('ESTP')
 
+    let token = localStorage.getItem('token')
     useEffect(()=>{
         let email = localStorage.getItem('email')
         if (email !== null){
-            Axios.get(`/user/usermbti/get/${email}`)
+            Axios.get(`/user/usermbti/get/${email}`,
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        'Authorization': 'token ' + token,
+                    }})
                 .then(res=>{
-                    const data = res.data[0]
-                    setUsermbti(data.fields.mbti)
+                    console.log(res.data)
+                    setUsermbti(res.data)
                 })
         }
     },[])
@@ -46,7 +53,7 @@ function MyPage() {
         let mbti = changembti
         console.log(mbti)
         let email = localStorage.getItem('email')
-        let token = localStorage.getItem('token')
+
         if (token !== null){
             Axios.post('http://localhost:8000/user/usermbti/change/',
                 {email: email, mbti: mbti},
@@ -77,7 +84,7 @@ function MyPage() {
                     <td className="useremail">{localStorage.getItem("email")}</td>
                 </tr>
                 <tr height="50">
-                    <td className="mbti"><p>MBTI</p></td>
+                    <td className="mbti"><p>{usermbti}</p></td>
                 </tr>
             </table>
 

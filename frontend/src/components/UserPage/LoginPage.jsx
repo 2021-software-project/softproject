@@ -24,12 +24,28 @@ const LoginPage = () => {
     Axios.post('http://127.0.0.1:8000/user/auth/login/', user)
       .then(res => {
         if (res.data.key) {
-          localStorage.clear()
-          localStorage.setItem('token',res.data.key)
-          localStorage.setItem('email',email);
+            console.log(res.data)
+            localStorage.clear()
+            let token = res.data.key;
+            localStorage.setItem('token',token);
+            localStorage.setItem('email',email);
 
+            Axios.get(`/user/usermbti/get/${email}`,
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        'Authorization': 'token ' + token,
+                    }})
+                .then(response=>{
+                    console.log(response.data)
+                    localStorage.setItem('mbti', response.data)
+                    window.location.replace('/main')
+                }).catch(errors=>{
+                    alert(errors);
+            })
           // 사용하려면 App.js에서 /로 라우팅해야 한다
-          window.location.replace('/main')
+
         } else {
           setEmail('')
           setPassword('')

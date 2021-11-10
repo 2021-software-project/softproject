@@ -3,11 +3,6 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
-# from ..MBTI.models import models
-
-#from softproject.MBTI.models import JobPosting
-
-
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -112,6 +107,7 @@ class UserRating(models.Model):
     jobfamily = models.CharField(max_length=5)
     job = models.CharField(max_length=5)
     score = models.IntegerField()
+    mbti = models.CharField(max_length=6, default="")
 
 class UserPostingClick(models.Model):
     email = models.CharField(max_length=64)
@@ -136,27 +132,6 @@ class UserPostingLike(models.Model):
     post_id = models.ForeignKey(JobPosting, on_delete=models.CASCADE, db_column='post_id')
     jobcode = models.CharField(max_length=5)
     like = models.IntegerField(default=0) #좋아요:1, 싫어요:-1
-    like_time = models.DateTimeField(default=timezone.now)
+    mbti = models.CharField(max_length=6, default="")
 
-    # def to_dict(self):
-    #     return{
-    #         'id':self.id,
-    #         'email':self.email,
-    #         'jobcode':self.jobcode,
-    #         'like':self.like,
-    #         'like_time':self.like_time,
-    #         'post_id':{
-    #             'id':self.MBTI.JobPosting.id,
-    #             'city':self.MBTI.JobPosting.city,
-    #             'county':self.JobPosting.county,
-    #             'company':self.JobPosting.company,
-    #             'subtitle': self.JobPosting.subtitle,
-    #             'url':self.JobPosting.url,
-    #             'pay_type':self.JobPosting.pay_type,
-    #             'pay': self.JobPosting.pay,
-    #             'sub_code': self.JobPosting.sub_code,
-    #             'enrol_date': self.JobPosting.enrol_date,
-    #         }
-
-    #   }
 

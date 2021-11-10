@@ -92,7 +92,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    #'user.models.UserRating',
     'allauth.socialaccount',
     'django_filters',  ##추가
 ]

@@ -1,3 +1,4 @@
+import pandas as pd
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
@@ -20,13 +21,11 @@ from django.utils.http import  urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from .utils import Util
-
-
+from pandas import DataFrame
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 from .job_code import job_code, large_job_code
-#from ..MBTI.models import JobPosting
 
 
 class RequestPasswordResetEmail(generics.GenericAPIView):
@@ -105,10 +104,10 @@ class UserRatingVIEW(generics.ListAPIView): #알바평가 db에 넣고 가져오
 
     #queryset = UserRating.objects.all()
 
-    def get_queryset(self):
+    def get_queryset(self, search=''):
         qs = super().get_queryset()
-
-        search = self.request.query_params.get('search')
+        if(search==''):
+            search = self.request.query_params.get('search')
         if search:
             qs = qs.filter(email=search)
             for rating in qs:
@@ -256,25 +255,32 @@ class UserPostingLikeWithPosting(APIView):
 
 
 
-#class UserMbtiVIEW(generics.ListAPIView):
-#    queryset = UserMbti.objects.all()
-#    serializer_class = UserMbtiSerializer
-#
-#    def get(self, request, email):
-#        qs = UserMbti.objects.filter(email=email)
-#        user_mbti = serializers.serialize('json', qs)
-#        print(user_mbti)
-#        return HttpResponse(user_mbti, content_type="text/json-comment-filtered")
-#
-#
-#    def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
-#        serializer = UserMbtiSerializer(data = request.data)  # JSON -> Serialize
-#
-#        if serializer.is_valid():  # 타당성 검토 후 저장
-#            serializer.save()
-#            return Response(serializer.data, status=201)
-#        return Response(serializer.errors, status=400)
-#
+class UserMbtiVIEW(generics.ListAPIView):
+   #queryset = UserMbti.objects.all()
+   #serializer_class = UserMbtiSerializer
+
+   def get(self, request, email):
+       #qs = CustomUser.objects.get(email=email)
+       if CustomUser.objects.filter(email=email).exists():
+           print("YES")
+           user = CustomUser.objects.get(email=email)
+           print("user ",user)
+           print("usertype ",type(user))
+           print("mbti ", user.mbti)
+       #qs = UserMbti.objects.filter(email=email)
+       #user_mbti = serializers.serialize('json', user.mbti)
+       #print(user_mbti)
+       return HttpResponse(user.mbti, content_type="text/json-comment-filtered")
+
+
+   # def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
+   #     serializer = UserMbtiSerializer(data = request.data)  # JSON -> Serialize
+   #
+   #     if serializer.is_valid():  # 타당성 검토 후 저장
+   #         serializer.save()
+   #         return Response(serializer.data, status=201)
+   #     return Response(serializer.errors, status=400)
+
 #
 #class UserChangeMbtiVIEW(generics.ListAPIView):
 #    queryset = UserMbti.objects.all()
@@ -290,8 +296,6 @@ class UserPostingLikeWithPosting(APIView):
 
 
 
-
-
 from .modules.mbtiRcm import randomRCM
 
 from django.views.decorators.csrf import csrf_exempt
@@ -304,7 +308,11 @@ from .models import JobPosting
 class mbtiRcm(View):
     def get(self, request):
         get_mbti = request.GET.get('mbti')
+        get_email = request.GET.get('email')
+        rating = UserRating.objects.all()
+        ratingdf = pd.DataFrame(list(rating.values('email','job','score')))
         print(get_mbti)
+        print(get_email)
 
         job_list = randomRCM() ####여기에 추천 모듈 넣기
         # JSON 형식으로 response

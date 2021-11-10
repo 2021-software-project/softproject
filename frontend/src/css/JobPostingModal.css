@@ -53,7 +53,7 @@ iframeCon > div > iframe {
 }
 
 .JobPostingModalDiv .modal h5{
-    font-family: 'Poppins', 'IBM Plex Sans KR', serif;
+    font-family: 'IM_Hyemin-Bold';
     font-size:17px;
 }
 
@@ -91,7 +91,7 @@ iframeCon > div > iframe {
     z-index: 3000;
     top: 8px;
     //right: 115px;
-    left:10px;
+    left:4px;
     width: 30px;
     font-size: 21px;
     font-weight: 700;
@@ -120,11 +120,11 @@ iframeCon > div > iframe {
     background-color: #6c757d;
     border-radius: 5px;
     font-size: 14px;
-    font-family: 'Poppins', 'IBM Plex Sans KR', serif;
+    font-family: 'IM_Hyemin-Bold';
 }
 .JobPostingModalDiv .modal > section > footer .likeButton{
     background-color: #ffffff;
-    font-family: 'Poppins', 'IBM Plex Sans KR', serif;
+    font-family: 'IM_Hyemin-Bold';
     font-weight: bold;
     color : rgba(0, 0, 0, 0.59);
     justify-content: center;

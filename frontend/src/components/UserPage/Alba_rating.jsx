@@ -62,7 +62,8 @@ function Alba_rating(){
             email: email,
             jobfamily : ch_jobfamily,
             job : ch_job,
-            score : ch_score
+            score : ch_score,
+            mbti : localStorage.getItem('mbti'),
         }
         console.log(rating1);
 

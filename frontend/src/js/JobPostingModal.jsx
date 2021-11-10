@@ -61,7 +61,8 @@ const JobPostingModal = ( props ) => {
                 email:localStorage.getItem("email"),
                 post_id:post_id,
                 jobcode:jobcode,
-                like:1
+                like:1,
+                mbti:localStorage.getItem("mbti"),
                 },
             {
                 headers: {
@@ -81,7 +82,8 @@ const JobPostingModal = ( props ) => {
                     email:email,
                     post_id:post_id,
                     jobcode:jobcode,
-                    like:1
+                    like:1,
+                    mbti:localStorage.getItem("mbti"),
                 },
                 { headers: {
                         'Accept': 'application/json',
@@ -118,7 +120,8 @@ const JobPostingModal = ( props ) => {
                 email:localStorage.getItem("email"),
                 post_id:post_id,
                 jobcode:jobcode,
-                like:-1
+                like:-1,
+                mbti:localStorage.getItem("mbti"),
                 },
             {
                 headers: {
@@ -138,7 +141,8 @@ const JobPostingModal = ( props ) => {
                     email:email,
                     post_id:post_id,
                     jobcode:jobcode,
-                    like:-1
+                    like:-1,
+                    mbti:localStorage.getItem("mbti"),
                 },
                 { headers: {
                         'Accept': 'application/json',

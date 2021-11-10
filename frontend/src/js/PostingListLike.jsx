@@ -40,7 +40,8 @@ function PostingListLike(props) {
                 email:localStorage.getItem("email"),
                 post_id:props.post_id,
                 jobcode:props.jobcode,
-                like:1
+                like:1,
+                mbti:localStorage.getItem("mbti"),
                 },
             {
                 headers: {

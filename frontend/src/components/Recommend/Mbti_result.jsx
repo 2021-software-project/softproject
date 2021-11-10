@@ -30,7 +30,7 @@ function Mbtiresult(props) {
 
         if (jobList =='') {
             axios.get('http://127.0.0.1:8000/user/mbtircm/', {
-                params: {mbti: ch_mbti},
+                params: {mbti: ch_mbti, email: localStorage.getItem("email")},
             }).then((res) => {
                 console.log(res.data.job_list)
                 setJobList(

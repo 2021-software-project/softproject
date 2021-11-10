@@ -85,4 +85,4 @@ class UserPostingClickSerializer(serializers.ModelSerializer):
 class UserPostingLikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPostingLike
-        fields = ('email', 'post_id', 'jobcode', 'like', 'like_time')
+        fields = '__all__'
