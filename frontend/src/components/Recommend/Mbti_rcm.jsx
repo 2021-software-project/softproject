@@ -7,6 +7,7 @@ import "../../css/input_mbti.css"
 import {useDispatch, useSelector} from "react-redux";
 import {changeArea, changeMbti} from "../../store/modules/area_modules";
 import axios from "axios";
+import {TiDeleteOutline} from "react-icons/ti";
 
 function Mbtircm(){
 
@@ -15,6 +16,8 @@ function Mbtircm(){
     const {ch_areasi} = useSelector(state=>state.area_modules); //스토어에 있는 값 가져옴
     const {ch_areagu} = useSelector(state=>state.area_modules);
     const {ch_mbti} = useSelector(state=>state.area_modules);
+    const {select_area} = useSelector(state => state.area_modules);
+    const [selArea, setSelArea] = useState([]);
 
     let areasi = "지역을 선택해주세요";
     let areagu = '';
@@ -61,7 +64,14 @@ function Mbtircm(){
                 i===index ? true : false)
         )
     }
+    const selectedAreaDelete = (num)=>{
+        console.log("DELETE");
+        console.log(num);
+        //setSelArea(selArea.splice(2,2));
+        //setSelArea(selArea.filter(selArea => selArea!==selArea.splice(num,2) ));
 
+        console.log(selArea);
+    }
     const onRcmClick = () =>{
         console.log()
     }
@@ -95,14 +105,20 @@ function Mbtircm(){
                     </tr>
                      </table>
                 </div>
-                        <MbtiArea area_si={ch_areasi}/>
+                        <MbtiArea area_si={ch_areasi} selArea={selArea} setSelArea={setSelArea}/>
                 </div></div>
 
-                {ch_areagu !== '' ?
-                 <div className="selectedArea">
-                     <span className="selectedAreaFont">{ch_areasi} {ch_areagu}</span>
-                 </div>
-                    :''}
+                <div className="selectedArea">
+                {select_area.length >= 2 ?
+                    <span className="selectedAreaFont">{select_area[0]} {select_area[1]}
+                        <span className="selectedAreaDelete" style={{cursor:"pointer", fontSize:"22px", verticalAlign:"middle"}}
+                              onClick={()=>selectedAreaDelete(0)}><TiDeleteOutline  style={{marginTop:"3.5px"}}/></span>
+                    </span> : ''}
+                {select_area.length >= 4 ?
+                    <span className="selectedAreaFont">{select_area[2]} {select_area[3]} </span> : ''}
+                {select_area.length >= 6 ?
+                    <span className="selectedAreaFont">{select_area[4]} {select_area[5]} </span> : ''}
+            </div>
 
                 <Link to={{
                     pathname: "/mbti_result",

@@ -55,12 +55,15 @@ const LoginPage = () => {
                             if(Response.data.length === 0){
                                 window.location.replace('/firstulike')
                             }
+                            else{
+                                window.location.replace('/main')
+                            }
                             console.log(Response.data)
                         })
                         .catch((Error) => {
                             console.log(Error)
                         })
-                    window.location.replace('/main')
+
                 }).catch(errors=>{
                     alert(errors);
             })
