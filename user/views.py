@@ -278,21 +278,7 @@ class UserMbtiVIEW(generics.ListAPIView):
           return Response({'error': '로그인 후 이용 해주세요.'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-#class UserChangeMbtiVIEW(generics.ListAPIView):
-#    queryset = UserMbti.objects.all()
-#    serializer_class = UserMbtiSerializer
-#
-#    def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
-#        email = request.data["email"]
-#        mbti = request.data["mbti"]
-#        user_mbti = UserMbti.objects.get(email=email)
-#        user_mbti.mbti = mbti
-#        user_mbti.save()
-#        return Response({'success':True, 'message':'MBTI가 변경되었습니다.'},status=status.HTTP_200_OK)
 
-
-
-from .modules.mbtiRcm import randomRCM
 
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -300,19 +286,18 @@ from django.utils.decorators import method_decorator
 from .models import JobPosting
 from .modules.recommendation import Recommendation
 
+
 @method_decorator(csrf_exempt,name='dispatch')
 class mbtiRcm(View):
     def get(self, request):
-        get_mbti = request.GET.get('mbti')
+        # get_mbti = request.GET.get('mbti')
         get_email = request.GET.get('email')
         rating = UserRating.objects.all()
         ratingdf = pd.DataFrame(list(rating.values('email','job','score')))
-        print(get_mbti)
         print(get_email)
         rec = Recommendation()
-
-
-        job_list = rec.recommendation('cb',1,5) ####여기에 추천 모듈 넣기
+        job_list = rec.recommendation('cb', get_email, 5)
+        # job_list = randomRCM() ####여기에 추천 모듈 넣기
         # JSON 형식으로 response
         return  JsonResponse({
             'job_list' : job_list,
@@ -323,8 +308,11 @@ class mbtiRcm(View):
 class persRcm(View):
     def get(self, request):
         get_user = request.GET.get('username')
-        job_list = randomRCM()  ####여기에 추천 모듈 넣기
-        print(get_user)
+        get_email = request.GET.get('email')
+        print(get_email)
+
+        rec = Recommendation()
+        job_list = rec.recommendation('cf_u',get_email,5)
         # JSON 형식으로 response
         return  JsonResponse({
             'job_list' : job_list,
@@ -340,5 +328,8 @@ def postings(request):
 
         qs = JobPosting.objects.filter(sub_code=code,city=si,county=gu)
         post_list = serializers.serialize('json', qs)
+
         print(post_list)
         return HttpResponse(post_list, content_type="text/json-comment-filtered")
+
+

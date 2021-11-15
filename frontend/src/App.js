@@ -56,7 +56,7 @@ function App(props) {
                 <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
                 <PrivateRoute exact path="/Rating_list" component={Rating}></PrivateRoute>
                 <Route exact path="/user/password-reset/:uid/:token" component={PasswordReset}></Route>
-
+                  <Route exact path="/test" component={Test}></Route>
                 </div>
               </Switch>
 

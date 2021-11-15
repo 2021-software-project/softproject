@@ -16,6 +16,7 @@ function Personal_result(props) {
     const [code,setCode] = useState('')
     const [user, setUser] = useState('')
 
+    let email = localStorage.getItem('email')
 
     useEffect(() => {
         if(ch_areagu===''){
@@ -51,7 +52,7 @@ function Personal_result(props) {
     useEffect(()=>{
         if (jobList == '') {
             Axios.get('/user/persrcm/', {
-                params: {username: user},
+                params: {username: user, email:email},
             }).then((res) => {
                 console.log(res.data.job_list)
                 setJobList(
