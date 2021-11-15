@@ -41,14 +41,13 @@ class Data:
     #     return job_result_df
 
 
-    def make_user_mbti(self, rating, user):  # 한 사용자의 mbti 수치 계산
+    def make_user_mbti(self, rating, user, mbti):  # 한 사용자의 mbti 수치 계산
 
         # case 1. mbti 정보를 수치 일정 값으로 적용
         mbti_num = 5
 
         df1 = rating[rating['email'] == user]
-        # print(df1)
-        df2 = self.mbti_df[self.mbti_df['mbti'] == df1['mbti'].drop_duplicates().values[0]].values[0]
+        df2 = self.mbti_df[self.mbti_df['mbti'] == mbti].values[0]
         df2 = pd.DataFrame(data=[df2 for i in range(mbti_num)], columns=['mbti'] + self.columns)
 
         df = pd.concat([df1, df2])[self.columns]

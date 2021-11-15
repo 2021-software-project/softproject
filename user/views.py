@@ -274,9 +274,17 @@ class UserMbtiVIEW(generics.ListAPIView):
           user = CustomUser.objects.get(email=email)
           user.mbti = mbti
           user.save()
+
+          if UserPostingLike.objects.filter(email=email).exists():
+              user_postings = UserPostingLike.objects.get(email=email)
+              user_postings.mbti = mbti
+              user_postings.save()
+
+              return Response({'success': True, 'message': 'MBTI가 변경되었습니다.'}, status=status.HTTP_200_OK)
+
           return Response({'success': True, 'message': 'MBTI가 변경되었습니다.'}, status=status.HTTP_200_OK)
        else:
-          return Response({'error': '로그인 후 이용 해주세요.'}, status=status.HTTP_401_UNAUTHORIZED)
+           return Response({'error': '로그인 후 이용 해주세요.'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 
@@ -291,16 +299,15 @@ from .modules.recommendation import Recommendation
 @method_decorator(csrf_exempt,name='dispatch')
 class mbtiRcm(View):
     def get(self, request):
-        # get_mbti = request.GET.get('mbti')
+        get_mbti = request.GET.get('mbti')
         get_email = request.GET.get('email')
-        rating = UserRating.objects.all()
-        ratingdf = pd.DataFrame(list(rating.values('email','job','score')))
+        # rating = UserRating.objects.all()
+        # ratingdf = pd.DataFrame(list(rating.values('email','job','score')))
         print(get_email)
         rec = Recommendation()
-        job_list = rec.recommendation('cb', get_email, 5)
+        job_list = rec.recommendation('cb', get_email,get_mbti, 5)
         job_code_list = codeToKorean(job_list)
-        # job_list = randomRCM() ####여기에 추천 모듈 넣기
-        # JSON 형식으로 response
+
         return  JsonResponse({
             'job_list' : job_code_list,
         }) # 한글 등의 유니코드는 16진수로 표현될 경우 : 두번째 파라미터로 json_dumps_params = {'ensure_ascii': False} 추가
@@ -334,5 +341,6 @@ def postings(request):
 
         print(post_list)
         return HttpResponse(post_list, content_type="text/json-comment-filtered")
+
 
 

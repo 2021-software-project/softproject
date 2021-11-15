@@ -6,20 +6,28 @@ from .cb_data_preprocessing import Data
 from .cb_contents_rec import *
 from .cf_item_rec import Item
 from .cf_user_rec import User
-from ..models import UserRating
+from ..models import UserRating, UserPostingLike
+
 
 class Recommendation:
 
     def __init__(self):
         user_rating = UserRating.objects.all()
-        print(user_rating)
+        user_postinglike = UserPostingLike.objects.all()
         self.code_list = sub_code_list()
-        self.rating_df = pd.DataFrame(list(user_rating.values('email', 'job', 'score','mbti')))
-        self.rating_df.columns = ['email', 'sub_code', 'rating','mbti']
+        self.rating_df = pd.DataFrame(list(user_rating.values('email', 'job', 'score', 'mbti')))
+
+        self.postinglike_df = pd.DataFrame(list(user_postinglike.values('email', 'jobcode', 'like', 'mbti')))
+        self.postinglike_df.loc[self.postinglike_df['like'] == 1, 'like'] = 4  # 좋아요:4, 싫어요:1점으로 변경
+        self.postinglike_df.loc[self.postinglike_df['like'] == -1, 'like'] = 1
+        self.postinglike_df.columns = ['email', 'sub_code', 'rating', 'mbti']
+        self.rating_df.columns = ['email', 'sub_code', 'rating', 'mbti']
+        self.rating_df = pd.concat([self.rating_df, self.postinglike_df], ignore_index=True)
+
         self.user_list = self.rating_df['email'].drop_duplicates().values
 
 
-    def recommendation(self, algorithm, user, rec_num=5):
+    def recommendation(self, algorithm, user,mbti ,rec_num=5):
 
         global rating, job, rec_list
 
@@ -32,7 +40,7 @@ class Recommendation:
 
             data = Data(job, topic)
             rating = data.merge_rating_topic(self.rating_df)
-            user_model = data.make_user_mbti(rating, user)
+            user_model = data.make_user_mbti(rating, user, mbti)
 
             rec_list = contents_based_rec(user_model, job, topic, rec_num)  # 추천 리스트
 
