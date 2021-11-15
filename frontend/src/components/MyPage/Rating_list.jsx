@@ -61,6 +61,7 @@ function Rating(){
                     Response.data
                 )
                 console.log(Response.data)
+
             })
             .catch((Error) => {
                 console.log(Error)

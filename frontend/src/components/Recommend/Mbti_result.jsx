@@ -13,12 +13,17 @@ function Mbtiresult(props) {
     const {ch_areagu} = useSelector(state => state.area_modules);
     const {ch_mbti} = useSelector(state => state.area_modules);
     console.log(props.location.state);
+    console.log(props);
 
     const [jobList, setJobList] = useState([])
     const [selJob, setSelJob] = useState(Array(6).fill(false));
     const [code,setCode] = useState('')
 
     useEffect(() => {
+        if(ch_areagu===''){
+            alert('지역을 선택해주세요');
+            window.location = '/Mbti_rcm'
+        }
         if (props.location.state === undefined) {
             return (
                 <Redirect to={{
@@ -55,6 +60,7 @@ function Mbtiresult(props) {
 
 
     return (
+        ch_areagu!=''?
         <div className="rcm-result">
             <p className="info">
                 <span># {ch_mbti}</span>
@@ -76,7 +82,7 @@ function Mbtiresult(props) {
             </div>
             {code?<Postings code={code}></Postings>:''}
             <br/><br/>
-        </div>
+        </div>:''
     );
 }
 export default Mbtiresult;

@@ -1,55 +1,91 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
-import {changeArea} from "../../store/modules/area_modules";
+import {changeArea, changeSelectArea} from "../../store/modules/area_modules";
 import {Link} from "react-router-dom";
-
+import { TiDeleteOutline } from 'react-icons/ti';
 import MbtiArea from "./MbtiArea";
-import "../../css/Rcm.css";
+import "../../css/RcmSelect.css";
 
 
-function Personal_rcm(){
+function Personal_rcm() {
 
     const dispatch = useDispatch();  //변경사항을 스토어에 반영하기 위해 dispatch 만들어줌
 
-    const {ch_areasi} = useSelector(state=>state.area_modules); //스토어에 있는 값 가져옴
-    const {ch_areagu} = useSelector(state=>state.area_modules);
-    const onChangeArea = (ch_areasi, ch_areagu) => dispatch(changeArea(ch_areasi, ch_areagu));
+    const {ch_areasi} = useSelector(state => state.area_modules); //스토어에 있는 값 가져옴
+    const {ch_areagu} = useSelector(state => state.area_modules);
+    const {select_area} = useSelector(state => state.area_modules);
     //해당 함수가 호출되면 변경사항을 스토어에 변경해줌
+    const [areaguArr, setAreaguArr] = useState(Array(18).fill(false));
+    const [selArea, setSelArea] = useState([]);
 
     const AREA = [
-        "서울","경기","인천","강원","대전","세종",
-        "충남","충북","부산","울산","경남","경북",
-        "대구","광주","전남","전북","제주","전국",
-        ];
+        "서울", "경기", "인천", "강원", "대전", "세종",
+        "충남", "충북", "부산", "울산", "경남", "경북",
+        "대구", "광주", "전남", "전북", "제주", "전국",
+    ];
+    const onChangeArea = (ch_areasi, ch_areagu, index) => {
+        dispatch(changeArea(ch_areasi, ch_areagu));
+        setAreaguArr(
+            areaguArr.map((a, i) =>
+                i === index ? true : false)
+        )
+    }
+    const selectedAreaDelete = (num)=>{
+        console.log("DELETE");
+        console.log(num);
+        //setSelArea(selArea.splice(2,2));
+        //setSelArea(selArea.filter(selArea => selArea!==selArea.splice(num,2) ));
 
-    return(
-        <div className ="per_son-container">
-            <div className = "con2">
-            <h1>자신에게 맞는 아르바이트 추천받기</h1>
-             </div>
+        console.log(selArea);
+    }
 
-                <h2>[지역 선택]</h2>
-                    <h3>선택한 지역 : <span style={{color:" #726193"}}>{ch_areasi} {ch_areagu}</span> </h3>
-                    <div className="area" align="center">  {/*지역 선택*/}
-                        <p></p>
-                        <table id="tb-mbti" width ="80%" border= "2px" solid>
+    return (
+        <div className="per_son-container">
+            <div className="con2">
+                <div className="personalTitle">자신에게 맞는 아르바이트 추천받기</div>
+            </div>
+            <div className="areaSelectDiv">
+                {/*<h2>[지역 선택]</h2>
+                    <h3>선택한 지역 : <span style={{color:" #726193"}}>{ch_areasi} {ch_areagu}</span> </h3> */}
+                <div className="area" id="inner" align="center">  {/*지역 선택*/}
+                    <div id="td-areasi">
+                        <table>
                             <tr>
-                            {AREA.map(area =>
-                                (<td className ="td-mbti select" border= "1px" solid= "black"><label><input type="radio" className="AreaSelect" name={"areasi"} value={area}
-                                                                                                            onChange={()=>onChangeArea(area,'')}/> <span>{area}</span> </label></td> ))
-                            }
+                                {AREA.map((area, index) =>
+                                    (<td className={`areasiTable${areaguArr[index] ? ' select' : ''}`}>
+                                        <label><input type="radio" className="areasiSelect" name={"areasi"} value={area}
+                                                      onChange={() => onChangeArea(area, '', index)}/>
+                                            <span>{area}</span> </label></td>))
+                                }
                             </tr>
                         </table>
-                            <tr colSpan={AREA.length}><MbtiArea area_si={ch_areasi}/></tr>
-
                     </div>
+                    <MbtiArea area_si={ch_areasi} selArea={selArea} setSelArea={setSelArea}/>
 
-            <div className ="con2">
-                <Link to={{pathname: "/personal_result",
-                    state:{
-                    check:"1",}
+                </div>
+            </div>
+
+            <div className="selectedArea">
+                {select_area.length >= 2 ?
+                    <span className="selectedAreaFont">{select_area[0]} {select_area[1]}
+                        <span className="selectedAreaDelete" style={{cursor:"pointer", fontSize:"22px", verticalAlign:"middle"}}
+                              onClick={()=>selectedAreaDelete(0)}><TiDeleteOutline  style={{marginTop:"3.5px"}}/></span>
+                    </span> : ''}
+                {select_area.length >= 4 ?
+                    <span className="selectedAreaFont">{select_area[2]} {select_area[3]} </span> : ''}
+                {select_area.length >= 6 ?
+                    <span className="selectedAreaFont">{select_area[4]} {select_area[5]} </span> : ''}
+            </div>
+
+
+            <div className="con2">
+                <Link to={{
+                    pathname: "/personal_result",
+                    state: {
+                        check: "1",
+                    }
                 }}>
-                        <button className="button_primary"> 추천받기</button>
+                    <button className="button_primary"> 추천받기</button>
                 </Link>
             </div>
         </div>

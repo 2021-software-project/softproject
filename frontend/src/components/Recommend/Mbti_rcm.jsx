@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
 import MbtiArea from "./MbtiArea";
-import "../../css/Rcm.css";
+import "../../css/RcmSelect.css";
 import "../../css/input_mbti.css"
-import "../../css/korea-map-font-v1.css"
 
 import {useDispatch, useSelector} from "react-redux";
 import {changeArea, changeMbti} from "../../store/modules/area_modules";
@@ -19,20 +18,12 @@ function Mbtircm(){
 
     let areasi = "지역을 선택해주세요";
     let areagu = '';
-    let mbti = "MBTI를 선택해주세요";
-
-    const onChangeArea = (ch_areasi, ch_areagu) => {
-        dispatch(changeArea(ch_areasi, ch_areagu));
-
-    }
-
-    const onChangeMbti = (ch_mbti) => dispatch(changeMbti(ch_mbti));
-
+    //let mbti = "MBTI를 선택해주세요";
 
     const MBTIMeta = [
-    "INFP","INFJ","INTP","INTJ","ENTER",
-    "ISFP","ISFJ","ISTP","ISTJ","ENTER",
-    "ENFP","ENFJ","ENTP","ENTJ","ENTER",
+    "INFP","INFJ","INTP","INTJ",
+    "ISFP","ISFJ","ISTP","ISTJ",
+    "ENFP","ENFJ","ENTP","ENTJ",
     "ESFP","ESFJ","ESTP","ESTJ",
     ];
 
@@ -42,57 +33,77 @@ function Mbtircm(){
     "대구","광주","전남","전북","제주","전국",
     ];
 
+    const [mbtiArr, setMbtiArr] = useState(Array(16).fill(false));
+    const [areaguArr, setAreaguArr] = useState(Array(18).fill(false));
+
+    useEffect(()=>{ //사용자가 가입한 mbti로 초기화
+            MBTIMeta.map((m, i)=>
+                m === ch_mbti ?
+                    setMbtiArr(
+                    mbtiArr.map((mbtiA, idx)=>
+                        i===idx ? true : false))
+                    : ''
+            )
+    },[])
+
+    const onChangeMbti = (ch_mbti, index) => {
+        dispatch(changeMbti(ch_mbti));
+        setMbtiArr(
+            mbtiArr.map((m, i)=>
+                i===index ? true : false)
+        )
+    }
+
+    const onChangeArea = (ch_areasi, ch_areagu, index) => {
+        dispatch(changeArea(ch_areasi, ch_areagu));
+        setAreaguArr(
+            areaguArr.map((a, i)=>
+                i===index ? true : false)
+        )
+    }
+
     const onRcmClick = () =>{
         console.log()
     }
 
     return (
         <div className ="mb_ti-container">
-            <h1>MBTI로 아르바이트 추천받기</h1>
+            <div className="mbtiTitle">MBTI로 아르바이트 추천받기</div>
             <div className = "con">
             <div align="center">   {/*mbti 선택*/}
-                <h2>[MBTI 선택]</h2>
-                <h3>선택한 MBTI : <span style={{color:"blueviolet"}}>{ch_mbti}</span> </h3>
-                <div id="inner">
-                <table id="tb-mbti" width ="50%" border= "2px" solid>
-                     <thead>
-                     {MBTIMeta.map(i =>
-                        i === "ENTER" ?
-                            (<tr className = "tr-mbti">
-                            <input type="hidden" className="mbti_Select " name={"mbtichk"} value={i}/></tr>)
-                            : (<td className = "td-mbti select"><label><input type="radio" className="mbti_Select" name={"mbtichk"} value={i}
-                                                                              onChange={()=>onChangeMbti(i)}/> <span>{i}</span> </label></td>))
+                <div id="selMbti_inner">
+                    <div id="tb-mbti">
+                     {MBTIMeta.map((mbti, index) =>
+                         <div className={`mbti_Select${mbtiArr[index]?' checked' : ''}`} onClick={()=>onChangeMbti(mbti, index)} name={"mbtichk"} value={mbti}>{mbti}</div>
+                     )
                     }
-                    </thead>
-                </table>
+                    </div>
                 </div>
             </div>
             </div>
 
-            <div className="con">
-            <h2>[지역 선택]</h2>
-            <h3>선택한 지역 : <span style={{color:"blueviolet"}}>{ch_areasi} {ch_areagu} </span></h3>
+            <div className="areaSelectDiv">
             <div className="area" id = "inner" align="center">  {/*지역 선택*/}
-                <table id="tb-mbti" width ="90%" border= "2px" solid>
+                <div id="td-areasi">
+                <table >
                     <tr>
-                    {MBTIAREA.map(area =>
-                        (<td className ="td-mbti select" border= "1px" solid= "black"><label><input type="radio" className="AreaSelect" name={"areasi"} value={area}
-                                                                                                    onChange={()=>onChangeArea(area,'')}/> <span>{area}</span> </label></td> ))
+                    {MBTIAREA.map((area, index) =>
+                        (<td className ={`areasiTable${areaguArr[index]?' select':''}`}>
+                            <label><input type="radio" className="areasiSelect" name={"areasi"} value={area}
+                                onChange={()=>onChangeArea(area,'', index)}/> <span>{area}</span> </label></td> ))
                     }
                     </tr>
                      </table>
-
-                    <tr>
-                        <td colspan='18' colSpan={MBTIAREA.length}><MbtiArea area_si={ch_areasi}/></td>
-                    </tr>
-
-
-
-
-
-                {/*<input type="button" onClick={onRcm} value="추천받기"/>*/}
                 </div>
-                </div>
+                        <MbtiArea area_si={ch_areasi}/>
+                </div></div>
+
+                {ch_areagu !== '' ?
+                 <div className="selectedArea">
+                     <span className="selectedAreaFont">{ch_areasi} {ch_areagu}</span>
+                 </div>
+                    :''}
+
                 <Link to={{
                     pathname: "/mbti_result",
                     state:{

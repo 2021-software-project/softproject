@@ -18,6 +18,10 @@ function Personal_result(props) {
 
 
     useEffect(() => {
+        if(ch_areagu===''){
+            alert('지역을 선택해주세요');
+            window.location = '/Personal_rcm'
+        }
         if (props.location.state === undefined) {
             return (
                 <Redirect to={{
@@ -69,6 +73,7 @@ function Personal_result(props) {
     }
 
     return (
+        ch_areagu!=''?
         <div className="rcm-result">
             <p className="info">
                 <span># {ch_areasi}</span>
@@ -87,7 +92,7 @@ function Personal_result(props) {
             }
             </div>
             {code?<Postings code={code}></Postings>:''}
-        </div>
+        </div>:''
     );
 }
 export default Personal_result;

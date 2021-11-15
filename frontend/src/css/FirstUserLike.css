@@ -1,20 +1,22 @@
 .FirstUserLike{
-    margin-bottom: 25%;
-    margin-top: 5%;
+    margin-bottom: 30%;
+    margin-top: 8%;
 }
 
 .FirstUserLike .header{
     color : #000;
-    font-size: 1.15em;
+    font-size: 25px;
     line-height: 1.75em;
     letter-spacing: -1.5px;
     margin: 0 0 1em 0;
     text-transform: uppercase;
+    word-break: keep-all;
 }
 @media screen and (max-width: 736px) {
     .FirstUserLike h3 {
         font-size: 1em;
         line-height: 1.65em;
+        word-break: keep-all;
     }
 }
 .FirstUserLike .header-info{
@@ -24,6 +26,7 @@
     letter-spacing: -1px;
     font-weight: 400;
     margin: 0 0 1em 0;
+    word-break: keep-all;
 }
 
 .FirstUserLike .firstjob-grid-thead { /*580px 이하의 화면일 때*/
@@ -159,10 +162,10 @@
     color: #ffffff;
     background-color: rgba(227, 123, 124, 0.68);
     margin: 0px 6px;
-    padding: 6px 23px;
+    padding: 3px 27px;
     border-radius: 0rem;
     font-size: 18px;
-
+    font-family: 'IM_Hyemin-Bold';
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     border-radius: 7px;

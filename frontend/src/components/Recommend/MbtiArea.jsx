@@ -1,16 +1,39 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "../../css/MbtiArea.css";
 import "../../css/Rcm.css";
 import { useSelector, useDispatch } from 'react-redux';
-import {changeArea} from "../../store/modules/area_modules";
+import {changeArea, changeSelectArea} from "../../store/modules/area_modules";
 
 function MbtiArea(props){
-
+    const {selArea, setSelArea} = props;
     const dispatch = useDispatch();
     const {ch_areasi} = useSelector(state=>state.area_modules);
     const {ch_areagu} = useSelector(state=>state.area_modules);
+    const {select_area} = useSelector(state=>state.area_modules);
 
-    const onChangeArea = (ch_areasi, ch_areagu) => dispatch(changeArea(ch_areasi, ch_areagu));
+    //const [selArea, setSelArea] = useState([]);
+
+    useEffect(()=>{
+        dispatch(changeSelectArea(selArea));
+        console.log(selArea);
+    }, [selArea]);
+
+    const onChangeArea = (ch_areasi, ch_areagu) => {
+        dispatch(changeArea(ch_areasi, ch_areagu));
+        if(ch_areasi !== ''){
+            if(selArea.includes(ch_areagu) || selArea.length>=6)
+            {
+
+            }
+            else {
+                setSelArea([...selArea, ch_areasi, ch_areagu]);
+                dispatch(changeArea(ch_areasi, ''));
+            }
+        }
+ //       dispatch(changeSelectArea(selArea));
+  //      console.log(selArea);
+  //      console.log(select_area[0], select_area[1])
+    }
 
     const SeoulArea = [
         "전체", "강남구", "강동구", "강북구", "강서구", "관악구",
@@ -102,188 +125,155 @@ function MbtiArea(props){
     ];
 
     console.log(ch_areasi, ch_areagu);
+    console.log(KyungkiArea.length)
 
     if (props.area_si === "부산") {
         return (
             <div className="areaSelect">
-                <ul>
                     {BusanArea.map((areagu, index) =>
-                        (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('부산',areagu)}> {areagu}</a></li>))
+                        (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('부산',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "경기") {
         return (
             <div className="areaSelect">
-                <ul>
                     {KyungkiArea.map((areagu, index) =>
-                        (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('경기',areagu)}> {areagu}</a></li>))
+                        (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                              onClick={()=>onChangeArea('경기',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "인천") {
         return (
             <div className="areaSelect">
-                <ul>
                     {IncheonArea.map((areagu, index) =>
-                        (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('인천',areagu)}> {areagu}</a></li>))
+                        (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('인천',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "강원") {
         return (
             <div className="areaSelect">
-                <ul>
                     {KangwonArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('강원',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('강원',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "대전") {
         return (
             <div className="areaSelect">
-                <ul>
                     {DaejeonArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('대전',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('대전',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "세종") {
         return (
             <div className="areaSelect">
-                <ul>
                     {SejongArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('세종',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('세종',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "충남") {
         return (
             <div className="areaSelect">
-                <ul>
                     {ChungnamArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('충남',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('충남',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "충북") {
         return (
             <div className="areaSelect">
-                <ul>
                     {ChungbukArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('충북',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('충북',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "울산") {
         return (
             <div className="areaSelect">
-                <ul>
                     {UlsanArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('울산',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('울산',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "경남") {
         return (
             <div className="areaSelect">
-                <ul>
                     {KyungnamArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('경남',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('경남',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "경북") {
         return (
             <div className="areaSelect">
-                <ul>
                     {KyungbukArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('경북',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('경북',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "대구") {
         return (
             <div className="areaSelect">
-                <ul>
                     {DaeguArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('대구',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('대구',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "광주") {
         return (
             <div className="areaSelect">
-                <ul>
                     {GwangjuArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('광주',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('광주',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "전남") {
         return (
             <div className="areaSelect">
-                <ul>
                     {JeonnamArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('전남',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('전남',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "전북") {
         return (
             <div className="areaSelect">
-                <ul>
                     {JeonbukArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('전북',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('전북',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "제주") {
         return (
             <div className="areaSelect">
-                <ul>
                     {JejuArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('제주',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('제주',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else if (props.area_si === "전국") {
         return (
             <div className="areaSelect">
-                <ul>
                     {JeonkukArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('전국',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('전국',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     } else {
         return (
             <div className="areaSelect">
-                <ul>
                     {SeoulArea.map((areagu, index) =>
-                         (<li><a className="AreaSelect" name={"AreaSelect"} value={areagu}
-                                onClick={()=>onChangeArea('서울',areagu)}> {areagu}</a></li>))
+                         (<div className="areaSelectGu" name={"AreaSelect"} value={areagu}
+                                onClick={()=>onChangeArea('서울',areagu)}> {areagu}</div>))
                     }
-                </ul>
             </div>)
     }
+
+
 
 
 

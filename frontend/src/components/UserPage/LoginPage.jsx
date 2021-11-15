@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import "../../css/login_signup.css"
 import LoginSignupform from "./Login_Signup_form";
 import Modal from "../../js/Modal";
+import axios from "axios";
 
 const LoginPage = () => {
 
@@ -13,6 +14,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState(false)
   const [resetEmail, setResetEmail] = useState('')
+  const [ratinglist, checkRatinglikst] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -40,6 +42,24 @@ const LoginPage = () => {
                 .then(response=>{
                     console.log(response.data)
                     localStorage.setItem('mbti', response.data)
+
+                    //평가목록 접근해서 하나도 없으면 first로 가도록
+                    axios.get(`/user/userrating/?search=${email}`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Token ${token}`
+                        }
+                        })
+                        .then((Response) => {
+                            if(Response.data.length === 0){
+                                window.location.replace('/firstulike')
+                            }
+                            console.log(Response.data)
+                        })
+                        .catch((Error) => {
+                            console.log(Error)
+                        })
                     window.location.replace('/main')
                 }).catch(errors=>{
                     alert(errors);

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {HeartOutlined, HeartFilled} from '@ant-design/icons';
+import { FaHeartBroken } from 'react-icons/fa';
 import Axios from 'axios';
 import axios from "axios";
 
@@ -70,16 +71,29 @@ function PostingListLike(props) {
                 console.log(error);
               })
         }
+        else if(Likes === -1){
+            axios.delete(`http://localhost:8000/user/userpostinglike/${props.email}/${props.post_id}`,
+                { headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        Authorization: `Token ${token}`
+                    }})
+              .then(function (response) {
+                  setLikes(0);
+              })
+              .catch(function (error) {
+                // handle error
+                console.log(error);
+              })
+        }
     }
 
     return (
         <div className="postinglistlike">
             <span onClick={postinglistlikeClick}>
-
             {Likes === 1 ? <HeartFilled className="likeIcon" style={{color: "#f87179"}}/>
-            : Likes === -1 ? <HeartFilled className="likeIcon" style={{color: "black"}}/>
-            : <HeartOutlined className="likeIcon" style={{color: "black"}}/>  }
-
+            : Likes === -1 ? <FaHeartBroken className="likeIcon" style={{color: "black"}}/>
+            : <HeartOutlined className="likeIcon" style={{color: "black"}}/> }
             </span>
         </div>
     )
