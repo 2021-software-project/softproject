@@ -5,16 +5,20 @@ from cb_data_preprocessing import Data
 from cb_contents_rec import *
 from cf_item_rec import Item
 from cf_user_rec import User
-
+from ..models import UserRating
 
 class Recommendation:
 
     def __init__(self):
+        user_rating = UserRating.objects.all()
+
         self.code_list = sub_code_list()
 
-        self.rating_df = pd.read_csv('./dataset/random_user_rating.csv')
-
-        self.user_list = self.rating_df['user_id'].drop_duplicates().values
+        # self.rating_df = pd.read_csv('./dataset/random_user_rating.csv')
+        self.rating_df = pd.DataFrame(list(user_rating.values('email', 'job', 'score')))
+        self.rating_df.columns = ['email', 'sub_code', 'rating']
+        print(self.rating_df)
+        self.user_list = self.rating_df['email'].drop_duplicates().values
 
 
     def recommendation(self, algorithm, user, rec_num=5):
