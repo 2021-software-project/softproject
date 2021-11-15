@@ -210,8 +210,8 @@ job_code = {
 # 직종 랜덤 추출 후, 한글 직종으로 변환하여 dict 형태로 반환
 # key : 직종 한글, value : 직종 코드
 
-def randomRCM():
-    job_code_list = random.choices(code_list, k=5)
+def codeToKorean(job_code_list):
+    #job_code_list = random.choices(code_list, k=5)
     job_list = {}
     for i in job_code_list :
        large_code=i[0] + '000'

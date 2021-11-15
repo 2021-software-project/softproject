@@ -38,11 +38,11 @@ class User :
 
             job_i = self.rating[self.rating['sub_code'] == item]
             sim_i = sim_df.loc[user, job_i['email']].values
-
             if sim_i.sum() != 0:
                 r = np.dot(sim_i, job_i['rating'].values) / sim_i.sum()  # 예상평점 계산
 
                 rec_job.append((item, r))
+                print("rec_job ",rec_job)
 
         rec_job.sort(key=lambda x: x[1], reverse=True)
 

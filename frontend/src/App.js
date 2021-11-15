@@ -26,7 +26,6 @@ import Albarating from './components/UserPage/Alba_rating';
 import FirstUserLike from "./components/UserPage/FirstUserLike";
 
 import PasswordReset from './components/UserPage/PasswordReset';
-import Test from './components/main_test';
 
 function App(props) {
   return (

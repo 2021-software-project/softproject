@@ -26,6 +26,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 from .job_code import job_code, large_job_code
+from .modules.code_to_korean import codeToKorean
 
 
 class RequestPasswordResetEmail(generics.GenericAPIView):
@@ -297,10 +298,11 @@ class mbtiRcm(View):
         print(get_email)
         rec = Recommendation()
         job_list = rec.recommendation('cb', get_email, 5)
+        job_code_list = codeToKorean(job_list)
         # job_list = randomRCM() ####여기에 추천 모듈 넣기
         # JSON 형식으로 response
         return  JsonResponse({
-            'job_list' : job_list,
+            'job_list' : job_code_list,
         }) # 한글 등의 유니코드는 16진수로 표현될 경우 : 두번째 파라미터로 json_dumps_params = {'ensure_ascii': False} 추가
 
 
@@ -309,13 +311,14 @@ class persRcm(View):
     def get(self, request):
         get_user = request.GET.get('username')
         get_email = request.GET.get('email')
-        print(get_email)
+        print("get_email", get_email)
 
         rec = Recommendation()
         job_list = rec.recommendation('cf_u',get_email,5)
+        job_code_list = codeToKorean(job_list)
         # JSON 형식으로 response
         return  JsonResponse({
-            'job_list' : job_list,
+            'job_list' : job_code_list,
         }) # 한글 등의 유니코드는 16진수로 표현될 경우 : 두번째 파라미터로 json_dumps_params = {'ensure_ascii': False} 추가
 
 

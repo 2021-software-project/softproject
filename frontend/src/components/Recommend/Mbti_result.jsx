@@ -75,7 +75,8 @@ function Mbtiresult(props) {
                     (
                         <div className="button-4">
                             <div className="eff-4"></div>
-                            <button className={`button-4-child${selJob[index] ? ' clicked' : ''}`} onClick={()=>onClickJob({value,index})} value={value}> {id} </button>
+                            <button className={`button-4-child${selJob[index] ? ' clicked' : ''}`}
+                                    onClick={()=>onClickJob({value,index})} value={value}> {id} </button>
                         </div>
                     ))
             }

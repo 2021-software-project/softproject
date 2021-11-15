@@ -49,7 +49,6 @@ class Recommendation:
             # sim_df = pd.read_csv("./dataset/user_simmularity.csv")
 
             rec_list = user_cf.user_based_rec(sim,user)
-
         return rec_list
 
 
