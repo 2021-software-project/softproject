@@ -1,5 +1,5 @@
 import pandas as pd
-
+import os
 
 class Data:
 
@@ -8,7 +8,10 @@ class Data:
         self.columns = [str(i) for i in list(range(self.topic))]
         self.job_df = job
         # self.mbti_df = pd.read_csv("C:/Users/dusdm/PycharmProjects/pythonProject/softproject/user/modules/dataset/mbti_topic.csv")
-        self.mbti_df = pd.read_csv("./dataset/mbti_topic.csv")
+        path = os.path.dirname(os.path.realpath(__file__))
+        path = path.replace('\\', '/')
+
+        self.mbti_df = pd.read_csv(path+"/dataset/mbti_topic.csv")
 
 
     def merge_rating_topic(self, rating):  # [cb] 사용자 평점 별 topic 데이터

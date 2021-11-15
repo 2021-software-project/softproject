@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 from .job_code import sub_code_list
 
 from .cb_data_preprocessing import Data
@@ -25,7 +26,9 @@ class Recommendation:
         if algorithm == 'cb':
             topic = 29
             # job = pd.read_csv("C:/Users/dusdm/PycharmProjects/pythonProject/softproject/user/modules/dataset/job-topic_29_1.csv")
-            job = pd.read_csv("./dataset/job-topic_29_1.csv")
+            path = os.path.dirname(os.path.realpath(__file__))
+            path = path.replace('\\','/')
+            job = pd.read_csv(path+"/dataset/job-topic_29_1.csv")
 
             data = Data(job, topic)
             rating = data.merge_rating_topic(self.rating_df)
