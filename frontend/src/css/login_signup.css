@@ -4,26 +4,42 @@
 /*@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+KR&family=Poppins:400,500,600,700,800,900&display=swap');*/
 
 /* Password Reset Modal */
-.Password-Reset-modal{
-  text-align: center;
+.Password-Reset-modal .modal > section{
+  height: 87%!important;
 }
+.Password-Reset-modal .modal > section > main{
+  text-align: center!important;
+}
+
 .Password-Reset-modal > input {
     margin: 10px;
 }
-.Password-Reset-modal > input[type="text"] {
-    width: 70%;
-    text-align: center;
+.Password-Reset-modal .modal > section > main > input[type="text"] {
+  width: 40%;
+  text-align: center;
+  height: 30px;
 }
-.Password-Reset-modal > p{
-  margin-top:10px!important;
-}
-.Password-Reset-modal .modal > section{
-  height: 120%!important;
-}
+
+/*.Password-Reset-modal > p{*/
+/*  margin-top:10px!important;*/
+/*  text-align: center;*/
+/*}*/
+/*.Password-Reset-modal .modal > section{*/
+/*  height: 120%!important;*/
+/*}*/
+
 .Password-Reset-modal .modal section > header{
   padding : 16px 16px 16px 16px!important;
 }
-
+.Password-Reset-modal .send-email {
+  padding: 6px 12px;
+  color: #fff;
+  background-color: #6c757d;
+  border-radius: 5px;
+  font-size: 13px;
+  border: 0;
+  margin-left: 10px;
+}
 /* -------------------- */
 
 .LoginSignupform *{
@@ -67,6 +83,11 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.7;
+}
+@media (max-width:700px){
+  .LoginSignupform p {
+    font-size: 11px;
+  }
 }
 .LoginSignupform h4 {
  /* font-family: 'Poppins', 'IBM Plex Sans KR', serif;*/

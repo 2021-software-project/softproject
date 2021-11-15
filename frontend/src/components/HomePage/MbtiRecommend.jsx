@@ -1,11 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import styled from "styled-components";
-import pic1 from "../../img/pic01.jpg";
-import pic2 from "../../img/pic02.jpg";
-import pic3 from "../../img/pic03.jpg";
-import pic4 from "../../img/pic04.jpg";
-import pic5 from "../../img/pic05.jpg";
+
 
 const Title = styled.div`
   h2{
@@ -117,8 +113,8 @@ class MbtiRecommend extends React.Component{
                         (<li>{job}</li>))
                     }
                 </ul>
-                <Link to="/login">
-                    <input class="button_primary" type="button" value="더 추천받기!"/>
+                <Link to="/Mbti_rcm">
+                    <input class="button_primary" type="button" value="공고 보러가기"/>
                 </Link>
             </JobList>
             <br/>

@@ -9,11 +9,10 @@
 
 .my_container2 {
     width : 100%;
-    padding-top: 3rem;
-    padding-bottom: 5rem;
+    /*padding-top: 3rem;*/
+    /*padding-bottom: 5rem;*/
 
     margin :auto;
-
 }
 
 #my_container3{
@@ -39,26 +38,36 @@
 }
 
 #password_con-1 {
-      padding-top: 1rem;
+    padding-top: 1rem;
     padding-bottom: 1rem;
+    margin-top: 0px;
 }
 
 .password_con-2{
-
-    padding-bottom: 1rem;
+    /*padding-bottom: 1rem;*/
     margin: auto;
+    padding:20px;
+    text-align: center;
 }
 
 .password_con-2 table{
-    text-align: center;
-    font-size: x-large;
+    text-align: left;
+    font-size: 17px;
     margin-right: auto;
     margin-left: auto;
+    height: 140px;
+    text-align: center;
+}
+.password_con-2 .password-input {
+    border: 0;
+    height: 2.5vw;
+    background: #ffffff00;
+    border-bottom: solid;
+    border-bottom-color: #cf7780;
 }
 
 .mid_box{
     width : 100%;
-
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
@@ -71,12 +80,17 @@
 }
 
 #menu_box{
-    width : 100%;
-
-    padding-top :2rem;
-    padding-bottom : 2rem;
-
-
+    width : 60%;
+    /*padding-top :2rem;*/
+    /*padding-bottom : 2rem;*/
+    margin: 4rem auto 0;
+    background-color: #fce0e0;
+    border-radius: 1rem 1rem 0 0;
+}
+@media (max-width: 768px) {
+    #menu_box{
+        width: 90%;
+    }
 }
 .my_container {
 
@@ -123,29 +137,70 @@
     margin-top: 1%;
     display: inline-table;
     width: 60%;
-    border-top: black 2px double;
-    border-bottom: black 2px double;
+    /*border-top: black 2px double;*/
+    /*border-bottom: black 2px double;*/
     height: 140px;
+    background-color: rgba(249, 196, 196, 0.4);
+    border-radius: 1rem;
+}
+@media (max-width: 768px) {
+    #mypage .userInfo{
+        width:90%;
+    }
 }
 #mypage .userInfo .username{
     width: 45%;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
-
 }
 #mypage .userInfo .useremail{
-    padding-left: 12%;
-    text-align: left;
+    /*padding-left: 7%;*/
+    /*text-align: left;*/
 }
 #mypage .userInfo .mbti{
-    padding-left: 12%;
-    text-align: left;
+    /*padding-left: 7%;*/
+    /*text-align: left;*/
+}
+#mypage .userInfo .password{
+    /*padding-left: 7%;*/
+    /*text-align: left;*/
+}
+@media (max-width: 768px) {
+    #mypage .userInfo .useremail{
+        font-size:13px;
+    }
+    #mypage .userInfo .mbti{
+        font-size:15px;
+    }
+    #mypage .userInfo .username {
+        font-size: 20px;
+    }
+}
+#mypage .userInfo .btn-mbti-edit {
+    padding: 6px 12px;
+    color: #ffffff;
+    background-color: #eca1a2;
+    border-radius: 5px;
+    font-size: 13px;
+    border: 0;
+    margin-left: 10px;
+    cursor:pointer;
+}
+#mypage .userInfo .btn-password-edit {
+    padding: 6px 12px;
+    color: #ffffff;
+    background-color: #eca1a2;
+    border-radius: 5px;
+    font-size: 13px;
+    border: 0;
+    cursor:pointer;
 }
 
 
 #mypage .mypageTable{
     display: inline-table;
-    width: 70%;
+    width: 80%;
+    margin-top: 10px;
 }
 #mypage .mypageTableRow{
     /*display: table-row;*/
@@ -167,6 +222,15 @@
 #mypage #mypageDetail{
     margin-top: -1%;
     border-top: black 1px dot-dot-dash;
+    background-color: #fce0e0;
+    width: 60%;
+    margin: auto;
+    border-radius: 0 0 1rem 1rem;
+}
+@media (max-width: 768px) {
+    #mypage #mypageDetail {
+        width: 90%;
+    }
 }
 #mypage .clicked{
     color: rgb(189, 89, 91);
@@ -211,7 +275,7 @@
     letter-spacing: 0.225em;
     line-height: 3.125em;
     max-width: 30em;
-    padding: 0 2.75em;
+    padding: 0 1.75em;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
@@ -227,12 +291,12 @@
 .my_container2 .point_box {
     margin-left: auto;
     margin-right:auto;
-    width: 50%;
+    /*width: 50%;*/
     top: 0;
     left: 0;
     background: linear-gradient(
             44deg, rgba(114, 97, 147, 0.64) 20%, rgba(227, 123, 124, 0.66) 60%, rgba(241, 214, 166, 0.68));
-    border-radius: 13px;
+    /*border-radius: 13px;*/
 }
 
 .my_container2 .inner_box {
@@ -248,4 +312,34 @@
 
     border-radius: 13px;
     top: 0;
+}
+
+/* 모달 */
+
+.Mbti-Change-modal .modal > section{
+  height: 34%!important;
+}
+.Mbti-Change-modal .modal > section > main{
+  text-align: center!important;
+}
+
+.Mbti-Change-modal .send-mbti{
+  padding: 6px 12px;
+    color: #fff;
+    background-color: #eca1a2;
+    border-radius: 5px;
+    font-size: 13px;
+    border: 0;
+    margin-left: 10px;
+}
+
+.Password-Change-modal .modal > section{
+  height: 64%!important;
+}
+.Password-Change-modal .modal > section > main{
+    padding : 0!important;
+}
+
+.img-mbti{
+    width:100px;
 }

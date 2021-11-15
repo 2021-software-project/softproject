@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { Link } from 'react-router-dom'
 import MbtiArea from "./MbtiArea";
 import "../../css/Rcm.css";
@@ -45,9 +45,9 @@ function Mbtircm(){
         console.log()
     }
 
+
     return (
         <div className ="mb_ti-container">
-
             <h1>MBTI로 아르바이트 추천받기</h1>
             <div className = "con">
             <div align="center">   {/*mbti 선택*/}
@@ -60,7 +60,7 @@ function Mbtircm(){
                         i === "ENTER" ?
                             (<tr className = "tr-mbti">
                             <input type="hidden" className="mbti_Select " name={"mbtichk"} value={i}/></tr>)
-                            : (<td className = "td-mbti select"><label><input type="radio" className="mbti_Select" name={"mbtichk"} value={i}
+                            : (<td className = "td-mbti select"><label><input type="radio" className="mbti_Select" name={"mbtichk"} value={i} id={i}
                                                                               onChange={()=>onChangeMbti(i)}/> <span>{i}</span> </label></td>))
                     }
                     </thead>

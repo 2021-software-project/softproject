@@ -16,11 +16,11 @@ function UserName(){
                 setUser(
                     res.data.username
                 )
+                localStorage.setItem('mbti',res.data.mbti)
                 console.log(res.data)
             });
         }
         console.log("user : " + user)
-
     }, [])
     return (<div style={{display:"inline"}}>{user}</div>)
 }
