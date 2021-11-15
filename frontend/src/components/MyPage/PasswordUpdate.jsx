@@ -59,21 +59,22 @@ function PasswordUpdate() {
           <div  id="password_con-1 ">
               <form onSubmit={onSubmit}>
                    <div className ="password_con-2">
-                        <table  width ="30%">
-
-                                <p></p>
-                            현재 비밀번호 : &nbsp;
-                            <input type="password" id="oldpwd" value={oldpwd} onChange={handleOldpwd} /> <br/>
-                            <p></p>
-                            새 비밀번호 :&nbsp;
-                            <input type="password" id="newpwd1" value={newpwd1} onChange={handleNewpwd1}/> <br/>
-                            <p></p>
-                            새 비밀번호 확인 :&nbsp;
-                            <input type="password" id="newpwd2" value={newpwd2} onChange={handleNewpwd2} /> <br/>
-                            &nbsp;
-                            <p></p>
-
-
+                        <table  width ="100%">
+                            <tr>
+                                {/*<td><span>현재 비밀번호 </span></td>*/}
+                                <td><input type="password" className="password-input" id="oldpwd" value={oldpwd} onChange={handleOldpwd}
+                                        placeholder="현재 비밀번호" /></td>
+                            </tr>
+                            <tr>
+                                {/*<td><span>새 비밀번호</span><br/></td>*/}
+                                <td><input type="password" className="password-input" id="newpwd1" value={newpwd1} onChange={handleNewpwd1}
+                                        placeholder="새 비밀번호" /></td>
+                            </tr>
+                            <tr>
+                                {/*<td><span>새 비밀번호 확인</span><br/></td>*/}
+                                <td><input type="password" className="password-input" id="newpwd2" value={newpwd2} onChange={handleNewpwd2}
+                                      placeholder="새 비밀번호 확인" /></td>
+                            </tr>
                         </table>
                    </div>
 

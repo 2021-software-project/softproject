@@ -3,9 +3,6 @@ import {Link} from'react-router-dom';
 
 import "../../css/home.css"
 import "../../css/mypage.css"
-import pic1 from '../../img/pic01.jpg'
-import pic2 from "../../img/pic02.jpg";
-import picYellow from"../../img/pic_yellow.jpg"
 import HomeMbti from "./HomeMbti";
 
 
@@ -30,7 +27,7 @@ class Home extends Component {
 							<p>당신의 성격에 맞춰<br />
 							알바를 추천해주는<br />
 							그런 앱 본 적 있나요?<br />
-								{/*<a href="http://html5up.net">HTML5 UP</a>.*/}</p>
+							</p>
 
 								<div id="inner">
 								<a href="/main" className="button_primary">입장하기</a>
@@ -45,7 +42,6 @@ class Home extends Component {
 
 					<section id="one" className="wrapper style1 special">
 						<div id="inner2">
-
 							<p></p>
 							<p></p>
 							<h1> 본인의 MBTI를 선택하십시오.</h1>

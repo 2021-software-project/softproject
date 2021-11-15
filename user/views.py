@@ -104,10 +104,9 @@ class UserRatingVIEW(generics.ListAPIView): #알바평가 db에 넣고 가져오
 
     #queryset = UserRating.objects.all()
 
-    def get_queryset(self, search=''):
+    def get_queryset(self):
         qs = super().get_queryset()
-        if(search==''):
-            search = self.request.query_params.get('search')
+        search = self.request.query_params.get('search')
         if search:
             qs = qs.filter(email=search)
             for rating in qs:
@@ -256,32 +255,29 @@ class UserPostingLikeWithPosting(APIView):
 
 
 class UserMbtiVIEW(generics.ListAPIView):
-   #queryset = UserMbti.objects.all()
-   #serializer_class = UserMbtiSerializer
 
    def get(self, request, email):
-       #qs = CustomUser.objects.get(email=email)
        if CustomUser.objects.filter(email=email).exists():
            print("YES")
            user = CustomUser.objects.get(email=email)
            print("user ",user)
            print("usertype ",type(user))
            print("mbti ", user.mbti)
-       #qs = UserMbti.objects.filter(email=email)
-       #user_mbti = serializers.serialize('json', user.mbti)
-       #print(user_mbti)
+
        return HttpResponse(user.mbti, content_type="text/json-comment-filtered")
 
+   def post(self,request):
+       email = request.data["email"]
+       mbti = request.data["mbti"]
+       if CustomUser.objects.filter(email=email).exists():
+          user = CustomUser.objects.get(email=email)
+          user.mbti = mbti
+          user.save()
+          return Response({'success': True, 'message': 'MBTI가 변경되었습니다.'}, status=status.HTTP_200_OK)
+       else:
+          return Response({'error': '로그인 후 이용 해주세요.'}, status=status.HTTP_401_UNAUTHORIZED)
 
-   # def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김
-   #     serializer = UserMbtiSerializer(data = request.data)  # JSON -> Serialize
-   #
-   #     if serializer.is_valid():  # 타당성 검토 후 저장
-   #         serializer.save()
-   #         return Response(serializer.data, status=201)
-   #     return Response(serializer.errors, status=400)
 
-#
 #class UserChangeMbtiVIEW(generics.ListAPIView):
 #    queryset = UserMbti.objects.all()
 #    serializer_class = UserMbtiSerializer

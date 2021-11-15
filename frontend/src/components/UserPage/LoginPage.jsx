@@ -134,21 +134,23 @@ const LoginPage = () => {
                   <Input type='submit' className="btn mt-4" value='login' />
                   {/*<a href="#" className="btn mt-4">submit</a>*/}
                 </form>
+              <p className="mb-0 mt-4 text-center"><a href="#0" className="link" onClick={openModal}>비밀번호를 잊어버리셨나요?</a></p>
+              <div className="Password-Reset-modal">
                 <React.Fragment>
-                   <p className="mb-0 mt-4 text-center"><a href="#0" className="link" onClick={openModal}>비밀번호를 잊어버리셨나요?</a></p>
-                        <Modal className="modal" open={ modalOpen } close={ closeModal } header="비밀번호를 잊어버리셨나요?">
-                            <div className="Password-Reset-modal">
-                                <p>가입하신 이메일을 입력해 주세요.<br/>
-                                    비밀번호 재설정 링크를 보내드립니다.</p>
-                                <input type="text" onChange={e=>setResetEmail(e.target.value)}  placeholder="email 을 입력해 주세요" /><br/>
-                                <input type="button" className="send-email" onClick={onSubmitEmail} value="전송"/>
-                                <div className="send-email-state" style={{display : sendEmail? 'block':'none'}}>
-                                    <p style={{display : success? 'block':'none'}}>메일을 발송했습니다. 환경에 따라 5분정도 소요될 수 있습니다.<br/>만약 메일함에 메일이 없다면 스팸메일함을 확인해주세요.</p>
-                                    <p style={{display : success? 'none':'block'}}>등록되지 않은 이메일 입니다. 다시 확인해주세요.</p>
-                                </div>
-                                </div>
-                        </Modal>
-                   </React.Fragment>
+                    <Modal className="modal" open={ modalOpen } close={ closeModal } header="비밀번호를 잊어버리셨나요?">
+                        {/*<div className="Password-Reset-modal">*/}
+                        <p>가입하신 이메일을 입력해 주세요.<br/>
+                            비밀번호 재설정 링크를 보내드립니다.</p>
+                        <input type="text" onChange={e=>setResetEmail(e.target.value)}  placeholder="email 을 입력해 주세요." />
+                        <input type="button" className="send-email" onClick={onSubmitEmail} value="전송"/>
+                        <div className="send-email-state" style={{display : sendEmail? 'block':'none'}}>
+                            <p style={{display : success? 'block':'none'}}>메일을 발송했습니다. 환경에 따라 5분정도 소요될 수 있습니다.<br/>만약 메일함에 메일이 없다면 스팸메일함을 확인해주세요.</p>
+                            <p style={{display : success? 'none':'block'}}>등록되지 않은 이메일 입니다. 다시 확인해주세요.</p>
+                        </div>
+                        {/*</div>*/}
+                    </Modal>
+                </React.Fragment>
+              </div>
           </div>
       </div>
 

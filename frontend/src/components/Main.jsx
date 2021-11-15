@@ -1,8 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import {Link} from "react-router-dom";
-import picYellow from "../img/pic_yellow.jpg";
-import styled from "styled-components";
+import UserName from "./MyPage/UserName.jsx"
 import "../css/home.css";
 import "../css/mypage.css";
 import "../css/Main.css"
@@ -58,25 +57,20 @@ class Main extends React.Component {
                     {/*        <h1 className="header">MAIN PAGE</h1>*/}
                     {/*    </div>*/}
                     {/*</header>*/}
-                {/* <!-- Two -->*/}
+
+                {/* <!-- Two --> */}
                 <div className="main-section">
                     <section
                         className="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
                         id="first">
                         <div className="content">
                             <h2>내 MBTI 맞춤 알바</h2>
-                            <p>MBTI를 기반으로 한 아르바이트를 추천해드립니다.</p>
-                            <ul className="actions vertical">
-                                <li><Link className="link" to="/Mbti_rcm">
-                                <button className="button primary" id="submitButton" type="submit">MBTI별 추천</button>
-                            </Link></li>
-                            </ul>
+                            <p>MBTI를 기반의 아르바이트를 추천해드립니다.</p>
                         </div>
                         <div className="image">
                             <Link className="link" to="/Mbti_rcm">
                                 <button className="button primary" id="submitButton" type="submit">MBTI별 추천</button>
                             </Link>
-                            {/*<img src="images/spotlight01.jpg" alt=""/>*/}
                         </div>
                     </section>
 
@@ -84,38 +78,21 @@ class Main extends React.Component {
                     <section
                         className="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
                         <div className="content">
-                            <h2>나를 위한 맞춤 알바</h2>
+                            <h2><UserName />님 위한 맞춤 알바</h2>
                             <p>선호하는 알바를 파악하여 추천해 드립니다.</p>
-                            <ul className="actions vertical">
-                                <li></li>
-                            </ul>
                         </div>
                         <div className="image">
                             <Link className="link" to="/Personal_rcm">
                                 <button className="button primary" id="submitButton" type="submit">개인별 추천</button>
                             </Link>
-                            {/*<img src="images/spotlight02.jpg" alt=""/>*/}
                         </div>
                     </section>
                 </div>
 
-                    {/*<div className="home_container-2">*/}
-                    {/*    <div className = "container_home_button">*/}
-                    {/*    /!*Item 1*!/*/}
-                    {/*        <div className="box-left" >*/}
-                    {/*            <Link className="link" to="/Mbti_rcm">*/}
-                    {/*                <button className="button primary" id="submitButton" type="submit">MBTI별 추천</button>*/}
-                    {/*            </Link>*/}
-                    {/*        </div>*/}
 
-                    {/*    /!*Item 2*!/*/}
-                    {/*        <div className ="box-right"  >*/}
-                    {/*            <Link className="link" to="/Personal_rcm">*/}
-                    {/*                <button className="button primary" id="submitButton" type="submit">개인별 추천</button>*/}
-                    {/*            </Link>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
+
+
+
                 </div>
             </div>
         )
