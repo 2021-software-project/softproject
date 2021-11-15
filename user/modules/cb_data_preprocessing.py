@@ -7,7 +7,8 @@ class Data:
         self.topic = topic
         self.columns = [str(i) for i in list(range(self.topic))]
         self.job_df = job
-        self.mbti_df = pd.read_csv("./dataset/mbti-topic_29_1.csv")
+        # self.mbti_df = pd.read_csv("C:/Users/dusdm/PycharmProjects/pythonProject/softproject/user/modules/dataset/mbti_topic.csv")
+        self.mbti_df = pd.read_csv("./dataset/mbti_topic.csv")
 
 
     def merge_rating_topic(self, rating):  # [cb] 사용자 평점 별 topic 데이터
@@ -42,7 +43,8 @@ class Data:
         # case 1. mbti 정보를 수치 일정 값으로 적용
         mbti_num = 5
 
-        df1 = rating[rating['user_id'] == user]
+        df1 = rating[rating['email'] == user]
+        # print(df1)
         df2 = self.mbti_df[self.mbti_df['mbti'] == df1['mbti'].drop_duplicates().values[0]].values[0]
         df2 = pd.DataFrame(data=[df2 for i in range(mbti_num)], columns=['mbti'] + self.columns)
 

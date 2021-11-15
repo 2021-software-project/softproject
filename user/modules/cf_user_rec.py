@@ -9,11 +9,11 @@ class User :
 
 
     def calc_user_simmularity(self):
-        pivot_df = pd.pivot_table(self.rating, index=['user_id'], columns='sub_code',
+        pivot_df = pd.pivot_table(self.rating, index=['email'], columns='sub_code',
                                   fill_value=0)  # 평가 안한 직종 0 (평점 1~5)
         user_sim_df = pd.DataFrame(cosine_similarity(pivot_df, pivot_df))
 
-        user_sim_df.to_csv("./dataset/user_simmularity.csv", index=False, encoding='utf-8')
+        # user_sim_df.to_csv("./dataset/user_simmularity.csv", index=False, encoding='utf-8')
 
         return user_sim_df
 
@@ -22,13 +22,13 @@ class User :
         rec_num = k
 
         # index, column명 사용자 이름으로 변경
-        sim_df.index = self.rating['user_id'].drop_duplicates()
-        sim_df.columns = self.rating['user_id'].drop_duplicates()
+        sim_df.index = self.rating['email'].drop_duplicates()
+        sim_df.columns = self.rating['email'].drop_duplicates()
 
         # 평가된 전체 업직종
         total_job = list(sorted(set(self.rating['sub_code'])))
 
-        user_data = self.rating[self.rating['user_id'] == user]['sub_code'].tolist()  # 해당 사용자가 평가한 직종
+        user_data = self.rating[self.rating['email'] == user]['sub_code'].tolist()  # 해당 사용자가 평가한 직종
         user_job_data = sorted(list(set(total_job) - set(user_data)))  # 해당 사용자가 평가하지 않은 직종
 
         rec_job = [] # 최종 추천될 K개 직종
@@ -37,7 +37,7 @@ class User :
         for item in user_job_data:
 
             job_i = self.rating[self.rating['sub_code'] == item]
-            sim_i = sim_df.loc[user, job_i['user_id']].values
+            sim_i = sim_df.loc[user, job_i['email']].values
 
             if sim_i.sum() != 0:
                 r = np.dot(sim_i, job_i['rating'].values) / sim_i.sum()  # 예상평점 계산

@@ -8,10 +8,10 @@ class Item :
         self.rating = rating
 
     def calc_item_simmularity(self):
-        pivot_df = pd.pivot_table(self.rating, index=['sub_code'], columns='user_id', fill_value=0)
+        pivot_df = pd.pivot_table(self.rating, index=['sub_code'], columns='email', fill_value=0)
         item_sim_df = pd.DataFrame(cosine_similarity(pivot_df, pivot_df))
 
-        item_sim_df.to_csv('./dataset/item_simmularity.csv', index=False, encoding='utf-8')
+        # item_sim_df.to_csv('./dataset/item_simmularity.csv', index=False, encoding='utf-8')
 
         return item_sim_df
 
@@ -24,7 +24,7 @@ class Item :
 
         total_job = list(sorted(set(self.rating['sub_code'])))  # 평가된 전체 업직종
 
-        rated_job_list = self.rating[self.rating['user_id'] == user]['sub_code'].tolist()  # 해당 사용자가 평가한 직종
+        rated_job_list = self.rating[self.rating['email'] == user]['sub_code'].tolist()  # 해당 사용자가 평가한 직종
         unrated_job_list = sorted(list(set(total_job) - set(rated_job_list)))  # 해당 사용자가 평가하지 않은 직종
 
         rec_job = []  # 최종 추천될 K개 직종
@@ -32,7 +32,7 @@ class Item :
         # 해당 사용자가 평가하지 않은 직종 중에서 추천 (한개씩) - item, user 공통
         for item in unrated_job_list:
 
-            job_i = self.rating[self.rating['user_id'] == user]  # 사용자가 평가한 업직종
+            job_i = self.rating[self.rating['email'] == user]  # 사용자가 평가한 업직종
             sim_i = sim_df.loc[item, job_i['sub_code']].values
 
             if sim_i.sum() != 0:
