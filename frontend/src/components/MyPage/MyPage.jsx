@@ -35,12 +35,19 @@ function MyPage() {
       "INTP", "INTJ", "INFP", "INFJ", "ISTP", "ISTJ", "ISFP", "ISFJ"];
 
     useEffect(()=>{
+        let token = localStorage.getItem('token')
         let email = localStorage.getItem('email')
         if (email !== null){
-            Axios.get(`/user/usermbti/get/${email}`)
-                .then(res=>{
+            Axios.get(`/user/usermbti/get/${email}`, {
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    'Authorization': 'token ' + token,
+                }
+            }).then(res=>{
                     setUsermbti(res.data)
                     setMbtiSelected(res.data)
+                    console.log(res.data)
                 })
         }
     },[])

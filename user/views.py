@@ -298,7 +298,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
 from .models import JobPosting
-
+from .modules.recommendation import Recommendation
 
 @method_decorator(csrf_exempt,name='dispatch')
 class mbtiRcm(View):
@@ -309,8 +309,10 @@ class mbtiRcm(View):
         ratingdf = pd.DataFrame(list(rating.values('email','job','score')))
         print(get_mbti)
         print(get_email)
+        rec = Recommendation()
 
-        job_list = randomRCM() ####여기에 추천 모듈 넣기
+
+        job_list = rec.recommendation('cb',1,5) ####여기에 추천 모듈 넣기
         # JSON 형식으로 response
         return  JsonResponse({
             'job_list' : job_list,

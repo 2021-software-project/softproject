@@ -27,7 +27,7 @@ function MbtiArea(props){
             }
             else {
                 setSelArea([...selArea, ch_areasi, ch_areagu]);
-                dispatch(changeArea(ch_areasi, ''));
+                //dispatch(changeArea(ch_areasi, ''));  //잠시 주석
             }
         }
  //       dispatch(changeSelectArea(selArea));

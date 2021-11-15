@@ -1,5 +1,5 @@
 import pandas as pd
-from job_code import sub_code_list
+from .job_code import sub_code_list
 
 from cb_data_preprocessing import Data
 from cb_contents_rec import *
@@ -11,7 +11,7 @@ class Recommendation:
 
     def __init__(self):
         user_rating = UserRating.objects.all()
-
+        print(user_rating)
         self.code_list = sub_code_list()
 
         # self.rating_df = pd.read_csv('./dataset/random_user_rating.csv')
