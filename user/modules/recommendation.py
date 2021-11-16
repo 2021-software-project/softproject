@@ -36,7 +36,7 @@ class Recommendation:
             # job = pd.read_csv("C:/Users/dusdm/PycharmProjects/pythonProject/softproject/user/modules/dataset/job-topic_29_1.csv")
             path = os.path.dirname(os.path.realpath(__file__))
             path = path.replace('\\','/')
-            job = pd.read_csv(path+"/dataset/job-topic_29_1.csv")
+            job = pd.read_csv(path+"/dataset/job_topic.csv")
 
             data = Data(job, topic)
             rating = data.merge_rating_topic(self.rating_df)
