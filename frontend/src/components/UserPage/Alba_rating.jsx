@@ -19,122 +19,114 @@ function Alba_rating(){
     const {ch_job} = useSelector(state=>state.job_modules);
     const {ch_score} = useSelector(state=>state.job_modules);
     const email = localStorage.getItem('email')
-    // const [email, setEmail] = useState('')  //추가
     let token
     useEffect(() => {   //추가
         token = localStorage.getItem('token')
-
-        // if (localStorage.getItem('token') !== null) {
-        //     Axios({
-        //         method: 'get',
-        //         url: '/user/auth/user/',
-        //         headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'}
-        //     }).then(res => {
-        //         setEmail(
-        //             res.data.email
-        //         )
-        //         console.log(res.data)
-        //         console.log("email : " + email)
-        //     });
-        // }
     }, [])
 
     console.log(email)
-    const onChangeJob = (ch_jobfamily, ch_job) => dispatch(changeJob(ch_jobfamily, ch_job));
-
-    const onChangeScore = (ch_score) => dispatch(changeScore(ch_score));
-
     const JOBFAMILY = [
             "외식ㆍ음료", "유통ㆍ판매", "문화ㆍ여가ㆍ생활", "서비스", "사무직", "고객상담ㆍ리서치ㆍ영업", "생산ㆍ건설ㆍ운송", "ITㆍ컴퓨터",
             "교육ㆍ강사", "디자인", "미디어", "운전ㆍ배달", "병원ㆍ간호ㆍ연구",
     ];
-
     const SCORE = [
         5,4,3,2,1,
     ]
-
+    const [albaArr, setAlbaArr] = useState(Array(JOBFAMILY.length).fill(false));
+    const [albaDetailArr, setAlbaDetailArr] = useState(Array(25).fill(false));
+    const [albaScoreArr, setAlbaScoreArr] = useState(Array(SCORE.length).fill(false));
+    const onChangeJob = (ch_jobfamily, ch_job, index) => {
+        dispatch(changeJob(ch_jobfamily, ch_job));
+        setAlbaArr(
+            albaArr.map((a, i)=>
+                i===index ? true : false)
+        )
+        setAlbaDetailArr((
+            albaDetailArr.map(a=> false)
+        ))
+    }
+    const onChangeScore = (ch_score, index) => {
+        dispatch(changeScore(ch_score));
+        setAlbaScoreArr(
+            albaScoreArr.map((a, i)=>
+                i>=index ? true : false)
+        )
+    }
     const ratingSubmit = (e) => {   //추가
         e.preventDefault()
-
-        const rating1 = {
-            email: email,
-            jobfamily : ch_jobfamily,
-            job : ch_job,
-            score : ch_score,
-            mbti : localStorage.getItem('mbti'),
-        }
-        console.log(rating1);
-
-        let token = localStorage.getItem('token')
-
-        Axios.post("/user/userrating/", rating1,
-            {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json;charset=UTF-8',
-                    'Authorization': 'token ' + token,
+        if(ch_job!=='') {
+            let chk = window.confirm(`${ch_jobfamily} | ${ch_job} | ${ch_score}점'으로 평가하시겠습니까?`);
+            if (chk == true) {
+                const rating1 = {
+                    email: email,
+                    jobfamily: ch_jobfamily,
+                    job: ch_job,
+                    score: ch_score,
+                    mbti: localStorage.getItem('mbti'),
                 }
-            })
-            .then(response=>{
-                console.log(response)
-                alert("평가 완료 !")
-                onChangeJob("","")
-                onChangeScore("")
-                window.location.replace('/Alba_rating')
+                console.log(rating1);
 
-            })
-            .catch(function (err){
+                let token = localStorage.getItem('token')
 
-                console.log("token : ",token)
-              //console.clear()
-              console.log(err)
-        })
+                Axios.post("/user/userrating/", rating1,
+                    {
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json;charset=UTF-8',
+                            'Authorization': 'token ' + token,
+                        }
+                    })
+                    .then(response => {
+                        console.log(response)
+                        alert("평가 완료 !")
+                        onChangeJob("", "")
+                        onChangeScore("")
+                        window.location.replace('/Alba_rating')
+
+                    })
+                    .catch(function (err) {
+                        console.log("token : ", token)
+                        //console.clear()
+                        console.log(err)
+                    })
+            } else {
+
+            }
+        }
   }
 
     return (
         <div className ="alba_rating-container">
-
             <div className="alba_subbox">
             <h1>내가 해봤던 알바 평가하기</h1>
-            <h2>[직종선택]</h2>
-            <h3>선택한 직종 : &nbsp; {ch_jobfamily} => {ch_job} </h3>
             </div>
-
 
             <div className="Job-grid-thead">
                 {JOBFAMILY.map((i,index) =>
-                    (<div id={i} key={i} onClick={()=>{onChangeJob(i,'')}}
+                    (<div id={i} key={i} onClick={()=>{onChangeJob(i,'',index)}}
                                   className="Job-cell" >
-                                <div className="JobImgDiv">
+                                <div className={`JobImgDiv${albaArr[index]? ' selectJob':''}`}>
                                     <img className="JobImg" src={require(`../../img/JOBIcon/${i}.png`).default}/></div>
                                 <div>{i}</div>
                     </div>))}
             </div>
 
-
             <div className="alba_subbox2">
-
                 <table id="job_table">
-
-                <tr colSpan={JOBFAMILY.length}><Job2 job_value={ch_jobfamily} /></tr>
-
+                <tr colSpan={JOBFAMILY.length}><Job2 job_value={ch_jobfamily} albaDetailArr={albaDetailArr} setAlbaDetail={setAlbaDetailArr}/></tr>
                 </table>
-
             </div>
 
-
             <div className="mid_box">
-            <h3>점수 매기기</h3>
-
+            {/*<h3>점수 매기기</h3>*/}
                 <div align="center" id="rating">
                     <table>
                         <fieldset>
-                        {SCORE.map(i =>
-                                  <label>⭐<input type="radio" className="scoreSelect" name={"score_"} value={i}
-                                    onChange={()=>onChangeScore(i)}/> </label>)
+                        {SCORE.map((i, index) =>
+                                  <label className={`${albaScoreArr[index]?'checkStar':''}`}>⭐<input type="radio" className={`scoreSelect`} name={"score_"} value={i}
+                                    onChange={()=>onChangeScore(i, index)}/> </label>)
                         }
                         </fieldset>
-
                     </table>
                 </div>
             </div>
@@ -143,6 +135,8 @@ function Alba_rating(){
             <form onSubmit={ratingSubmit}>
                 <Input className="ratingBtn" type='submit' size="large" value='평가하기' />
             </form>
+            
+            <a style={{fontSize:"17px", textDecoration:"underline", textUnderlinePosition:"under", color:"black"}} href={'/mypage'}>내가 한 평가 보러가기</a>
 
         </div>
     );

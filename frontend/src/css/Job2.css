@@ -25,7 +25,14 @@
     text-align: left;
     color : #cf7780;
 }
-
+.jobSelect a{
+    cursor: pointer;
+    letter-spacing: -0.6px;
+}
+.jobSelect .selectDetailJob{
+    font-weight: 700;
+    color:black;
+}
 @media (min-width:700px) {
    .jobSelect{
     width:840px;

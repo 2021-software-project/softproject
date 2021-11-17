@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "../../css/Job2.css";
 import "../../css/Rcm.css"
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,9 +9,7 @@ function Job2(props){
     const dispatch = useDispatch();
     const {ch_jobfamily} = useSelector(state=>state.job_modules);
     const {ch_job} = useSelector(state=>state.job_modules);
-
-    const onChangeJob = (ch_jobfamily, ch_job) => dispatch(changeJob(ch_jobfamily, ch_job));
-
+    const {albaDetailArr, setAlbaDetail} = props;
     const Job1000 = [
         "일반음식점", "레스토랑", "패밀리레스토랑", "패스트푸드점", "치킨ㆍ피자전문점",
         "커피전문점", "아이스크림ㆍ디저트", "베이커리ㆍ도넛ㆍ떡", "호프ㆍ일반주점",
@@ -70,6 +68,14 @@ function Job2(props){
         "수의테크니션ㆍ동물보건사", "실험ㆍ연구보조", "생동성ㆍ임상실험",
     ];
 
+
+    const onChangeJob = (ch_jobfamily, ch_job, index) => {
+        dispatch(changeJob(ch_jobfamily, ch_job));
+        setAlbaDetail(
+            albaDetailArr.map((a, i)=>
+                i===index ? true : false)
+        )
+    }
     console.log(ch_jobfamily, ch_job);
 
     if (props.job_value === "유통ㆍ판매") {
@@ -77,8 +83,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {Job2000.map((job, index) =>
-                        (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('유통ㆍ판매',job)}> {job}</a></li>))
+                        (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('유통ㆍ판매',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -87,8 +93,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {Job3000.map((job, index) =>
-                        (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('문화ㆍ여가ㆍ생활',job)}> {job}</a></li>))
+                        (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('문화ㆍ여가ㆍ생활',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -97,8 +103,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {Job4000.map((job, index) =>
-                        (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('서비스',job)}> {job}</a></li>))
+                        (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('서비스',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -107,8 +113,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {Job6000.map((job, index) =>
-                         (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('사무직',job)}> {job}</a></li>))
+                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('사무직',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -117,8 +123,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {Job7000.map((job, index) =>
-                         (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('고객상담ㆍ리서치ㆍ영업',job)}> {job}</a></li>))
+                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('고객상담ㆍ리서치ㆍ영업',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -127,8 +133,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {Job8000.map((job, index) =>
-                         (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('생산ㆍ건설ㆍ운송',job)}> {job}</a></li>))
+                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('생산ㆍ건설ㆍ운송',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -137,8 +143,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {Job9000.map((job, index) =>
-                         (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('ITㆍ컴퓨터',job)}> {job}</a></li>))
+                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('ITㆍ컴퓨터',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -147,8 +153,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {JobA000.map((job, index) =>
-                         (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('교육ㆍ강사',job)}> {job}</a></li>))
+                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('교육ㆍ강사',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -157,8 +163,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {JobB000.map((job, index) =>
-                         (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('디자인',job)}> {job}</a></li>))
+                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('디자인',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -167,8 +173,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {JobC000.map((job, index) =>
-                         (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('미디어',job)}> {job}</a></li>))
+                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('미디어',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -177,8 +183,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {JobD000.map((job, index) =>
-                         (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('운전ㆍ배달',job)}> {job}</a></li>))
+                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('운전ㆍ배달',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -187,8 +193,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {JobE000.map((job, index) =>
-                         (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('병원ㆍ간호ㆍ연구',job)}> {job}</a></li>))
+                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('병원ㆍ간호ㆍ연구',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)
@@ -197,8 +203,8 @@ function Job2(props){
             <div className="jobSelect">
                 <ul>
                     {Job1000.map((job, index) =>
-                         (<li><a className="JobSelect" name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('외식ㆍ음료',job)}> {job}</a></li>))
+                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('외식ㆍ음료',job, index)}> {job}</a></li>))
                     }
                 </ul>
             </div>)

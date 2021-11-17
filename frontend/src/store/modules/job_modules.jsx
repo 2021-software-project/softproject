@@ -23,7 +23,7 @@ export function changeScore(ch_score){
 const initialState = {
     ch_jobfamily : '직종을 선택해주세요',
     ch_job : '',
-    ch_score : '점수를 매겨주세요',
+    ch_score : 0,
 
 };
 

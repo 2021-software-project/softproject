@@ -97,7 +97,7 @@
     /*padding: 12px 0 0 0;*/
     cursor: pointer;
 }
-.alba_rating-container .clicked{
+.alba_rating-container .selectJob{
   background: linear-gradient(44deg, rgba(114, 97, 147, 0.42) 15%, rgba(227, 123, 124, 0.77) 75%, rgba(255, 228, 180, 0.46));
   border:2px solid transparent;
 }
@@ -110,8 +110,8 @@
 
 .alba_rating-container{
     width: 100%;
-   margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-bottom: 20%;
     border: 0;
     color: #000;
 }
@@ -145,24 +145,28 @@
 }
 
 .alba_rating-container .ratingBtn {
-    color: #ffffff;
-    background-color: rgba(227, 123, 124, 0.68);
-    margin: 0px 6px;
-    padding: 6px 23px;
-    border-radius: 0rem;
+    background-color: #cf7780;
+    color : #ffffff ;
+    font-family: 'IM_Hyemin-Bold';
     font-size: 18px;
-
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    border-radius: 7px;
-    cursor: pointer;
+    border-radius: 3px;
     border: 0;
-    height: 3.125em;
-    letter-spacing: 0.225em;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    letter-spacing: -0.6px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    line-height: 45px;
+    max-width: 30em;
+    padding: 0 30px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 40px;
 }
+
 
 .alba_rating-container .ratingBtn:hover {
   color:#1d253b;
@@ -183,6 +187,9 @@
     font-size: 2em; /* 이모지 크기 */
     color: transparent; /* 기존 이모지 컬러 제거 */
     text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+}
+#rating .checkStar{
+    text-shadow: 0 0 0 #ffdb00;
 }
 
 @media (min-width :700px) {
