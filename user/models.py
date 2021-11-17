@@ -7,8 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
-    authentication_classes =[]
-    permission_classes = []
+    # authentication_classes =[]
+    # permission_classes = []
 
     def _create_user(self, email, password, **extra_fields):
         if not email:
@@ -40,8 +40,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     """
     customized User
     """
-    authentication_classes =[]
-    permission_classes = []
+    # authentication_classes =[]
+    # permission_classes = []
 
     email = models.EmailField(
         verbose_name=_('email id'),

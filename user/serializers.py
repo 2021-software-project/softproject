@@ -11,8 +11,8 @@ from .models import CustomUser, UserRating, UserPostingClick, UserPostingLike
 
 @csrf_exempt
 class UserSerializer(serializers.ModelSerializer):
-    authentication_classes =[]
-    permission_classes = []
+    # authentication_classes =[]
+    # permission_classes = []
 
     class Meta:
         model = CustomUser
@@ -20,8 +20,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 @csrf_exempt
 class CustomRegisterSerializer(serializers.ModelSerializer):
-    authentication_classes =[]
-    permission_classes = []
+    # authentication_classes =[]
+    # permission_classes = []
 
     password1 = serializers.CharField(required=True, write_only=True)
     password2 = serializers.CharField(required=True, write_only=True)
