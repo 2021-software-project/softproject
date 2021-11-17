@@ -12,19 +12,23 @@ from ..models import UserRating, UserPostingLike
 class Recommendation:
 
     def __init__(self):
-        user_rating = UserRating.objects.all()
-        user_postinglike = UserPostingLike.objects.all()
-        self.code_list = sub_code_list()
-        self.rating_df = pd.DataFrame(list(user_rating.values('email', 'job', 'score', 'mbti')))
+        try:
+            print("try")
+            user_rating = UserRating.objects.all()
+            user_postinglike = UserPostingLike.objects.all()
+            self.code_list = sub_code_list()
+            self.rating_df = pd.DataFrame(list(user_rating.values('email', 'job', 'score', 'mbti')))
+            self.postinglike_df = pd.DataFrame(list(user_postinglike.values('email', 'jobcode', 'like', 'mbti')))
+            self.postinglike_df.loc[self.postinglike_df['like'] == 1, 'like'] = 4  # 좋아요:4, 싫어요:1점으로 변경
+            self.postinglike_df.loc[self.postinglike_df['like'] == -1, 'like'] = 1
+            self.postinglike_df.columns = ['email', 'sub_code', 'rating', 'mbti']
+            self.rating_df.columns = ['email', 'sub_code', 'rating', 'mbti']
+            self.rating_df = pd.concat([self.rating_df, self.postinglike_df], ignore_index=True)
 
-        self.postinglike_df = pd.DataFrame(list(user_postinglike.values('email', 'jobcode', 'like', 'mbti')))
-        self.postinglike_df.loc[self.postinglike_df['like'] == 1, 'like'] = 4  # 좋아요:4, 싫어요:1점으로 변경
-        self.postinglike_df.loc[self.postinglike_df['like'] == -1, 'like'] = 1
-        self.postinglike_df.columns = ['email', 'sub_code', 'rating', 'mbti']
-        self.rating_df.columns = ['email', 'sub_code', 'rating', 'mbti']
-        self.rating_df = pd.concat([self.rating_df, self.postinglike_df], ignore_index=True)
-
-        self.user_list = self.rating_df['email'].drop_duplicates().values
+            self.user_list = self.rating_df['email'].drop_duplicates().values
+        except :
+            print("except")
+            return None
 
 
     def recommendation(self, algorithm, user,mbti ,rec_num=5):

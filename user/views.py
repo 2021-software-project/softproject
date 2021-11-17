@@ -46,17 +46,26 @@ class SignupView(APIView):
     authentication_classes =[]
     permission_classes = []
     def post(self, request):
-        print("request ",request)
-        print("request[data] ", request.data)
+        serializer = self.serializer_class(request.data)
+
+        email = request.data['email']
+        username = request.data['username']
+        password1 = request.data['password1']
+        password2 = request.data['password2']
+        mbti = request.data['mbti']
         # customuser = CustomRegisterSerializer.save(self, request=request.data)
         # print("customuser ",customuser)
-        user = CustomUser.objects.create_user(email=request.data['email'], username = request.data['username'],
+        if CustomUser.objects.filter(email=email).exists():
+            return Response({'email' : '이미 사용중인 이메일입니다.'}, status=status.HTTP_400_BAD_REQUEST)
+        elif password1 != password2:
+            return Response({'password' : '비밀번호가 일치하지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            user = CustomUser.objects.create_user(email=request.data['email'], username = request.data['username'],
                                               password=request.data['password2'],
-                                              # password1=request.data['password1'], password2=request.data['password2'],
                                               mbti=request.data['mbti'])
-        user.save()
-        token = Token.objects.create(user=user)
-        return Response({"Token": token.key})
+            user.save()
+            token = Token.objects.create(user=user)
+            return Response({"Token": token.key})
 
 
 
@@ -336,8 +345,15 @@ class mbtiRcm(View):
         get_email = request.GET.get('email')
         # rating = UserRating.objects.all()
         # ratingdf = pd.DataFrame(list(rating.values('email','job','score')))
-        print(get_email)
+        print(get_mbti)
+        user_rating = UserRating.objects.all()
+        user_postinglike = UserPostingLike.objects.all()
+        # if user_rating.exist() & user_postinglike.exist()
         rec = Recommendation()
+        print("rec : ", rec)
+        if rec == None:
+            return Response({'error':'알바 평가를 먼저해주세요!'},status=status.HTTP_400_BAD_REQUEST)
+
         job_list = rec.recommendation('cb', get_email,get_mbti, 5)
         job_code_list = codeToKorean(job_list)
 
