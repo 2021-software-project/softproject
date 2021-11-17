@@ -18,27 +18,28 @@ function Alba_rating(){
     const {ch_jobfamily} = useSelector(state=>state.job_modules); //스토어에 있는 값 가져옴
     const {ch_job} = useSelector(state=>state.job_modules);
     const {ch_score} = useSelector(state=>state.job_modules);
-
-    const [email, setEmail] = useState('')  //추가
+    const email = localStorage.getItem('email')
+    // const [email, setEmail] = useState('')  //추가
     let token
     useEffect(() => {   //추가
         token = localStorage.getItem('token')
 
-        if (localStorage.getItem('token') !== null) {
-            Axios({
-                method: 'get',
-                url: '/user/auth/user/',
-                headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'}
-            }).then(res => {
-                setEmail(
-                    res.data.email
-                )
-                console.log(res.data)
-                console.log("email : " + email)
-            });
-        }
+        // if (localStorage.getItem('token') !== null) {
+        //     Axios({
+        //         method: 'get',
+        //         url: '/user/auth/user/',
+        //         headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'}
+        //     }).then(res => {
+        //         setEmail(
+        //             res.data.email
+        //         )
+        //         console.log(res.data)
+        //         console.log("email : " + email)
+        //     });
+        // }
     }, [])
 
+    console.log(email)
     const onChangeJob = (ch_jobfamily, ch_job) => dispatch(changeJob(ch_jobfamily, ch_job));
 
     const onChangeScore = (ch_score) => dispatch(changeScore(ch_score));
