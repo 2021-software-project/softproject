@@ -44,6 +44,10 @@ function Alba_rating(){
         setAlbaDetailArr((
             albaDetailArr.map(a=> false)
         ))
+        dispatch(changeScore(0));
+        setAlbaScoreArr(
+            albaScoreArr.map(a=>false)
+        )
     }
     const onChangeScore = (ch_score, index) => {
         dispatch(changeScore(ch_score));
