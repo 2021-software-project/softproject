@@ -48,7 +48,7 @@ function NavBar() {
 
     const handleLogout = () => {
         let token = localStorage.getItem('token')
-
+        console.log("로그아웃")
         Axios({
             url: "/user/auth/logout/",
             method: 'post',
@@ -58,11 +58,13 @@ function NavBar() {
             }
         })
           .then(res => {
-
             localStorage.clear()
-            // 사용하려면 App.js에서 /로 라우팅해야 한다
             window.location.replace('/')
-          });
+          })
+            .catch(err=>{
+                console.log(err)
+                console.log(err.data)
+            });
     }
     const onClink=(e)=>{
 

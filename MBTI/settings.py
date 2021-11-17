@@ -205,7 +205,8 @@ ACCOUNT_UNIQUE_EMAIL = True
 # 1014 추가
 # 이메일 인증 설정 -> None : 이메일 인증을 하지 않아도 로그인 가능
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-
+# 1117 추가, 비번 변경시, 현재 비밀번호 확인
+OLD_PASSWORD_FIELD_ENABLED = True
 # DRF
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -246,6 +247,8 @@ CORS_ORIGIN_WHITELIST = [  # 추가
     'http://localhost:3000',
     'http://localhost:8080',
     'http://127.0.0.1:8000',
+    'http://127.0.0.1:8001',
+    'http://localhost:8001',
 ]
 
 # 0908 CORS, CSRF 설정.
