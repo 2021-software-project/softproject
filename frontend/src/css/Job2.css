@@ -1,12 +1,34 @@
 .jobSelect{
-    width:840px;
+    width:400px;
     justify-content: center;
     margin-right: -120px;
 }
+.jobSelect ul{
 
-@media (max-width: 580px) {
-    .jobSelect{
-        width:400px;
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+.jobSelect li{
+    list-style: none;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    margin-bottom: 5px;
+    width: 21%;
+    font-size: 11px;
+    text-align: left;
+    color : #cf7780;
+}
+
+@media (min-width:700px) {
+   .jobSelect{
+    width:840px;
     justify-content: center;
     margin-right: -120px;
     }
@@ -16,26 +38,31 @@
     }
 
     .jobSelect ul{
-        margin-left: auto;
-        margin-right: auto;
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+    }
+    .jobSelect li{
+        list-style: none;
+        float: left;
+        margin-left: 10px;
+        margin-right: 10px;
+
+        margin-bottom: 5px;
+        width: 21%;
+        font-size: 17px;
+        text-align: left;
+        color : #cf7780;
     }
 
 }
 
-.jobSelect ul{
-    list-style: none;
-}
-.jobSelect li{
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
 
-    margin-bottom: 5px;
-    width: 21%;
-    font-size: 17px;
-    text-align: left;
-    color : #cf7780;
-}
+
 
 .jobSelect tr{
     margin-right: auto;
