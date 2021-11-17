@@ -12,6 +12,7 @@ function Mbtiresult(props) {
     const {ch_areasi} = useSelector(state => state.area_modules);
     const {ch_areagu} = useSelector(state => state.area_modules);
     const {ch_mbti} = useSelector(state => state.area_modules);
+    const {select_area} = useSelector(state => state.area_modules);
     console.log(props.location.state);
     console.log(props);
 
@@ -34,7 +35,7 @@ function Mbtiresult(props) {
         }
 
         if (jobList =='') {
-            axios.get('http://127.0.0.1:8000/user/mbtircm/', {
+            axios.get('/user/mbtircm/', {
                 params: {mbti: ch_mbti, email: localStorage.getItem("email")},
             }).then((res) => {
                 console.log(res.data.job_list)
@@ -58,14 +59,15 @@ function Mbtiresult(props) {
         console.log(selJob);
     }
 
-
     return (
         ch_areagu!=''?
         <div className="rcm-result">
             <p className="info">
                 <span># {ch_mbti}</span>
-                <span># {ch_areasi}</span>
-                <span># {ch_areagu}</span>
+                <span># {select_area[0]} {select_area[1]}</span>
+                {/*<span># {ch_areagu}</span>*/}
+                {select_area.length > 2 ? <span># {select_area[2]} {select_area[3]}</span> : ''}
+                {select_area.length > 4 ? <span># {select_area[4]} {select_area[5]}</span> : ''}
             </p>
 
             <div className="div-btn">

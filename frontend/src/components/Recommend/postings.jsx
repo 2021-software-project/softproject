@@ -13,6 +13,7 @@ function Postings(props){
     const jobCode = props.code
     const {ch_areasi} = useSelector(state => state.area_modules);
     const {ch_areagu} = useSelector(state => state.area_modules);
+    const {select_area} = useSelector(state => state.area_modules);
 
     const[postings, setPostings] = useState([])
 
@@ -77,11 +78,14 @@ function Postings(props){
 
     useEffect(()=>{
         //post 전송을 위해 form data 생성
+        console.log(ch_areasi, ch_areagu);
+        console.log(select_area)
         let data = new FormData();
         data.append("code",jobCode)
-        data.append("si",ch_areasi)
-        data.append("gu",ch_areagu)
-
+        select_area.map((a)=>{
+            data.append("selectArea",a)
+        })
+        console.log(data)
         axios.post('/user/postings/', data)
         .then(function (res) {
             setPostings(res.data)

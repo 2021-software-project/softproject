@@ -5,8 +5,10 @@
 
 .rcm-result .info {
     color: #f69494d9;
-    font-size: 30px;
+    font-size: 24px;
     margin-top: 1rem;
+    word-break: keep-all;
+    letter-spacing: -1.0px;
 }
 .rcm-result .info span {
     margin: 0 10px;
@@ -41,7 +43,7 @@
 }
 .rcm-result .button-4 button {
     /*font-family: arial;*/
-    font-family: 'GowunDodum-Regular';
+    font-family: 'IM_Hyemin-Bold';
     font-size: 17px;
     font-weight: bold;
     color: #f69494d9;

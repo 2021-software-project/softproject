@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import serializers
 
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -8,15 +9,20 @@ from rest_framework.exceptions import AuthenticationFailed
 from .models import CustomUser, UserRating, UserPostingClick, UserPostingLike
 #from ..MBTI.models import JobPosting
 
-
+@csrf_exempt
 class UserSerializer(serializers.ModelSerializer):
+    authentication_classes =[]
+    permission_classes = []
 
     class Meta:
         model = CustomUser
         fields = ('email','username','first_name', 'last_name','last_login','date_joined','is_staff','sns', 'mbti')
 
-
+@csrf_exempt
 class CustomRegisterSerializer(serializers.ModelSerializer):
+    authentication_classes =[]
+    permission_classes = []
+
     password1 = serializers.CharField(required=True, write_only=True)
     password2 = serializers.CharField(required=True, write_only=True)
 

@@ -6,6 +6,7 @@ from .views import UserRatingVIEW, UserPostingClickVIEW, PasswordTokenCheckAPI, 
     SetNewPasswordAPIView, \
     ratingDetails, UserPostingLikeVIEW, UserPostingLikeDetails, UserPostingLikeWithPosting, mbtiRcm, persRcm, postings,\
     UserMbtiVIEW
+from .views import SignupView
 
 from django.contrib.auth import views as auth_views
 from django.views.decorators.csrf import csrf_exempt
@@ -14,8 +15,9 @@ from rest_auth.views import LogoutView, LoginView, PasswordResetView, PasswordRe
 
 urlpatterns = [
     path('auth/', include('rest_auth.urls')),
-    path('auth/signup/', include('rest_auth.registration.urls')),
-
+    # path('auth/signup/', include('rest_auth.registration.urls')),
+    # path('auth/signup/', csrf_exempt(include('rest_auth.registration.urls'))),
+    path('auth/signup/', SignupView.as_view(), name='rest-auth.registration.urls'),
     path('request-reset-email/', RequestPasswordResetEmail.as_view(), name='request-reset-email'),
     path('password-reset/<uidb64>/<token>',PasswordTokenCheckAPI.as_view(), name='password-reset-confirm'),
     path('password-reset-complete/', SetNewPasswordAPIView.as_view(), name='password-reset-complete'),

@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { Input } from 'antd';
 import styled from 'styled-components';
 import Modal from '../../js/Modal';
+import Cookies from "universal-cookie";
 
 const SignupDiv = styled.div`
   padding: 3rem;
@@ -81,6 +82,12 @@ const SignupPage = () => {
         setModalOpen(false);
     }
 
+    const cookies = new Cookies();
+    const csrftoken = cookies.get('csrftoken');
+
+
+
+    // console.log(cookies.get('csrftoken'));
   const onSubmit = (e) => {
       e.preventDefault()
 
@@ -100,13 +107,27 @@ const SignupPage = () => {
           return false
       }
 
-      Axios.post('http://localhost:8000/user/auth/signup/', user)
+      Axios.post('/user/auth/signup/', user,
+          {
+          headers : {
+              "CSRF-TOKEN":csrftoken
+                // Token :csrftoken
+               // Authorization: `CSRF token ${cookies.get('csrftoken')}`
+          }
+      }
+      )
           .then(res => {
-              if (res.data.key) {
+              // alert(res);
+              // if (res.data.key) {
+              if (res.data) {
+                  console.log(res.data)
+                  console.log(res.data.key)
                   alert("회원가입을 축하드립니다 !");
                   window.location.replace('/login');
 
               } else {
+                  // console.log(res.data)
+                  // console.log(res.data.key)
                   setUsername('')
                   setEmail('')
                   setMbtiSelected('')
@@ -117,6 +138,9 @@ const SignupPage = () => {
               }
           })
           .catch(err => {
+              // console.log(err.response.data)
+              // alert(err)
+              // alert(err.response)
               console.log(err.response.data)
               const errType = Object.keys(err.response.data)[0]
               let errMsg = err.response.data[errType]
@@ -147,6 +171,8 @@ const SignupPage = () => {
           <div className="section text-center">
             <h4 className="mb-4 pb-3">SIGN UP</h4>
             {errors === true && <h2>Cannot signup with provided credentials</h2>}
+              <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken}/>
+
               <form onSubmit={onSubmit}>
 
                   <div className="form-group mt-2 selectMbtiDiv">

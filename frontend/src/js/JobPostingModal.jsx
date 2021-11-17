@@ -17,7 +17,7 @@ const JobPostingModal = ( props ) => {
 
     useEffect(() => {
         if(open) {
-            axios.get(`http://localhost:8000/user/userpostinglike/${email}/${post_id}`,
+            axios.get(`/user/userpostinglike/${email}/${post_id}`,
                 {
                     headers: {
                         'Content-Type': 'application/json',

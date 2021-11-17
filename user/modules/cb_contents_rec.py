@@ -23,7 +23,7 @@ def contents_based_rec(user_model, job, topic, k=5):
     for num in sim[:rec_num]:
         rec_job.append(num[0])
 
-    print(rec_job)
+    #print(rec_job)
     return rec_job
 
 

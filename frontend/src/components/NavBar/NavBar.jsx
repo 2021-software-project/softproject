@@ -48,7 +48,7 @@ function NavBar() {
         let token = localStorage.getItem('token')
 
         Axios({
-            url: "http://localhost:8000/user/auth/logout/",
+            url: "/user/auth/logout/",
             method: 'post',
             headers: {
                'Content-Type': 'application/json',

@@ -23,8 +23,11 @@ const LoginPage = () => {
       email: email,
       password: password
     }
-    Axios.post('http://127.0.0.1:8000/user/auth/login/', user)
+
+    Axios.post('/user/auth/login/', user)
       .then(res => {
+          //alert("user", user.email, user.password)
+          //alert("res",res)
         if (res.data.key) {
             console.log(res.data)
             localStorage.clear()
@@ -80,9 +83,11 @@ const LoginPage = () => {
       .catch(err => {
         console.clear()
         console.log(err)
+
+          // alert(err)
         alert('아이디 또는 비밀번호가 일치하지 않습니다')
-        setEmail('')
-        setPassword('')
+        //setEmail('')
+        //setPassword('')
       })
   }
   const [ modalOpen, setModalOpen ] = useState(false);

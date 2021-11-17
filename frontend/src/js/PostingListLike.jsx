@@ -14,7 +14,7 @@ function PostingListLike(props) {
     let token = localStorage.getItem('token')
     let email = localStorage.getItem('email')
     useEffect(() => { //목록에 좋아요 상황 바로 가져오기
-        axios.get(`http://localhost:8000/user/userpostinglike/${email}/${props.post_id}`,
+        axios.get(`/user/userpostinglike/${email}/${props.post_id}`,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ function PostingListLike(props) {
               console.log(err)
         })}
         else if(Likes === 1){
-            axios.delete(`http://localhost:8000/user/userpostinglike/${props.email}/${props.post_id}`,
+            axios.delete(`/user/userpostinglike/${props.email}/${props.post_id}`,
                 { headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json;charset=UTF-8',
@@ -72,7 +72,7 @@ function PostingListLike(props) {
               })
         }
         else if(Likes === -1){
-            axios.delete(`http://localhost:8000/user/userpostinglike/${props.email}/${props.post_id}`,
+            axios.delete(`/user/userpostinglike/${props.email}/${props.post_id}`,
                 { headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json;charset=UTF-8',

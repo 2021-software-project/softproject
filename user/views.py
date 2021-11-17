@@ -1,15 +1,18 @@
+import random
+
 import pandas as pd
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
+from rest_auth.app_settings import create_token
 from rest_framework.decorators import APIView, api_view
 from rest_framework.exceptions import AuthenticationFailed
-
+from rest_framework.generics import GenericAPIView
 
 from .models import UserRating, UserPostingClick, UserPostingLike
-from .serializers import UserRatingSerializer, UserPostingClickSerializer,UserPostingLikeSerializer, \
-    ResetPasswordEmailRequestSerializer,SetNewPasswordSerializer
+from .serializers import UserRatingSerializer, UserPostingClickSerializer, UserPostingLikeSerializer, \
+    ResetPasswordEmailRequestSerializer, SetNewPasswordSerializer, CustomRegisterSerializer
 from rest_framework.response import Response
 from rest_framework import generics, status
 from .models import CustomUser
@@ -21,12 +24,40 @@ from django.utils.http import  urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from .utils import Util
+from rest_framework.authtoken.models import Token
 from pandas import DataFrame
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 from .job_code import job_code, large_job_code
 from .modules.code_to_korean import codeToKorean
+
+# class LoginView(GenericAPIView):
+#     def login(self):
+#         self.user = self.serializer.validated_data['email']
+#         self.token = create_token(self.token_model, self.user, self.serializer)
+#
+#         if getattr(settings, 'REST_SESSION_LOGIN',True):
+#             login(self.request, self.user)
+#
+# @csrf_exempt
+class SignupView(APIView):
+    serializer_class = CustomRegisterSerializer
+    authentication_classes =[]
+    permission_classes = []
+    def post(self, request):
+        print("request ",request)
+        print("request[data] ", request.data)
+        # customuser = CustomRegisterSerializer.save(self, request=request.data)
+        # print("customuser ",customuser)
+        user = CustomUser.objects.create_user(email=request.data['email'], username = request.data['username'],
+                                              password=request.data['password2'],
+                                              # password1=request.data['password1'], password2=request.data['password2'],
+                                              mbti=request.data['mbti'])
+        user.save()
+        token = Token.objects.create(user=user)
+        return Response({"Token": token.key})
+
 
 
 class RequestPasswordResetEmail(generics.GenericAPIView):
@@ -46,9 +77,10 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
             print(current_site)
             relativeLink = reverse('password-reset-confirm',
                                    kwargs={'uidb64':uidb64,'token':token})
+            print(request.get_host()) #장고 url이 가져와지네 ...
             absurl = 'http://127.0.0.1:3000'+relativeLink
             email_body = "<h3>안녕하세요. " +user.username+'님,' \
-                        '</h3> <p> 아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p><br/> ' + absurl
+                        '</h3> <p> 아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p><br/> <a href='+absurl+'>' + absurl + '</a>'
             data = {'email_body':email_body,'to_email':user.email,
                     'email_subject':'[MBTI]비밀번호 재설정을 위한 링크입니다.'}
 
@@ -275,12 +307,13 @@ class UserMbtiVIEW(generics.ListAPIView):
           user.mbti = mbti
           user.save()
 
-          if UserPostingLike.objects.filter(email=email).exists():
-              user_postings = UserPostingLike.objects.get(email=email)
-              user_postings.mbti = mbti
-              user_postings.save()
+         #if UserPostingLike.objects.filter(email=email).exists():
+         #    print("email",email)
+         #    user_postings = UserPostingLike.objects.get(email=email)
+         #    user_postings.mbti = mbti
+         #    user_postings.save()
 
-              return Response({'success': True, 'message': 'MBTI가 변경되었습니다.'}, status=status.HTTP_200_OK)
+         #    return Response({'success': True, 'message': 'MBTI가 변경되었습니다.'}, status=status.HTTP_200_OK)
 
           return Response({'success': True, 'message': 'MBTI가 변경되었습니다.'}, status=status.HTTP_200_OK)
        else:
@@ -333,10 +366,28 @@ class persRcm(View):
 def postings(request):
     if request.method == 'POST':
         code = request.POST.get('code')
-        si = request.POST.get('si')
-        gu = request.POST.get('gu')
+        print("code ", code)
+        selArea = request.POST.getlist('selectArea')
+        print("[selArea] ", selArea)
 
-        qs = JobPosting.objects.filter(sub_code=code,city=si,county=gu)
+        qs = JobPosting.objects.filter(sub_code=code, city=selArea[0], county=selArea[1])
+        for i in range(3):
+            if len(selArea) > i * 2:
+                print(selArea[2*i], selArea[2*i+1])
+                if selArea[2*i] == '전국':
+                    qs = JobPosting.objects.filter(sub_code=code)
+                else:
+                    if selArea[2*i+1] == '전체':
+                        qs2 = JobPosting.objects.filter(sub_code=code, city=selArea[2*i])
+                    else:
+                        qs2 = JobPosting.objects.filter(sub_code=code, city=selArea[2*i], county=selArea[2*i+1])
+                    qs = qs.union(qs2)
+
+        if len(qs) > 60:
+            qs = random.sample(list(qs), 60)
+        print("공고갯수: ",len(qs))
+        # print("----------------- qs\n",qs)
+
         post_list = serializers.serialize('json', qs)
 
         print(post_list)

@@ -31,11 +31,13 @@ function Personal_rcm() {
         )
     }
     const selectedAreaDelete = (num)=>{
-        console.log("DELETE");
-        console.log(num);
-        //setSelArea(selArea.splice(2,2));
-        //setSelArea(selArea.filter(selArea => selArea!==selArea.splice(num,2) ));
-
+        if(num===0){
+            setSelArea(selArea.slice(2,6))
+        }else if(num==2){
+            setSelArea(selArea.slice(0,2).concat(selArea.slice(4,6)))
+        }else if(num==4){
+            setSelArea(selArea.slice(0,4))
+        }
         console.log(selArea);
     }
 
@@ -72,21 +74,37 @@ function Personal_rcm() {
                               onClick={()=>selectedAreaDelete(0)}><TiDeleteOutline  style={{marginTop:"3.5px"}}/></span>
                     </span> : ''}
                 {select_area.length >= 4 ?
-                    <span className="selectedAreaFont">{select_area[2]} {select_area[3]} </span> : ''}
+                    <span className="selectedAreaFont">{select_area[2]} {select_area[3]}
+                        <span className="selectedAreaDelete" style={{cursor:"pointer", fontSize:"22px", verticalAlign:"middle"}}
+                              onClick={()=>selectedAreaDelete(2)}><TiDeleteOutline  style={{marginTop:"3.5px"}}/></span>
+                    </span> : ''}
                 {select_area.length >= 6 ?
-                    <span className="selectedAreaFont">{select_area[4]} {select_area[5]} </span> : ''}
+                    <span className="selectedAreaFont">{select_area[4]} {select_area[5]}
+                        <span className="selectedAreaDelete" style={{cursor:"pointer", fontSize:"22px", verticalAlign:"middle"}}
+                              onClick={()=>selectedAreaDelete(4)}><TiDeleteOutline  style={{marginTop:"3.5px"}}/></span>
+                    </span> : ''}
             </div>
 
-
             <div className="con2">
-                <Link to={{
-                    pathname: "/personal_result",
-                    state: {
-                        check: "1",
-                    }
-                }}>
+            {
+                selArea.length >= 2 ?
+                    <div>
+                        <Link to={{
+                            pathname: "/personal_result",
+                            state: {
+                                check: "1",
+                            }
+                        }}>
+                            <button className="button_primary"> 추천받기</button>
+                        </Link>
+                    </div>
+                    :
+                    <div>
+                    <span>최대 3개의 주소를 선택해주세요<p/></span>
                     <button className="button_primary"> 추천받기</button>
-                </Link>
+                    </div>
+
+            }
             </div>
         </div>
 

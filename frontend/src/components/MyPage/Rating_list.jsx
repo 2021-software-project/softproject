@@ -10,7 +10,7 @@ function RatingOne({index, id, jobfamily, job, score}){
         console.log(e.id);
         let chkDelete = window.confirm("삭제하시겠습니까?");
         if(chkDelete == true){
-          axios.delete('http://localhost:8000/user/userrating/'+e.id,
+          axios.delete('/user/userrating/'+e.id,
             { headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json;charset=UTF-8',

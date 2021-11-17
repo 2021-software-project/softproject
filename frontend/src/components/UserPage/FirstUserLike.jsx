@@ -58,8 +58,8 @@ function FirstUserLike(){
             {
                 const firstRating = {
                     email: email,
-                    jobfamily : jobFamilyList[job],
-                    job : jobList[job],
+                    jobfamily : jobFamilyList[firstJobs[job]],
+                    job : jobList[firstJobs[job]],
                     score : 4
                 }
                 console.log(firstRating);

@@ -2,10 +2,13 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.csrf import csrf_exempt
 
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
+    authentication_classes =[]
+    permission_classes = []
 
     def _create_user(self, email, password, **extra_fields):
         if not email:
@@ -32,11 +35,14 @@ class UserManager(BaseUserManager):
 
         return self.create_user(email, password, **extra_fields)
 
-
+# @csrf_exempt
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     """
     customized User
     """
+    authentication_classes =[]
+    permission_classes = []
+
     email = models.EmailField(
         verbose_name=_('email id'),
         max_length=64,

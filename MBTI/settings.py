@@ -254,5 +254,24 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_EXPOSE_HEADERS = (
     'Access-Control-Allow-Origin:*'
 )
+CORS_ALLOW_HEADERS = (
+    'access-control-allow-credentials',
+    'access-control-allow-origin',
+    'access-control-request-method',
+    'access-control-request-headers',
+    'accept',
+    'accept-encoding',
+    'accept-language',
+    'connection',
+    'content-type',
+    'dnt',
+    'credentials',
+    'host',
+    'origin',
+    'user-agent',
+    'X-CSRFToken',
+    'csrftoken',
+    'x-requested-with',
+)
 CSRF_COOKIE_NAME = "XCSRF-TOKEN"
 
