@@ -6,7 +6,7 @@ def contents_based_rec(user_model, job, topic, k=5):
     rec_num = k  # 추천받을 직종 개수
 
     sim = [[0, 0.0] for x in range(149)]
-    print(job)
+    # print(job)
     for index, row in job.iterrows():
         sim[index][0] = row[1]
 
@@ -23,7 +23,7 @@ def contents_based_rec(user_model, job, topic, k=5):
     for num in sim[:rec_num]:
         rec_job.append(num[0])
 
-    #print(rec_job)
+    # print(rec_job)
     return rec_job
 
 
