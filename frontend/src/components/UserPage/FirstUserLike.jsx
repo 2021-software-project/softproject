@@ -91,7 +91,8 @@ function FirstUserLike(){
             {jobList.map((i,index) =>
                 (<div id={i} key={i} onClick={()=>{onClickFirstJob({i, index})}}
                       className="firstjob-cell" >
-                    <div className={`firstjobImgDiv${colorArr[index] ? ' clicked' : ''}`} ><img className="firstjobImg" src={require(`../../img/albaIcon/${i}.png`).default}/></div>
+                    <div className={`firstjobImgDiv${colorArr[index] ? ' clicked' : ''}`} >
+                        <img className="firstjobImg" src={require(`../../img/albaIcon/${i}.png`).default}/></div>
                     <div>{i}</div>
                 </div>))}
             </div>

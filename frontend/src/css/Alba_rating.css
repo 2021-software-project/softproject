@@ -1,0 +1,203 @@
+@media (min-width: 500px) {
+    .alba_rating-container .Job-grid-thead {
+        display: grid;
+        grid-template-columns: 100px 100px 100px 100px;
+        grid-template-rows: 140px;
+        grid-column-gap: 3%;
+        grid-row-gap: 20px;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 13.5px;
+        letter-spacing: -0.9px;
+        color: rgba(29, 29, 29, 0.77);
+        white-space : nowrap;
+    }
+
+    .alba_rating-container .Job-cell .JobImgDiv {
+        border: 2px solid rgba(227, 123, 124, 0.68);
+        padding-top: 10px;
+        border-radius: 70%;
+        height: 85px;
+        vertical-align: middle;
+        margin-bottom: 5px;
+    }
+
+    .alba_rating-container .JobImg {
+        width: 70px;
+        height: 70px;
+        vertical-align: middle;
+    }
+}
+
+
+.alba_rating-container .Job-grid-thead { /*580px 이하의 화면일 때*/
+    display: grid;
+    grid-template-columns: 67px 67px 67px 67px;
+    /*grid-template-rows: 100px;*/
+    grid-column-gap: 12px;
+    grid-row-gap: 20px;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12.5px;
+    letter-spacing: -0.9px;
+    color: rgba(29, 29, 29, 0.77);
+}
+
+.alba_rating-container .Job-cell .JobImgDiv {
+    border: 2px solid rgba(227, 123, 124, 0.68);
+    padding-top: 10px;
+    border-radius: 70%;
+    height: 58px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+
+}
+
+.alba_rating-container .JobImg {
+    width: 47px;
+    height: 47px;
+    vertical-align: middle;
+}
+
+@media (min-width: 700px) { {/*폭이 700px 이상일 때만 적용. 미만일 땐 위에꺼 적용*/}
+    .alba_rating-container .Job-grid-thead{
+      display: grid;
+      grid-template-columns: 130px 130px 130px 130px 130px;
+      grid-column-gap: 2.5%;
+      grid-row-gap: 6%;
+      justify-content: center;
+      align-items: center;
+      font-size:14.5px;
+      letter-spacing: -0.9px;
+      font-weight:600;
+      white-space : nowrap;
+    }
+    .alba_rating-container .Job-cell .JobImgDiv{
+        border:2px solid rgba(227, 123, 124, 0.68);
+        padding-top: 20px;
+        padding-bottom: 2px;
+        border-radius: 70%;
+        height: 100px;
+        margin-bottom: 5px;
+    }
+
+    .alba_rating-container .JobImg {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+.alba_rating-container .firstjob-cell {
+    /*font-family: 'Poppins', 'IBM Plex Sans KR', serif;*/
+    /*display:grid;*/
+    border-radius: 7px;
+    height:auto;
+
+    text-align: center;
+    /*padding: 12px 0 0 0;*/
+    cursor: pointer;
+}
+.alba_rating-container .clicked{
+  background: linear-gradient(44deg, rgba(114, 97, 147, 0.42) 15%, rgba(227, 123, 124, 0.77) 75%, rgba(255, 228, 180, 0.46));
+  border:2px solid transparent;
+}
+
+.alba_rating-container .Job-cell .JobImgDiv:hover{
+  background: linear-gradient(44deg, rgba(114, 97, 147, 0.42) 15%, rgba(227, 123, 124, 0.77) 75%, rgba(255, 228, 180, 0.46));
+  transition: background .5s ease-in-out;
+
+}
+
+.alba_rating-container{
+    width: 100%;
+   margin-top: 5%;
+    margin-bottom: 5%;
+    border: 0;
+    color: #000;
+}
+
+.alba_rating-container .alba_subbox{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+
+.alba_rating-container .alba_subbox2{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+}
+
+
+.alba_rating-container tr{
+
+     margin-left: auto;
+    margin-right: auto;
+}
+
+#job_table{
+
+     margin-left: auto;
+    margin-right: auto;
+}
+
+.alba_rating-container .ratingBtn {
+    color: #ffffff;
+    background-color: rgba(227, 123, 124, 0.68);
+    margin: 0px 6px;
+    padding: 6px 23px;
+    border-radius: 0rem;
+    font-size: 18px;
+
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 0;
+    height: 3.125em;
+    letter-spacing: 0.225em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    letter-spacing: -0.6px;
+}
+
+.alba_rating-container .ratingBtn:hover {
+  color:#1d253b;
+  background-color: rgba(189, 89, 91, 0.68);
+}
+
+
+#rating fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    direction: rtl; /* 이모지 순서 반전 */
+    border: 0; /* 필드셋 테두리 제거 */
+}
+
+#rating input[type=radio]{
+    display: none; /* 라디오박스 감춤 */
+}
+#rating label{
+    font-size: 2em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+}
+
+@media (min-width :700px) {
+   #rating label{
+       font-size: 3em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+   }
+}
+#rating label:hover{
+    text-shadow: 0 0 0 #ffdb00; /* 마우스 호버 */
+}
+#rating label:hover ~ label{
+    text-shadow: 0 0 0 #ffdb00; /* 마우스 호버 뒤에오는 이모지들 */
+}
+#rating input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 #ffdb00; /* 마우스 클릭 체크 */
+}
