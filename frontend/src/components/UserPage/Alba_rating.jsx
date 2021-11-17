@@ -50,7 +50,7 @@ function Alba_rating(){
     ];
 
     const SCORE = [
-        5,4,3,2,1,0,
+        5,4,3,2,1,
     ]
 
     const ratingSubmit = (e) => {   //추가

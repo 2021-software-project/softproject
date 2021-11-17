@@ -26,8 +26,8 @@ const LoginPage = () => {
 
     Axios.post('/user/auth/login/', user)
       .then(res => {
-          //alert("user", user.email, user.password)
-          //alert("res",res)
+        /*alert("user", user.email, user.password)
+        alert("res",res)*/
         if (res.data.key) {
             console.log(res.data)
             localStorage.clear()
