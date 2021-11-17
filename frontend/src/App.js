@@ -24,7 +24,7 @@ import PasswordUpdate from './components/MyPage/PasswordUpdate';
 import Rating from './components/MyPage/Rating_list';
 import Albarating from './components/UserPage/Alba_rating';
 import FirstUserLike from "./components/UserPage/FirstUserLike";
-
+import Information from "./components/information";
 import PasswordReset from './components/UserPage/PasswordReset';
 
 function App(props) {
@@ -55,6 +55,7 @@ function App(props) {
                 {/*<PrivateRoute exact path="/PasswordUpdate" component={PasswordUpdate}></PrivateRoute>*/}
                 <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
                 <PrivateRoute exact path="/Rating_list" component={Rating}></PrivateRoute>
+                  <PrivateRoute exact path="/information" component={Information}></PrivateRoute>
                 <Route exact path="/user/password-reset/:uid/:token" component={PasswordReset}></Route>
 
                 </div>

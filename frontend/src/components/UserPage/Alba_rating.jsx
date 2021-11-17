@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import Job2 from "./Job2";
 
 import "../../css/Job2.css";
-import "../../css/Rcm.css";
-
+import "../../css/Alba_rating.css";
 
 import {useDispatch, useSelector} from "react-redux";
 import {changeJob} from "../../store/modules/job_modules";
@@ -45,14 +44,12 @@ function Alba_rating(){
     const onChangeScore = (ch_score) => dispatch(changeScore(ch_score));
 
     const JOBFAMILY = [
-            "외식ㆍ음료", "유통ㆍ판매", "문화ㆍ여가ㆍ생활", "서비스","ENTER",
-            "사무직", "고객상담ㆍ리서치ㆍ영업", "생산ㆍ건설ㆍ운송", "ITㆍ컴퓨터","ENTER",
-            "교육ㆍ강사", "디자인", "미디어", "운전ㆍ배달","ENTER",
-                "병원ㆍ간호ㆍ연구",
+            "외식ㆍ음료", "유통ㆍ판매", "문화ㆍ여가ㆍ생활", "서비스", "사무직", "고객상담ㆍ리서치ㆍ영업", "생산ㆍ건설ㆍ운송", "ITㆍ컴퓨터",
+            "교육ㆍ강사", "디자인", "미디어", "운전ㆍ배달", "병원ㆍ간호ㆍ연구",
     ];
 
     const SCORE = [
-        0,1,2,3,4,5,
+        5,4,3,2,1,0,
     ]
 
     const ratingSubmit = (e) => {   //추가
@@ -93,45 +90,56 @@ function Alba_rating(){
   }
 
     return (
-        <div className ="rating-container">
+        <div className ="alba_rating-container">
 
+            <div className="alba_subbox">
             <h1>내가 해봤던 알바 평가하기</h1>
             <h2>[직종선택]</h2>
             <h3>선택한 직종 : &nbsp; {ch_jobfamily} => {ch_job} </h3>
-            <div className="con2" align="center">  {/*지역 선택*/}
-                <table id = "tb-mbti" width ="70%" >
-
-                    {JOBFAMILY.map(jobfamily =>
-                        jobfamily === "ENTER" ?
-                            (<tr className = "tr-mbti">
-                                <input type="hidden" className="Jobselect" name={"job"} value={jobfamily}/></tr>)
-                        :(<td className = "td-mbti select"><input type="radio" className="Jobselect" name={"job"} value={jobfamily}
-                                onChange={()=>onChangeJob(jobfamily,'')}/> {jobfamily} </td> ))
-                    }
-
-                </table>
-                    <tr colSpan={JOBFAMILY.length}><Job2 job_value={ch_jobfamily} /></tr>
             </div>
 
 
-            <div id="mid_box">
-            <h3>[점수선택]</h3>
-            <h4>내가 매긴 점수 : &nbsp;{ch_score} </h4>
-            <div align="center">
-                <table>
-                    <thead>
-                    {SCORE.map(i =>
-                        (<td><input type="radio" className="scoreSelect" name={"score_"} value={i}
-                                onChange={()=>onChangeScore(i)}/> {i}점 &nbsp; &nbsp;</td>))
-                    }
-                    </thead>
-                </table>
+            <div className="Job-grid-thead">
+                {JOBFAMILY.map((i,index) =>
+                    (<div id={i} key={i} onClick={()=>{onChangeJob(i,'')}}
+                                  className="Job-cell" >
+                                <div className="JobImgDiv">
+                                    <img className="JobImg" src={require(`../../img/JOBIcon/${i}.png`).default}/></div>
+                                <div>{i}</div>
+                    </div>))}
             </div>
+
+
+            <div className="alba_subbox2">
+
+                <table id="job_table">
+
+                <tr colSpan={JOBFAMILY.length}><Job2 job_value={ch_jobfamily} /></tr>
+
+                </table>
+
+            </div>
+
+
+            <div className="mid_box">
+            <h3>점수 매기기</h3>
+
+                <div align="center" id="rating">
+                    <table>
+                        <fieldset>
+                        {SCORE.map(i =>
+                                  <label>⭐<input type="radio" className="scoreSelect" name={"score_"} value={i}
+                                    onChange={()=>onChangeScore(i)}/> </label>)
+                        }
+                        </fieldset>
+
+                    </table>
                 </div>
+            </div>
 
 
             <form onSubmit={ratingSubmit}>
-                <Input className="button_primary" type='submit' size="large" value='평가하기' />
+                <Input className="ratingBtn" type='submit' size="large" value='평가하기' />
             </form>
 
         </div>
