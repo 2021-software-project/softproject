@@ -142,7 +142,10 @@ const LoginPage = () => {
                   <Input type='submit' className="btn mt-4" value='login' />
                   {/*<a href="#" className="btn mt-4">submit</a>*/}
                 </form>
-              <p className="mb-0 mt-4 text-center"><a href="#0" className="link" onClick={openModal}>비밀번호를 잊어버리셨나요?</a></p>
+              <p className="mb-0 mt-4 text-center">
+                  <a href="#0" className="link" style={{textDecoration:"underline", textUnderlinePosition:"under"}} onClick={openModal}>
+                      비밀번호를 잊어버리셨나요?
+                  </a></p>
               <div className="Password-Reset-modal">
                 <React.Fragment>
                     <Modal className="modal" open={ modalOpen } close={ closeModal } header="비밀번호를 잊어버리셨나요?">
