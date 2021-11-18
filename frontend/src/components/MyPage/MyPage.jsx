@@ -6,25 +6,29 @@ import "../../css/mypage.css";
 import Modal from "../../js/Modal";
 import PasswordUpdate from "./PasswordUpdate";
 
+import {LikeOutlined, HeartFilled, DislikeOutlined, DislikeFilled} from '@ant-design/icons';
+import { FaHeartBroken } from 'react-icons/fa';
+import { BsList } from "react-icons/bs";
+
 function MyPage() {
     let username = localStorage.getItem("username")
 
-    const [selMenu, setSelMenu] = useState([false, false, false, false]);
+    const [selMenu, setSelMenu] = useState([false, false, true, false]);
     // const myInfoEdit=()=>{
     //     window.location.replace('/MyInfo_edit');
     // }
-    const GoodBadList=(e)=>{
-        setSelMenu(
-            selMenu.map((m, index)=>
-                index === 2? true:false)
-        )
-    }
     const RatingList=(e)=>{
         setSelMenu(
             selMenu.map((m, index)=>
-            index === 3? true:false)
+            index === 2? true:false)
         )
         //window.location.replace('/Rating_list');
+    }
+    const GoodBadList=(e)=>{
+        setSelMenu(
+            selMenu.map((m, index)=>
+                index === 3? true:false)
+        )
     }
 
     const [usermbti, setUsermbti] = useState(localStorage.getItem("mbti"))
@@ -149,16 +153,19 @@ function MyPage() {
                         {/*<td className={`mypageTableCell${selMenu[1]?' clicked':''}`}> <span onClick={myInfoEdit}>비밀번호 수정</span></td>*/}
                     {/*</tr>*/}
                     <tr className="mypageTableRow">
-                        <td className={`mypageTableCell${selMenu[2]?' clicked':''}`}><span onClick={()=>GoodBadList(2)}>좋아요/싫어요 목록보기</span></td>
-                        <td className={`mypageTableCell${selMenu[3]?' clicked':''}`}><span onClick={()=>RatingList(3)}>평가목록보기</span></td>
+                        <td className={`mypageTableCell${selMenu[2]?' clicked':''}`}>
+                            <span onClick={()=>RatingList(2)}>알바평가</span></td>
+                        <td className={`mypageTableCell${selMenu[3]?' clicked':''}`}>
+                            <span onClick={()=>GoodBadList(3)}>알바공고 <HeartFilled style={{verticalAlign:"sub", height:"1.3em"}}/>|
+                                <FaHeartBroken style={{verticalAlign:"middle", height:"1.3em"}}/></span></td>
                     </tr>
 
                 </table>
                 </div>
 
             <div id="mypageDetail">
-                {selMenu[2]? <GoodBad/> :''}
-                {selMenu[3]? <Rating/> :'' }
+                {selMenu[2]? <Rating/> :'' }
+                {selMenu[3]? <GoodBad/> :''}
             </div>
 
         </div>

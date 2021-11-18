@@ -6,9 +6,10 @@
 #ratingList table{
     text-align: center;
     border: transparent 1px solid;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     display: inline-table;
     width: 80%;
+    border-bottom: 2.5px solid rgba(253, 155, 156, 0.35);
 }
 @media (max-width: 500px) {
     #ratingList table{
@@ -28,6 +29,9 @@
     height: 32px;
     /*text-align: left;
     padding-left: 2%;*/
+}
+#ratingList tr{
+
 }
 #ratingList .odd{
     background: rgba(253, 155, 156, 0.35);

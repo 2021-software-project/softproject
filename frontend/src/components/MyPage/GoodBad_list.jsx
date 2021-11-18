@@ -94,13 +94,13 @@ function GoodBad(){
                 ))
                 }
             </div>
-            :
-                <div>
+            :''}
+                <br/><div>
                     <h2>추천받으시겠습니까 ?</h2>
                     <button className="goRecommend" onClick={goRecommendMbti}>mbti 추천받기</button>
                     <button className="goRecommend" onClick={goRecommendPersonal}>개인별 추천받기</button>
                 </div>
-            }
+
 
 
         </div>

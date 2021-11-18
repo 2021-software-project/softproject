@@ -48,6 +48,7 @@ function Rating(){
     const [ratinglist, setRatinglist] = useState('')
     let token = localStorage.getItem('token')
     let email = localStorage.getItem('email')
+    let username = localStorage.getItem('username')
     useEffect(() => {
         axios.get(`/user/userrating/?search=${email}`,
             {
@@ -76,7 +77,7 @@ function Rating(){
     return(
         <div id ="ratingList" >
           <div id="con_mar">
-            <h2>Rating List</h2>
+            <h2>{username}님이 평가한 아르바이트</h2>
               {ratinglist.length!=0 ?
                   <div className="ratingListTable">
                       <table>
