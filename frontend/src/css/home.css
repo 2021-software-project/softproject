@@ -246,21 +246,28 @@ a.link {
 @media (max-width: 500px) {
     .home_container font {
         font-size: 430%;
-        /*margin-top: 3%;*/
+        margin-top: -10%;
     }
     .home_container .button_primary {
         margin-top: 7%;
+    }
+    .home_container #innerExpe{
+        margin-bottom: 7%;
     }
 }
 @media (max-width: 360px) {
     .home_container font {
         font-size: 370%;
+        margin-top: -10%;
     }
     .home_container #innerEntry p {
         font-size: 15px;
     }
     .home_container .button_primary {
         margin-top: 7%;
+    }
+    .home_container #innerExpe{
+        margin-bottom: 7%;
     }
 }
 /*바 2개 애니메이션*/

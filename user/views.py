@@ -11,9 +11,10 @@ from rest_framework.decorators import APIView, api_view, renderer_classes
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.generics import GenericAPIView
 
-from .models import UserRating, UserPostingClick, UserPostingLike
+from .models import UserRating, UserPostingClick, UserPostingLike, ResultSatisfy
 from .serializers import UserRatingSerializer, UserPostingClickSerializer, UserPostingLikeSerializer, \
-    ResetPasswordEmailRequestSerializer, SetNewPasswordSerializer, CustomRegisterSerializer, CustomUserDetailsSerializer
+    ResetPasswordEmailRequestSerializer, SetNewPasswordSerializer, CustomRegisterSerializer, \
+    CustomUserDetailsSerializer, ResultSatisfySerializer
 from rest_framework.response import Response
 from rest_framework import generics, status
 from .models import CustomUser
@@ -34,15 +35,7 @@ from .job_code import job_code, large_job_code
 from .modules.code_to_korean import codeToKorean
 # from ipware.ip import get_ip
 
-# class LoginView(GenericAPIView):
-#     def login(self):
-#         self.user = self.serializer.validated_data['email']
-#         self.token = create_token(self.token_model, self.user, self.serializer)
-#
-#         if getattr(settings, 'REST_SESSION_LOGIN',True):
-#             login(self.request, self.user)
-#
-# @csrf_exempt
+
 class LoginView(APIView):
     authentication_classes = []
     permission_classes = []
@@ -193,10 +186,7 @@ class SetNewPasswordAPIView(generics.GenericAPIView):
 
 class UserRatingVIEW(generics.ListAPIView): #알바평가 db에 넣고 가져오기(Create, Read)
     queryset = UserRating.objects.exclude(job='0')
-    # print("queryset", queryset)
     serializer_class = UserRatingSerializer
-
-    #queryset = UserRating.objects.all()
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -346,8 +336,6 @@ class UserPostingLikeWithPosting(APIView):
         return Response(serializer.data)
 
 
-
-
 class UserDetailVIEW(generics.ListAPIView):
 
    def get(self, request, email):
@@ -374,6 +362,42 @@ class UserDetailVIEW(generics.ListAPIView):
           return Response({'success': True, 'message': 'MBTI가 변경되었습니다.'}, status=status.HTTP_200_OK)
        else:
            return Response({'error': '로그인 후 이용 해주세요.'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class resultSatisfyView(generics.ListAPIView):
+    queryset = ResultSatisfy.objects.all()
+    serializer_class = ResultSatisfySerializer
+    def post(self, request):
+        serializer = ResultSatisfySerializer(data=request.data)  # JSON -> Serialize
+
+        if serializer.is_valid():  # 타당성 검토 후 저장
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+
+class resultSatisfyDetails(APIView):  # Update
+    def get_object(self, id):
+        try:
+            return ResultSatisfy.objects.get(id=id)
+        except ResultSatisfy.DoesNotExist:  # 얻어올 객체가 없으면 404에러
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def get(self, request, id):
+        if ResultSatisfy.objects.filter(id=id).exists(): #데이터가 있으면
+            resultsatisfy = self.get_object(id)
+            serializer = ResultSatisfySerializer(resultsatisfy)
+            return Response(serializer.data)
+        else:
+            return Response(0)
+
+    def put(self, request, id):
+        resultsatisfy = self.get_object(id)
+        serializer = ResultSatisfySerializer(resultsatisfy, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 
@@ -454,6 +478,4 @@ def postings(request):
 
         print(post_list)
         return HttpResponse(post_list, content_type="text/json-comment-filtered")
-
-
 

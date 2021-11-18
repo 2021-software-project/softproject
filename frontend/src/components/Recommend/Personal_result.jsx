@@ -5,6 +5,7 @@ import Axios from "axios";
 import Postings from "./postings";
 import "../../css/RcmResult.css"
 import {ArrowUpOutlined} from "@ant-design/icons";
+import axios from "axios";
 
 function Personal_result(props) {
 
@@ -12,13 +13,22 @@ function Personal_result(props) {
     const {ch_areasi} = useSelector(state=>state.area_modules);
     const {ch_areagu} = useSelector(state=>state.area_modules);
     const {select_area} = useSelector(state => state.area_modules);
-    const username = localStorage.getItem("username");
+
     const [jobList, setJobList] = useState([])
     const [selJob, setSelJob] = useState(Array(6).fill(false));
     const [code,setCode] = useState('')
     const [user, setUser] = useState('')
 
+    const SCORE = [5,4,3,2,1];
+    const [satisfyScore, setSatisfyScore] = useState(0);
+    const [satisfyScoreId, setSatisfyScoreId] = useState(0);
+    const [resultScoreArr, setResultScoreArr] = useState(Array(SCORE.length).fill(false));
+
+
     let email = localStorage.getItem('email')
+    const token = localStorage.getItem("token");
+    const mbti = localStorage.getItem("mbti");
+    const username = localStorage.getItem("username");
 
     useEffect(() => {
         if(ch_areagu===''){
@@ -77,6 +87,51 @@ function Personal_result(props) {
     const scrollUp=()=>{
         window.scrollTo(0,0);
     }
+    const onChangeScore = (ch_score, index) => {
+        if(satisfyScore === 0){
+            axios.post('/user/resultsatisfy/',
+                {
+                    email:email, mbti:mbti, rating:ch_score, recommendtype:2
+                },
+                {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    'Authorization': 'token ' + token,
+                }
+            }).then((res) => {
+                setSatisfyScoreId(
+                    res.data.id
+                )
+            }).catch(err => {
+                alert(err.response.data)
+            })
+        }
+        else{
+            axios.put(`user/resultsatisfy/${satisfyScoreId}`,{
+                email:email, mbti:mbti, rating:ch_score, recommendtype:2
+            },{
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    'Authorization': 'token ' + token,
+                }
+            }).then(function (response){
+                console.log(response)
+            })
+        }
+            setSatisfyScore(ch_score)
+            setResultScoreArr(
+                resultScoreArr.map((a, i)=>
+                    i>=index ? true : false)
+            )
+        }
+        const reRecommend = ()=>{
+            window.location.href='/main';
+        }
+        const goRating = ()=>{
+            window.location.href='/Alba_rating';
+        }
 
     return (
         ch_areagu!=''?
@@ -102,6 +157,20 @@ function Personal_result(props) {
             </div>
             <div className="scrollUp" onClick={scrollUp}><ArrowUpOutlined /></div>
             {code?<Postings code={code}></Postings>:''}
+
+            <div>
+                    <br/>
+                    <h2>추천 결과가 어떠신가요?</h2>
+                    <span>알바를 평가하면 더 좋은 결과를 받으실 수 있습니다</span>
+                    <fieldset>
+                        {SCORE.map((i, index) =>
+                                  <label className={`${resultScoreArr[index]?'checkStar':''}`}>⭐<input type="radio" className={`scoreSelect`} name={"score_"} value={i}
+                                    onChange={()=>onChangeScore(i, index)}/> </label>)
+                        }
+                    </fieldset>
+                    <br/><br/>
+                <button className="button_primary" onClick={reRecommend}> 다시추천받기</button>  <button className="button_primary" onClick={goRating}> 알바평가하기</button>
+            </div>
         </div>:''
     );
 }

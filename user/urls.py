@@ -5,7 +5,7 @@ from django.contrib import admin
 from .views import PasswordTokenCheckAPI, RequestPasswordResetEmail, SetNewPasswordAPIView, \
     UserRatingVIEW, UserPostingClickVIEW, \
     ratingDetails, UserPostingLikeVIEW, UserPostingLikeDetails, UserPostingLikeWithPosting, \
-    UserDetailVIEW, mbtiRcm, persRcm, postings
+    UserDetailVIEW, mbtiRcm, persRcm, postings, resultSatisfyView, resultSatisfyDetails
 from .views import SignupView, LoginView
 from rest_auth.views import LogoutView
 
@@ -42,7 +42,8 @@ urlpatterns = [
     path('userpostinglike/', UserPostingLikeVIEW.as_view()),
     path('userpostinglike/<str:email>/<int:post_id>', UserPostingLikeDetails.as_view()),
     path('userpostinglike/withposting/<str:email>',UserPostingLikeWithPosting.as_view()),
-
+    path('resultsatisfy/', resultSatisfyView.as_view()),
+    path('resultsatisfy/<int:id>', resultSatisfyDetails.as_view()),
     path('mbtircm/', mbtiRcm.as_view(), name='mbtircm'),
     path('persrcm/', persRcm.as_view(), name='persrcm'),
     path('postings/', postings, name='postings'),

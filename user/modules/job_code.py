@@ -190,7 +190,6 @@ job_code = {
     }
 }
 
-
 def sub_code_list() :
     sub_code = []
 

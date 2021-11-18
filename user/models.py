@@ -140,4 +140,9 @@ class UserPostingLike(models.Model):
     like = models.IntegerField(default=0) #좋아요:1, 싫어요:-1
     mbti = models.CharField(max_length=6, default="")
 
-
+class ResultSatisfy(models.Model):
+    email = models.CharField(max_length=64)
+    mbti = models.CharField(max_length=6, default="")
+    rating = models.IntegerField()
+    recommendtype = models.IntegerField() #1:CB, 2:CF
+    click_time = models.DateTimeField(default=timezone.now)

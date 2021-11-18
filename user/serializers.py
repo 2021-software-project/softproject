@@ -6,8 +6,8 @@ from django.utils.encoding import smart_str, force_str, smart_bytes, DjangoUnico
 from django.utils.http import  urlsafe_base64_decode, urlsafe_base64_encode
 from rest_framework.exceptions import AuthenticationFailed
 
-from .models import CustomUser, UserRating, UserPostingClick, UserPostingLike
-#from ..MBTI.models import JobPosting
+from .models import CustomUser, UserRating, UserPostingClick, UserPostingLike, ResultSatisfy
+
 
 @csrf_exempt
 class UserSerializer(serializers.ModelSerializer):
@@ -99,4 +99,9 @@ class UserPostingClickSerializer(serializers.ModelSerializer):
 class UserPostingLikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPostingLike
+        fields = '__all__'
+
+class ResultSatisfySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ResultSatisfy
         fields = '__all__'

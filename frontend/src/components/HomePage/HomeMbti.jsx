@@ -92,9 +92,12 @@ function HomeMbti() {
                 </table>
                     <p></p>
                     <div id="inner">
-                        <Link to="home-mbti-rcm" spy={true} smooth={true}>
-                        <input className="button_primary" type="button" onClick={changeRcm} value="추천받기"/>
-                        </Link>
+                        {mbti.length < 4 ?
+                            <input className="button_primary" type="button" onClick={changeRcm} value="추천받기"/> :
+                            <Link to="home-mbti-rcm" spy={true} smooth={true}>
+                                <input className="button_primary" type="button" onClick={changeRcm} value="추천받기"/>
+                            </Link>
+                        }
                     </div>
                 {/*</form>*/}
 

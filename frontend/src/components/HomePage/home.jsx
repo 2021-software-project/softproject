@@ -26,9 +26,11 @@ class Home extends Component {
 					<section id="banner">
 						<div id="home_container-2">
 						<div id="inner">
-							<font >
+							<a href="/main">
+							<font>
 								Albagram
 							</font>
+							</a>
 							<div id="innerEntry">
 								<p>당신의 성격에 맞춰 알바를 추천해주는 </p>
 								{/*<p>알바를 추천해주는</p>*/}

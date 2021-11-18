@@ -117,3 +117,64 @@
     color: white;
     z-index: 100;
 }
+
+
+.rcm-result fieldset{
+    display: inline-block;
+    direction: rtl;
+    border: 0;
+}
+.rcm-result input[type=radio]{
+    display: none; /* 라디오박스 감춤 */
+}
+.rcm-result label{
+    font-size: 2em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+}
+.rcm-result .checkStar{
+    text-shadow: 0 0 0 #ffdb00;
+}
+
+@media (min-width :700px) {
+   .rcm-result label{
+       font-size: 3em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+   }
+}
+.rcm-result label:hover{
+    text-shadow: 0 0 0 #ffdb00; /* 마우스 호버 */
+}
+.rcm-result label:hover ~ label{
+    text-shadow: 0 0 0 #ffdb00; /* 마우스 호버 뒤에오는 이모지들 */
+}
+.rcm-result input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 #ffdb00; /* 마우스 클릭 체크 */
+}
+
+.rcm-result .button_primary{
+    background-color: #cf7780;
+    color : #ffffff ;
+    font-family: 'IM_Hyemin-Bold';
+    font-size: 18px;
+    border-radius: 3px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    line-height: 45px;
+    max-width: 30em;
+    padding: 0 30px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.rcm-result .button_primary:hover{
+    background-color: #efa2a2;
+    transition: .3s ease-in-out;
+}
