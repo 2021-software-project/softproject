@@ -135,7 +135,7 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
             absurl = 'http://127.0.0.1:3000'+relativeLink
             email_body = "<div style='text-align : center'>" \
                          "<h3>안녕하세요. " +user.username+'님, Albagram 입니다. </h3> ' \
-                        '<p> 아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p>' \
+                        '<p>아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p><br/>' \
                         '<a '\
                         "style='padding: 14px 20px;color: #ffffff;font-size: 15px;"\
                         "font-weight: bold; background-color: rgba(114, 96, 144, 0.75); border: 0;"\
