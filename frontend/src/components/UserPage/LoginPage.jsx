@@ -8,6 +8,7 @@ import LoginSignupform from "./Login_Signup_form";
 import Modal from "../../js/Modal";
 import axios from "axios";
 import {FaEye, FaEyeSlash} from "react-icons/fa";
+import {Logout} from "../UserPage/Logout";
 
 const LoginPage = () => {
 
@@ -68,25 +69,38 @@ const LoginPage = () => {
                             console.log(Response.data)
                         })
                         .catch((Error) => {
+                            console.log("평가 목록 접근 실패")
                             console.log(Error)
+                            alert('메인 페이지로 이동합니다.')
+                            window.location = '/main'
                         })
 
-                }).catch(errors=>{
-                    alert(errors);
-            })
-          // 사용하려면 App.js에서 /로 라우팅해야 한다
-
+                }).catch(err=>{
+                    console.log("사용자 정보 접근 실패")
+                    console.log(err);
+                    Logout()
+                    alert('다시 로그인해주시기 바랍니다.')
+                    window.location.replace('/login')
+                })
         } else {
-          setEmail('')
-          setPassword('')
-          localStorage.clear()
-          console.log(res)
+            alert('다시 로그인해주시기 바랍니다.')
+            setEmail('')
+            setPassword('')
+            localStorage.clear()
+            console.log(res);
         }
       })
       .catch(err => {
-        alert('아이디 또는 비밀번호가 일치하지 않습니다')
-        //setEmail('')
-        setPassword('')
+          var errCode = err.response.status
+          if (errCode == 401) {
+              alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+              setPassword('');
+              //setEmail('')
+          }
+          else{
+              alert('다시 시도해주시기바랍니다.');
+              window.location = '/login';
+          }
       })
   }
   const [ modalOpen, setModalOpen ] = useState(false);
@@ -141,7 +155,6 @@ const LoginPage = () => {
                   <div className="form-group">
                     <input type="email" name="logemail" value={email} onChange={e => setEmail(e.target.value)} required
                      className="form-style" placeholder="이메일" id="logemail" autoComplete="off"/>
-
                       <i className="input-icon uil uil-at"></i>
                   </div>
                   <div className="form-group mt-2">

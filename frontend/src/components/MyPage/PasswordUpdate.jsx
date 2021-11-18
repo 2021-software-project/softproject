@@ -14,27 +14,27 @@ function PasswordUpdate() {
 
   let token = localStorage.getItem('token')
 
-  const onSubmit=(e)=>{
+  const onSubmit=(e)=> {
       e.preventDefault()
 
-      var checkpwd1 =/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+      var checkpwd1 = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
       var checkpwd2 = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 
 
-      if (!checkpwd1.test(newpwd1)&&!checkpwd2.test(newpwd1)) {
+      if (!checkpwd1.test(newpwd1) && !checkpwd2.test(newpwd1)) {
           alert("비밀번호를 확인해 주세요. 영소문자,숫자 포함 8~16자 (특수문자 가능) ")
           return
       }
 
       const pwd = {
-          new_password1 : newpwd1,
-          new_password2 : newpwd2,
-          old_password : oldpwd
+          new_password1: newpwd1,
+          new_password2: newpwd2,
+          old_password: oldpwd
       }
 
       Axios({
           method: 'post',
-          url: 'user/auth/password/change/',
+          url: 'user/password/change/',
           headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'},
           data: pwd
       })
@@ -50,15 +50,29 @@ function PasswordUpdate() {
               }
           })
           .catch(err => {
-              if (err.response.data.old_password) {
-                  alert("현재 비밀번호가 일치하지 않습니다.")
-                  setOldpwd('')
-                  document.getElementById("oldpwd").focus()
-              }
-              else if(err.response.data.new_password2){
-                  alert("새 비밀번호가 일치하지 않습니다.")
-                  setNewpwd2('')
-                  document.getElementById("newpwd2").focus()
+              var errCode = err.response.status;
+              // const msg = document.getElementsByClassName("password-change-msg")
+              // console.log(msg)
+              try {
+                  if (errCode == 400) {
+                      console.log(err.response)
+                      if (err.response.data.old_password) {
+                          alert("현재 비밀번호가 일치하지 않습니다.")
+                          // msg.innerText("현재 비밀번호가 일치하지 않습니다.")
+                          setOldpwd('')
+                          document.getElementById("oldpwd").focus()
+                      } else if (err.response.data.new_password2) {
+                          alert(err.response.data.new_password2)
+                          // msg.innerText("err.response.data.new_password2")
+                          setNewpwd2('')
+                          document.getElementById("newpwd2").focus()
+                      }
+                  }
+              } catch (err) {
+                  alert("다시 시도해 주시기 바랍니다.");
+                  setNewpwd1('');
+                  setNewpwd2('');
+                  setOldpwd('');
               }
           })
   }

@@ -34,8 +34,10 @@ function PasswordResetComplete(uid,token){
                 window.location.href='/login'
             })
             .catch(err => {
+                alert("죄송합니다. 다시 시도해 주시기바랍니다.")
                 console.log(err);
-                console.log(err.data);
+                console.log(err.response);
+                window.location.href='/login'
             })
     }
     const [passwordType, setPasswordType] = useState({
