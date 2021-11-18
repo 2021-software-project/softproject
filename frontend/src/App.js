@@ -40,10 +40,10 @@ function App(props) {
                 {/*<Route exact path="/home_mbti" component={HomeMbti}></Route>*/}
                 {/*<Route exact path="/mbti" component={MbtiRecommend}></Route>*/}
                 <PrivateRoute exact path="/firstulike" component={FirstUserLike}></PrivateRoute>
-                <Route exact path="/main" component={Main}></Route>
+                <PrivateRoute exact path="/main" component={Main}></PrivateRoute>
                 <PrivateRoute exact path="/mypage" component={MyPage}></PrivateRoute>
-                <Route exact path="/mbti_rcm" component={Mbtircm}></Route>
-                <Route exact path="/mbti_result" component={Mbtiresult}></Route>
+                <PrivateRoute exact path="/mbti_rcm" component={Mbtircm}></PrivateRoute>
+                <PrivateRoute exact path="/mbti_result" component={Mbtiresult}></PrivateRoute>
                 <PrivateRoute exact path="/personal_rcm" component={Personal_rcm}></PrivateRoute>
                 <PrivateRoute exact path="/personal_result" component={Personal_result}></PrivateRoute>
                 <PrivateRoute exact path="/GoodBad_list" component={GoodBad}></PrivateRoute>

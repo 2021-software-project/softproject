@@ -244,7 +244,7 @@
     padding: 1px 21px;
     border-radius: 0rem;
     font-size: 16px;
-
+    font-family: 'IM_Hyemin-Bold';
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     border-radius: 7px;
@@ -253,7 +253,6 @@
     height: 3.125em;
     letter-spacing: -1px;
     margin-top: 3%;
-    font-family: 'GowunDodum-Regular';
     font-weight: bold;
     letter-spacing: -0.3px;
 }
