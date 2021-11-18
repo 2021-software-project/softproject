@@ -1,0 +1,96 @@
+.recommend_con{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.recommend_con2{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.recommend_con ul{
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+.recommend_con li{
+     list-style: none;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    margin-bottom: 5px;
+    width: 21%;
+    font-size: 11px;
+    text-align: left;
+    color : #ffffff;
+}
+
+.recommend_con .recommend_job {
+    padding-top: 20px;
+    border-radius: 70%;
+    height: 70px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+
+    margin-left: auto;
+    margin-right:auto;
+    padding-top:1.5rem ;
+    width: 70%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+            44deg, rgba(114, 97, 147, 0.64) 20%, rgba(227, 123, 124, 0.66) 60%, rgba(241, 214, 166, 0.68));
+}
+.recommend_con .inner {
+
+    padding-top: 20px;
+    border-radius: 70%;
+    height: 60px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+
+    margin-right: 3%;
+      margin-left: 3%;
+      margin-top: -20%;
+      margin-bottom: 3%;
+
+    padding-top:1.5rem ;
+
+    top: 0;
+    left: 0;
+
+     background-color: rgba(255, 236, 236, 0.55);
+
+}
+
+.recommend_con .rcm-grid-thead{
+      display: grid;
+      grid-template-columns: 130px 130px 130px 130px 130px;
+      grid-column-gap: 2.5%;
+      grid-row-gap: 6%;
+      justify-content: center;
+      align-items: center;
+      font-size:14.5px;
+      letter-spacing: -0.9px;
+      font-weight:600;
+      white-space : nowrap;
+    }
+    .recommend_con .Job-cell .JobImgDiv{
+        border:2px solid rgba(255, 255, 255, 0.68);
+        padding-top: 20px;
+        padding-bottom: 2px;
+        border-radius: 70%;
+        height: 100px;
+        margin-bottom: 5px;
+    }
+
+    .recommend_con .JobImg {
+        width: 75px;
+        height: 75px;
+    }
