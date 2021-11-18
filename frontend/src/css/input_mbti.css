@@ -10,7 +10,13 @@
     opacity: 100;
 }
 */
-
+.home_container .checkMBTI{
+    /*padding-top: 5%;*/
+    height: 100vh;
+}
+.home_container .sc-mbti{
+    height: 70vh;
+}
 .td-mbti input[type="radio"] {
     -webkit-appearance: none;
     appearance: none;

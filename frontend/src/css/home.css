@@ -94,25 +94,30 @@ a.link {
 }
 
 .home_container .button_primary{
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.92);
+    /*color: rgba(255, 255, 255, 0.79);*/
     color :  #cf7780;
-
-    border-radius: 3px;
+    margin-top: 3.5%;
+    border-radius: 5px;
     border: 0;
     cursor: pointer;
     display: inline-block;
     font-weight: 600;
-    height: 3.125em;
-    letter-spacing: 0.225em;
+    /*line-height: 2em;*/
+    vertical-align: middle;
+    /*height: 3.125em;*/
+    letter-spacing: 1.5px;
     line-height: 3.125em;
     max-width: 30em;
-    padding: 0 2.75em;
+    /*padding: 0 2.75em;*/
+    padding: 0 1.5em;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: 'IM_Hyemin-Bold';
 }
 
 .home_container #banner {
@@ -135,6 +140,68 @@ a.link {
 		position: relative;
 		text-align: center;
 	}
+
+.home_container #innerEntry p{
+    font-size: 16.5px;
+    letter-spacing: 1px;
+    margin-bottom: -8px;
+}
+.home_container #innerExpe{
+    bottom:0px;
+    position: absolute;
+    left:50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: -13px;
+}
+.home_container #innerExpe .clickExpeDiv{
+    margin-bottom: 3px;
+    animation : jump 1.5s infinite;
+}
+.home_container #innerExpe .clickExpe{
+    /*bottom: 5%;*/
+    background-color: rgba(2, 2, 2, 0.1);
+    padding: 13px;
+    /*position: absolute;*/
+    font-size: 100%;
+    border-radius: 55%;
+    cursor: pointer;
+    color: white;
+    z-index: 100;
+
+}
+.home_container #innerExpe span{
+    text-decoration: none;
+    font-size: 17.5px;
+    color: #ffffff;
+    margin-bottom: -2px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+/*점프 애니메이션*/
+@-webkit-keyframes jump {
+    0%{
+        margin-bottom: 2px;
+    }
+    100%{
+        margin-bottom: 6px;
+    }
+}
+@keyframes jump{
+    0%{
+        margin-bottom: 2px;
+    }
+    100%{
+        margin-bottom: 6px;
+    }
+}
+@-moz-keyframes jump{
+    0%{
+        margin-bottom: 2px;
+    }
+    100%{
+        margin-bottom: 6px;
+    }
+}
 
 /*홈 글자 설정, 애니메이션*/
 .home_container font{
@@ -179,12 +246,21 @@ a.link {
 @media (max-width: 500px) {
     .home_container font {
         font-size: 430%;
-        margin-top: 15%;
+        /*margin-top: 3%;*/
+    }
+    .home_container .button_primary {
+        margin-top: 7%;
     }
 }
 @media (max-width: 360px) {
     .home_container font {
         font-size: 370%;
+    }
+    .home_container #innerEntry p {
+        font-size: 15px;
+    }
+    .home_container .button_primary {
+        margin-top: 7%;
     }
 }
 /*바 2개 애니메이션*/
@@ -320,3 +396,5 @@ a.link {
     opacity: 1;
   }
 }
+
+

@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef, useCallback} from 'react';
 import MbtiRecommend from "./MbtiRecommend";
 import "../../css/home.css";
 import "../../css/Rcm.css";
+import { Link } from "react-scroll"
 
 function HomeMbti() {
 
@@ -91,7 +92,10 @@ function HomeMbti() {
                 </table>
                     <p></p>
                     <div id="inner">
-                <input className="button_primary" type="button" onClick={changeRcm} value="추천받기"/></div>
+                        <Link to="home-mbti-rcm" spy={true} smooth={true}>
+                        <input className="button_primary" type="button" onClick={changeRcm} value="추천받기"/>
+                        </Link>
+                    </div>
                 {/*</form>*/}
 
                 {/*페이지 이동 없애기 -> form 의 target을 iframe으로 설정, iframe은 안 보이게 설정*/}
@@ -99,7 +103,7 @@ function HomeMbti() {
                 {/*    <iframe name="iframe1" style={{display: 'none'}}> </iframe>*/}
                 {/*</div>*/}
             </section>
-            <div className="home-mbti-rcm">
+            <div id="home-mbti-rcm" className="home-mbti-rcm">
                 {rcm ?<MbtiRecommend mbti={mbti}/> : <span></span>}
             </div>
 

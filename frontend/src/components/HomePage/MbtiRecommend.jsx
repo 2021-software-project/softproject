@@ -108,7 +108,7 @@ class MbtiRecommend extends React.Component{
 
     render() {
         return (
-        <div className="recommend_con">
+        <div className="recommend_conDiv">
 
                 <h2>{this.state.mbti.toLocaleString().toUpperCase()} 맞춤 알바</h2>
 
