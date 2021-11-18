@@ -4,6 +4,7 @@ import {Redirect} from "react-router-dom";
 import Axios from "axios";
 import Postings from "./postings";
 import "../../css/RcmResult.css"
+import {ArrowUpOutlined} from "@ant-design/icons";
 
 function Personal_result(props) {
 
@@ -73,15 +74,19 @@ function Personal_result(props) {
             index === e.index? true:false)
         )
     }
+    const scrollUp=()=>{
+        window.scrollTo(0,0);
+    }
 
     return (
         ch_areagu!=''?
         <div className="rcm-result">
             <p className="info">
-                <span># {select_area[0]} {select_area[1]}</span>
+                <span className="infoFont">"이름"님 맞춤알바</span><p/>
+                <span className="selectedAreaFont">{select_area[0]} {select_area[1]}</span>
                 {/*<span># {ch_areagu}</span>*/}
-                {select_area.length > 2 ? <span># {select_area[2]} {select_area[3]}</span> : ''}
-                {select_area.length > 4 ? <span># {select_area[4]} {select_area[5]}</span> : ''}
+                {select_area.length > 2 ? <span className="selectedAreaFont">{select_area[2]} {select_area[3]}</span> : ''}
+                {select_area.length > 4 ? <span className="selectedAreaFont">{select_area[4]} {select_area[5]}</span> : ''}
             </p>
             <div className="div-btn">
             {
@@ -95,6 +100,7 @@ function Personal_result(props) {
                     ))
             }
             </div>
+            <div className="scrollUp" onClick={scrollUp}><ArrowUpOutlined /></div>
             {code?<Postings code={code}></Postings>:''}
         </div>:''
     );

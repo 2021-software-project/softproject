@@ -1,19 +1,38 @@
 .rcm-result{
-    margin-top: 5%;
+    margin-top: 6%;
     margin-bottom: 20%;
 }
 
 .rcm-result .info {
-    color: #f69494d9;
-    font-size: 24px;
+    /*font-size: 24px;*/
     margin-top: 1rem;
     word-break: keep-all;
     letter-spacing: -1.0px;
 }
-.rcm-result .info span {
-    margin: 0 10px;
+.rcm-result .info .infoFont {
+    font-size: 24px;
+    word-break: keep-all;
+    color: rgba(220, 131, 131, 0.85);
 }
+.rcm-result .selectedAreaFont{
+    border: transparent 2px solid;
+    background-color: rgba(246, 148, 148, 0.31);
+    border-radius: 8px;
+    color: rgba(21, 21, 21, 0.85);
+    padding:3px;
+    letter-spacing: -1.6px;
+    margin-right: 3px;
+    font-size: 14px;
+}
+@media (min-width: 500px) {
+    .rcm-result .info .infoFont {
+        font-size: 31px;
+    }
+    .rcm-result .selectedAreaFont{
+        font-size: 15px;
+    }
 
+}
 
 /* 버튼 */
 .btn-job{
@@ -22,6 +41,7 @@
 }
 
 .div-btn{
+    padding-top: 10px;
     margin-bottom: 300px;
 }
 @media (min-width:768px) {
@@ -84,4 +104,16 @@
 }
 .rcm-result .button-4:hover button {
     color: #fff;
+}
+.rcm-result .scrollUp{
+    position: fixed;
+    right: 7%;
+    bottom: 8%;
+    background-color: rgba(246, 148, 148, 0.67);
+    padding: 7px 8px;
+    font-size: 90%;
+    border-radius: 55%;
+    cursor: pointer;
+    color: white;
+    z-index: 100;
 }

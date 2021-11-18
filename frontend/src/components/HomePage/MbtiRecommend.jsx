@@ -113,9 +113,11 @@ class MbtiRecommend extends React.Component{
                         (<li>{job}</li>))
                     }
                 </ul>
-                <Link to="/Mbti_rcm">
+                <a href="/Mbti_rcm">
+                {/*<Link to="/Mbti_rcm">*/}
                     <input class="button_primary" type="button" value="공고 보러가기"/>
-                </Link>
+                {/*</Link>*/}
+                    </a>
             </JobList>
             <br/>
             <br/>

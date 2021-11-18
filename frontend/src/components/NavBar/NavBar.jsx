@@ -39,11 +39,13 @@ function NavBar() {
     const [auth, setAuth] = useState('')
 
     const user = auth.user;
+    const [path, setPath] = useState('')
 
     useEffect(() => {
         if (localStorage.getItem('token') !== null) {
             setAuth(true);
         }
+        setPath(window.location.pathname)
     }, [])
 
     const handleLogout = () => {
@@ -71,10 +73,12 @@ function NavBar() {
     }
     return(
         <div>
+    {path==='/' ? '' :
+        <div>
         <div id="page-top">
-            <nav className="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
+            <nav className={`navbar navbar-expand-lg bg-secondary text-uppercase ${path==='/'?'noNav':''}`} id="mainNav">
                 <div className="container">
-                    <a className="navbar-brand" href="/">Albagram</a>
+                    <a className="navbar-brand" href="/main">Albagram</a>
                     <button className="navbar-toggler text-uppercase font-weight-bold bg-primary text-black-50"
                             type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,6 +110,7 @@ function NavBar() {
             </nav>
         </div>
             { auth ? <MenuBar /> : "" }
+    </div>}
 </div>
     )
 

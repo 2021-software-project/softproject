@@ -2,6 +2,7 @@ import {React, useEffect, useState} from 'react';
 import {Link, useLocation} from "react-router-dom"
 import {useSelector} from "react-redux";
 import { Redirect, Route } from 'react-router-dom';
+import {UpOutlined, ArrowUpOutlined} from '@ant-design/icons';
 import axios from "axios";
 import Postings from "./postings";
 import "../../css/RcmResult.css"
@@ -58,22 +59,25 @@ function Mbtiresult(props) {
         )
         console.log(selJob);
     }
+    const scrollUp=()=>{
+        window.scrollTo(0,0);
+    }
 
     return (
         ch_areagu!=''?
         <div className="rcm-result">
             <p className="info">
-                <span># {ch_mbti}</span>
-                <span># {select_area[0]} {select_area[1]}</span>
+                <span className="infoFont">{ch_mbti} "이름"님 맞춤알바</span><p/>
+                {/*<span># {ch_mbti}</span>*/}
+                <span className="selectedAreaFont">{select_area[0]} {select_area[1]}</span>
                 {/*<span># {ch_areagu}</span>*/}
-                {select_area.length > 2 ? <span># {select_area[2]} {select_area[3]}</span> : ''}
-                {select_area.length > 4 ? <span># {select_area[4]} {select_area[5]}</span> : ''}
+                {select_area.length > 2 ? <span className="selectedAreaFont">{select_area[2]} {select_area[3]}</span> : ''}
+                {select_area.length > 4 ? <span className="selectedAreaFont">{select_area[4]} {select_area[5]}</span> : ''}
             </p>
 
             <div className="div-btn">
             {
                 Object.entries(jobList).map(([id,value], index)=>
-                    // (<div><button className="btn-job" onClick={onClickJob} value={value}>{id}</button></div>))
                     (
                         <div className="button-4">
                             <div className="eff-4"></div>
@@ -83,6 +87,7 @@ function Mbtiresult(props) {
                     ))
             }
             </div>
+            <div className="scrollUp" onClick={scrollUp}><ArrowUpOutlined /></div>
             {code?<Postings code={code}></Postings>:''}
             <br/><br/>
         </div>:''

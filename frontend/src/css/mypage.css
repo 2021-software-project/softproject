@@ -21,12 +21,12 @@
     padding-bottom: 5rem;
 }
 
-.home_container {
+.main .home_container {
 
     width : 100%;
     /*height: 110vh;*/
     /**height: 490px;**/
-    padding-top: 3rem;
+    /*padding-top: 3rem;*/
     padding-bottom: 3rem;
 
    /* background-image: url("../img/banner.jpg");*/

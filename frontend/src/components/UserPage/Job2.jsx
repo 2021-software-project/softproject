@@ -81,132 +81,106 @@ function Job2(props){
     if (props.job_value === "유통ㆍ판매") {
         return (
             <div className="jobSelect">
-                <ul>
                     {Job2000.map((job, index) =>
-                        (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('유통ㆍ판매',job, index)}> {job}</a></li>))
+                        (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('유통ㆍ판매',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "문화ㆍ여가ㆍ생활") {
         return (
             <div className="jobSelect">
-                <ul>
                     {Job3000.map((job, index) =>
-                        (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('문화ㆍ여가ㆍ생활',job, index)}> {job}</a></li>))
+                        (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('문화ㆍ여가ㆍ생활',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "서비스") {
         return (
             <div className="jobSelect">
-                <ul>
                     {Job4000.map((job, index) =>
-                        (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('서비스',job, index)}> {job}</a></li>))
+                        (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('서비스',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "사무직") {
         return (
             <div className="jobSelect">
-                <ul>
                     {Job6000.map((job, index) =>
-                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('사무직',job, index)}> {job}</a></li>))
+                         (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('사무직',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "고객상담ㆍ리서치ㆍ영업") {
         return (
             <div className="jobSelect">
-                <ul>
                     {Job7000.map((job, index) =>
-                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('고객상담ㆍ리서치ㆍ영업',job, index)}> {job}</a></li>))
+                         (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('고객상담ㆍ리서치ㆍ영업',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "생산ㆍ건설ㆍ운송") {
         return (
             <div className="jobSelect">
-                <ul>
                     {Job8000.map((job, index) =>
-                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('생산ㆍ건설ㆍ운송',job, index)}> {job}</a></li>))
+                         (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('생산ㆍ건설ㆍ운송',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "ITㆍ컴퓨터") {
         return (
             <div className="jobSelect">
-                <ul>
                     {Job9000.map((job, index) =>
-                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('ITㆍ컴퓨터',job, index)}> {job}</a></li>))
+                         (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('ITㆍ컴퓨터',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "교육ㆍ강사") {
         return (
             <div className="jobSelect">
-                <ul>
                     {JobA000.map((job, index) =>
-                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('교육ㆍ강사',job, index)}> {job}</a></li>))
+                         (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('교육ㆍ강사',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "디자인") {
         return (
             <div className="jobSelect">
-                <ul>
                     {JobB000.map((job, index) =>
-                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('디자인',job, index)}> {job}</a></li>))
+                         (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('디자인',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "미디어") {
         return (
             <div className="jobSelect">
-                <ul>
                     {JobC000.map((job, index) =>
-                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('미디어',job, index)}> {job}</a></li>))
+                         (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('미디어',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "운전ㆍ배달") {
         return (
             <div className="jobSelect">
-                <ul>
                     {JobD000.map((job, index) =>
-                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('운전ㆍ배달',job, index)}> {job}</a></li>))
+                         (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('운전ㆍ배달',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     } else if (props.job_value === "병원ㆍ간호ㆍ연구") {
         return (
             <div className="jobSelect">
-                <ul>
                     {JobE000.map((job, index) =>
-                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('병원ㆍ간호ㆍ연구',job, index)}> {job}</a></li>))
+                         (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('병원ㆍ간호ㆍ연구',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     }  else {
         return (
             <div className="jobSelect">
-                <ul>
                     {Job1000.map((job, index) =>
-                         (<li><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-                                onClick={()=>onChangeJob('외식ㆍ음료',job, index)}> {job}</a></li>))
+                         (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
+                                onClick={()=>onChangeJob('외식ㆍ음료',job, index)}> {job}</a></div>))
                     }
-                </ul>
             </div>)
     }
 

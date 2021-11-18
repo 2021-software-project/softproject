@@ -33,7 +33,6 @@ function App(props) {
       <Suspense fallback={(<div>...</div>)}>
           <div className="App">
             <div className="wrap">
-
             <NavBar />
               <Switch>
                 <div className="main">

@@ -7,7 +7,10 @@
     font-style: normal;
 }
 
-
+/*#page-top .noNav{*/
+/*    background-color: transparent !important;*/
+/*    background-image: none;*/
+/*}*/
 #page-top{
     letter-spacing: 0.075em;
     line-height: 5%;
@@ -88,7 +91,6 @@
 
 #page-top .bg-secondary {
     --bs-bg-opacity: 1;
-    /*background-color: #f69494;*/
     background-image: linear-gradient(44deg, #726193 20%, #e37b7c 60%, #ffe4b4);
 }
 #page-top .text-uppercase{

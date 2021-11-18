@@ -18,22 +18,10 @@ function Postings(props){
     const[postings, setPostings] = useState([])
 
     //hj-email,token
-    const [email, setEmail] = useState('')
+    const email = localStorage.getItem('email')
     const token = localStorage.getItem('token')
     useEffect(() => {   //추가
-        if (localStorage.getItem('token') !== null) {
-            axios({
-                method: 'get',
-                url: '/user/auth/user/',
-                headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'}
-            }).then(res => {
-                setEmail(
-                    res.data.email
-                )
-                console.log(res.data)
-                console.log("email : " + email)
-            });
-        }
+
     }, [])
     //hj - Modal
     const [ modalOpen, setModalOpen ] = useState(false);

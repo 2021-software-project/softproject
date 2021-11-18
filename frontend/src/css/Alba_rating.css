@@ -38,11 +38,11 @@
     grid-row-gap: 20px;
     justify-content: center;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 13px;
     letter-spacing: -0.9px;
     color: rgba(29, 29, 29, 0.77);
+    margin-bottom: 0px;
 }
-
 .alba_rating-container .Job-cell .JobImgDiv {
     border: 2px solid rgba(227, 123, 124, 0.68);
     padding-top: 10px;
@@ -50,18 +50,41 @@
     height: 58px;
     vertical-align: middle;
     margin-bottom: 5px;
-
 }
-
 .alba_rating-container .JobImg {
     width: 47px;
     height: 47px;
     vertical-align: middle;
 }
 
-@media (min-width: 700px) { {/*폭이 700px 이상일 때만 적용. 미만일 땐 위에꺼 적용*/}
+@media (min-width: 480px) { {/*폭이 480px 이상일 때만 적용. 미만일 땐 위에꺼 적용*/}
+    .alba_rating-container .Job-grid-thead { /*580px 이하의 화면일 때*/
+        grid-template-columns: 105px 105px 105px 105px;
+        /*grid-template-rows: 100px;*/
+        grid-column-gap: 12px;
+        grid-row-gap: 20px;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 13px;
+        color: rgba(29, 29, 29, 0.77);
+    }
+    .alba_rating-container .Job-cell .JobImgDiv {
+        border: 2px solid rgba(227, 123, 124, 0.68);
+        padding-top: 10px;
+        border-radius: 70%;
+        height: 88px;
+        vertical-align: middle;
+        margin-bottom: 5px;
+    }
+    .alba_rating-container .JobImg {
+        width: 67px;
+        height: 68px;
+        vertical-align: middle;
+    }
+}
+
+@media (min-width: 735px) { {/*폭이 735px 이상일 때만 적용. 미만일 땐 위에꺼 적용*/}
     .alba_rating-container .Job-grid-thead{
-      display: grid;
       grid-template-columns: 130px 130px 130px 130px 130px;
       grid-column-gap: 2.5%;
       grid-row-gap: 6%;
@@ -71,6 +94,7 @@
       letter-spacing: -0.9px;
       font-weight:600;
       white-space : nowrap;
+      margin-bottom: 4.5rem;
     }
     .alba_rating-container .Job-cell .JobImgDiv{
         border:2px solid rgba(227, 123, 124, 0.68);
@@ -80,7 +104,6 @@
         height: 100px;
         margin-bottom: 5px;
     }
-
     .alba_rating-container .JobImg {
         width: 75px;
         height: 75px;
@@ -121,13 +144,14 @@
     margin-right: auto;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    word-break: keep-all;
 }
 
 
 .alba_rating-container .alba_subbox2{
     margin-left: auto;
     margin-right: auto;
-    padding-top: 5rem;
+    padding-top: 2rem;
     padding-bottom: 2rem;
 }
 

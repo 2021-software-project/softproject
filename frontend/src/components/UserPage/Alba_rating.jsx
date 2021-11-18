@@ -59,7 +59,7 @@ function Alba_rating(){
     const ratingSubmit = (e) => {   //추가
         e.preventDefault()
         if(ch_job!=='') {
-            let chk = window.confirm(`${ch_jobfamily} | ${ch_job} | ${ch_score}점'으로 평가하시겠습니까?`);
+            let chk = window.confirm(`${ch_jobfamily} | ${ch_job} | ${ch_score}점으로 평가하시겠습니까?`);
             if (chk == true) {
                 const rating1 = {
                     email: email,
@@ -84,7 +84,7 @@ function Alba_rating(){
                         console.log(response)
                         alert("평가 완료 !")
                         onChangeJob("", "")
-                        onChangeScore("")
+                        onChangeScore(0)
                         window.location.replace('/Alba_rating')
 
                     })
@@ -116,9 +116,11 @@ function Alba_rating(){
             </div>
 
             <div className="alba_subbox2">
-                <table id="job_table">
-                <tr colSpan={JOBFAMILY.length}><Job2 job_value={ch_jobfamily} albaDetailArr={albaDetailArr} setAlbaDetail={setAlbaDetailArr}/></tr>
-                </table>
+                {/*<table id="job_table">*/}
+                {/*<tr colSpan={JOBFAMILY.length}>*/}
+                    <Job2 job_value={ch_jobfamily} albaDetailArr={albaDetailArr} setAlbaDetail={setAlbaDetailArr}/>
+                {/*</tr>*/}
+                {/*</table>*/}
             </div>
 
             <div className="mid_box">

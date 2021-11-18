@@ -42,7 +42,7 @@ const JobPostingModal = ( props ) => {
 
     const likeClick=()=>{
         if(postingLike === 1) {
-            axios.delete(`http://localhost:8000/user/userpostinglike/${email}/${post_id}`,
+            axios.delete(`/user/userpostinglike/${email}/${post_id}`,
                 { headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json;charset=UTF-8',
@@ -78,7 +78,7 @@ const JobPostingModal = ( props ) => {
             })
         }
         else if(postingLike === -1){
-            axios.put(`http://localhost:8000/user/userpostinglike/${email}/${post_id}`, {
+            axios.put(`/user/userpostinglike/${email}/${post_id}`, {
                     email:email,
                     post_id:post_id,
                     jobcode:jobcode,
@@ -101,7 +101,7 @@ const JobPostingModal = ( props ) => {
     }
     const dislikeClick=()=>{
         if(postingLike === -1) {
-            axios.delete(`http://localhost:8000/user/userpostinglike/${email}/${post_id}`,
+            axios.delete(`/user/userpostinglike/${email}/${post_id}`,
                 { headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json;charset=UTF-8',
@@ -137,7 +137,7 @@ const JobPostingModal = ( props ) => {
             })
         }
         else if(postingLike===1){
-            axios.put(`http://localhost:8000/user/userpostinglike/${email}/${post_id}`, {
+            axios.put(`/user/userpostinglike/${email}/${post_id}`, {
                     email:email,
                     post_id:post_id,
                     jobcode:jobcode,
