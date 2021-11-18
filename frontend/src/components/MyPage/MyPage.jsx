@@ -156,8 +156,8 @@ function MyPage() {
                         <td className={`mypageTableCell${selMenu[2]?' clicked':''}`}>
                             <span onClick={()=>RatingList(2)}>알바평가</span></td>
                         <td className={`mypageTableCell${selMenu[3]?' clicked':''}`}>
-                            <span onClick={()=>GoodBadList(3)}>알바공고 <HeartFilled style={{verticalAlign:"sub", height:"1.3em"}}/>|
-                                <FaHeartBroken style={{verticalAlign:"middle", height:"1.3em"}}/></span></td>
+                            <span onClick={()=>GoodBadList(3)}>알바공고 <HeartFilled style={{verticalAlign:"sub", height:"1em"}}/>|
+                                <FaHeartBroken style={{verticalAlign:"middle", height:"1em"}}/></span></td>
                     </tr>
 
                 </table>
