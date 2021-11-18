@@ -26,15 +26,15 @@ function Information() {
 
                     <div className ="item">
                         송현지<p></p>
-                        mbti :
+                        mbti : ISFJ
                     </div>
                     <div className ="item">
                         이연의<p></p>
-                        mbti :
+                        mbti : ISTP
                     </div>
                     <div className ="item">
                         육다빈<p></p>
-                        mbti :
+                        mbti : ISFJ
                     </div>
                     <div className ="item">
                         김민지<p></p>
