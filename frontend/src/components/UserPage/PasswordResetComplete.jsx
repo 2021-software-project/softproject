@@ -61,7 +61,7 @@ function PasswordResetComplete(uid,token){
                                         placeholder="새 비밀번호" />
                                 <span className="icon-eye" onClick={handlePasswordType}>
                                     {  passwordType.visible ? <FaEyeSlash>숨기기</FaEyeSlash> : <FaEye>보이기</FaEye>  }</span>
-                                <p>* 소문자, 숫자 포함 8~16자)</p>
+                                <p style={{'font-size':'10px'}} >* 소문자, 숫자 포함 8~16자(특수문자 가능)</p>
                                 </td>
                             </tr>
                         </table>
