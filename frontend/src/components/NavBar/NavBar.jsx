@@ -25,7 +25,7 @@ function MenuBar(){
                             <li className="menuLI"><a className="menuLI-A"
                                                                      href="/Alba_rating">알바평가</a></li>
                             <li className="menuLI"><a className="menuLI-A"
-                                                                     href="/information">개발자 정보</a></li>
+                                                                     href="/information">알바그램</a></li>
                         </ul>
                     </div>
             {/*</div>*/}

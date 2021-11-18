@@ -82,7 +82,7 @@ function FirstUserLike(){
             <div className="firstJobSelect">
                 <h2 className="header"><UserName/>님, 하고싶으신 아르바이트 업종 <span style={{textDecoration:"underline", textUnderlinePosition:"under"}}>3개</span> 선택하세요</h2>
                 <h6 className="header-info">회원님이 좋아하실만한 아르바이트를 더 정확하게 추천할 수 있습니다. 아래의 업종을 클릭해주세요</h6>
-                <button className="jobSelectBtn" onClick={onJobSelectBtnClick}>선택완료</button>
+
             </div><br/>
 
             {/*<div className="jobSelected">{firstJobs.map(j => (<div>{j}</div>))}</div>*/}
@@ -98,6 +98,12 @@ function FirstUserLike(){
             </div>
 
             <br/>
+
+            <div className="con">
+                <button className="jobSelectBtn" onClick={onJobSelectBtnClick}>선택완료</button>
+            </div>
+
+
         </div>
 
     )

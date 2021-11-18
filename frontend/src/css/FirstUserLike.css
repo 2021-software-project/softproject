@@ -152,11 +152,11 @@
 
 }
 
-.FirstUserLike .firstjob-cell .firstjobImgDiv:hover{
+/*.FirstUserLike .firstjob-cell .firstjobImgDiv:hover{
   background: linear-gradient(44deg, rgba(114, 97, 147, 0.42) 15%, rgba(227, 123, 124, 0.77) 75%, rgba(255, 228, 180, 0.46));
   transition: background .5s ease-in-out;
 
-}
+}*/
 
 
 .FirstUserLike .jobSelectBtn {
@@ -184,3 +184,7 @@
   background-color: rgba(189, 89, 91, 0.68);
 }
 
+.FirstUserLike .con{
+
+    padding-top: 7rem;
+}

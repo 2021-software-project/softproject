@@ -2,6 +2,8 @@ import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import styled from "styled-components";
 
+import "../../css/MbtiRecommend.css";
+
 
 const Title = styled.div`
   h2{
@@ -12,7 +14,7 @@ const Title = styled.div`
   }
 `;
 
-const JobList = styled.div`
+/*const JobList = styled.div`
     li{
         list-style: none;
         padding: 10px 35px 10px 0px;
@@ -21,7 +23,8 @@ const JobList = styled.div`
     ul {
     margin: 30px 0px;
     }
-`;
+`;*/
+
 class MbtiRecommend extends React.Component{
     constructor(props) {
         super(props);
@@ -105,18 +108,30 @@ class MbtiRecommend extends React.Component{
 
     render() {
         return (
-        <div>
+        <div className="recommend_con">
+
                 <h2>{this.state.mbti.toLocaleString().toUpperCase()} 맞춤 알바</h2>
-            <JobList>
-                <ul>
-                    {this.state.myJobs.map((job,index)=>
-                        (<li>{job}</li>))
-                    }
-                </ul>
+
+            <div className="recommend_con">
+
+
+                  <div className="rcm-grid-thead">
+
+                      {this.state.myJobs.map((job, index) =>
+                          (<div className="recommend_job">
+                              <div className="inner">
+                              {job}
+                              </div>
+                          </div>))
+                      }
+                  </div>
+            </div>
+
+
                 <Link to="/Mbti_rcm">
                     <input class="button_primary" type="button" value="공고 보러가기"/>
                 </Link>
-            </JobList>
+
             <br/>
             <br/>
             <br/>
