@@ -91,6 +91,14 @@ const SignupPage = () => {
   const onSubmit = (e) => {
       e.preventDefault()
 
+      var checkpwd1 =/^[a-z0-9]{8,16}$/
+      var checkpwd2 = /^(?=.*[a-z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/
+
+      if (!checkpwd1.test(password1)||!checkpwd2.test(password1)){
+          alert("비밀번호를 확인해 주세요. 영소문자,숫자 포함 8~16자 (특수문자 가능) ")
+          return
+      }
+
       const user = {
           username: username,
           email: email,
@@ -117,14 +125,9 @@ const SignupPage = () => {
       }
       )
           .then(res => {
-              // alert(res);
-              // if (res.data.key) {
               if (res.data) {
-                  console.log(res.data)
-                  console.log(res.data.key)
-                  alert("회원가입을 축하드립니다 !");
-                  window.location.replace('/login');
-
+                  alert(res.data.success)
+                  window.location = '/login'
               } else {
                   // console.log(res.data)
                   // console.log(res.data.key)
@@ -177,7 +180,7 @@ const SignupPage = () => {
 
                   <div className="form-group mt-2 selectMbtiDiv">
                   <select required="true" className="form-style selectMbti" onChange={onChangeMbti} value={selMbti}>
-                      <option label="select MBTI" value=""></option>
+                      <option label="MBTI" value=""></option>
                       {MbtiList.map((item) => (
                         <option style={{height: 10}} value={item} key={item}>
                           {item}
@@ -191,26 +194,26 @@ const SignupPage = () => {
                   </div>
 
                   <div className="form-group mt-2">
-                    <input type="username" name="username" className="form-style" placeholder="UserName(NickName)"
+                    <input type="username" name="username" className="form-style" placeholder="닉네임"
                            value={username} id="username" onChange={onChangeUsername} required autoComplete="off"/>
                       <i className="input-icon uil uil-user"></i>
                   </div>
                   <div className="form-group mt-2">
-                    <input type="email" name="email" className="form-style" placeholder="Email" id="email"
+                    <input type="email" name="email" className="form-style" placeholder="이메일" id="email"
                            value={email} onChange={onChangeEmail} required autoComplete="off"/>
                       <i className="input-icon uil uil-at"></i>
                   </div>
 
                   <div className="form-group mt-2">
-                    <input type="password" name="password1" className="form-style" placeholder="Password(소문자, 숫자, 특수문자 포함 8~16자)" id="password1"
+                    <input type="password" name="password1" className="form-style" placeholder="비밀번호(소문자, 숫자 포함 8~16자)" id="password1"
                            value={password1} onChange={onChangePwd1} required autoComplete="off"
-                           minLength='8' pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&^])[a-z\d$@$!%*#?&^]{8,16}$' />
+                           minLength='8'/>
                       <i className="input-icon uil uil-lock-alt"></i>
                   </div>
                   <div className="form-group mt-2">
-                    <input type="password" name="password2" className="form-style" placeholder="Password Check(소문자, 숫자, 특수문자 포함 8~16자)" id="password2"
+                    <input type="password" name="password2" className="form-style" placeholder="비밀번호 확인" id="password2"
                            value={password2} onChange={onChangePwd2} required autoComplete="off"
-                           minLength='8' pattern='^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&^])[a-z\d$@$!%*#?&^]{8,16}$' />
+                           minLength='8'/>
                       <i className="input-icon uil uil-lock-alt"></i>
                   </div>
 

@@ -12,10 +12,12 @@ from ..models import UserRating, UserPostingLike
 class Recommendation:
 
     def __init__(self):
-        try:
-            print("try")
-            user_rating = UserRating.objects.all()
-            user_postinglike = UserPostingLike.objects.all()
+        user_rating = UserRating.objects.all()
+        user_postinglike = UserPostingLike.objects.all()
+        if user_postinglike.exists():
+            # user_rating = UserRating.objects.all()
+            # user_postinglike = UserPostingLike.objects.all()
+
             self.code_list = sub_code_list()
             self.rating_df = pd.DataFrame(list(user_rating.values('email', 'job', 'score', 'mbti')))
             self.postinglike_df = pd.DataFrame(list(user_postinglike.values('email', 'jobcode', 'like', 'mbti')))
@@ -26,9 +28,15 @@ class Recommendation:
             self.rating_df = pd.concat([self.rating_df, self.postinglike_df], ignore_index=True)
 
             self.user_list = self.rating_df['email'].drop_duplicates().values
-        except :
-            print("except")
-            return None
+
+        else:
+            user_rating = UserRating.objects.all()
+
+            self.code_list = sub_code_list()
+            self.rating_df = pd.DataFrame(list(user_rating.values('email', 'job', 'score', 'mbti')))
+            self.rating_df.columns = ['email', 'sub_code', 'rating', 'mbti']
+
+            self.user_list = self.rating_df['email'].drop_duplicates().values
 
 
     def recommendation(self, algorithm, user,mbti ,rec_num=5):
@@ -41,7 +49,7 @@ class Recommendation:
             path = os.path.dirname(os.path.realpath(__file__))
             path = path.replace('\\','/')
             job = pd.read_csv(path+"/dataset/job_topic.csv")
-
+            print(self.rating_df)
             data = Data(job, topic)
             rating = data.merge_rating_topic(self.rating_df)
             user_model = data.make_user_mbti(rating, user, mbti)

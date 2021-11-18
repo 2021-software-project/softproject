@@ -24,18 +24,20 @@ const LoginPage = () => {
       password: password
     }
 
-    Axios.post('/user/auth/login/', user)
+    Axios.post('/user/login/', user)
       .then(res => {
         /*alert("user", user.email, user.password)
         alert("res",res)*/
-        if (res.data.key) {
+        if (res.data.token) {
             console.log(res.data)
-            localStorage.clear()
-            let token = res.data.key;
+            let token = res.data.token;
+            // let username = res.data
             localStorage.setItem('token',token);
             localStorage.setItem('email',email);
+            // localStorage.setItem('username',username);
 
-            Axios.get(`/user/usermbti/get/${email}`,
+
+            Axios.get(`/user/detail/${email}`,
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -44,7 +46,8 @@ const LoginPage = () => {
                     }})
                 .then(response=>{
                     console.log(response.data)
-                    localStorage.setItem('mbti', response.data)
+                    localStorage.setItem('mbti', response.data.mbti)
+                    localStorage.setItem('username', response.data.username)
 
                     //평가목록 접근해서 하나도 없으면 first로 가도록
                     axios.get(`/user/userrating/?search=${email}`,
@@ -76,18 +79,13 @@ const LoginPage = () => {
           setEmail('')
           setPassword('')
           localStorage.clear()
-          setErrors(true)
           console.log(res)
         }
       })
       .catch(err => {
-        console.clear()
-        console.log(err)
-
-          // alert(err)
         alert('아이디 또는 비밀번호가 일치하지 않습니다')
         //setEmail('')
-        //setPassword('')
+        setPassword('')
       })
   }
   const [ modalOpen, setModalOpen ] = useState(false);
@@ -126,17 +124,16 @@ const LoginPage = () => {
       <div className="LoginSignupform">
           <div className="section text-center">
             <h4 className="mb-4 pb-3">LOG IN</h4>
-            {errors === true && <h2>Cannot log in with provided credentials</h2>}
               <form onSubmit={onSubmit}>
                   <div className="form-group">
                     <input type="email" name="logemail" value={email} onChange={e => setEmail(e.target.value)} required
-                     className="form-style" placeholder="Your Email" id="logemail" autoComplete="off"/>
+                     className="form-style" placeholder="이메일" id="logemail" autoComplete="off"/>
 
                       <i className="input-icon uil uil-at"></i>
                   </div>
                   <div className="form-group mt-2">
                     <input type="password" name="logpass" value={password} onChange={e => setPassword(e.target.value)} required
-                     className="form-style" placeholder="Your Password" id="logpass" autoComplete="off"/>
+                     className="form-style" placeholder="비밀번호" id="logpass" autoComplete="off"/>
                       <i className="input-icon uil uil-lock-alt"></i>
                   </div>
                   <Input type='submit' className="btn mt-4" value='login' />
@@ -152,7 +149,7 @@ const LoginPage = () => {
                         {/*<div className="Password-Reset-modal">*/}
                         <p>가입하신 이메일을 입력해 주세요.<br/>
                             비밀번호 재설정 링크를 보내드립니다.</p>
-                        <input type="text" onChange={e=>setResetEmail(e.target.value)}  placeholder="email 을 입력해 주세요." />
+                        <input type="text" onChange={e=>setResetEmail(e.target.value)}  placeholder="email 입력" />
                         <input type="button" className="send-email" onClick={onSubmitEmail} value="전송"/>
                         <div className="send-email-state" style={{display : sendEmail? 'block':'none'}}>
                             <p style={{display : success? 'block':'none'}}>메일을 발송했습니다. 환경에 따라 5분정도 소요될 수 있습니다.<br/>만약 메일함에 메일이 없다면 스팸메일함을 확인해주세요.</p>

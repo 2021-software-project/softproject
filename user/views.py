@@ -1,18 +1,19 @@
 import random
 
 import pandas as pd
-from django.http import JsonResponse, HttpResponse
+from django.contrib.auth import authenticate
+from django.http import JsonResponse, HttpResponse, Http404
 from django.shortcuts import get_object_or_404
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from rest_auth.app_settings import create_token
-from rest_framework.decorators import APIView, api_view
+from rest_framework.decorators import APIView, api_view, renderer_classes
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.generics import GenericAPIView
 
 from .models import UserRating, UserPostingClick, UserPostingLike
 from .serializers import UserRatingSerializer, UserPostingClickSerializer, UserPostingLikeSerializer, \
-    ResetPasswordEmailRequestSerializer, SetNewPasswordSerializer, CustomRegisterSerializer
+    ResetPasswordEmailRequestSerializer, SetNewPasswordSerializer, CustomRegisterSerializer, CustomUserDetailsSerializer
 from rest_framework.response import Response
 from rest_framework import generics, status
 from .models import CustomUser
@@ -41,6 +42,37 @@ from .modules.code_to_korean import codeToKorean
 #             login(self.request, self.user)
 #
 # @csrf_exempt
+class LoginView(APIView):
+    authentication_classes = []
+    permission_classes = []
+    def post(self, request):
+        print(1)
+        user = authenticate(username=request.data['email'], password=request.data['password'])
+        print(2)
+        if user is not None:
+            token = Token.objects.create(user=user)
+            return Response({"token": token.key})
+        else:
+            return Response(status=401)
+
+# class CustomUserDetailsView(APIView):
+#     """
+#     Reads and updates UserModel fields
+#     Accepts GET, PUT, PATCH methods.
+#
+#     Default accepted fields: username, first_name, last_name
+#     Default display fields: pk, username, email, first_name, last_name
+#     Read-only fields: pk, email
+#
+#     Returns UserModel fields.
+#     """
+#     serializer_class = CustomUserDetailsSerializer
+#     permission_classes = (IsAuthenticated,)
+#
+#     def get_object(self):
+#         return self.request.user
+
+
 class SignupView(APIView):
     serializer_class = CustomRegisterSerializer
     authentication_classes =[]
@@ -64,8 +96,8 @@ class SignupView(APIView):
                                               password=request.data['password2'],
                                               mbti=request.data['mbti'])
             user.save()
-            token = Token.objects.create(user=user)
-            return Response({"Token": token.key})
+            # token = Token.objects.create(user=user)
+            return Response({"success": "회원가입 성공! 환영 합니다! "})
 
 
 
@@ -296,17 +328,12 @@ class UserPostingLikeWithPosting(APIView):
 
 
 
-class UserMbtiVIEW(generics.ListAPIView):
+class UserDetailVIEW(generics.ListAPIView):
 
    def get(self, request, email):
        if CustomUser.objects.filter(email=email).exists():
-           print("YES")
            user = CustomUser.objects.get(email=email)
-           print("user ",user)
-           print("usertype ",type(user))
-           print("mbti ", user.mbti)
-
-       return HttpResponse(user.mbti, content_type="text/json-comment-filtered")
+       return Response({"mbti":user.mbti, "username":user.username}, status=status.HTTP_200_OK)
 
    def post(self,request):
        email = request.data["email"]
@@ -334,45 +361,44 @@ class UserMbtiVIEW(generics.ListAPIView):
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
+
 from .models import JobPosting
 from .modules.recommendation import Recommendation
 
-
 @method_decorator(csrf_exempt,name='dispatch')
 class mbtiRcm(View):
+
     def get(self, request):
-        get_mbti = request.GET.get('mbti')
-        get_email = request.GET.get('email')
-        # rating = UserRating.objects.all()
-        # ratingdf = pd.DataFrame(list(rating.values('email','job','score')))
-        print(get_mbti)
-        user_rating = UserRating.objects.all()
-        user_postinglike = UserPostingLike.objects.all()
-        # if user_rating.exist() & user_postinglike.exist()
-        rec = Recommendation()
-        print("rec : ", rec)
-        if rec == None:
-            return Response({'error':'알바 평가를 먼저해주세요!'},status=status.HTTP_400_BAD_REQUEST)
+        mbti = request.GET.get('mbti')
+        email = request.GET.get('email')
+        user_rating = UserRating.objects.filter(email=email)
 
-        job_list = rec.recommendation('cb', get_email,get_mbti, 5)
-        job_code_list = codeToKorean(job_list)
+        if not user_rating.exists():
+            return HttpResponse('아르바이트 평가를 먼저 해주세요!', status=status.HTTP_400_BAD_REQUEST)
+        else:
+            rec = Recommendation()
 
-        return  JsonResponse({
-            'job_list' : job_code_list,
-        }) # 한글 등의 유니코드는 16진수로 표현될 경우 : 두번째 파라미터로 json_dumps_params = {'ensure_ascii': False} 추가
+            job_list = rec.recommendation('cb', email, mbti, 5)
+            job_code_list = codeToKorean(job_list)
+
+            return JsonResponse({
+                'job_list' : job_code_list
+            }) # 한글 등의 유니코드는 16진수로 표현될 경우 : 두번째 파라미터로 json_dumps_params = {'ensure_ascii': False} 추가
 
 
 @method_decorator(csrf_exempt,name='dispatch')
 class persRcm(View):
     def get(self, request):
-        get_user = request.GET.get('username')
-        get_email = request.GET.get('email')
-        print("get_email", get_email)
+        email = request.GET.get('email')
+        user_rating = UserRating.objects.filter(email=email)
+
+        if not user_rating.exists():
+            return HttpResponse('아르바이트 평가를 먼저 해주세요!', status=status.HTTP_400_BAD_REQUEST)
 
         rec = Recommendation()
-        job_list = rec.recommendation('cf_u',get_email,5)
+        job_list = rec.recommendation('cf_u', email, 5)
         job_code_list = codeToKorean(job_list)
-        # JSON 형식으로 response
+
         return  JsonResponse({
             'job_list' : job_code_list,
         }) # 한글 등의 유니코드는 16진수로 표현될 경우 : 두번째 파라미터로 json_dumps_params = {'ensure_ascii': False} 추가

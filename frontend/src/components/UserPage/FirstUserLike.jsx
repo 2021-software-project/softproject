@@ -1,10 +1,10 @@
 import React, {useEffect,useState} from 'react';
-import UserName from "../MyPage/UserName";
 import "../../css/FirstUserLike.css"
 import Axios from "axios";
 // import albaIcon from "../../img/albaIcon"
 
 function FirstUserLike(){
+    let username = localStorage.getItem("username")
     const jobFamilyList = [
         "외식ㆍ음료","유통ㆍ판매","외식ㆍ음료","서비스","외식ㆍ음료","교육ㆍ강사","외식ㆍ음료",
         "생산ㆍ건설ㆍ운송","생산ㆍ건설ㆍ운송","교육ㆍ강사","생산ㆍ건설ㆍ운송","사무직","유통ㆍ판매",
@@ -80,7 +80,7 @@ function FirstUserLike(){
     return(
         <div className="FirstUserLike">
             <div className="firstJobSelect">
-                <h2 className="header"><UserName/>님, 하고싶으신 아르바이트 업종 <span style={{textDecoration:"underline", textUnderlinePosition:"under"}}>3개</span> 선택하세요</h2>
+                <h2 className="header">{username}님, 하고싶으신 아르바이트 업종 <span style={{textDecoration:"underline", textUnderlinePosition:"under"}}>3개</span> 선택하세요</h2>
                 <h6 className="header-info">회원님이 좋아하실만한 아르바이트를 더 정확하게 추천할 수 있습니다. 아래의 업종을 클릭해주세요</h6>
                 <button className="jobSelectBtn" onClick={onJobSelectBtnClick}>선택완료</button>
             </div><br/>

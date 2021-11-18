@@ -2,19 +2,22 @@ from django.urls import include, path
 from . import views
 from django.contrib import admin
 
-from .views import UserRatingVIEW, UserPostingClickVIEW, PasswordTokenCheckAPI, RequestPasswordResetEmail, \
-    SetNewPasswordAPIView, \
-    ratingDetails, UserPostingLikeVIEW, UserPostingLikeDetails, UserPostingLikeWithPosting, mbtiRcm, persRcm, postings,\
-    UserMbtiVIEW
-from .views import SignupView
+from .views import PasswordTokenCheckAPI, RequestPasswordResetEmail, SetNewPasswordAPIView, \
+    UserRatingVIEW, UserPostingClickVIEW, \
+    ratingDetails, UserPostingLikeVIEW, UserPostingLikeDetails, UserPostingLikeWithPosting, \
+    UserDetailVIEW, mbtiRcm, persRcm, postings
+from .views import SignupView, LoginView
+from rest_auth.views import LogoutView
 
 from django.contrib.auth import views as auth_views
 from django.views.decorators.csrf import csrf_exempt
 
-from rest_auth.views import LogoutView, LoginView, PasswordResetView, PasswordResetConfirmView
+
 
 urlpatterns = [
-    path('auth/', include('rest_auth.urls')),
+    path('login/',LoginView.as_view()),
+    path('logout/',LogoutView.as_view()),
+    # path('auth/', include('rest_auth.urls')),
     # path('auth/signup/', include('rest_auth.registration.urls')),
     # path('auth/signup/', csrf_exempt(include('rest_auth.registration.urls'))),
     path('auth/signup/', SignupView.as_view(), name='rest-auth.registration.urls'),
@@ -31,8 +34,8 @@ urlpatterns = [
 
     # path('admin/', admin.site.urls),
 
-    path('usermbti/get/<str:email>', UserMbtiVIEW.as_view()),
-    path('usermbti/change/', UserMbtiVIEW.as_view()),
+    path('detail/<str:email>', UserDetailVIEW.as_view()),
+    path('detail/change/', UserDetailVIEW.as_view()),
     path('userrating/', UserRatingVIEW.as_view()),
     path('userrating/<int:ratingId>', ratingDetails.as_view()),
     path('userpostingclick/', UserPostingClickVIEW.as_view()),

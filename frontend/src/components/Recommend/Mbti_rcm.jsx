@@ -40,13 +40,14 @@ function Mbtircm(){
     const [areaguArr, setAreaguArr] = useState(Array(18).fill(false));
 
     useEffect(()=>{ //사용자가 가입한 mbti로 초기화
-            MBTIMeta.map((m, i)=>
-                m === ch_mbti ?
-                    setMbtiArr(
+        window.scrollTo(0,0)
+        MBTIMeta.map((m, i)=>
+            m === ch_mbti ?
+                setMbtiArr(
                     mbtiArr.map((mbtiA, idx)=>
                         i===idx ? true : false))
-                    : ''
-            )
+                : ''
+        )
     },[])
 
     const onChangeMbti = (ch_mbti, index) => {

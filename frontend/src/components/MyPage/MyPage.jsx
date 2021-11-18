@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import Axios from "axios";
-import UserName from "./UserName";
 import GoodBad from "./GoodBad_list";
 import Rating from "./Rating_list";
 import "../../css/mypage.css";
@@ -8,12 +7,12 @@ import Modal from "../../js/Modal";
 import PasswordUpdate from "./PasswordUpdate";
 
 function MyPage() {
-
+    let username = localStorage.getItem("username")
 
     const [selMenu, setSelMenu] = useState([false, false, false, false]);
-    const myInfoEdit=()=>{
-        window.location.replace('/MyInfo_edit');
-    }
+    // const myInfoEdit=()=>{
+    //     window.location.replace('/MyInfo_edit');
+    // }
     const GoodBadList=(e)=>{
         setSelMenu(
             selMenu.map((m, index)=>
@@ -38,7 +37,7 @@ function MyPage() {
         let token = localStorage.getItem('token')
         let email = localStorage.getItem('email')
         if (email !== null){
-            Axios.get(`/user/usermbti/get/${email}`, {
+            Axios.get(`/user/detail/change/${email}`, {
                 headers:{
                     'Accept': 'application/json',
                     'Content-Type': 'application/json;charset=UTF-8',
@@ -62,7 +61,7 @@ function MyPage() {
         let email = localStorage.getItem('email')
         let token = localStorage.getItem('token')
         if (token !== null){
-            Axios.post('/user/usermbti/change/',
+            Axios.post('/user/detail/change/',
                 {email: email, mbti: mbti},
                 {
                     headers: {
@@ -102,7 +101,7 @@ function MyPage() {
              </div>
             <table className="userInfo">
                 <tr height="50">
-                    <td className="username" ><div><UserName/></div></td>
+                    <td className="username" ><div>{username}</div></td>
                     <td className="useremail">{localStorage.getItem("email")}</td>
                 </tr>
                 <tr height="50">
