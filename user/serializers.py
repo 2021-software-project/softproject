@@ -19,6 +19,13 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('email','username','first_name', 'last_name','last_login','date_joined','is_staff','sns', 'mbti')
 
 @csrf_exempt
+class CustomUserDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ('pk', 'username', 'email', 'mbti')
+        read_only_fields = ('email', )
+
+@csrf_exempt
 class CustomRegisterSerializer(serializers.ModelSerializer):
     # authentication_classes =[]
     # permission_classes = []
@@ -28,7 +35,7 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'password1', 'password2', 'sns','mbti']
+        fields = ['username', 'email', 'password1', 'password2','first_name','last_name','sns','mbti']
         extra_kwargs = {
             'password': {
                 'write_only': True
@@ -40,7 +47,8 @@ class CustomRegisterSerializer(serializers.ModelSerializer):
     #     return data
 
     def save(self,request, *args, **kwargs):
-        user = CustomUser(
+        print("save")
+        user = CustomUser.objects.create_user(
             username = self.validated_data.get('username',' '),
             email= self.validated_data.get('email', ' '),
             sns = self.validated_data.get('sns',' '),

@@ -7,6 +7,7 @@ import HomeMbti from "./HomeMbti";
 
 class Home extends Component {
 
+	//필요없으면 지우기
     state = {
         user : localStorage.getItem('user')
     }

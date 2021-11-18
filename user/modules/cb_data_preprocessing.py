@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-
+import pprint
 class Data:
 
     def __init__(self, job, topic):

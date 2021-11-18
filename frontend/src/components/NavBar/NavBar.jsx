@@ -52,7 +52,7 @@ function NavBar() {
         let token = localStorage.getItem('token')
         console.log("로그아웃")
         Axios({
-            url: "/user/auth/logout/",
+            url: "/user/logout/",
             method: 'post',
             headers: {
                'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ function NavBar() {
         })
           .then(res => {
             localStorage.clear()
-            window.location.replace('/')
+            window.location.replace('/login')
           })
             .catch(err=>{
                 console.log(err)

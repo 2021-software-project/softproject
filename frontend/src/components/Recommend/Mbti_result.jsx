@@ -22,6 +22,7 @@ function Mbtiresult(props) {
     const [code,setCode] = useState('')
 
     useEffect(() => {
+
         if(ch_areagu===''){
             alert('지역을 선택해주세요');
             window.location = '/Mbti_rcm'
@@ -44,7 +45,8 @@ function Mbtiresult(props) {
                     res.data.job_list
                 )
             }).catch(err => {
-                console.log(err)
+                alert(err.response.data)
+                window.location = '/firstulike'
             })
         }
     }, [])
@@ -62,6 +64,7 @@ function Mbtiresult(props) {
     const scrollUp=()=>{
         window.scrollTo(0,0);
     }
+
 
     return (
         ch_areagu!=''?
