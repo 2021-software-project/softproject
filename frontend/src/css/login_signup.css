@@ -5,7 +5,8 @@
 
 /* Password Reset Modal */
 .Password-Reset-modal .modal > section{
-  height: 87%!important;
+  height: 260px!important;
+  max-height: 250px;
 }
 .Password-Reset-modal .modal > section > main{
   text-align: center!important;
@@ -18,8 +19,20 @@
   width: 40%;
   text-align: center;
   height: 30px;
-}
 
+}
+.Password-Reset-modal .modal > section > main > input[type="text"]:focus {
+  outline: none;
+}
+.Password-Reset-modal input[type=text]:focus::placeholder {
+    color: transparent;
+}
+.Password-Reset-modal input[type=text]:focus:-ms-input-placeholder {
+    color: transparent;
+}
+.Password-Reset-modal input[type=text]:focus::-ms-input-placeholder {
+    color: transparent;
+}
 /*.Password-Reset-modal > p{*/
 /*  margin-top:10px!important;*/
 /*  text-align: center;*/
@@ -396,4 +409,13 @@
 	height: 26px;
 	width: auto;
 	display: block;
+}
+
+.LoginSignupform .icon-eye svg {
+  position: absolute;
+  margin-top: 12.5px;
+  margin-left: -40px;
+  color: #ffecec;
+  width: 20px;
+  height: 20px;
 }

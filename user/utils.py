@@ -26,7 +26,10 @@ class Util:
         server.starttls()
         server.login(get_secret("EMAIL_HOST_USER"), get_secret("EMAIL_HOST_PASSWORD"))
 
-        mail_html = "<html><body>" + data['email_body']+"</body></html>"
+        mail_html = "<html>" \
+                    "<body>" + data['email_body']+\
+                    "</body>" \
+                    "</html>"
         mail_html = MIMEText(mail_html, 'html')
 
         msg = MIMEMultipart('alternative')

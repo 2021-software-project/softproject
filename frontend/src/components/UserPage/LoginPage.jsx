@@ -7,6 +7,7 @@ import "../../css/login_signup.css"
 import LoginSignupform from "./Login_Signup_form";
 import Modal from "../../js/Modal";
 import axios from "axios";
+import {FaEye, FaEyeSlash} from "react-icons/fa";
 
 const LoginPage = () => {
 
@@ -120,6 +121,18 @@ const LoginPage = () => {
               button[0].style = "display:unset";
           })
   }
+  const [passwordType, setPasswordType] = useState({
+                                                type: 'password',
+                                                visible: false});
+  //password type 변경하는 함수
+  const handlePasswordType = e => {
+      setPasswordType(() => {
+          if (!passwordType.visible) {
+              return {type: 'text', visible: true};
+          }
+          return {type: 'password', visible: false};
+      })
+  }
   return(
       <div className="LoginSignupform">
           <div className="section text-center">
@@ -132,8 +145,10 @@ const LoginPage = () => {
                       <i className="input-icon uil uil-at"></i>
                   </div>
                   <div className="form-group mt-2">
-                    <input type="password" name="logpass" value={password} onChange={e => setPassword(e.target.value)} required
+                    <input type={passwordType.type} name="logpass" value={password} onChange={e => setPassword(e.target.value)} required
                      className="form-style" placeholder="비밀번호" id="logpass" autoComplete="off"/>
+                      <span className="icon-eye" onClick={handlePasswordType}>
+                                    {  passwordType.visible ? <FaEyeSlash>숨기기</FaEyeSlash> : <FaEye>보이기</FaEye>  }</span>
                       <i className="input-icon uil uil-lock-alt"></i>
                   </div>
                   <Input type='submit' className="btn mt-4" value='login' />

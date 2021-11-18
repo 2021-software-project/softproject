@@ -32,6 +32,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from .job_code import job_code, large_job_code
 from .modules.code_to_korean import codeToKorean
+# from ipware.ip import get_ip
 
 # class LoginView(GenericAPIView):
 #     def login(self):
@@ -100,6 +101,13 @@ class SignupView(APIView):
             return Response({"success": "회원가입 성공! 환영 합니다! "})
 
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
 
 class RequestPasswordResetEmail(generics.GenericAPIView):
     serializer_class = ResetPasswordEmailRequestSerializer
@@ -116,14 +124,26 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
             current_site = get_current_site(
                 request=request).domain
             print(current_site)
+            # ip = get_client_ip(request)
+            # if ip is not None:
+            #     print("찾았다", ip)
+            # else:
+            #     print("못찾았다")
             relativeLink = reverse('password-reset-confirm',
                                    kwargs={'uidb64':uidb64,'token':token})
             print(request.get_host()) #장고 url이 가져와지네 ...
             absurl = 'http://127.0.0.1:3000'+relativeLink
-            email_body = "<h3>안녕하세요. " +user.username+'님,' \
-                        '</h3> <p> 아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p><br/> <a href='+absurl+'>' + absurl + '</a>'
-            data = {'email_body':email_body,'to_email':user.email,
-                    'email_subject':'[MBTI]비밀번호 재설정을 위한 링크입니다.'}
+            email_body = "<div style='text-align : center'>" \
+                         "<h3>안녕하세요. " +user.username+'님, Albagram 입니다. </h3> ' \
+                        '<p> 아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p>' \
+                        '<a '\
+                        "style='padding: 14px 20px;color: #ffffff;font-size: 15px;"\
+                        "font-weight: bold; background-color: rgba(114, 96, 144, 0.75); border: 0;"\
+    	                "border-radius: 8px; text-decoration: none; margin-bottom:10px;'"\
+                        'href='+absurl+'>비밀번호 재설정</a>'\
+                        '</div>'
+            data = {'email_body' : email_body,'to_email':user.email,
+                    'email_subject' : '[Albagram] 비밀번호 재설정을 위한 링크입니다.'}
 
             Util.send_email(data)
         #     success 확인

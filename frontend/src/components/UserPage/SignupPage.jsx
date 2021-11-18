@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import Axios from 'axios';
 import { Input } from 'antd';
+import {FaEye, FaEyeSlash} from 'react-icons/fa'
 import styled from 'styled-components';
 import Modal from '../../js/Modal';
 import Cookies from "universal-cookie";
@@ -91,8 +92,8 @@ const SignupPage = () => {
   const onSubmit = (e) => {
       e.preventDefault()
 
-      var checkpwd1 =/^[a-z0-9]{8,16}$/
-      var checkpwd2 = /^(?=.*[a-z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/
+      var checkpwd1 =/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+      var checkpwd2 = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 
       if (!checkpwd1.test(password1)&&!checkpwd2.test(password1)){
           alert("비밀번호를 확인해 주세요. 영소문자,숫자 포함 8~16자 (특수문자 가능) ")
@@ -164,10 +165,32 @@ const SignupPage = () => {
               alert(errMsg)
           })
   }
-
-  const newTabMbti=()=>{
-        window.open("https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC");
-    }
+  const newTabMbti=()=> {
+      window.open("https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC");
+  }
+  const [passwordType1, setPasswordType1] = useState({
+                                                type: 'password',
+                                                visible: false});
+  const [passwordType2, setPasswordType2] = useState({
+                                                type: 'password',
+                                                visible: false});
+      //password type 변경하는 함수
+  const handlePasswordType1 = e => {
+      setPasswordType1(() => {
+          if (!passwordType1.visible) {
+              return {type: 'text', visible: true};
+          }
+          return {type: 'password', visible: false};
+      })
+  }
+  const handlePasswordType2 = e => {
+      setPasswordType2(() => {
+          if (!passwordType2.visible) {
+              return {type: 'text', visible: true};
+          }
+          return {type: 'password', visible: false};
+      })
+  }
 
   return(
       <div className="LoginSignupform">
@@ -205,15 +228,19 @@ const SignupPage = () => {
                   </div>
 
                   <div className="form-group mt-2">
-                    <input type="password" name="password1" className="form-style" placeholder="비밀번호(소문자, 숫자 포함 8~16자)" id="password1"
+                    <input type={passwordType1.type} name="password1" className="form-style" placeholder="비밀번호(소문자, 숫자 포함 8~16자)" id="password1"
                            value={password1} onChange={onChangePwd1} required autoComplete="off"
                            minLength='8'/>
-                      <i className="input-icon uil uil-lock-alt"></i>
+                      <span className="icon-eye" onClick={handlePasswordType1}>
+                                    {  passwordType1.visible ? <FaEyeSlash>숨기기</FaEyeSlash> : <FaEye>보이기</FaEye>  }</span>
+                        <i className="input-icon uil uil-lock-alt"></i>
                   </div>
                   <div className="form-group mt-2">
-                    <input type="password" name="password2" className="form-style" placeholder="비밀번호 확인" id="password2"
+                    <input type={passwordType2.type} name="password2" className="form-style" placeholder="비밀번호 확인" id="password2"
                            value={password2} onChange={onChangePwd2} required autoComplete="off"
                            minLength='8'/>
+                      <span className="icon-eye" onClick={handlePasswordType2}>
+                                    {  passwordType2.visible ? <FaEyeSlash>숨기기</FaEyeSlash> : <FaEye>보이기</FaEye>  }</span>
                       <i className="input-icon uil uil-lock-alt"></i>
                   </div>
 
