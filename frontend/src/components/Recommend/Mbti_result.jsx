@@ -14,6 +14,7 @@ function Mbtiresult(props) {
     const {ch_areagu} = useSelector(state => state.area_modules);
     const {ch_mbti} = useSelector(state => state.area_modules);
     const {select_area} = useSelector(state => state.area_modules);
+    const username = localStorage.getItem("username");
     console.log(props.location.state);
     console.log(props);
 
@@ -70,10 +71,8 @@ function Mbtiresult(props) {
         ch_areagu!=''?
         <div className="rcm-result">
             <p className="info">
-                <span className="infoFont">{ch_mbti} "이름"님 맞춤알바</span><p/>
-                {/*<span># {ch_mbti}</span>*/}
+                <span className="infoFont">{ch_mbti} {username}님 맞춤알바</span><p/>
                 <span className="selectedAreaFont">{select_area[0]} {select_area[1]}</span>
-                {/*<span># {ch_areagu}</span>*/}
                 {select_area.length > 2 ? <span className="selectedAreaFont">{select_area[2]} {select_area[3]}</span> : ''}
                 {select_area.length > 4 ? <span className="selectedAreaFont">{select_area[4]} {select_area[5]}</span> : ''}
             </p>

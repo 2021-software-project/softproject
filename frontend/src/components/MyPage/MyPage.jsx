@@ -5,18 +5,13 @@ import Rating from "./Rating_list";
 import "../../css/mypage.css";
 import Modal from "../../js/Modal";
 import PasswordUpdate from "./PasswordUpdate";
-
-import {LikeOutlined, HeartFilled, DislikeOutlined, DislikeFilled} from '@ant-design/icons';
+import {HeartFilled} from '@ant-design/icons';
 import { FaHeartBroken } from 'react-icons/fa';
-import { BsList } from "react-icons/bs";
 
 function MyPage() {
     let username = localStorage.getItem("username")
 
     const [selMenu, setSelMenu] = useState([false, false, true, false]);
-    // const myInfoEdit=()=>{
-    //     window.location.replace('/MyInfo_edit');
-    // }
     const RatingList=(e)=>{
         setSelMenu(
             selMenu.map((m, index)=>
@@ -148,10 +143,6 @@ function MyPage() {
 
             <div id="menu_box">
                 <table class="mypageTable">
-                    {/*<tr class="mypageTableRow">*/}
-                        {/*<td className={`mypageTableCell${selMenu[0]?' clicked':''}`}> <span onClick={openModal}>MBTI 수정</span></td>*/}
-                        {/*<td className={`mypageTableCell${selMenu[1]?' clicked':''}`}> <span onClick={myInfoEdit}>비밀번호 수정</span></td>*/}
-                    {/*</tr>*/}
                     <tr className="mypageTableRow">
                         <td className={`mypageTableCell${selMenu[2]?' clicked':''}`}>
                             <span onClick={()=>RatingList(2)}>알바평가</span></td>

@@ -12,7 +12,7 @@ function Personal_result(props) {
     const {ch_areasi} = useSelector(state=>state.area_modules);
     const {ch_areagu} = useSelector(state=>state.area_modules);
     const {select_area} = useSelector(state => state.area_modules);
-
+    const username = localStorage.getItem("username");
     const [jobList, setJobList] = useState([])
     const [selJob, setSelJob] = useState(Array(6).fill(false));
     const [code,setCode] = useState('')
@@ -82,7 +82,7 @@ function Personal_result(props) {
         ch_areagu!=''?
         <div className="rcm-result">
             <p className="info">
-                <span className="infoFont">"이름"님 맞춤알바</span><p/>
+                <span className="infoFont">{username}님 맞춤알바</span><p/>
                 <span className="selectedAreaFont">{select_area[0]} {select_area[1]}</span>
                 {/*<span># {ch_areagu}</span>*/}
                 {select_area.length > 2 ? <span className="selectedAreaFont">{select_area[2]} {select_area[3]}</span> : ''}

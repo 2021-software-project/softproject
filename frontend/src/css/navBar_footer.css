@@ -235,7 +235,7 @@
     list-style: none;
     margin-right: 2%;
     margin-left: 2%;
-    letter-spacing: -0.5px;
+    letter-spacing: -1.2px;
 }
 .menuLI-A{
     color: rgba(75, 73, 73, 0.78);
@@ -247,6 +247,14 @@
 .menuLI-A:hover{
     color: #aa6c84;
     transition: .2s ease-in-out;
+}
+@media (max-width:410px ) {
+    .menuLI-A {
+        font-size: 15px;
+    }
+    .menuLI {
+
+    }
 }
 
 

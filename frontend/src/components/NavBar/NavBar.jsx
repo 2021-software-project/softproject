@@ -10,25 +10,18 @@ import "../../js/scripts.js"
 function MenuBar(){
     return(
         <div id="menubar">
-            {/*<div className="container">*/}
-                    {/*<button className="navbar-toggler text-uppercase font-weight-bold bg-primary text-black-50"*/}
-                    {/*        type="button" data-bs-toggle="collapse" data-bs-target="#menuitem"*/}
-                    {/*        aria-controls="menuitem" aria-expanded="false" aria-label="Toggle navigation">*/}
-                    {/*    =*/}
-                    {/*</button>*/}
-                    <div className="collapse navbar-collapse " id="menuitem">
-                        <ul className="menubarUL">
-                            <li className="menuLI"><a className="menuLI-A"
-                                                                     href="/Mbti_rcm">MBTI별 추천</a></li>
-                            <li className="menuLI "><a className="menuLI-A"
-                                                                     href="/Personal_rcm">개인별 추천</a></li>
-                            <li className="menuLI"><a className="menuLI-A"
-                                                                     href="/Alba_rating">알바평가</a></li>
-                            <li className="menuLI"><a className="menuLI-A"
-                                                                     href="/information">알바그램</a></li>
-                        </ul>
-                    </div>
-            {/*</div>*/}
+            <div className="collapse navbar-collapse " id="menuitem">
+                <ul className="menubarUL">
+                    <li className="menuLI"><a className="menuLI-A"
+                                        href="/Mbti_rcm">MBTI별 추천</a></li>
+                    <li className="menuLI "><a className="menuLI-A"
+                                         href="/Personal_rcm">개인별 추천</a></li>
+                    <li className="menuLI"><a className="menuLI-A"
+                                         href="/Alba_rating">알바평가</a></li>
+                    <li className="menuLI"><a className="menuLI-A"
+                                         href="/information">알바그램</a></li>
+                </ul>
+            </div>
         </div>
     )
 }
