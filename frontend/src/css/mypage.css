@@ -60,7 +60,7 @@
 }
 .password_con-2 .password-input {
     border: 0;
-    height: 2.5vw;
+    height: 20px;
     background: #ffffff00;
     border-bottom: solid;
     border-bottom-color: #cf7780;
@@ -324,6 +324,94 @@
     top: 0;
 }
 
+.img-mbti{
+    width:100px;
+}
+
+/* 비멀번호 재설정 */
+.Password-Reset-Complete{
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    background: linear-gradient(
+44deg, rgba(114, 97, 147, 0.64) 20%, rgba(227, 123, 124, 0.66) 60%, rgba(241, 214, 166, 0.68));
+    border-radius: 13px;
+    transform-style: preserve-3d;
+    transition: all 600ms ease-out;
+    margin: 10% auto 0 auto;
+    padding: 5px;
+}
+
+.Password-Reset-Complete .wrapper{
+    background-color: #ffecec;
+    border-radius: 13px;
+    padding :30px;
+}
+@media (max-width: 900px) {
+    .Password-Reset-Complete {
+        margin: 10% auto 0 auto;
+    }
+}
+@media (max-width: 768px) {
+    .Password-Reset-Complete {
+        width: 80%;
+        margin-top:35%;
+    }
+    .Password-Reset-Complete .wrapper {
+        background-color: #ffecec;
+        border-radius: 13px;
+        padding :15px;
+    }
+    .Password-Reset-Complete .password-input {
+        width: 200px;
+    }
+}
+
+.Password-Reset-Complete .password-input {
+    border: 0;
+    height: 20px;
+    background: #ffffff00;
+    border-bottom: solid;
+    border-bottom-color: #cf7780;
+    width: 270px;
+    font-family : "IM혜민 Bold";
+}
+.Password-Reset-Complete .button_primary{
+    color: #ffffff;
+    background-color :  #cf7780;
+
+    border-radius: 3px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    height: 3em;
+    letter-spacing: 0.225em;
+    line-height: 3.125em;
+    max-width: 30em;
+    padding: 0 1.75em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 30px;
+    font-family : "IM혜민 Bold";
+}
+
+
+.Password-Reset-Complete .button_box{
+    padding-top: 5rem;
+}
+
+@media (max-width: 768px) {
+    .Password-Reset-Complete .button_primary {
+        margin-top:15px;
+    }
+}
+
 /* 모달 */
 
 .Mbti-Change-modal .modal > section{
@@ -344,12 +432,35 @@
 }
 
 .Password-Change-modal .modal > section{
-  height: 64%!important;
+  height: 421px!important;
 }
+
 .Password-Change-modal .modal > section > main{
     padding : 0!important;
 }
-
-.img-mbti{
-    width:100px;
+.Password-Change-modal .icon-eye svg {
+    color: #cf7780;
+    margin-left: -20px;
 }
+.Password-Change-modal input:focus{
+    outline: none;
+}
+.Password-Change-modal .Password-Reset-Complete input[type=text]:focus::placeholder {
+    color: transparent;
+}
+.Password-Change-modal input[type=text]:focus:-ms-input-placeholder {
+    color: transparent;
+}
+.Password-Change-modal input[type=text]:focus::-ms-input-placeholder {
+    color: transparent;
+}
+.Password-Change-modal input[type=password]:focus::placeholder {
+    color: transparent;
+}
+.Password-Change-modal input[type=password]:focus:-ms-input-placeholder {
+    color: transparent;
+}
+.Password-Change-modal input[type=password]:focus::-ms-input-placeholder {
+    color: transparent;
+}
+
