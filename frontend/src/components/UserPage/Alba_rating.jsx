@@ -139,7 +139,7 @@ function Alba_rating(){
 
 
             <form onSubmit={ratingSubmit}>
-                <Input className="ratingBtn" type='submit' size="large" value='평가하기' />
+                <button className="ratingBtn" type='submit' size="large">평가하기</button>
             </form>
             
             <a style={{fontSize:"17px", textDecoration:"underline", textUnderlinePosition:"under", color:"black"}} href={'/mypage'}>내가 한 평가 보러가기</a>

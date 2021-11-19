@@ -123,7 +123,7 @@ function MyPage() {
                                 </option>
                             ))}
                         </select>
-                       <input type="button" className="send-mbti" onClick={onSubmitMbit} value="변경" />
+                        <button type="button" className="send-mbti" onClick={onSubmitMbit}>변경</button>
                     </Modal>
                 </React.Fragment>
             </div>

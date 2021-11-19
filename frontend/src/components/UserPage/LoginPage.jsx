@@ -164,7 +164,7 @@ const LoginPage = () => {
                                     {  passwordType.visible ? <FaEyeSlash>숨기기</FaEyeSlash> : <FaEye>보이기</FaEye>  }</span>
                       <i className="input-icon uil uil-lock-alt"></i>
                   </div>
-                  <Input type='submit' className="btn mt-4" value='login' />
+                  <button type='submit' className="btn mt-4" value='login'>LOGIN</button>
                   {/*<a href="#" className="btn mt-4">submit</a>*/}
                 </form>
               <p className="mb-0 mt-4 text-center">

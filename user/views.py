@@ -460,8 +460,8 @@ def postings(request):
                         qs2 = JobPosting.objects.filter(sub_code=code, city=selArea[2*i], county=selArea[2*i+1])
                     qs = qs.union(qs2)
 
-        if len(qs) > 60:
-            qs = random.sample(list(qs), 60)
+        if len(qs) > 45:
+            qs = random.sample(list(qs), 45)
         print("공고갯수: ",len(qs))
         # print("----------------- qs\n",qs)
 

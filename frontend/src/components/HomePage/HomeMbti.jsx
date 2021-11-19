@@ -93,9 +93,9 @@ function HomeMbti() {
                     <p></p>
                     <div id="inner">
                         {mbti.length < 4 ?
-                            <input className="button_primary" type="button" onClick={changeRcm} value="추천받기"/> :
+                            <button className="button_primary" type="button" onClick={changeRcm}> 추천받기</button> :
                             <Link to="home-mbti-rcm" spy={true} smooth={true}>
-                                <input className="button_primary" type="button" onClick={changeRcm} value="추천받기"/>
+                                <button className="button_primary" type="button" onClick={changeRcm}> 추천받기</button>
                             </Link>
                         }
                     </div>
