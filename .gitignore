@@ -19,3 +19,4 @@ MBTI/secrets.json
 mbtienv/
 
 #.idea
+/code/log/
