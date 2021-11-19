@@ -31,7 +31,6 @@ class MbtiRecommend extends React.Component {
     constructor(props) {
 
 
-
         super(props);
 
         this.state = {
@@ -39,28 +38,29 @@ class MbtiRecommend extends React.Component {
             auth: localStorage.getItem("token"),
             mbti: this.props.mbti.toLocaleString().toLowerCase(),
 
-            mbtiJobs:{
-                enfj : ['생동성ㆍ임상시험' , '의류ㆍ잡화ㆍ쥬얼리매장', '매장관리ㆍ판매', '오락실ㆍ게임장', '컴퓨터ㆍ정보통신'],
-                enfp : ['매장관리ㆍ판매 기타',	'실험ㆍ연구보조', '매장관리ㆍ판매', '의류ㆍ잡화ㆍ쥬얼리매장', '오락실ㆍ게임장'],
-                entj : ['문서작성ㆍ자료조사','컴퓨터ㆍ정보통신', '포장ㆍ품질검사', '미디어 기타', '학교ㆍ도서관ㆍ교육기관'],
-                entp : ['컴퓨터ㆍ정보통신', '영화관ㆍ공연장', 'PCㆍ디지털기기 설치ㆍ관리', '공인중개', '고객상담ㆍ인바운드'],
-                esfj : ['스터디룸ㆍ독서실ㆍ고시원', 'DVDㆍ멀티방ㆍ만화카페', '정비ㆍ수리ㆍ설치ㆍA/S', '생동성ㆍ임상시험', '키즈카페'],
-                esfp : ['미디어 기타', 'PC방', '서비스 기타', '영화관ㆍ공연장', '반려동물케어'],
-                estj : ['학교ㆍ도서관ㆍ교육기관', '반려동물케어', '실험ㆍ연구보조', '유통점ㆍ마트', '경리ㆍ회계보조'],
-                estp : ['베이커리ㆍ도넛ㆍ떡', '오락실ㆍ게임장', 'PC방', '서비스 기타', '미디어 기타'],
-                infj : ['택시ㆍ대리ㆍ수행기사', '화물ㆍ중장비ㆍ특수차', '미디어 기타', '키즈카페', '택시ㆍ버스운전'],
-                infp : ['신문ㆍ잡지ㆍ출판', '영화관ㆍ공연장', '동영상촬영ㆍ편집', '유아ㆍ유치원', '버스ㆍ셔틀운전'],
-                intj : ['실험ㆍ연구보조', '컴퓨터ㆍ정보통신', 'PCㆍ디지털기기 설치ㆍ관리', '정비ㆍ수리ㆍ설치ㆍA/S', '공인중개'],
-                intp : ['학교ㆍ도서관ㆍ교육기관', '반려동물케어', '서비스 기타', '전기ㆍ칸막이ㆍ배관공사', '컴퓨터ㆍ정보통신'],
-                isfj : ['DVDㆍ멀티방ㆍ만화카페', '정비ㆍ수리ㆍ설치ㆍA/S', '오락실ㆍ게임장', '간병ㆍ요양보호사', '간호조무사ㆍ간호사'],
-                isfp : ['영화관ㆍ공연장', '그래픽ㆍ영상ㆍ편집디자인', '택시ㆍ대리ㆍ수행기사', '미디어 기타', '생동성ㆍ임상시험'],
-                istj : ['포장ㆍ품질검사', '실험ㆍ연구보조', '예체능 강사', '수의테크니션ㆍ동물보건사', '입시ㆍ보습학원'],
-                istp : ['실험ㆍ연구보조', '경리ㆍ회계보조', '금융ㆍ보험영업', '컴퓨터ㆍ정보통신', '전시ㆍ컨벤션ㆍ세미나'],
+            mbtiJobs: {
+                enfj: ['생동성 임상시험', '의류 잡화 쥬얼리매장', '매장관리 판매', '오락실 게임장', '컴퓨터 정보통신'],
+                enfp: ['매장관리 판매 기타', '실험 연구보조', '매장관리 판매', '의류 잡화 쥬얼리매장', '오락실 게임장'],
+                entj: ['문서작성 자료조사', '컴퓨터 정보통신', '포장 품질검사', '미디어 기타', '학교 도서관 교육기관'],
+                entp: ['컴퓨터 정보통신', '영화관 공연장', 'PC 디지털기기 설치관리', '공인중개', '고객상담 인바운드'],
+                esfj: ['스터디룸 독서실 고시원', 'DVD 멀티방 만화카페', '정비 수리 설치 A/S', '생동성 임상시험', '키즈카페'],
+                esfp: ['미디어 기타', 'PC방', '서비스 기타', '영화관 공연장', '반려동물케어'],
+                estj: ['학교 도서관 교육기관', '반려동물케어', '실험 연구보조', '유통점 마트', '경리 회계보조'],
+                estp: ['베이커리 도넛 떡', '오락실 게임장', 'PC방', '서비스 기타', '미디어 기타'],
+                infj: ['택시 대리 수행기사', '화물 중장비 특수차', '미디어 기타', '키즈카페', '택시 버스운전'],
+                infp: ['신문 잡지 출판', '영화관 공연장', '동영상촬영 편집', '유아 유치원', '버스 셔틀운전'],
+                intj: ['실험 연구보조', '컴퓨터 정보통신', 'PC 디지털기기 설치 관리', '정비 수리 설치 A/S', '공인중개'],
+                intp: ['학교 도서관 교육기관', '반려동물케어', '서비스 기타', '전기 칸막이 배관공사', '컴퓨터 정보통신'],
+                isfj: ['DVD 멀티방 만화카페', '정비 수리 설치 A/S', '오락실 게임장', '간병 요양보호사', '간호조무사 간호사'],
+                isfp: ['영화관 공연장', '그래픽 영상 편집디자인', '택시 대리 수행기사', '미디어 기타', '생동성 임상시험'],
+                istj: ['포장 품질검사', '실험 연구보조', '예체능 강사', '수의테크니션 동물보건사', '입시 보습학원'],
+                istp: ['실험 연구보조', '경리 회계보조', '금융 보험영업', '컴퓨터 정보통신', '전시 컨벤션 세미나'],
             },
 
             myJobs: [],
         };
     }
+
     componentWillMount() {
         if (this.state.mbti === "intp") {
             this.state.myJobs = this.state.mbtiJobs.intp;
@@ -102,7 +102,7 @@ class MbtiRecommend extends React.Component {
         return (
             <div className="recommend_conDiv">
 
-                <font2>{this.state.mbti.toLocaleString().toUpperCase()}</font2>
+                <font2>" {this.state.mbti.toLocaleString().toUpperCase()} "</font2>
                 &nbsp; &nbsp;
                 <font3>맞춤 알바</font3>
 
@@ -113,9 +113,9 @@ class MbtiRecommend extends React.Component {
 
                         {this.state.myJobs.map((job, index) =>
                             (<div className="recommend_job">
-                                <div className="inner">
-                                    <div className="textbox">{job}</div>
-                                </div>
+
+                                <div className="textbox">{job}</div>
+
                             </div>))
                         }
                     </div>
@@ -127,8 +127,9 @@ class MbtiRecommend extends React.Component {
                     ""
 
                     :
-
-                    <div className="recommend_con2">당신의 성향에 맞춰 더 자세한 추천을 원한다면</div>
+                    <div className="recommend_con4">
+                        <font4>당신의 성향에 맞춰 더 자세한 추천을 원한다면</font4>
+                    </div>
                 }
 
                 {this.state.auth ?

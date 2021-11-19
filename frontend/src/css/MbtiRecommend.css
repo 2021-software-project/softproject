@@ -13,6 +13,11 @@
     padding-bottom: 1rem;
 }
 
+.recommend_con3{
+    padding-top: 1rem;
+
+}
+
 .recommend_conDiv font2{
     font-size: xx-large;
     color: rgb(228, 211, 255);
@@ -20,8 +25,14 @@
 
 .recommend_conDiv font3{
     font-size: xx-large;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
+ .recommend_conDiv font4{
+            font-size: medium;
+            color: rgb(255, 255, 255);
+        }
+
+
 
 
 .recommend_con ul{
@@ -61,18 +72,28 @@
 }
 
 .recommend_con .recommend_job {
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     border-radius: 70%;
-    height: 50px;
+    height: 70px;
     vertical-align: middle;
     margin-bottom: 5px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 1.5rem;
+    /*adding-top: 1.5rem;*/
     width: 70%;
     top: 0;
     left: 0;
-    background: linear-gradient(44deg, rgba(114, 97, 147, 0.64) 20%, rgba(227, 123, 124, 0.66) 60%, rgba(241, 214, 166, 0.68));
+     background-color: rgb(241 208 208);
+
+
+      word-break: keep-all;
+            white-space: break-spaces;
+
+            /*border: solid;
+            color: #ffffff;*/
+
+            box-shadow: 3px 3px 5px;
+
 }
 .recommend_con .inner {
     padding-top: 20px;
@@ -89,31 +110,45 @@
     padding-top: 1.5rem;
     top: 0;
     left: 0;
-    background-color: rgba(255, 236, 236, 0.55);
+    background-color: rgb(241 208 208);
 }
-.recommend_con .inner .textbox{
+.recommend_con .textbox{
+    padding-top: 1em;
     width: 65%;
     margin-left: auto;
     margin-right: auto;
+    color : #000000;
+    font-size: small;
 }
 
 
 @media (min-width: 750px) {
         .recommend_con .recommend_job {
-            padding-top: 20px;
+            /*padding-top: 20px;*/
             border-radius: 70%;
-            height: 70px;
+            height: 90px;
             vertical-align: middle;
             margin-bottom: 5px;
 
             margin-left: auto;
             margin-right: auto;
-            padding-top: 1.5rem;
+            /*padding-top: 1.5rem;*/
             width: 70%;
             top: 0;
             left: 0;
-            background: linear-gradient(
-                    44deg, rgba(114, 97, 147, 0.64) 20%, rgba(227, 123, 124, 0.66) 60%, rgba(241, 214, 166, 0.68));
+            background-color: rgb(241 208 208);
+
+
+            word-break: keep-all;
+            white-space: break-spaces;
+
+            /*border: solid;
+            color: #ffffff;*/
+
+            box-shadow: 3px 3px 5px;
+
+
+
         }
 
         .recommend_con .inner {
@@ -136,7 +171,13 @@
 
             background-color: rgba(255, 236, 236, 0.55);
 
+            word-break: keep-all;
+            white-space: break-spaces;
+
+
         }
+
+
 
         .recommend_con .rcm-grid-thead {
             display: grid;
@@ -151,15 +192,6 @@
             white-space: nowrap;
         }
 
-        .recommend_con .Job-cell .JobImgDiv {
-            border: 2px solid rgba(255, 255, 255, 0.68);
-            padding-top: 20px;
-            padding-bottom: 2px;
-            border-radius: 70%;
-            height: 100px;
-            margin-bottom: 5px;
-        }
-
         .recommend_con .JobImg {
             width: 75px;
             height: 75px;
@@ -172,7 +204,12 @@
 
         .recommend_conDiv font3{
             font-size: xxx-large;
-            color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+        }
+
+        .recommend_conDiv font4{
+            font-size: large;
+            color: rgb(255, 255, 255);
         }
 
 }
