@@ -66,7 +66,6 @@ function Job2(props){
         "간호조무사ㆍ간호사", "의료기사", "간병ㆍ요양보호사", "원무ㆍ코디네이터", "외래보조ㆍ병동보조", "수의테크니션ㆍ동물보건사", "실험ㆍ연구보조", ",생동성ㆍ임상시험",
     ];
 
-
     const onChangeJob = (ch_jobfamily, ch_job, index) => {
         dispatch(changeJob(ch_jobfamily, ch_job));
         setAlbaDetail(

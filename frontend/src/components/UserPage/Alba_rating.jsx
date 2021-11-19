@@ -33,7 +33,7 @@ function Alba_rating(){
         5,4,3,2,1,
     ]
     const [albaArr, setAlbaArr] = useState(Array(JOBFAMILY.length).fill(false));
-    const [albaDetailArr, setAlbaDetailArr] = useState(Array(25).fill(false));
+    const [albaDetailArr, setAlbaDetailArr] = useState(Array(30).fill(false));
     const [albaScoreArr, setAlbaScoreArr] = useState(Array(SCORE.length).fill(false));
     const onChangeJob = (ch_jobfamily, ch_job, index) => {
         dispatch(changeJob(ch_jobfamily, ch_job));
