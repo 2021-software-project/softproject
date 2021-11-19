@@ -134,6 +134,16 @@ class MbtiRecommend extends React.Component{
                   </div>
             </div>
 
+
+            {this.state.auth?
+
+                  ""
+
+                   :
+
+                       <div className="recommend_con2">당신의 성향에 맞춰 더 자세한 추천을 원한다면</div>
+                }
+
             {this.state.auth?
                 <a href="/Mbti_rcm">
                         <input className="button_primary" type="button" value="더 많은 공고 보러 가기"/>
@@ -143,20 +153,6 @@ class MbtiRecommend extends React.Component{
                 </a>
 
                 }
-
-                 {this.state.auth?
-
-                  ""
-
-                   :
-
-                       <div className="recommend_con2">당신의 성향에 맞춰 더 자세한 추천을 원한다면</div>
-                }
-
-
-
-
-
 
             <br/>
             <br/>
