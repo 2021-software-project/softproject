@@ -30,6 +30,7 @@
 
 .information-con font{
     font-size: 1.5px;
+    word-break: keep-all;
 }
 
 .information-con fontcolor{
@@ -69,7 +70,21 @@
     top: 0;
 }
 
-@media (min-width :700px) {
+@media (min-width :800px) {
+      .information-con font1{
+        font-size: large;
+    }
+        .information-con fontcolor{
+        font-size: medium;
+        color: rgba(114, 97, 147, 0.71);
+    }
+
+    .information-con font{
+        font-size: medium;
+    }
+}
+
+@media (min-width :800px) {
       .information-con font1{
         font-size: x-large;
     }
@@ -82,3 +97,4 @@
         font-size: large;
     }
 }
+
