@@ -26,10 +26,17 @@ const Title = styled.div`
 `;*/
 
 class MbtiRecommend extends React.Component{
+
+
     constructor(props) {
+
+
+
         super(props);
 
         this.state = {
+
+            auth : localStorage.getItem("token"),
             mbti : this.props.mbti.toLocaleString().toLowerCase(),
 
             mbtiJobs:{
@@ -110,7 +117,7 @@ class MbtiRecommend extends React.Component{
         return (
         <div className="recommend_conDiv">
 
-                <h2>{this.state.mbti.toLocaleString().toUpperCase()} 맞춤 알바</h2>
+            <font2>{this.state.mbti.toLocaleString().toUpperCase()}</font2> &nbsp; &nbsp; <font3>맞춤 알바</font3>
 
             <div className="recommend_con">
 
@@ -120,17 +127,36 @@ class MbtiRecommend extends React.Component{
                       {this.state.myJobs.map((job, index) =>
                           (<div className="recommend_job">
                               <div className="inner">
-                              {job}
+                                  {job}
                               </div>
                           </div>))
                       }
                   </div>
             </div>
 
-
-                 <a href="/Mbti_rcm">
-                    <input class="button_primary" type="button" value="공고 보러가기"/>
+            {this.state.auth?
+                <a href="/Mbti_rcm">
+                        <input className="button_primary" type="button" value="더 많은 공고 보러 가기"/>
+                    </a> :
+                <a href="/login">
+                    <input className="button_primary" type="button" value="알바그램 회원하러 가기"/>
                 </a>
+
+                }
+
+                 {this.state.auth?
+
+                  ""
+
+                   :
+
+                       <div className="recommend_con2">당신의 성향에 맞춰 더 자세한 추천을 원한다면</div>
+                }
+
+
+
+
+
 
             <br/>
             <br/>
