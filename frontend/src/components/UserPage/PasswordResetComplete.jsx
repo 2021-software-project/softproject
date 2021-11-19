@@ -34,8 +34,10 @@ function PasswordResetComplete(uid,token){
                 window.location.href='/login'
             })
             .catch(err => {
+                alert("죄송합니다. 다시 시도해 주시기바랍니다.")
                 console.log(err);
-                console.log(err.data);
+                console.log(err.response);
+                window.location.href='/login'
             })
     }
     const [passwordType, setPasswordType] = useState({
@@ -61,7 +63,7 @@ function PasswordResetComplete(uid,token){
                                         placeholder="새 비밀번호" />
                                 <span className="icon-eye" onClick={handlePasswordType}>
                                     {  passwordType.visible ? <FaEyeSlash>숨기기</FaEyeSlash> : <FaEye>보이기</FaEye>  }</span>
-                                <p>* 소문자, 숫자 포함 8~16자)</p>
+                                <p style={{'font-size':'10px'}} >* 소문자, 숫자 포함 8~16자(특수문자 가능)</p>
                                 </td>
                             </tr>
                         </table>

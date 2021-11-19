@@ -30,4 +30,10 @@ html, body{
   background-color: rgba(254, 242, 241, 0.87);
 }
 
+input[type="text"]{
+    font-family: "IM_Hyemin-Bold";
+}
 
+input[type="button"]{
+    font-family: "IM_Hyemin-Bold";
+}

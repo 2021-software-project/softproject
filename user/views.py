@@ -34,73 +34,64 @@ from rest_framework.permissions import IsAuthenticated
 from .job_code import job_code, large_job_code
 from .modules.code_to_korean import codeToKorean
 # from ipware.ip import get_ip
+from django.db import IntegrityError
 
 
 class LoginView(APIView):
     authentication_classes = []
     permission_classes = []
     def post(self, request):
-        print(1)
-        user = authenticate(username=request.data['email'], password=request.data['password'])
-        print(2)
-        if user is not None:
-            token = Token.objects.create(user=user)
-            return Response({"token": token.key})
-        else:
-            return Response(status=401)
-
-# class CustomUserDetailsView(APIView):
-#     """
-#     Reads and updates UserModel fields
-#     Accepts GET, PUT, PATCH methods.
-#
-#     Default accepted fields: username, first_name, last_name
-#     Default display fields: pk, username, email, first_name, last_name
-#     Read-only fields: pk, email
-#
-#     Returns UserModel fields.
-#     """
-#     serializer_class = CustomUserDetailsSerializer
-#     permission_classes = (IsAuthenticated,)
-#
-#     def get_object(self):
-#         return self.request.user
+        try:
+            user = authenticate(username=request.data['email'], password=request.data['password'])
+            if user is not None:
+                try:
+                    token = Token.objects.create(user=user)
+                except IntegrityError as e:
+                    token = Token.objects.get(user=user)
+                return Response({"token": token.key})
+            else:
+                return Response(status=401)
+        except:
+            return Response(status=400)
 
 
 class SignupView(APIView):
     serializer_class = CustomRegisterSerializer
     authentication_classes =[]
     permission_classes = []
+
     def post(self, request):
-        serializer = self.serializer_class(request.data)
+        try:
+            serializer = self.serializer_class(request.data)
 
-        email = request.data['email']
-        username = request.data['username']
-        password1 = request.data['password1']
-        password2 = request.data['password2']
-        mbti = request.data['mbti']
-        # customuser = CustomRegisterSerializer.save(self, request=request.data)
-        # print("customuser ",customuser)
-        if CustomUser.objects.filter(email=email).exists():
-            return Response({'email' : '이미 사용중인 이메일입니다.'}, status=status.HTTP_400_BAD_REQUEST)
-        elif password1 != password2:
-            return Response({'password' : '비밀번호가 일치하지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
-        else:
-            user = CustomUser.objects.create_user(email=request.data['email'], username = request.data['username'],
-                                              password=request.data['password2'],
-                                              mbti=request.data['mbti'])
-            user.save()
-            # token = Token.objects.create(user=user)
-            return Response({"success": "회원가입 성공! 환영 합니다! "})
+            email = request.data['email']
+            username = request.data['username']
+            password1 = request.data['password1']
+            password2 = request.data['password2']
+            mbti = request.data['mbti']
+            # customuser = CustomRegisterSerializer.save(self, request=request.data)
+            # print("customuser ",customuser)
+            if CustomUser.objects.filter(email=email).exists():
+                return Response({'email' : '이미 사용중인 이메일입니다.'}, status=status.HTTP_400_BAD_REQUEST)
+            elif password1 != password2:
+                return Response({'password' : '비밀번호가 일치하지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                user = CustomUser.objects.create_user(email=email, username = username,
+                                                  password=password1,
+                                                  mbti=mbti)
+                user.save()
+                # token = Token.objects.create(user=user)
+                return Response({"success": "회원가입을 축하합니다! 환영합니다!"})
+        except :
+            return Response({"msg":"회원가입 실패"},status=status.HTTP_400_BAD_REQUEST)
 
-
-def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
+# def get_client_ip(request):
+#     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+#     if x_forwarded_for:
+#         ip = x_forwarded_for.split(',')[0]
+#     else:
+#         ip = request.META.get('REMOTE_ADDR')
+#     return ip
 
 class RequestPasswordResetEmail(generics.GenericAPIView):
     serializer_class = ResetPasswordEmailRequestSerializer
@@ -128,7 +119,7 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
             absurl = 'http://127.0.0.1:3000'+relativeLink
             email_body = "<div style='text-align : center'>" \
                          "<h3>안녕하세요. " +user.username+'님, Albagram 입니다. </h3> ' \
-                        '<p> 아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p>' \
+                        '<p>아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p><br/>' \
                         '<a '\
                         "style='padding: 14px 20px;color: #ffffff;font-size: 15px;"\
                         "font-weight: bold; background-color: rgba(114, 96, 144, 0.75); border: 0;"\

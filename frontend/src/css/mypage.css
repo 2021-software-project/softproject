@@ -353,20 +353,6 @@
         margin: 10% auto 0 auto;
     }
 }
-@media (max-width: 768px) {
-    .Password-Reset-Complete {
-        width: 80%;
-        margin-top:35%;
-    }
-    .Password-Reset-Complete .wrapper {
-        background-color: #ffecec;
-        border-radius: 13px;
-        padding :15px;
-    }
-    .Password-Reset-Complete .password-input {
-        width: 200px;
-    }
-}
 
 .Password-Reset-Complete .password-input {
     border: 0;
@@ -405,12 +391,24 @@
 .Password-Reset-Complete .button_box{
     padding-top: 5rem;
 }
-
 @media (max-width: 768px) {
+    .Password-Reset-Complete {
+        width: 80%;
+        margin-top: 20%;
+    }
+    .Password-Reset-Complete .wrapper {
+        background-color: #ffecec;
+        border-radius: 13px;
+        padding :15px;
+    }
+    .Password-Reset-Complete .password-input {
+        width: 200px;
+    }
     .Password-Reset-Complete .button_primary {
         margin-top:15px;
     }
 }
+
 
 /* 모달 */
 

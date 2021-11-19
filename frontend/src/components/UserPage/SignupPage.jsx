@@ -108,7 +108,7 @@ const SignupPage = () => {
           mbti:selMbti,
           sns:'' // 없어도 user db 에 들어감
       }
-      console.log(user);
+      // console.log(user);
 
       //개인정보수집 check 확인
       if (!chk) {
@@ -138,20 +138,25 @@ const SignupPage = () => {
                   setPassword1('')
                   setPassword2('')
                   localStorage.clear()
-                  setErrors(true)
+                  alert("다시 시도해 주시기 바랍니다.")
               }
           })
           .catch(err => {
-              // console.log(err.response.data)
-              // alert(err)
-              // alert(err.response)
-              console.log(err.response.data)
+              var errCode = err.response.status;
+              if(errCode==500){
+                  setUsername('')
+                  setEmail('')
+                  setMbtiSelected('')
+                  setPassword1('')
+                  setPassword2('')
+                  alert("다시 시도해 주시기 바랍니다.")
+                  return
+              }
               const errType = Object.keys(err.response.data)[0]
               let errMsg = err.response.data[errType]
               // console.log(errType, errMsg)
               if (errType === "email") {
                   setEmail('')
-                  errMsg = "이미 사용중인 이메일입니다."
                   document.getElementById(errType).focus();
               }
               else if(errType==="username"){
