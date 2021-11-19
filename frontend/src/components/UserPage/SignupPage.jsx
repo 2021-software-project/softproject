@@ -208,7 +208,7 @@ const SignupPage = () => {
 
                   <div className="form-group mt-2 selectMbtiDiv">
                   <select required="true" className="form-style selectMbti" onChange={onChangeMbti} value={selMbti}>
-                      <option label="MBTI" value=""></option>
+                      <option label="MBTI 선택" value=""></option>
                       {MbtiList.map((item) => (
                         <option style={{height: 10}} value={item} key={item}>
                           {item}
@@ -272,7 +272,7 @@ const SignupPage = () => {
                         </Modal>
 
                    </React.Fragment>
-                  <Input type='submit' className="btn mt-4" value='SignUp' />
+                  <button type='submit' className="btn mt-4">SIGNUP</button>
               </form>
           </div>
       </div>

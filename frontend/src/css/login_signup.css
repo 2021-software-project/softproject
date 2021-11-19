@@ -242,6 +242,15 @@
 .LoginSignupform input.form-style {
 
 }
+.LoginSignupform select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #fff;
+}
+.LoginSignupform select::-ms-expand{
+  /*display:none; !* 화살표 없애기 for IE10, 11*!*/
+}
 .LoginSignupform input.form-style, .LoginSignupform select.form-style {
   font-family: 'Poppins', 'IBM Plex Sans KR', serif;
   /*padding: 13px 20px;*/
