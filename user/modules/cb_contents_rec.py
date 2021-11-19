@@ -5,7 +5,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 def contents_based_rec(user_model, job, topic, k=5):
     rec_num = k  # 추천받을 직종 개수
 
-    sim = [[0, 0.0] for x in range(149)]
+    sim = [[0, 0.0] for x in range(166)]
     # print(job)
     for index, row in job.iterrows():
         sim[index][0] = row[1]
