@@ -3,7 +3,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mbti',
         'USER': 'root',
-        'PASSWORD': 'password', # 비번 입력
+        'PASSWORD': 'albagram2021', # 비번 입력
         'HOST': 'localhost',
         'PORT': '3306',
     }
