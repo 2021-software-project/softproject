@@ -64,7 +64,7 @@ function FirstUserLike(){
                     job : jobList[firstJobs[job]],
                     score : 4
                 }
-                console.log(firstRating);
+
 
                 Axios.post(process.env.REACT_APP_DB_HOST +"/user/userrating/", firstRating,{
                 headers: {

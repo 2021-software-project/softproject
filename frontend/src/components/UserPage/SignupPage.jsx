@@ -23,6 +23,8 @@ const SignupDiv = styled.div`
       }
     }
   }
+  
+  
 `;
 
 const SignupPage = () => {
