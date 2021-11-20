@@ -54,8 +54,20 @@ function Mbtiresult(props) {
                     res.data.job_list
                 )
             }).catch(err => {
-                alert(err.response.data)
-                window.location = '/firstulike'
+                var errCode = err.response.status;
+
+                if (errCode == 401) {
+                    alert("다시 로그인 해주시기 바랍니다.")
+                    localStorage.clear();
+                    window.location = '/login';
+                }else if(errCode == 400){
+                    alert(err.response.data)
+                    console.log(errCode)
+                    window.location.href = '/firstulike';
+                }
+                else{
+                    window.location = '/error';
+                }
             })
         }
     }, [])
