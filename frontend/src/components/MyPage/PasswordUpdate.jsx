@@ -32,7 +32,7 @@ function PasswordUpdate() {
 
       Axios({
           method: 'post',
-          url: process.env.REACT_APP_DB_HOST+'user/password/change/',
+          url: process.env.REACT_APP_DB_HOST+'/user/password/change/',
           headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'},
           data: pwd
       })
