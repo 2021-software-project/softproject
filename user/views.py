@@ -176,7 +176,7 @@ class SetNewPasswordAPIView(generics.GenericAPIView):
 
 
 class UserRatingVIEW(generics.ListAPIView): #알바평가 db에 넣고 가져오기(Create, Read)
-    queryset = UserRating.objects.exclude(job='0')
+    queryset = UserRating.objects.all()
     serializer_class = UserRatingSerializer
 
     def get_queryset(self):
@@ -189,7 +189,6 @@ class UserRatingVIEW(generics.ListAPIView): #알바평가 db에 넣고 가져오
                 subcode = rating.job
                 rating.jobfamily = dict(map(reversed,large_job_code.items()))[largejobcode]
                 rating.job = dict(map(reversed,job_code[largejobcode].items()))[subcode]
-
         return qs
 
     def post(self, request): #CreateModelMixin을 사용했기 때문에 drf api에 양식이 생김

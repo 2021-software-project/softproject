@@ -53,15 +53,18 @@ function FirstUserLike(){
         {
             let token = localStorage.getItem('token');
             let email = localStorage.getItem('email');
-            var job;
+            let job;
+            let resjob=0;
             for(job=0;job<firstJobs.length;job++)
             {
+                console.log(job)
                 const firstRating = {
                     email: email,
                     jobfamily : jobFamilyList[firstJobs[job]],
                     job : jobList[firstJobs[job]],
                     score : 4
                 }
+                console.log(firstRating);
 
                 Axios.post("/user/userrating/", firstRating,{
                 headers: {
@@ -70,10 +73,12 @@ function FirstUserLike(){
                     'Authorization': 'token ' + token,
                     }})
                     .then(response=>{
-
+                        resjob+=1;
+                        if(resjob === 3){
+                            window.location.replace('/main')
+                        }
                 })
             }
-            window.location.replace('/main')
         }
     }
 
