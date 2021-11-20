@@ -120,7 +120,7 @@ const LoginPage = () => {
       //또 전송 버튼을 누르지 않게 하기 위해 버튼 없애기
       const button = document.getElementsByClassName("send-email")
       button[0].style = "display:none"
-      Axios.post(process.env.REACT_APP_DB_HOST +'user/request-reset-email/',data)
+      Axios.post(process.env.REACT_APP_DB_HOST +'/user/request-reset-email/',data)
           .then(res=>{
               setSendEmail(true);
               setSuccess(true);
