@@ -104,7 +104,7 @@ function Personal_result(props) {
             })
         }
         else{
-            axios.put(process.env.REACT_APP_DB_HOST+`user/resultsatisfy/${satisfyScoreId}`,{
+            axios.put(process.env.REACT_APP_DB_HOST+`/user/resultsatisfy/${satisfyScoreId}`,{
                 email:email, mbti:mbti, rating:ch_score, recommendtype:2
             },{
                 headers:{

@@ -51,7 +51,7 @@ const JobPostingModal = ( props ) => {
               })
         }
         else if(postingLike === 0){
-            axios.post(process.env.REACT_APP_DB_HOST+"user/userpostinglike/", {
+            axios.post(process.env.REACT_APP_DB_HOST+"/user/userpostinglike/", {
                 email:localStorage.getItem("email"),
                 post_id:post_id,
                 jobcode:jobcode,
@@ -110,7 +110,7 @@ const JobPostingModal = ( props ) => {
               })
         }
         else if(postingLike === 0){
-            axios.post(process.env.REACT_APP_DB_HOST+"user/userpostinglike/", {
+            axios.post(process.env.REACT_APP_DB_HOST+"/user/userpostinglike/", {
                 email:localStorage.getItem("email"),
                 post_id:post_id,
                 jobcode:jobcode,

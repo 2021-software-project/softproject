@@ -118,7 +118,7 @@ function Mbtiresult(props) {
             })
         }
         else{
-            axios.put(process.env.REACT_APP_DB_HOST+`user/resultsatisfy/${satisfyScoreId}`,{
+            axios.put(process.env.REACT_APP_DB_HOST+`/user/resultsatisfy/${satisfyScoreId}`,{
                 email:email, mbti:mbti, rating:ch_score, recommendtype:1
             },{
                 headers:{

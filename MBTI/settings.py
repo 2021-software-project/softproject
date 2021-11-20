@@ -67,7 +67,7 @@ STATICFILES_DIRS = (#추가해줌
 DEBUG = True
 
 # 0908 변경
-ALLOWED_HOSTS = ["*", ".ap-northeast-2.compute.amazionaws.com"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = [
@@ -252,7 +252,7 @@ CORS_ORIGIN_WHITELIST = [  # 추가
 ]
 
 # 0908 CORS, CSRF 설정.
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = False
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_EXPOSE_HEADERS = (
     'Access-Control-Allow-Origin:*'
@@ -264,6 +264,7 @@ CORS_ALLOW_HEADERS = (
     'access-control-request-headers',
     'accept',
     'accept-encoding',
+    'authorization',
     'accept-language',
     'connection',
     'content-type',
@@ -276,5 +277,13 @@ CORS_ALLOW_HEADERS = (
     'csrftoken',
     'x-requested-with',
 )
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 CSRF_COOKIE_NAME = "XCSRF-TOKEN"
 

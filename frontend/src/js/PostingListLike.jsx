@@ -36,7 +36,7 @@ function PostingListLike(props) {
 
     const postinglistlikeClick =()=>{
         if(Likes === 0){
-            axios.post(process.env.REACT_APP_DB_HOST+"user/userpostinglike/", {
+            axios.post(process.env.REACT_APP_DB_HOST + "/user/userpostinglike/", {
                 email:localStorage.getItem("email"),
                 post_id:props.post_id,
                 jobcode:props.jobcode,
@@ -50,10 +50,11 @@ function PostingListLike(props) {
                     Authorization: `Token ${token}`
                 }
             }).then(response=>{
+                //console.log(response)
                 setLikes(1);
             })
             .catch(function (err){
-              //console.log(err)
+              // console.log(err)
         })}
         else if(Likes === 1){
             axios.delete(process.env.REACT_APP_DB_HOST+`/user/userpostinglike/${props.email}/${props.post_id}`,
