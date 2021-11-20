@@ -81,7 +81,7 @@ function Mbtircm(){
 
     return (
         <div className ="mb_ti-container">
-            <div className="mbtiTitle">본인의 <font>MBTI</font>를 선택하세요</div>
+            <div className="mbtiTitle">본인의 <font>'MBTI'</font> 를 선택하세요</div>
             <div className = "con">
             <div align="center">   {/*mbti 선택*/}
                 <div id="selMbti_inner">

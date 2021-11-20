@@ -100,7 +100,7 @@ function Alba_rating(){
     return (
         <div className ="alba_rating-container">
             <div className="alba_subbox">
-            <h1>내가 해봤던 알바 평가하기</h1>
+            <h1>당신의 알바는 어떠셨나요?</h1>
             </div>
 
             <div className="Job-grid-thead">
