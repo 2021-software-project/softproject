@@ -89,7 +89,16 @@ function Alba_rating(){
 
                     })
                     .catch(function (err) {
-
+                        //console.log("token : ", token)
+                        //console.clear()
+                        //console.log(err)
+                        var errCode = err.response.status;
+                        if(errCode == 401){
+                            alert("다시 로그인 해주세요.")
+                            window.location = '/login';
+                        }else{
+                            window.location = '/error'
+                        }
                     })
             } else {
 

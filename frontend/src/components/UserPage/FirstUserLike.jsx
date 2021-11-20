@@ -77,8 +77,18 @@ function FirstUserLike(){
                         if(resjob === 3){
                             window.location.replace('/main')
                         }
+                    }).catch(err=> {
+                        var errCode = err.response.status;
+                        if (errCode == 401) {
+                            localStorage.clear();
+                            alert("다시 로그인 해주세요.")
+                            window.location = '/login';
+                        }else{
+                            window.location = '/error'
+                        }
                 })
             }
+            window.location.replace('/main')
         }
     }
 
