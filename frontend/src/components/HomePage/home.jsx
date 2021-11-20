@@ -32,7 +32,7 @@ class Home extends Component {
 							</font>
 							</a>
 							<div id="innerEntry">
-								<p>당신의 성격에 맞춰 알바를 추천해주는 </p>
+								<p>당신의 성향에 맞춰 알바를 추천해주는 </p>
 								{/*<p>알바를 추천해주는</p>*/}
 								<p>그런 앱 본 적 있나요?</p>
 
@@ -53,7 +53,7 @@ class Home extends Component {
 							<div className="checkMBTI">
 							<p></p>
 							<p></p>
-							<h1> 본인의 MBTI를 선택하십시오.</h1>
+							<h1> 당신의&nbsp; <font2>MBTI</font2> 는 무엇인가요?</h1>
 							<p></p>
 							<p></p>
 

@@ -38,7 +38,7 @@ function Personal_rcm() {
         }else if(num==4){
             setSelArea(selArea.slice(0,4))
         }
-        console.log(selArea);
+
     }
 
     return (
@@ -47,9 +47,8 @@ function Personal_rcm() {
                 <div className="personalTitle">자신에게 맞는 아르바이트 추천받기</div>
             </div>
             <div className="areaSelectDiv">
-                {/*<h2>[지역 선택]</h2>
-                    <h3>선택한 지역 : <span style={{color:" #726193"}}>{ch_areasi} {ch_areagu}</span> </h3> */}
-                <div className="area" id="inner" align="center">  {/*지역 선택*/}
+
+                <div className="area" id="inner" align="center">
                     <div id="td-areasi">
                         <table>
                             <tr>

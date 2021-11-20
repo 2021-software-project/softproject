@@ -85,7 +85,7 @@
 
 @media (min-width: 735px) { {/*폭이 735px 이상일 때만 적용. 미만일 땐 위에꺼 적용*/}
     .alba_rating-container .Job-grid-thead{
-      grid-template-columns: 130px 130px 130px 130px 130px;
+      grid-template-columns: 130px 130px 130px 130px ;
       grid-column-gap: 2.5%;
       grid-row-gap: 6%;
       justify-content: center;

@@ -212,4 +212,13 @@
             color: rgb(255, 255, 255);
         }
 
+        .recommend_con .textbox{
+        padding-top: 1em;
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+        color : #000000;
+        font-size: medium;
+    }
+
 }

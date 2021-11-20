@@ -25,18 +25,15 @@ function PasswordResetComplete(uid,token){
             password : password,
             uid : uid.uid,
         }
-        console.log(password)
-        console.log(uid.uid)
+
         Axios.post('/user/password-reset-complete/',data)
             .then(res => {
-                console.log(res);
+
                 alert("비밀번호가 재설정되었습니다. 다시 로그인해주세요!")
                 window.location.href='/login'
             })
             .catch(err => {
                 alert("죄송합니다. 다시 시도해 주시기바랍니다.")
-                console.log(err);
-                console.log(err.response);
                 window.location.href='/login'
             })
     }

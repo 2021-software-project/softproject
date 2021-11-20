@@ -220,6 +220,14 @@ a.link {
     color : #ffffff;
     animation:fadeIn 1.1s;
 }
+
+.home_container font2{
+    font-size : xxx-large;
+    color: rgb(228, 211, 255);
+}
+
+
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;

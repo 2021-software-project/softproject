@@ -41,20 +41,7 @@ header.bg-primary.text-black.text-center{
 
     background-color : #bad6f1 !important;
 }
-.btn-rcm{
-    color: #fff;
-    background-color: #ffcf00!important;
-    border-color: #ffffff!important;
-    margin: 0px 6px;
-    padding: 7px 27px;
-    border-radius: 0rem;
-    clear:both
-}
-.btn-rcm:hover{
-    color: #ffcf00;
-    background-color: #fff!important;
-    border-color: #ffcf00!important;
-}
+
 
 #m_container{
     padding-top: 2rem;
@@ -72,4 +59,8 @@ header.bg-primary.text-black.text-center{
     display: block;
      font-weight: 900;
     font-size: xxx-large;
+}
+
+.mb_ti-container .font2{
+    font-size: large;
 }

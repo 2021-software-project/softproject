@@ -36,7 +36,6 @@ function Postings(props){
     const openModal = (e) => {
         setModalOpen(true);
         setStartTime(new Date());
-        console.log("open: "+ start_time);
     }
     const closeModal = () => {
         stay_time = (new Date()-start_time)/1000;
@@ -49,7 +48,7 @@ function Postings(props){
             jobcode : subCode,
             stay_time: stay_time,
          }
-        console.log(whatPostingClick);
+
 
          axios.post("/user/userpostingclick/", whatPostingClick,
             {
@@ -60,26 +59,26 @@ function Postings(props){
                 }
             })
             .catch(function (err){
-              console.log(err)
+
         })
     }
 
     useEffect(()=>{
         //post 전송을 위해 form data 생성
-        console.log(ch_areasi, ch_areagu);
-        console.log(select_area)
+
+
         let data = new FormData();
         data.append("code",jobCode)
         select_area.map((a)=>{
             data.append("selectArea",a)
         })
-        console.log(data)
+
         axios.post('/user/postings/', data)
         .then(function (res) {
             setPostings(res.data)
         })
         .catch(function (err) {
-            console.log(err);
+
         });
     },[jobCode])
 
@@ -89,11 +88,9 @@ function Postings(props){
             {postings[0]?
                 postings.map((posting)=>(
                     <div className="card">
-                        {/* <!-- 카드 헤더 -->*/}
-                            {/* <!--  카드 바디 -->*/}
 
                             <div className="card-body">
-                            {/*// <!--  카드 바디 헤더 -->*/}
+
                                 <PostingListLike
                                         email={localStorage.getItem('email')}
                                         post_id={posting.pk}
@@ -110,8 +107,7 @@ function Postings(props){
                                     {posting.fields.subtitle}
                                 </p>
                             </div>
-                            {/*// <!--  카드 바디 본문 -->*/}
-                            {/*// <!--  카드 바디 푸터 -->*/}
+
                             <div className="card-body-footer">
                                 <p>
                                 <span>{posting.fields.city} {posting.fields.county}</span>

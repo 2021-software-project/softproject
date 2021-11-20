@@ -73,15 +73,15 @@ function Mbtircm(){
         }else if(num==4){
             setSelArea(selArea.slice(0,4))
         }
-        console.log(selArea);
+
     }
     const onRcmClick = () =>{
-        console.log()
+
     }
 
     return (
         <div className ="mb_ti-container">
-            <div className="mbtiTitle">MBTI로 아르바이트 추천받기</div>
+            <div className="mbtiTitle">본인의 <font>MBTI</font>를 선택하세요</div>
             <div className = "con">
             <div align="center">   {/*mbti 선택*/}
                 <div id="selMbti_inner">

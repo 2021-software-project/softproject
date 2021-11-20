@@ -1,7 +1,7 @@
 import React, {useEffect,useState} from 'react';
 import "../../css/FirstUserLike.css"
 import Axios from "axios";
-// import albaIcon from "../../img/albaIcon"
+
 
 function FirstUserLike(){
     let username = localStorage.getItem("username")
@@ -21,7 +21,7 @@ function FirstUserLike(){
 
     const onClickFirstJob=(e)=>{
         const selectedJob = e.index;
-        console.log(selectedJob);
+
 
         if(firstJobs.includes(selectedJob))
         {
@@ -62,7 +62,7 @@ function FirstUserLike(){
                     job : jobList[firstJobs[job]],
                     score : 4
                 }
-                console.log(firstRating);
+
                 Axios.post("/user/userrating/", firstRating,{
                 headers: {
                     'Accept': 'application/json',
@@ -70,7 +70,7 @@ function FirstUserLike(){
                     'Authorization': 'token ' + token,
                     }})
                     .then(response=>{
-                        console.log(response)
+
                 })
             }
             window.location.replace('/main')
@@ -85,7 +85,6 @@ function FirstUserLike(){
 
             </div><br/>
 
-            {/*<div className="jobSelected">{firstJobs.map(j => (<div>{j}</div>))}</div>*/}
 
             <div className="firstjob-grid-thead">
             {jobList.map((i,index) =>

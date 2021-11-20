@@ -32,16 +32,14 @@ const initialState = {
 export default function area_modules(state = initialState, action) {
   switch (action.type) {
     case ChangeJob:
-        console.log("ChangeJob 리듀서 호출");
-        console.log(state);
+
       return {
           ...state,
           ch_jobfamily: action.ch_jobfamily,
           ch_job: action.ch_job,
       };
     case ChangeScore:
-          console.log("ChangeScore 리듀서 호출");
-          console.log(state);
+
       return{
           ...state,
             ch_score: action.ch_score,

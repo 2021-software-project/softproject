@@ -15,7 +15,7 @@ function MbtiArea(props){
 
     useEffect(()=>{
         dispatch(changeSelectArea(selArea));
-        console.log(selArea);
+
     }, [selArea]);
 
     const onChangeArea = (ch_areasi, ch_areagu) => {
@@ -27,12 +27,10 @@ function MbtiArea(props){
             }
             else {
                 setSelArea([...selArea, ch_areasi, ch_areagu]);
-                //dispatch(changeArea(ch_areasi, ''));  //잠시 주석
+
             }
         }
- //       dispatch(changeSelectArea(selArea));
-  //      console.log(selArea);
-  //      console.log(select_area[0], select_area[1])
+
     }
 
     const SeoulArea = [
@@ -124,8 +122,6 @@ function MbtiArea(props){
         "전국전체",
     ];
 
-    console.log(ch_areasi, ch_areagu);
-    console.log(KyungkiArea.length)
 
     if (props.area_si === "부산") {
         return (

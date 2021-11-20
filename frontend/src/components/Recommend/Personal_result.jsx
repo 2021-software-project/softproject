@@ -54,7 +54,6 @@ function Personal_result(props) {
                 setUser(
                     res.data.username
                 )
-                console.log(res.data.username)
             });
         }
 
@@ -66,19 +65,19 @@ function Personal_result(props) {
             Axios.get('/user/persrcm/', {
                 params: {username: user, email:email},
             }).then((res) => {
-                console.log(res.data.job_list)
+
                 setJobList(
                     res.data.job_list
                 )
             }).catch(err => {
-                console.log(err)
+
             })
         }
     },[user])
 
     const onClickJob=(e)=>{
         setCode(e.value)
-        console.log("code"+code)
+
         setSelJob(
             selJob.map((j, index)=>
             index === e.index? true:false)
@@ -117,7 +116,7 @@ function Personal_result(props) {
                     'Authorization': 'token ' + token,
                 }
             }).then(function (response){
-                console.log(response)
+
             })
         }
             setSatisfyScore(ch_score)

@@ -16,7 +16,6 @@ class PasswordReset extends React.Component {
             .then(res => {
                 const data = res.data
                 if (data.success) {
-                    console.log("토큰인증 성공")
                     this.setState({uid:data.uid})
                     this.setState({token:data.token})
                     this.setState({success:data.success})

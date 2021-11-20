@@ -26,7 +26,7 @@ function Information() {
                     <div className ="item">
                         송현지<p></p>
                         mbti : ISFJ<p></p>
-                        동아대학교 <p></p>
+
                         환경공학과 & 컴퓨터공학과 졸업
                         <p>
 
@@ -35,20 +35,17 @@ function Information() {
                     <div className ="item">
                         이연의<p></p>
                         mbti : ISTP<p></p>
-                        동아대학교<p></p>
                         전자공학과 & 컴퓨터공학과 졸업
 
                     </div>
                     <div className ="item">
                         육다빈<p></p>
                         mbti : ISFJ<p></p>
-                        동아대학교<p></p>
                         수학과 & 컴퓨터공학과 졸업
                     </div>
                     <div className ="item">
                         김민지<p></p>
                         mbti : ENFP<p></p>
-                        동아대학교<p></p>
                         수학과 & 컴퓨터공학과 졸업
                     </div>
 
