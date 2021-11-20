@@ -5,7 +5,8 @@ export function Logout() {
 
     let token = localStorage.getItem('token')
 
-    // console.log("로그아웃")
+
+
     Axios({
         url: "/user/logout/",
         method: 'post',

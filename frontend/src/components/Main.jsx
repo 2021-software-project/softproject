@@ -16,13 +16,7 @@ class Main extends React.Component {
         return (
             <div className="Main">
                 <div className ="home_container">
-                    {/*<header>*/}
-                    {/*    <div className ="home_container-2">*/}
-                    {/*        <h1 className="header">MAIN PAGE</h1>*/}
-                    {/*    </div>*/}
-                    {/*</header>*/}
 
-                {/* <!-- Two --> */}
                 <div className="main-section">
                     <section
                         className="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
@@ -40,7 +34,7 @@ class Main extends React.Component {
                         </div>
                     </section>
 
-                    {/* <!-- Three -->*/}
+
                     <section
                         className="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
                         <div className="content">

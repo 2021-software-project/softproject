@@ -21,12 +21,7 @@ function Job2(props){
         "PC방", "노래방", "볼링ㆍ당구장", "스크린 골프ㆍ야구", "DVDㆍ멀티방ㆍ만화카페", "오락실ㆍ게임장", "이색테마카페", "키즈카페",
         "찜질방ㆍ사우나ㆍ스파","피트니스ㆍ스포츠","고속도로휴게소","매장관리ㆍ판매 기타",
     ];
-    // const Job3000 = [
-    //     "놀이공원ㆍ테마파크", "호텔ㆍ리조트ㆍ숙박", "여행ㆍ캠프ㆍ레포츠", "영화ㆍ공연", "전시ㆍ컨벤션ㆍ세미나",
-    //     "스터디룸ㆍ독서실ㆍ고시원", "PC방", "노래방", "볼링ㆍ당구장", "스크린 골프ㆍ야구", "DVDㆍ멀티방ㆍ만화카페",
-    //     "오락실ㆍ게임장", "이색테마카페", "키즈카페", "찜질방ㆍ사우나ㆍ스파", "피트니스ㆍ스포츠", "공인중개", "골프캐디",
-    //     "고속도로휴게소", "문화ㆍ여가ㆍ생활 기타",
-    // ];
+
     const Job4000 = [
         "놀이공원ㆍ테마파크", "호텔ㆍ리조트ㆍ숙박", "여행ㆍ캠프ㆍ레포츠", "영화관ㆍ공연장", "전시ㆍ컨벤션ㆍ세미나", "안내데스크ㆍ리셉션", "주차유도ㆍ안내",
         "보안ㆍ경비ㆍ경호", "주유ㆍ세차", "렌터카ㆍ차량관리", "전단지배포", "청소ㆍ미화", "렌탈관리ㆍA/S", "골프캐디", "헤어ㆍ미용ㆍ네일샵", "피부관리ㆍ마사지", "반려동물케어",
@@ -73,7 +68,7 @@ function Job2(props){
                 i===index ? true : false)
         )
     }
-    console.log(ch_jobfamily, ch_job);
+
 
     if (props.job_value === "매장관리ㆍ판매") {
         return (
@@ -84,15 +79,7 @@ function Job2(props){
                     }
             </div>)
     }
-    // else if (props.job_value === "문화ㆍ여가ㆍ생활") {
-    //     return (
-    //         <div className="jobSelect">
-    //                 {Job3000.map((job, index) =>
-    //                     (<div className={"jobSelectDetail"}><a className={`JobSelect${albaDetailArr[index]? ' selectDetailJob':''}`} name={"JobSelect"} value={job}
-    //                             onClick={()=>onChangeJob('문화ㆍ여가ㆍ생활',job, index)}> {job}</a></div>))
-    //                 }
-    //         </div>)
-    // }
+
     else if (props.job_value === "서비스") {
         return (
             <div className="jobSelect">

@@ -49,7 +49,7 @@ function Mbtiresult(props) {
             axios.get('/user/mbtircm/', {
                 params: {mbti: ch_mbti, email: localStorage.getItem("email")},
             }).then((res) => {
-                console.log(res.data.job_list)
+
                 setJobList(
                     res.data.job_list
                 )
@@ -62,12 +62,12 @@ function Mbtiresult(props) {
 
     const onClickJob = (e) => {
         setCode(e.value)
-        console.log("code" + code)
+
         setSelJob(
             selJob.map((j, index) =>
                 index === e.index ? true : false)
         )
-        console.log(selJob);
+
     }
     const scrollUp = () => {
         window.scrollTo(0, 0);
@@ -103,7 +103,7 @@ function Mbtiresult(props) {
                     'Authorization': 'token ' + token,
                 }
             }).then(function (response){
-                console.log(response)
+
             })
         }
         setSatisfyScore(ch_score)
@@ -150,7 +150,7 @@ function Mbtiresult(props) {
                 <div>
                     <br/>
                     <h2>추천 결과가 어떠신가요?</h2>
-                    <span>알바를 평가하면 더 좋은 결과를 받으실 수 있습니다</span>
+                    <span>알바를 평가하면 더 좋은 결과를 받으실 수 있습니다</span><br/>
                     <fieldset>
                         {SCORE.map((i, index) =>
                                   <label className={`${resultScoreArr[index]?'checkStar':''}`}>⭐<input type="radio" className={`scoreSelect`} name={"score_"} value={i}

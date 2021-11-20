@@ -59,7 +59,6 @@ const SignupPage = () => {
   const onChecked = (e) =>{
     if(e.target.checked) {
       setChk(true)
-      console.log(chk)
     }
   }
 
@@ -71,7 +70,6 @@ const SignupPage = () => {
 
   const onChangeMbti = (e) => {
     setMbtiSelected(e.target.value);
-    console.log(selMbti);
   };
 
     const [ modalOpen, setModalOpen ] = useState(false);
@@ -88,7 +86,7 @@ const SignupPage = () => {
 
 
 
-    // console.log(cookies.get('csrftoken'));
+
   const onSubmit = (e) => {
       e.preventDefault()
 
@@ -108,7 +106,7 @@ const SignupPage = () => {
           mbti:selMbti,
           sns:'' // 없어도 user db 에 들어감
       }
-      // console.log(user);
+
 
       //개인정보수집 check 확인
       if (!chk) {
@@ -120,8 +118,7 @@ const SignupPage = () => {
           {
           headers : {
               "CSRF-TOKEN":csrftoken
-                // Token :csrftoken
-               // Authorization: `CSRF token ${cookies.get('csrftoken')}`
+
           }
       }
       )
@@ -130,8 +127,7 @@ const SignupPage = () => {
                   alert(res.data.success)
                   window.location = '/login'
               } else {
-                  // console.log(res.data)
-                  // console.log(res.data.key)
+
                   setUsername('')
                   setEmail('')
                   setMbtiSelected('')
@@ -154,7 +150,7 @@ const SignupPage = () => {
               }
               const errType = Object.keys(err.response.data)[0]
               let errMsg = err.response.data[errType]
-              // console.log(errType, errMsg)
+
               if (errType === "email") {
                   setEmail('')
                   document.getElementById(errType).focus();

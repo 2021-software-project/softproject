@@ -39,23 +39,23 @@ const initialState = {
 export default function area_modules(state = initialState, action) {
   switch (action.type) {
     case ChangeArea:
-        console.log("ChangeArea 리듀서 호출");
-        console.log(state);
+
+
       return {
           ...state,
           ch_areagu: action.ch_areagu,
           ch_areasi: action.ch_areasi,
       };
     case ChangeMbti:
-          console.log("ChangeMbti 리듀서 호출");
-          console.log(state);
+
+
       return{
           ...state,
           ch_mbti: action.ch_mbti,
       }
     case ChangeSelectArea:
-          console.log("ChangeSelectArea 리듀서 호출");
-          console.log(state);
+
+
       return{
           ...state,
           select_area: action.select_area,

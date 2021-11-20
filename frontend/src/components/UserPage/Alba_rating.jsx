@@ -24,7 +24,7 @@ function Alba_rating(){
         token = localStorage.getItem('token')
     }, [])
 
-    console.log(email)
+
     const JOBFAMILY = [
             "외식ㆍ음료", "매장관리ㆍ판매", "서비스", "사무직", "고객상담ㆍ리서치ㆍ영업", "생산ㆍ건설ㆍ노무", "ITㆍ기술",
             "교육ㆍ강사", "디자인", "미디어", "운전ㆍ배달", "병원ㆍ간호ㆍ연구",
@@ -68,7 +68,7 @@ function Alba_rating(){
                     score: ch_score,
                     mbti: localStorage.getItem('mbti'),
                 }
-                console.log(rating1);
+
 
                 let token = localStorage.getItem('token')
 
@@ -81,7 +81,7 @@ function Alba_rating(){
                         }
                     })
                     .then(response => {
-                        console.log(response)
+
                         alert("평가 완료 !")
                         onChangeJob("", "")
                         onChangeScore(0)
@@ -89,9 +89,7 @@ function Alba_rating(){
 
                     })
                     .catch(function (err) {
-                        console.log("token : ", token)
-                        //console.clear()
-                        console.log(err)
+
                     })
             } else {
 
@@ -116,15 +114,13 @@ function Alba_rating(){
             </div>
 
             <div className="alba_subbox2">
-                {/*<table id="job_table">*/}
-                {/*<tr colSpan={JOBFAMILY.length}>*/}
+
                     <Job2 job_value={ch_jobfamily} albaDetailArr={albaDetailArr} setAlbaDetail={setAlbaDetailArr}/>
-                {/*</tr>*/}
-                {/*</table>*/}
+
             </div>
 
             <div className="mid_box">
-            {/*<h3>점수 매기기</h3>*/}
+
                 <div align="center" id="rating">
                     <table>
                         <fieldset>

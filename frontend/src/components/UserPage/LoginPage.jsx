@@ -31,7 +31,6 @@ const LoginPage = () => {
         /*alert("user", user.email, user.password)
         alert("res",res)*/
         if (res.data.token) {
-            console.log(res.data)
             let token = res.data.token;
             // let username = res.data
             localStorage.setItem('token',token);
@@ -47,7 +46,7 @@ const LoginPage = () => {
                         'Authorization': 'token ' + token,
                     }})
                 .then(response=>{
-                    console.log(response.data)
+
                     localStorage.setItem('mbti', response.data.mbti)
                     localStorage.setItem('username', response.data.username)
 
@@ -66,18 +65,16 @@ const LoginPage = () => {
                             else{
                                 window.location.replace('/main')
                             }
-                            console.log(Response.data)
+
                         })
                         .catch((Error) => {
-                            console.log("평가 목록 접근 실패")
-                            console.log(Error)
+
                             alert('메인 페이지로 이동합니다.')
                             window.location = '/main'
                         })
 
                 }).catch(err=>{
-                    console.log("사용자 정보 접근 실패")
-                    console.log(err);
+
                     Logout()
                     alert('다시 로그인해주시기 바랍니다.')
                     window.location.replace('/login')
@@ -87,7 +84,7 @@ const LoginPage = () => {
             setEmail('')
             setPassword('')
             localStorage.clear()
-            console.log(res);
+
         }
       })
       .catch(err => {
