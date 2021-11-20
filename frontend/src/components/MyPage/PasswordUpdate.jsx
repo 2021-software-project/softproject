@@ -109,7 +109,7 @@ function PasswordUpdate() {
   return (
       <div className = "password_con-2">
           <div  id="password_con-1 ">
-              <form onSubmit={onSubmit}>
+              <form onSubmit={onSubmit} method="GET">
                    <div className ="password_con-2">
                         <table  width ="100%">
                             <tr>

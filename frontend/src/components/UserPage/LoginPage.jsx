@@ -148,7 +148,7 @@ const LoginPage = () => {
       <div className="LoginSignupform">
           <div className="section text-center">
             <h4 className="mb-4 pb-3">LOG IN</h4>
-              <form onSubmit={onSubmit}>
+              <form onSubmit={onSubmit} method="GET">
                   <div className="form-group">
                     <input type="email" name="logemail" value={email} onChange={e => setEmail(e.target.value)} required
                      className="form-style" placeholder="이메일" id="logemail" autoComplete="off"/>
