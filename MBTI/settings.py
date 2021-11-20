@@ -67,7 +67,7 @@ STATICFILES_DIRS = (#추가해줌
 DEBUG = True
 
 # 0908 변경
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", ".ap-northeast-2.compute.amazionaws.com"]
 
 # Application definition
 INSTALLED_APPS = [
