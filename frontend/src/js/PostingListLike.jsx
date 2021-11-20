@@ -54,7 +54,7 @@ function PostingListLike(props) {
                 setLikes(1);
             })
             .catch(function (err){
-              console.log(err)
+              //console.log(err)
         })}
         else if(Likes === 1){
             axios.delete(`/user/userpostinglike/${props.email}/${props.post_id}`,
@@ -68,7 +68,7 @@ function PostingListLike(props) {
               })
               .catch(function (error) {
                 // handle error
-                console.log(error);
+                //console.log(error);
               })
         }
         else if(Likes === -1){
@@ -83,7 +83,7 @@ function PostingListLike(props) {
               })
               .catch(function (error) {
                 // handle error
-                console.log(error);
+                //console.log(error);
               })
         }
     }

@@ -1,17 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import styled from 'styled-components';
-import {Tooltip} from "antd";
 import {LikeOutlined, LikeFilled, DislikeOutlined, DislikeFilled} from '@ant-design/icons';
 import "../css/JobPostingModal.css"
 import axios from "axios";
 
-
 const JobPostingModal = ( props ) => {
     // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
     const { open, close, post_id, jobcode } = props;
-
     const [postingLike, setPostingLike] = useState(0);
-
     let token = localStorage.getItem('token');
     let email = localStorage.getItem('email');
 
@@ -25,7 +20,6 @@ const JobPostingModal = ( props ) => {
                     }
                 })
                 .then((response) => {
-                    console.log(response);
                     if (response.data.like === 1) {
                         setPostingLike(1);
                     } else if (response.data.like === -1) {
@@ -53,7 +47,7 @@ const JobPostingModal = ( props ) => {
               })
               .catch(function (error) {
                 // handle error
-                console.log(error);
+                //console.log(error);
               })
         }
         else if(postingLike === 0){
@@ -74,7 +68,7 @@ const JobPostingModal = ( props ) => {
                     setPostingLike(1);
                 })
                 .catch(function (err){
-                  console.log(err)
+                  //console.log(err)
             })
         }
         else if(postingLike === -1){
@@ -95,7 +89,7 @@ const JobPostingModal = ( props ) => {
               })
               .catch(function (error) {
                 // handle error
-                console.log(error);
+                //console.log(error);
               })
         }
     }
@@ -112,7 +106,7 @@ const JobPostingModal = ( props ) => {
               })
               .catch(function (error) {
                 // handle error
-                console.log(error);
+                //console.log(error);
               })
         }
         else if(postingLike === 0){
@@ -133,7 +127,7 @@ const JobPostingModal = ( props ) => {
                     setPostingLike(-1);
                 })
                 .catch(function (err){
-                  console.log(err)
+                  //console.log(err)
             })
         }
         else if(postingLike===1){
@@ -154,7 +148,7 @@ const JobPostingModal = ( props ) => {
               })
               .catch(function (error) {
                 // handle error
-                console.log(error);
+                //console.log(error);
               })
         }
     }

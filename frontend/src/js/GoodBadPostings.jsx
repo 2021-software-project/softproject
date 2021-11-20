@@ -2,18 +2,13 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import PostingListLike from "./PostingListLike";
 import JobPostingModal from "./JobPostingModal";
-import GoodBad from "../components/MyPage/GoodBad_list";
-
 
 function GoodBadPostings(props){
     const {id, city, company, county, pay, pay_type, sub_code, subtitle, url} = props;
-
     const [ modalOpen, setModalOpen ] = useState(false);
     const [ showingurl, setshowingurl] = useState("");
-
     const [start_time, setStartTime] = useState(0);
     let stay_time;
-
     const [ postid, setpostid ] = useState('');
     const [ subCode, setsubCode] = useState('');
 
@@ -22,7 +17,6 @@ function GoodBadPostings(props){
     const openModal = (e) => {
         setModalOpen(true);
         setStartTime(new Date());
-        console.log("open: "+ start_time);
     }
     const closeModal = () => {
         stay_time = (new Date()-start_time)/1000;
@@ -46,13 +40,12 @@ function GoodBadPostings(props){
                 }
             })
             .catch(function (err){
-              console.log(err)
+              //console.log(err)
         })
     }
 
     return(
     <div className="postings">
-        {/*console.log(props);*/}
         <div className="card">
                 <div className="card-body">
                     <PostingListLike
@@ -85,7 +78,6 @@ function GoodBadPostings(props){
                 </div>
             </iframeCon>
         </JobPostingModal>
-
     </div>
     )
 }

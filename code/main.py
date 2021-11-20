@@ -30,11 +30,12 @@ if __name__ == "__main__":
     # rw = 4 # 당일 등록된 공고만
     rw = 3 # 3일 이내 등록된 공고만
 
-    code = '7000'
+    code = '~8990'
 
     # code_list = job_code.sub_code_list() # 한번에 전체 공고 수집 시
-    code_list = job_code.sub_code_list_part(code) # 직종 분류 별로 나눠 수집 시
+    # code_list = job_code.sub_code_list_part(code) # 직종 분류 별로 나눠 수집 시
 
+    code_list = ['8075', '8116', '8117', '8085', '8095', '8118', '8100', '8110', '8990']
     crawl = scrap.Scrap(rw, code_list)
 
     if crawl == False:

@@ -39,35 +39,17 @@ function HomeMbti() {
             [name]:value
         });
     }
-
-    // const resultRef = useRef();
-    //
-    // const toRcmScroll =()=>{
-    //     resultRef.current.scrollIntoView({behavior: 'smooth', block: 'end'})
-    // };
-
      const changeRcm = () =>{
         if(mbti.length < 4){
             alert("mbti를 선택해 주세요")
         }
         else{
             setRcm(true)
-            // scrollToRcm();
         }
-
-        // toRcmScroll();
-
     };
-    // const scrollToRcm=()=>{
-    //     var rcmHeight = document.querySelector(".home-mbti-rcm").offsetHeight;
-    //     console.log(rcmHeight)
-    //     window.scrollTo({top:rcmHeight,behavior:'smooth'});
-    // }
-
     return(
         <div id="inner">
             <section className="sc-mbti">
-                {/*<form onSubmit={changeRcm}  target="iframe1">*/}
                 <table id="User-mbti" width="70%" align="center">
                     <tr>
                         <td className ="user-mbti"><label><input type="radio" className="mbtiSelect" name="one" onChange={onMbtiChange} value="I" required/>
@@ -99,17 +81,10 @@ function HomeMbti() {
                             </Link>
                         }
                     </div>
-                {/*</form>*/}
-
-                {/*페이지 이동 없애기 -> form 의 target을 iframe으로 설정, iframe은 안 보이게 설정*/}
-                {/*<div >*/}
-                {/*    <iframe name="iframe1" style={{display: 'none'}}> </iframe>*/}
-                {/*</div>*/}
             </section>
             <div id="home-mbti-rcm" className="home-mbti-rcm">
                 {rcm ?<MbtiRecommend mbti={mbti}/> : <span></span>}
             </div>
-
         </div>
     )
 }

@@ -2,12 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Mypage from "./MyPage";
 import axios from 'axios';
 import "../../css/RatingList.css";
-
-
 function RatingOne({index, id, jobfamily, job, score}){
-
     const ratingDelete=(e)=>{
-        console.log(e.id);
         let chkDelete = window.confirm("삭제하시겠습니까?");
         if(chkDelete == true){
           axios.delete('/user/userrating/'+e.id,
@@ -18,19 +14,16 @@ function RatingOne({index, id, jobfamily, job, score}){
                 }})
           .then(function (response) {
             window.location.replace("/mypage");
-            console.log(response);
           })
           .catch(function (error) {
             // handle error
-            console.log(error);
+            //console.log(error);
           })
         }
         else if(chkDelete == false){
-          console.log("취소");
+
         }
     }
-
-
   return(
       <tr className={`ratingListRow${index%2?' odd':''}`}>
             <td>{jobfamily}</td>
@@ -41,8 +34,6 @@ function RatingOne({index, id, jobfamily, job, score}){
 
   )
 }
-
-
 function Rating(){
 
     const [ratinglist, setRatinglist] = useState('')
@@ -61,11 +52,10 @@ function Rating(){
                 setRatinglist(
                     Response.data
                 )
-                console.log(Response.data)
 
             })
             .catch((Error) => {
-                console.log(Error)
+                //console.log(Error)
             })
 
     }, [])
@@ -96,13 +86,9 @@ function Rating(){
                       </table>
               </div> :''}
                   <button className="jobSelectBtn" onClick={onJobSelectBtnClick}>알바평가하러 가기</button>
-
-
           </div>
-
         </div>
     )
-
 }
 
 export default Rating

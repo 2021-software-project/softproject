@@ -17,7 +17,6 @@ import Personal_result from "./components/Recommend/Personal_result";
 
 import MyPage from './components/MyPage/MyPage';
 import GoodBad from './components/MyPage/GoodBad_list';
-import MyInfo from './components/MyPage/MyInfo_edit';
 import Rating from './components/MyPage/Rating_list';
 import Albarating from './components/UserPage/Alba_rating';
 import FirstUserLike from "./components/UserPage/FirstUserLike";
@@ -37,8 +36,6 @@ function App(props) {
 
                 <Route exact path="/login" component={LoginSignupform}></Route>
                 <Route exact path="/" component={Home}></Route>
-                {/*<Route exact path="/home_mbti" component={HomeMbti}></Route>*/}
-                {/*<Route exact path="/mbti" component={MbtiRecommend}></Route>*/}
                 <PrivateRoute exact path="/firstulike" component={FirstUserLike}></PrivateRoute>
                 <PrivateRoute exact path="/main" component={Main}></PrivateRoute>
                 <PrivateRoute exact path="/mypage" component={MyPage}></PrivateRoute>
@@ -47,8 +44,6 @@ function App(props) {
                 <PrivateRoute exact path="/personal_rcm" component={Personal_rcm}></PrivateRoute>
                 <PrivateRoute exact path="/personal_result" component={Personal_result}></PrivateRoute>
                 <PrivateRoute exact path="/GoodBad_list" component={GoodBad}></PrivateRoute>
-                <PrivateRoute exact path="/MyInfo_edit" component={MyInfo}></PrivateRoute>
-
                 <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
                 <PrivateRoute exact path="/Rating_list" component={Rating}></PrivateRoute>
                 <PrivateRoute exact path="/information" component={Information}></PrivateRoute>

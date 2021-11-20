@@ -1,4 +1,4 @@
-#db.py
+db.py
 
 *.log
 *.pot
@@ -15,7 +15,7 @@ user/__pycache__/
 MBTI/modules/
 /MBTI/migrations/
 user/migrations/
-#MBTI/secrets.json
+MBTI/secrets.json
 mbtienv/
 
 #.idea

@@ -43,24 +43,6 @@ function NavBar() {
 
     const handleLogout = () => {
         Logout();
-        // let token = localStorage.getItem('token')
-        // console.log("로그아웃")
-        // Axios({
-        //     url: "/user/logout/",
-        //     method: 'post',
-        //     headers: {
-        //        'Content-Type': 'application/json',
-        //         Authorization: `Token ${token}`
-        //     }
-        // })
-        //   .then(res => {
-        //     localStorage.clear()
-        //     window.location.replace('/login')
-        //   })
-        //     .catch(err=>{
-        //         console.log(err)
-        //         console.log(err.data)
-        //     });
     }
     const onClink=(e)=>{
 

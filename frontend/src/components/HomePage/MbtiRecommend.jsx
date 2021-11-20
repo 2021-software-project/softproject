@@ -1,9 +1,6 @@
 import React, {useState,useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import styled from "styled-components";
-
 import "../../css/MbtiRecommend.css";
-
 
 const Title = styled.div`
   h2{
@@ -13,31 +10,12 @@ const Title = styled.div`
     padding: 30px;
   }
 `;
-
-/*const JobList = styled.div`
-    li{
-        list-style: none;
-        padding: 10px 35px 10px 0px;
-        font-size: 1.2rem;
-    }
-    ul {
-    margin: 30px 0px;
-    }
-`;*/
-
 class MbtiRecommend extends React.Component {
-
-
     constructor(props) {
-
-
         super(props);
-
         this.state = {
-
             auth: localStorage.getItem("token"),
             mbti: this.props.mbti.toLocaleString().toLowerCase(),
-
             mbtiJobs: {
                 enfj: ['생동성 임상시험', '의류 잡화 쥬얼리매장', '매장관리 판매', '오락실 게임장', '컴퓨터 정보통신'],
                 enfp: ['매장관리 판매 기타', '실험 연구보조', '매장관리 판매', '의류 잡화 쥬얼리매장', '오락실 게임장'],
@@ -56,11 +34,9 @@ class MbtiRecommend extends React.Component {
                 istj: ['포장 품질검사', '실험 연구보조', '예체능 강사', '수의테크니션 동물보건사', '입시 보습학원'],
                 istp: ['실험 연구보조', '경리 회계보조', '금융 보험영업', '컴퓨터 정보통신', '전시 컨벤션 세미나'],
             },
-
             myJobs: [],
         };
     }
-
     componentWillMount() {
         if (this.state.mbti === "intp") {
             this.state.myJobs = this.state.mbtiJobs.intp;
@@ -95,33 +71,22 @@ class MbtiRecommend extends React.Component {
         } else if (this.state.mbti === "estj") {
             this.state.myJobs = this.state.mbtiJobs.estj;
         }
-        console.log(this.state.myJobs)
     }
-
     render() {
         return (
             <div className="recommend_conDiv">
-
                 <font2>" {this.state.mbti.toLocaleString().toUpperCase()} "</font2>
                 &nbsp; &nbsp;
                 <font3>맞춤 알바</font3>
-
                 <div className="recommend_con">
-
-
                     <div className="rcm-grid-thead">
-
                         {this.state.myJobs.map((job, index) =>
                             (<div className="recommend_job">
-
                                 <div className="textbox">{job}</div>
-
                             </div>))
                         }
                     </div>
                 </div>
-
-
                 {this.state.auth ?
 
                     ""
@@ -131,7 +96,6 @@ class MbtiRecommend extends React.Component {
                         <font4>당신의 성향에 맞춰 더 자세한 추천을 원한다면</font4>
                     </div>
                 }
-
                 {this.state.auth ?
                     <a href="/Mbti_rcm">
                         <button className="button_primary" type="button">더 많은 공고 보러 가기</button>
@@ -139,9 +103,7 @@ class MbtiRecommend extends React.Component {
                     <a href="/login">
                         <button className="button_primary" type="button">알바그램 회원하러 가기</button>
                     </a>
-
                 }
-
                 <br/>
                 <br/>
                 <br/>
@@ -149,8 +111,6 @@ class MbtiRecommend extends React.Component {
             </div>
         )
     }
-
-
 }
 
 export default MbtiRecommend;

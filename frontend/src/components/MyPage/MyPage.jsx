@@ -17,7 +17,6 @@ function MyPage() {
             selMenu.map((m, index)=>
             index === 2? true:false)
         )
-        //window.location.replace('/Rating_list');
     }
     const GoodBadList=(e)=>{
         setSelMenu(
@@ -45,7 +44,6 @@ function MyPage() {
             }).then(res=>{
                     setUsermbti(res.data)
                     setMbtiSelected(res.data)
-                    console.log(res.data)
                 })
         }
     },[])
@@ -74,7 +72,7 @@ function MyPage() {
                     setUsermbti(mbti)
                     localStorage.setItem("mbti",mbti)
                 }).catch(err=>{
-                    console.log(err)
+                    //console.log(err)
             })
         }
     }

@@ -6,11 +6,8 @@ import axios from "axios";
 import GoodBadPostings from "../../js/GoodBadPostings" ;
 
 function GoodBad(){
-
     let email = localStorage.getItem('email');
     let token = localStorage.getItem('token');
-    // const [goodList, setGoodList] = useState([]);
-    // const [badList, setBadList] = useState([]);
     const [totalList, setTotalList] = useState([]);
     useEffect(()=>{
         axios.get(`/user/userpostinglike/withposting/${email}`,
@@ -22,22 +19,9 @@ function GoodBad(){
         })
         .then((Response) => {
             setTotalList(Response.data);
-            // Response.data.map((i)=> {
-            //         if (i.like === 1) {
-            //             if(!goodList.includes(i)){
-            //                 console.log(goodList.includes(i));
-            //                 setGoodList(goodList => [...goodList, i]);
-            //             }
-            //         } else if (i.like === -1) {
-            //             if(!badList.includes(i)) {
-            //                 setBadList(badList => [...badList, i]);
-            //             }
-            //         }
-            //     }
-            // )
         })
         .catch((Error) => {
-            console.log(Error)
+            //console.log(Error)
         })
     }, []);
     const goRecommendMbti=()=>{
@@ -46,9 +30,6 @@ function GoodBad(){
     const goRecommendPersonal=()=>{
         window.location.replace('/Personal_rcm');
     }
-    console.log(totalList);
-
-
     return(
         <div id = "goodBadList">
             {totalList.length!=0?
@@ -100,9 +81,6 @@ function GoodBad(){
                     <button className="goRecommend" onClick={goRecommendMbti}>mbti 추천받기</button>
                     <button className="goRecommend" onClick={goRecommendPersonal}>개인별 추천받기</button>
                 </div>
-
-
-
         </div>
 
     )

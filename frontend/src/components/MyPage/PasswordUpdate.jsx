@@ -18,11 +18,9 @@ function PasswordUpdate() {
       e.preventDefault()
 
       var checkpwd1 = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-      var checkpwd2 = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-
-
+      var checkpwd2 = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=*]).*$/;
       if (!checkpwd1.test(newpwd1) && !checkpwd2.test(newpwd1)) {
-          alert("비밀번호를 확인해 주세요. 영소문자,숫자 포함 8~16자 (특수문자 가능) ")
+          alert("비밀번호를 확인해 주세요. 영소문자,숫자 포함 8~16자 [특수문자(!@#$%^&+=*) 가능] ")
           return
       }
 
@@ -40,7 +38,6 @@ function PasswordUpdate() {
       })
           .then(res => {
               if (res.data.detail) {
-                  console.log(res.data)
                   alert("비밀번호가 변경되었습니다.")
                   window.location.replace('/mypage')
               } else {
@@ -51,11 +48,9 @@ function PasswordUpdate() {
           })
           .catch(err => {
               var errCode = err.response.status;
-              // const msg = document.getElementsByClassName("password-change-msg")
-              // console.log(msg)
               try {
                   if (errCode == 400) {
-                      console.log(err.response)
+                      //console.log(err.response)
                       if (err.response.data.old_password) {
                           alert("현재 비밀번호가 일치하지 않습니다.")
                           // msg.innerText("현재 비밀번호가 일치하지 않습니다.")
@@ -141,15 +136,9 @@ function PasswordUpdate() {
                   <div clsssName="button_box">
                     <button className="button_primary" type="submit" >변경하기</button>
                   </div>
-
-
         </form>
           </div>
-
       </div>
-
-
-
   );
 }
 

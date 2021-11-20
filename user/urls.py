@@ -1,6 +1,5 @@
 from django.urls import include, path
-from . import views
-from django.contrib import admin
+
 
 from .views import PasswordTokenCheckAPI, RequestPasswordResetEmail, SetNewPasswordAPIView, \
     UserRatingVIEW, UserPostingClickVIEW, \
