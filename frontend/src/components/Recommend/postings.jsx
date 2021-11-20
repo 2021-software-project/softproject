@@ -50,7 +50,7 @@ function Postings(props){
          }
 
 
-         axios.post("/user/userpostingclick/", whatPostingClick,
+         axios.post(process.env.REACT_APP_DB_HOST+"/user/userpostingclick/", whatPostingClick,
             {
                 headers: {
                     'Accept': 'application/json',
@@ -82,7 +82,7 @@ function Postings(props){
             data.append("selectArea",a)
         })
 
-        axios.post('/user/postings/', data)
+        axios.post(process.env.REACT_APP_DB_HOST+'/user/postings/', data)
         .then(function (res) {
             setPostings(res.data)
         })

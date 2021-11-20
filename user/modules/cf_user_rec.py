@@ -42,7 +42,7 @@ class User :
                 r = np.dot(sim_i, job_i['rating'].values) / sim_i.sum()  # 예상평점 계산
 
                 rec_job.append((item, r))
-                print("rec_job ",rec_job)
+                # print("rec_job ",rec_job)
 
         rec_job.sort(key=lambda x: x[1], reverse=True)
 

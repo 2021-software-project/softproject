@@ -46,7 +46,7 @@ function Mbtiresult(props) {
         }
 
         if (jobList == '') {
-            axios.get('/user/mbtircm/', {
+            axios.get(process.env.REACT_APP_DB_HOST+'/user/mbtircm/', {
                 params: {mbti: ch_mbti, email: localStorage.getItem("email")},
             }).then((res) => {
 
@@ -75,7 +75,7 @@ function Mbtiresult(props) {
 
     const onChangeScore = (ch_score, index) => {
         if(satisfyScore === 0){
-            axios.post('/user/resultsatisfy/',
+            axios.post(process.env.REACT_APP_DB_HOST+'/user/resultsatisfy/',
                 {
                     email:email, mbti:mbti, rating:ch_score, recommendtype:1
                 },
@@ -106,7 +106,7 @@ function Mbtiresult(props) {
             })
         }
         else{
-            axios.put(`user/resultsatisfy/${satisfyScoreId}`,{
+            axios.put(process.env.REACT_APP_DB_HOST+`user/resultsatisfy/${satisfyScoreId}`,{
                 email:email, mbti:mbti, rating:ch_score, recommendtype:1
             },{
                 headers:{

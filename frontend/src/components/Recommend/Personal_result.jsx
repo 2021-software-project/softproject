@@ -45,7 +45,7 @@ function Personal_result(props) {
         }
 
         if (jobList == '') {
-            Axios.get('/user/persrcm/', {
+            Axios.get(process.env.REACT_APP_DB_HOST+'/user/persrcm/', {
                 params: {email:email},
             }).then((res) => {
 
@@ -85,7 +85,7 @@ function Personal_result(props) {
     }
     const onChangeScore = (ch_score, index) => {
         if(satisfyScore === 0){
-            axios.post('/user/resultsatisfy/',
+            axios.post(process.env.REACT_APP_DB_HOST+'/user/resultsatisfy/',
                 {
                     email:email, mbti:mbti, rating:ch_score, recommendtype:2
                 },
@@ -104,7 +104,7 @@ function Personal_result(props) {
             })
         }
         else{
-            axios.put(`user/resultsatisfy/${satisfyScoreId}`,{
+            axios.put(process.env.REACT_APP_DB_HOST+`user/resultsatisfy/${satisfyScoreId}`,{
                 email:email, mbti:mbti, rating:ch_score, recommendtype:2
             },{
                 headers:{

@@ -182,6 +182,7 @@ class UserRatingVIEW(generics.ListAPIView): #알바평가 db에 넣고 가져오
     def get_queryset(self):
         qs = super().get_queryset()
         search = self.request.query_params.get('search')
+        print(search)
         if search:
             qs = qs.filter(email=search)
             for rating in qs:
@@ -461,11 +462,11 @@ def postings(request):
 
         if len(qs) > 45:
             qs = random.sample(list(qs), 45)
-        print("공고갯수: ",len(qs))
+        # print("공고갯수: ",len(qs))
         # print("----------------- qs\n",qs)
 
         post_list = serializers.serialize('json', qs)
 
-        print(post_list)
+        # print(post_list)
         return HttpResponse(post_list, content_type="text/json-comment-filtered")
 
