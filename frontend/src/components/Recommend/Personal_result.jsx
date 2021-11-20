@@ -17,7 +17,7 @@ function Personal_result(props) {
     const [jobList, setJobList] = useState([])
     const [selJob, setSelJob] = useState(Array(6).fill(false));
     const [code,setCode] = useState('')
-    const [user, setUser] = useState('')
+    // const [user, setUser] = useState('')
 
     const SCORE = [5,4,3,2,1];
     const [satisfyScore, setSatisfyScore] = useState(0);
@@ -43,37 +43,32 @@ function Personal_result(props) {
                 }}/>
             )
         }
-        let token = localStorage.getItem('token')
-
-        if (localStorage.getItem('token') !== null && user=='') {
-            Axios({
-                method: 'get',
-                url: '/user/auth/user/',
-                headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'}
-            }).then(res => {
-                setUser(
-                    res.data.username
-                )
-                console.log(res.data.username)
-            }).catch(err=>{
-                var errCode = err.response.status;
-                if (errCode == 401) {
-                    alert("다시 로그인 해주시기 바랍니다.")
-                    localStorage.clear();
-                    window.location = '/login'
-                }else {
-                    window.location = '/error'
-                }
-            });
-        }
-
-
-    }, [])
-
-    useEffect(()=>{
+        // let token = localStorage.getItem('token')
+        //
+        // if (localStorage.getItem('token') !== null && user=='') {
+        //     Axios({
+        //         method: 'get',
+        //         url: '/user/auth/user/',
+        //         headers: {'Authorization': 'token ' + token, 'Content-Type': 'application/json'}
+        //     }).then(res => {
+        //         setUser(
+        //             res.data.username
+        //         )
+        //         console.log(res.data.username)
+        //     }).catch(err=>{
+        //         var errCode = err.response.status;
+        //         if (errCode == 401) {
+        //             alert("다시 로그인 해주시기 바랍니다.")
+        //             localStorage.clear();
+        //             window.location = '/login'
+        //         }else {
+        //             window.location = '/error'
+        //         }
+        //     });
+        // }
         if (jobList == '') {
             Axios.get('/user/persrcm/', {
-                params: {username: user, email:email},
+                params: {email:email},
             }).then((res) => {
                 console.log(res.data.job_list)
                 setJobList(
@@ -82,17 +77,27 @@ function Personal_result(props) {
             }).catch(err => {
                 console.log(err)
                 var errCode = err.response.status;
+
                 if (errCode == 401) {
                     alert("다시 로그인 해주시기 바랍니다.")
                     localStorage.clear();
-                    window.location = '/login'
+                    window.location = '/login';
+                }else if(errCode == 400){
+                    alert(err.response.data)
+                    console.log(errCode)
+                    window.location.href = '/firstulike';
                 }
                 else{
-                    window.location = '/error'
+                    window.location = '/error';
                 }
             })
         }
-    },[user])
+
+    }, [])
+    //
+    // useEffect(()=>{
+    //
+    // },[user])
 
     const onClickJob=(e)=>{
         setCode(e.value)

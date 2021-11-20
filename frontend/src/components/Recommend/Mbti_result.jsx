@@ -95,10 +95,13 @@ function Mbtiresult(props) {
                 if (errCode == 401) {
                     alert("다시 로그인 해주시기 바랍니다.")
                     localStorage.clear();
-                    window.location = '/login'
+                    window.location = '/login';
+                }else if(errCode == 400){
+                    alert(err.response.data)
+                    window.location = '/firstulike';
                 }
                 else{
-                    window.location = '/error'
+                    window.location = '/error';
                 }
             })
         }
