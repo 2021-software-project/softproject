@@ -204,7 +204,7 @@ const SignupPage = () => {
             {errors === true && <h2>Cannot signup with provided credentials</h2>}
               <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken}/>
 
-              <form onSubmit={onSubmit}>
+              <form onSubmit={onSubmit} method="GET">
 
                   <div className="form-group mt-2 selectMbtiDiv">
                   <select required="true" className="form-style selectMbti" onChange={onChangeMbti} value={selMbti}>

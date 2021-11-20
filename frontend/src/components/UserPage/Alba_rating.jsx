@@ -138,7 +138,7 @@ function Alba_rating(){
             </div>
 
 
-            <form onSubmit={ratingSubmit}>
+            <form onSubmit={ratingSubmit} method="GET">
                 <button className="ratingBtn" type='submit' size="large">평가하기</button>
             </form>
             

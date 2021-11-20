@@ -13,11 +13,11 @@ function PasswordResetComplete(uid,token){
     const onSubmitPassword=(e)=> {
 
         var checkpwd1 =/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-        var checkpwd2 = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+        var checkpwd2 = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=*]).*$/;
 
 
         if (!checkpwd1.test(password)&&!checkpwd2.test(password)) {
-            alert("비밀번호를 확인해 주세요. 영소문자,숫자 포함 8~16자 (특수문자 가능) ")
+            alert("비밀번호를 확인해 주세요. 영소문자,숫자 포함 8~16자 [특수문자 가능:!@#$%^&+=*]")
             return
         }
 
