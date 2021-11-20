@@ -9,6 +9,8 @@ import "../../css/RcmSelect.css";
 
 function Personal_rcm() {
 
+    let username = localStorage.getItem("username")
+
     const dispatch = useDispatch();  //변경사항을 스토어에 반영하기 위해 dispatch 만들어줌
 
     const {ch_areasi} = useSelector(state => state.area_modules); //스토어에 있는 값 가져옴
@@ -44,7 +46,7 @@ function Personal_rcm() {
     return (
         <div className="per_son-container">
             <div className="con2">
-                <div className="personalTitle">자신에게 맞는 아르바이트 추천받기</div>
+                <div className="personalTitle">{username}님 <font>'성향'</font>에 맞는 알바를 찾으시나요?</div>
             </div>
             <div className="areaSelectDiv">
 

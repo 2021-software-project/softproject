@@ -61,6 +61,8 @@ header.bg-primary.text-black.text-center{
     font-size: xxx-large;
 }
 
-.mb_ti-container .font2{
-    font-size: large;
+.mb_ti-container font{
+    font-size: xx-large;
+    color: rgb(194, 158, 208);
+
 }

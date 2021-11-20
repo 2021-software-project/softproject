@@ -32,9 +32,10 @@ class Home extends Component {
 							</font>
 							</a>
 							<div id="innerEntry">
-								<p>당신의 성향에 맞춰 알바를 추천해주는 </p>
-								{/*<p>알바를 추천해주는</p>*/}
-								<p>그런 앱 본 적 있나요?</p>
+								<p>쏟아지는 알바공고에 헤메고 있나요?</p>
+
+								<p>알바그램이 찾아드릴께요 </p>
+								<p>당신의 ALBA</p>
 
 								<a href="/main" className="button_primary">입장하기</a>
 								</div>

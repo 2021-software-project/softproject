@@ -24,7 +24,7 @@ class Main extends React.Component {
                         <div className="content">
                             <Link className="link" to="/Mbti_rcm">
                                 <h2>내 MBTI 맞춤 알바</h2>
-                                <p>MBTI를 기반의 아르바이트를 추천해드립니다.</p>
+                                <p>MBTI기반으로 아르바이트를 추천해드립니다.</p>
                             </Link>
                         </div>
                         <div className="image">
@@ -40,7 +40,7 @@ class Main extends React.Component {
                         <div className="content">
                             <Link className="link" to="/Personal_rcm">
                                 <h2>{this.state.username}님 위한 맞춤 알바</h2>
-                                <p>선호하는 알바를 파악하여 추천해 드립니다.</p>
+                                <p>사용자의 성향을 파악하여 아르바이트를 추천해드립니다.</p>
                             </Link>
                         </div>
                         <div className="image">
