@@ -10,7 +10,7 @@ function GoodBad(){
     let token = localStorage.getItem('token');
     const [totalList, setTotalList] = useState([]);
     useEffect(()=>{
-        axios.get(`/user/userpostinglike/withposting/${email}`,
+        axios.get(process.env.REACT_APP_DB_HOST + `/user/userpostinglike/withposting/${email}`,
         {
             headers: {
                 'Content-Type': 'application/json',

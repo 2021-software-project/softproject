@@ -12,7 +12,7 @@ const JobPostingModal = ( props ) => {
 
     useEffect(() => {
         if(open) {
-            axios.get(`/user/userpostinglike/${email}/${post_id}`,
+            axios.get(process.env.REACT_APP_DB_HOST+`/user/userpostinglike/${email}/${post_id}`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const JobPostingModal = ( props ) => {
 
     const likeClick=()=>{
         if(postingLike === 1) {
-            axios.delete(`/user/userpostinglike/${email}/${post_id}`,
+            axios.delete(process.env.REACT_APP_DB_HOST+`/user/userpostinglike/${email}/${post_id}`,
                 { headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json;charset=UTF-8',
@@ -51,7 +51,7 @@ const JobPostingModal = ( props ) => {
               })
         }
         else if(postingLike === 0){
-            axios.post("user/userpostinglike/", {
+            axios.post(process.env.REACT_APP_DB_HOST+"user/userpostinglike/", {
                 email:localStorage.getItem("email"),
                 post_id:post_id,
                 jobcode:jobcode,
@@ -72,7 +72,7 @@ const JobPostingModal = ( props ) => {
             })
         }
         else if(postingLike === -1){
-            axios.put(`/user/userpostinglike/${email}/${post_id}`, {
+            axios.put(process.env.REACT_APP_DB_HOST+`/user/userpostinglike/${email}/${post_id}`, {
                     email:email,
                     post_id:post_id,
                     jobcode:jobcode,
@@ -95,7 +95,7 @@ const JobPostingModal = ( props ) => {
     }
     const dislikeClick=()=>{
         if(postingLike === -1) {
-            axios.delete(`/user/userpostinglike/${email}/${post_id}`,
+            axios.delete(process.env.REACT_APP_DB_HOST+`/user/userpostinglike/${email}/${post_id}`,
                 { headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json;charset=UTF-8',
@@ -110,7 +110,7 @@ const JobPostingModal = ( props ) => {
               })
         }
         else if(postingLike === 0){
-            axios.post("user/userpostinglike/", {
+            axios.post(process.env.REACT_APP_DB_HOST+"user/userpostinglike/", {
                 email:localStorage.getItem("email"),
                 post_id:post_id,
                 jobcode:jobcode,
@@ -131,7 +131,7 @@ const JobPostingModal = ( props ) => {
             })
         }
         else if(postingLike===1){
-            axios.put(`/user/userpostinglike/${email}/${post_id}`, {
+            axios.put(process.env.REACT_APP_DB_HOST+`/user/userpostinglike/${email}/${post_id}`, {
                     email:email,
                     post_id:post_id,
                     jobcode:jobcode,

@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Axios from 'axios';
-import { Menu } from 'antd';
 import "../../css/navBar_footer.css";
 import MenuOutlined from  '@ant-design/icons';
 import "../../js/scripts.js"

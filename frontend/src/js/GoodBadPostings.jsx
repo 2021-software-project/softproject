@@ -31,7 +31,7 @@ function GoodBadPostings(props){
          }
         console.log(whatPostingClick);
 
-         axios.post("/user/userpostingclick/", whatPostingClick,
+         axios.post(process.env.REACT_APP_DB_HOST+"/user/userpostingclick/", whatPostingClick,
             {
                 headers: {
                     'Accept': 'application/json',

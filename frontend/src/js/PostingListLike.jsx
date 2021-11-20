@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {HeartOutlined, HeartFilled} from '@ant-design/icons';
 import { FaHeartBroken } from 'react-icons/fa';
-import Axios from 'axios';
 import axios from "axios";
 
 function PostingListLike(props) {
@@ -14,7 +13,7 @@ function PostingListLike(props) {
     let token = localStorage.getItem('token')
     let email = localStorage.getItem('email')
     useEffect(() => { //목록에 좋아요 상황 바로 가져오기
-        axios.get(`/user/userpostinglike/${email}/${props.post_id}`,
+        axios.get(process.env.REACT_APP_DB_HOST+`/user/userpostinglike/${email}/${props.post_id}`,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +36,7 @@ function PostingListLike(props) {
 
     const postinglistlikeClick =()=>{
         if(Likes === 0){
-            axios.post("user/userpostinglike/", {
+            axios.post(process.env.REACT_APP_DB_HOST+"user/userpostinglike/", {
                 email:localStorage.getItem("email"),
                 post_id:props.post_id,
                 jobcode:props.jobcode,
@@ -57,7 +56,7 @@ function PostingListLike(props) {
               //console.log(err)
         })}
         else if(Likes === 1){
-            axios.delete(`/user/userpostinglike/${props.email}/${props.post_id}`,
+            axios.delete(process.env.REACT_APP_DB_HOST+`/user/userpostinglike/${props.email}/${props.post_id}`,
                 { headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json;charset=UTF-8',
@@ -72,7 +71,7 @@ function PostingListLike(props) {
               })
         }
         else if(Likes === -1){
-            axios.delete(`/user/userpostinglike/${props.email}/${props.post_id}`,
+            axios.delete(process.env.REACT_APP_DB_HOST+`/user/userpostinglike/${props.email}/${props.post_id}`,
                 { headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json;charset=UTF-8',

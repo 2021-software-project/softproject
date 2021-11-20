@@ -6,7 +6,7 @@ function RatingOne({index, id, jobfamily, job, score}){
     const ratingDelete=(e)=>{
         let chkDelete = window.confirm("삭제하시겠습니까?");
         if(chkDelete == true){
-          axios.delete('/user/userrating/'+e.id,
+          axios.delete(process.env.REACT_APP_DB_HOST+'/user/userrating/'+e.id,
             { headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json;charset=UTF-8',
@@ -49,7 +49,7 @@ function Rating(){
     let email = localStorage.getItem('email')
     let username = localStorage.getItem('username')
     useEffect(() => {
-        axios.get(`/user/userrating/?search=${email}`,
+        axios.get(process.env.REACT_APP_DB_HOST+`/user/userrating/?search=${email}`,
             {
                 headers: {
                     'Content-Type': 'application/json',
