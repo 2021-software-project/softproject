@@ -12,7 +12,7 @@ class PasswordReset extends React.Component {
   	componentDidMount() {
         this.state.params = this.props.match.params;
 
-        Axios.get(`/user/password-reset/${this.state.params.uid}/${this.state.params.token}`)
+        Axios.get(process.env.REACT_APP_DB_HOST +`/user/password-reset/${this.state.params.uid}/${this.state.params.token}`)
             .then(res => {
                 const data = res.data
                 if (data.success) {

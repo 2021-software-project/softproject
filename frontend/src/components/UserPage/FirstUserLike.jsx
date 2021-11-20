@@ -66,7 +66,7 @@ function FirstUserLike(){
                 }
                 console.log(firstRating);
 
-                Axios.post("/user/userrating/", firstRating,{
+                Axios.post(process.env.REACT_APP_DB_HOST +"/user/userrating/", firstRating,{
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json;charset=UTF-8',
