@@ -35,19 +35,35 @@ function MyPage() {
     useEffect(()=>{
         let token = localStorage.getItem('token')
         let email = localStorage.getItem('email')
-        if (email !== null){
-            Axios.get(`/user/detail/change/${email}`, {
-                headers:{
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json;charset=UTF-8',
-                    'Authorization': 'token ' + token,
-                }
-            }).then(res=>{
-                    setUsermbti(res.data)
-                    setMbtiSelected(res.data)
-                    console.log(res.data)
-                })
+        let mbti = localStorage.getItem('mbti')
+        if (token == null){
+            alert("다시 로그인 해주시기 바랍니다.")
+            localStorage.clear();
+            window.location = '/login'
         }
+        setUsermbti(mbti)
+        setMbtiSelected(mbti)
+        // if (token !== null){
+        //     Axios.get(`/user/detail/${email}`, {
+        //         headers:{
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json;charset=UTF-8',
+        //             'Authorization': 'token ' + token,
+        //         }
+        //     }).then(res=>{
+        //             setUsermbti(res.data)
+        //             setMbtiSelected(res.data)
+        //             console.log(res.data)
+        //         })
+        //         .catch(err=>{
+        //             var errCode = err.response.status;
+        //             if (errCode == 401) {
+        //                 alert("다시 로그인 해주시기 바랍니다.")
+        //                 localStorage.clear();
+        //                 window.location = '/login'
+        //             }
+        //         })
+        // }
     },[])
 
 
@@ -74,7 +90,12 @@ function MyPage() {
                     setUsermbti(mbti)
                     localStorage.setItem("mbti",mbti)
                 }).catch(err=>{
-                    console.log(err)
+                    var errCode = err.response.status;
+                    if (errCode == 401) {
+                        alert("다시 로그인 해주시기 바랍니다.")
+                        localStorage.clear();
+                        window.location = '/login'
+                    }
             })
         }
     }

@@ -91,6 +91,15 @@ function Mbtiresult(props) {
                 )
             }).catch(err => {
                 alert(err.response.data)
+                var errCode = err.response.status;
+                if (errCode == 401) {
+                    alert("다시 로그인 해주시기 바랍니다.")
+                    localStorage.clear();
+                    window.location = '/login'
+                }
+                else{
+                    window.location = '/error'
+                }
             })
         }
         else{

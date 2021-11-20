@@ -55,6 +55,15 @@ function Personal_result(props) {
                     res.data.username
                 )
                 console.log(res.data.username)
+            }).catch(err=>{
+                var errCode = err.response.status;
+                if (errCode == 401) {
+                    alert("다시 로그인 해주시기 바랍니다.")
+                    localStorage.clear();
+                    window.location = '/login'
+                }else {
+                    window.location = '/error'
+                }
             });
         }
 
@@ -72,6 +81,15 @@ function Personal_result(props) {
                 )
             }).catch(err => {
                 console.log(err)
+                var errCode = err.response.status;
+                if (errCode == 401) {
+                    alert("다시 로그인 해주시기 바랍니다.")
+                    localStorage.clear();
+                    window.location = '/login'
+                }
+                else{
+                    window.location = '/error'
+                }
             })
         }
     },[user])
