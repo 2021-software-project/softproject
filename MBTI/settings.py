@@ -53,7 +53,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 STATICFILES_DIRS = (#추가해줌
-    os.path.join(BASE_DIR,'frontend/build/static'),
+    os.path.join(BASE_DIR,'build/static'),
 )
 
 
@@ -117,7 +117,7 @@ ROOT_URLCONF = 'MBTI.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['frontend/build'],
+        'DIRS': ['build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
