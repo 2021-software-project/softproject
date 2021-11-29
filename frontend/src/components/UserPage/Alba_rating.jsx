@@ -72,7 +72,7 @@ function Alba_rating(){
 
                 let token = localStorage.getItem('token')
 
-                Axios.post(process.env.REACT_APP_DB_HOST +"/user/userrating/", rating1,
+                Axios.post("/user/userrating/", rating1,
                     {
                         headers: {
                             'Accept': 'application/json',

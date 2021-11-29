@@ -8,7 +8,7 @@ export function Logout() {
 
 
     Axios({
-        url: process.env.REACT_APP_DB_HOST +"/user/logout/",
+        url: "/user/logout/",
         method: 'post',
         headers: {
             'Content-Type': 'application/json',

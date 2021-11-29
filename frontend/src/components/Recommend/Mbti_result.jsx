@@ -46,7 +46,7 @@ function Mbtiresult(props) {
         }
 
         if (jobList == '') {
-            axios.get(process.env.REACT_APP_DB_HOST+'/user/mbtircm/', {
+            axios.get('/user/mbtircm/', {
                 params: {mbti: ch_mbti, email: localStorage.getItem("email")},
             }).then((res) => {
 
@@ -87,7 +87,7 @@ function Mbtiresult(props) {
 
     const onChangeScore = (ch_score, index) => {
         if(satisfyScore === 0){
-            axios.post(process.env.REACT_APP_DB_HOST+'/user/resultsatisfy/',
+            axios.post('/user/resultsatisfy/',
                 {
                     email:email, mbti:mbti, rating:ch_score, recommendtype:1
                 },
@@ -118,7 +118,7 @@ function Mbtiresult(props) {
             })
         }
         else{
-            axios.put(process.env.REACT_APP_DB_HOST+`/user/resultsatisfy/${satisfyScoreId}`,{
+            axios.put(`/user/resultsatisfy/${satisfyScoreId}`,{
                 email:email, mbti:mbti, rating:ch_score, recommendtype:1
             },{
                 headers:{
@@ -174,7 +174,7 @@ function Mbtiresult(props) {
                 <div>
                     <br/>
                     <h2>추천 결과가 어떠신가요?</h2>
-                    <span>알바를 평가하면 더 좋은 결과를 받으실 수 있습니다</span><br/>
+                    <span>이전에 경험한 알바를 평가하면 더 좋은 결과를 받으실 수 있습니다</span><br/>
                     <fieldset>
                         {SCORE.map((i, index) =>
                                   <label className={`${resultScoreArr[index]?'checkStar':''}`}>⭐<input type="radio" className={`scoreSelect`} name={"score_"} value={i}
@@ -182,7 +182,7 @@ function Mbtiresult(props) {
                         }
                     </fieldset>
                     <br/><br/>
-                    <button className="button_primary" onClick={reRecommend}> 다시추천받기</button>  <button className="button_primary" onClick={goRating}> 알바평가하기</button>
+                    <button className="button_primary" onClick={reRecommend}> 다시추천받기</button>
                 </div>
 
 

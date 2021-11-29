@@ -44,7 +44,7 @@ function FirstUserLike(){
         }
     }
 
-    const onJobSelectBtnClick = () =>{
+    const onJobSelectBtnClick = async () =>{
         if(firstJobs.length<3)
         {
             alert("3개를 선택해주세요");
@@ -66,7 +66,7 @@ function FirstUserLike(){
                 }
 
 
-                Axios.post(process.env.REACT_APP_DB_HOST +"/user/userrating/", firstRating,{
+                await Axios.post("/user/userrating/", firstRating,{
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json;charset=UTF-8',

@@ -52,10 +52,18 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+STATIC_ROOT = ''
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (#추가해줌
-    os.path.join(BASE_DIR,'frontend/build/static'),
+    # os.path.join(BASE_DIR, 'frontend', 'build', 'static'),
+    os.path.join(BASE_DIR, 'MBTI','templates','static'),
+    # os.path.join(BASE_DIR, '/templates/static'),
 )
-
+SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
+# # Find templates in the same folder as settings.py.
+# TEMPLATE_DIRS = (
+#     os.path.join(SETTINGS_PATH, 'template'),
+# )
 
 
 # Quick-start development settings - unsuitable for production
@@ -117,7 +125,7 @@ ROOT_URLCONF = 'MBTI.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['frontend/build'],
+        'DIRS': ['template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

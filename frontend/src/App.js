@@ -39,15 +39,15 @@ function App(props) {
                 <PrivateRoute exact path="/firstulike" component={FirstUserLike}></PrivateRoute>
                 <PrivateRoute exact path="/main" component={Main}></PrivateRoute>
                 <PrivateRoute exact path="/mypage" component={MyPage}></PrivateRoute>
-                <PrivateRoute exact path="/mbti_rcm" component={Mbtircm}></PrivateRoute>
+                <PrivateRoute exact path="/Mbti_rcm" component={Mbtircm}></PrivateRoute>
                 <PrivateRoute exact path="/mbti_result" component={Mbtiresult}></PrivateRoute>
-                <PrivateRoute exact path="/personal_rcm" component={Personal_rcm}></PrivateRoute>
+                <PrivateRoute exact path="/Personal_rcm" component={Personal_rcm}></PrivateRoute>
                 <PrivateRoute exact path="/personal_result" component={Personal_result}></PrivateRoute>
                 <PrivateRoute exact path="/GoodBad_list" component={GoodBad}></PrivateRoute>
                 <PrivateRoute exact path="/Alba_rating" component={Albarating}></PrivateRoute>
                 <PrivateRoute exact path="/Rating_list" component={Rating}></PrivateRoute>
                 <PrivateRoute exact path="/information" component={Information}></PrivateRoute>
-                <Route exact path="/user/password-reset/:uid/:token" component={PasswordReset}></Route>
+                <Route exact path="/password-reset/:uid/:token" component={PasswordReset}></Route>
                 <Route exact path="/error" component={Error}></Route>
                 </div>
               </Switch>

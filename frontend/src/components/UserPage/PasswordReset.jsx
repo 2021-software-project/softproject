@@ -3,32 +3,19 @@ import Axios from 'axios';
 import PasswordResetComplete from './PasswordResetComplete'
 
 class PasswordReset extends React.Component {
-    state= {
-        params: this.props.match.params,
-        success: false,
-        uid: '',
-        token: ''
-    };
-  	componentDidMount() {
-        this.state.params = this.props.match.params;
-
-        Axios.get(process.env.REACT_APP_DB_HOST +`/user/password-reset/${this.state.params.uid}/${this.state.params.token}`)
-            .then(res => {
-                const data = res.data
-                if (data.success) {
-                    this.setState({uid:data.uid})
-                    this.setState({token:data.token})
-                    this.setState({success:data.success})
-                }
-            })
-            .catch(err => {
-                alert("만료된 인증입니다.");
-                window.location.href = '/'
-            })
+    constructor(props) {
+        super(props);
+        this.state = {
+            success: true,
+            uid: props.match.params.uid,
+            token: props.match.params.uid
+        }
     }
+
     render() {
   	    const {success,uid,token} = this.state
-        return (success? <PasswordResetComplete uid={uid} token={token} />:<></>)
+
+        return (success? <PasswordResetComplete uid={uid} token={token} />:<div>다시 시도해주세요</div>)
     }
 }
 

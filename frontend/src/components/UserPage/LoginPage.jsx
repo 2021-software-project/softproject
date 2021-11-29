@@ -26,7 +26,7 @@ const LoginPage = () => {
       password: password
     }
 
-    Axios.post(process.env.REACT_APP_DB_HOST +'/user/login/', user)
+    Axios.post('/user/login/', user)
       .then(res => {
         /*alert("user", user.email, user.password)
         alert("res",res)*/
@@ -38,7 +38,7 @@ const LoginPage = () => {
             // localStorage.setItem('username',username);
 
 
-            Axios.get(process.env.REACT_APP_DB_HOST +`/user/detail/${email}`,
+            Axios.get(`/user/detail/${email}`,
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -51,7 +51,7 @@ const LoginPage = () => {
                     localStorage.setItem('username', response.data.username)
 
                     //평가목록 접근해서 하나도 없으면 first로 가도록
-                    axios.get(process.env.REACT_APP_DB_HOST +`/user/userrating/?search=${email}`,
+                    axios.get(`/user/userrating/?search=${email}`,
                     {
                         headers: {
                             'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ const LoginPage = () => {
       //또 전송 버튼을 누르지 않게 하기 위해 버튼 없애기
       const button = document.getElementsByClassName("send-email")
       button[0].style = "display:none"
-      Axios.post(process.env.REACT_APP_DB_HOST +'/user/request-reset-email/',data)
+      Axios.post('/user/request-reset-email/',data)
           .then(res=>{
               setSendEmail(true);
               setSuccess(true);
@@ -148,7 +148,7 @@ const LoginPage = () => {
       <div className="LoginSignupform">
           <div className="section text-center">
             <h4 className="mb-4 pb-3">LOG IN</h4>
-              <form onSubmit={onSubmit} method="GET">
+              <form onSubmit={onSubmit}>
                   <div className="form-group">
                     <input type="email" name="logemail" value={email} onChange={e => setEmail(e.target.value)} required
                      className="form-style" placeholder="이메일" id="logemail" autoComplete="off"/>

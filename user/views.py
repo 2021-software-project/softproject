@@ -2,7 +2,7 @@ import random
 
 import pandas as pd
 from django.contrib.auth import authenticate
-from django.http import JsonResponse, HttpResponse, Http404
+from django.http import JsonResponse, HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
@@ -40,6 +40,7 @@ from django.db import IntegrityError
 class LoginView(APIView):
     authentication_classes = []
     permission_classes = []
+    @csrf_exempt
     def post(self, request):
         try:
             user = authenticate(username=request.data['email'], password=request.data['password'])
@@ -116,7 +117,7 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
             relativeLink = reverse('password-reset-confirm',
                                    kwargs={'uidb64':uidb64,'token':token})
             print(request.get_host()) #장고 url이 가져와지네 ...
-            absurl = 'http://127.0.0.1:3000'+relativeLink
+            absurl = 'http://127.0.0.1:8000'+relativeLink    #http://www.albagram.kro.kr
             email_body = "<div style='text-align : center'>" \
                          "<h3>안녕하세요. " +user.username+'님, Albagram 입니다. </h3> ' \
                         '<p>아래의 링크로 접속 시, 비밀번호 재설정이 가능합니다. </p><br/>' \
@@ -148,7 +149,7 @@ class PasswordTokenCheckAPI(generics.GenericAPIView):
 
             if not PasswordResetTokenGenerator().check_token(user,token):
                 return Response({'error':'Token is not valid, please request a new one'},status=status.HTTP_401_UNAUTHORIZED)
-            return Response({'success' : True,'message':'Credentials Valid','uid':uidb64,'token':token},status=status.HTTP_200_OK)
+            return HttpResponseRedirect("/password-reset/{}/{}".format(uidb64,token))
 
         except DjangoUnicodeDecodeError as identifier:
             return Response({'error': 'Token is not valid, please request a new one'}, status=status.HTTP_401_UNAUTHORIZED)

@@ -26,7 +26,7 @@ function PasswordResetComplete(uid,token){
             uid : uid.uid,
         }
 
-        Axios.post(process.env.REACT_APP_DB_HOST +'/user/password-reset-complete/',data)
+        Axios.post('/user/password-reset-complete/',data)
             .then(res => {
 
                 alert("비밀번호가 재설정되었습니다. 다시 로그인해주세요!")

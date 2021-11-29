@@ -54,7 +54,7 @@ function MyPage() {
         let email = localStorage.getItem('email')
         let token = localStorage.getItem('token')
         if (token !== null){
-            Axios.post(process.env.REACT_APP_DB_HOST+'/user/detail/change/',
+            Axios.post('/user/detail/change/',
                 {email: email, mbti: mbti},
                 {
                     headers: {

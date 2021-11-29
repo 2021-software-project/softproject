@@ -116,10 +116,9 @@ const SignupPage = () => {
           return false
       }
 
-      Axios.post(process.env.REACT_APP_DB_HOST +'/user/auth/signup/', user,
+      Axios.post('/user/auth/signup/', user,
           {
           headers : {
-              "CSRF-TOKEN":csrftoken
 
           }
       }

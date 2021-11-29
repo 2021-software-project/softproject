@@ -25,7 +25,7 @@ class Home extends Component {
 							<div id="innerEntry">
 								<p>쏟아지는 알바공고에 헤메고 있나요?</p>
 
-								<p>알바그램이 찾아드릴께요 </p>
+								<p>알바그램이 찾아드릴게요 </p>
 								<p>당신의 ALBA</p>
 
 								<a href="/main" className="button_primary">입장하기</a>
