@@ -61,7 +61,7 @@ function Mbtiresult(props) {
                     localStorage.clear();
                     window.location = '/login';
                 }else if(errCode == 400){
-                    alert(err.response.data)
+                    //alert(err.response.data)
                     console.log(errCode)
                     window.location.href = '/firstulike';
                 }
@@ -101,6 +101,7 @@ function Mbtiresult(props) {
                 setSatisfyScoreId(
                     res.data.id
                 )
+                alert(`만족도 ${ch_score}점 감사합니다.`)
             }).catch(err => {
                 alert(err.response.data)
                 var errCode = err.response.status;
@@ -127,7 +128,7 @@ function Mbtiresult(props) {
                     'Authorization': 'token ' + token,
                 }
             }).then(function (response){
-
+                alert(`만족도 ${ch_score}점 감사합니다.`)
             })
         }
         setSatisfyScore(ch_score)

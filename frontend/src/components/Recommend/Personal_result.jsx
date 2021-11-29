@@ -99,6 +99,7 @@ function Personal_result(props) {
                 setSatisfyScoreId(
                     res.data.id
                 )
+                alert(`만족도 ${ch_score}점 감사합니다.`)
             }).catch(err => {
                 alert(err.response.data)
             })
@@ -113,7 +114,7 @@ function Personal_result(props) {
                     'Authorization': 'token ' + token,
                 }
             }).then(function (response){
-
+                alert(`만족도 ${ch_score}점 감사합니다.`)
             })
         }
             setSatisfyScore(ch_score)
