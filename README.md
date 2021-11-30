@@ -1,8 +1,8 @@
 # ALBAGRAM (mbti 기반 아르바이트 추천 웹서비스)
   
-## web
-frontend : React, Redux  
-backend : Django, MySQL
+### Web Part
+> frontend : React, Redux  
+  backend : Django, MySQL
 
 ### 💛 프로젝트 개요
 - MBTI(성격유형검사)로 자신에게 맞는 아르바이트 직종을 추천받을 수 있는 웹 서비스
@@ -24,3 +24,6 @@ backend : Django, MySQL
   - 비밀번호 변경 기능
   - 좋아요/싫어요로 스크랩한 공고 조회 기능
   - 알바 평가 조회 기능
+
+### 💙 웹 결과 화면 
+(준비중)
