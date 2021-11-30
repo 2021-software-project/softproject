@@ -175,7 +175,7 @@ function Mbtiresult(props) {
                 <div>
                     <br/>
                     <h2>추천 결과가 어떠신가요?</h2>
-                    <span>이전에 경험한 알바를 평가하면 더 좋은 결과를 받으실 수 있습니다</span><br/>
+                    <span>이전에 경험한 알바를 평가하면<br/> 더 좋은 결과를 받으실 수 있습니다.</span><br/>
                     <fieldset>
                         {SCORE.map((i, index) =>
                                   <label className={`${resultScoreArr[index]?'checkStar':''}`}>⭐<input type="radio" className={`scoreSelect`} name={"score_"} value={i}

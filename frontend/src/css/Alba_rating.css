@@ -147,6 +147,13 @@
     word-break: keep-all;
 }
 
+.alba_rating-container .alba_subbox h1{
+    border-bottom: 1px solid #f1b7b7;
+    padding: 0px 0 35px;
+    width: 80%;
+    margin: auto;
+}
+
 
 .alba_rating-container .alba_subbox2{
     margin-left: auto;

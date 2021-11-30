@@ -21,14 +21,20 @@ function GoodBad(){
             setTotalList(Response.data);
         })
         .catch((err) => {
-            var errCode = err.response.status;
-            if (errCode == 401){
-                alert("다시 로그인 해주시기 바랍니다.")
-                localStorage.clear();
-                window.location = '/login'
-            }else{
+            try {
+                var errCode = err.response.status;
+                if (errCode == 401) {
+                    alert("다시 로그인 해주시기 바랍니다.")
+                    localStorage.clear();
+                    window.location = '/login'
+                } else {
+                    window.location = '/error'
+                }
+            }
+            catch (e){
                 window.location = '/error'
             }
+
         })
     }, []);
     const goRecommendMbti=()=>{
