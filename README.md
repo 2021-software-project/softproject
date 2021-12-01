@@ -26,4 +26,8 @@
   - 알바 평가 조회 기능
 
 ### 💙 웹 결과 화면 
-(준비중)
+- 첫 페이지
+<img src="https://user-images.githubusercontent.com/80735829/144201837-da0fbdc2-4aa2-49ae-a3f8-bd5b1e8b9ec8.png"  width="210" height="370"/> <img src="https://user-images.githubusercontent.com/80735829/144201937-25c7ef19-2476-4b74-9ba8-0fd4b5f4b90c.png"  width="210" height="370"/>
+
+
+
